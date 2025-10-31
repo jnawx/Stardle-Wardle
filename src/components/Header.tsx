@@ -51,7 +51,7 @@ export default function Header({ gameMode, timeRemaining, onModeSwitch }: Header
           {/* Center: Title */}
           <div className="flex-1">
             <h1 className="text-3xl md:text-4xl font-bold text-sw-yellow text-center tracking-wider">
-              STAR WARS CHARACTER-DLE
+              STARDLE WARDLE
             </h1>
             <p className="text-center text-gray-400 mt-2 text-sm">
               Guess the Star Wars character!

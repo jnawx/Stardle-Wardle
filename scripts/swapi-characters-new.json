@@ -1,0 +1,1459 @@
+[
+  {
+    "id": "owen-lars",
+    "name": "Owen Lars",
+    "species": "Human",
+    "sex": "Male",
+    "hairColor": "Brown",
+    "eyeColor": "Blue",
+    "homeworld": "Tatooine",
+    "affiliations": [
+      "Republic"
+    ],
+    "eras": [
+      "Prequel",
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/owen-lars.png"
+  },
+  {
+    "id": "beru-whitesun-lars",
+    "name": "Beru Whitesun lars",
+    "species": "Human",
+    "sex": "Female",
+    "hairColor": "Brown",
+    "eyeColor": "Blue",
+    "homeworld": "Tatooine",
+    "affiliations": [
+      "Republic"
+    ],
+    "eras": [
+      "Prequel",
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/beru-whitesun-lars.png"
+  },
+  {
+    "id": "r5-d4",
+    "name": "R5-D4",
+    "species": "Droid",
+    "sex": "N/A",
+    "hairColor": "N/A",
+    "eyeColor": "Red",
+    "homeworld": "Tatooine",
+    "affiliations": [
+      "Republic"
+    ],
+    "eras": [
+      "Prequel"
+    ],
+    "weapons": [
+      "None"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/r5-d4.png"
+  },
+  {
+    "id": "biggs-darklighter",
+    "name": "Biggs Darklighter",
+    "species": "Human",
+    "sex": "Male",
+    "hairColor": "Black",
+    "eyeColor": "Brown",
+    "homeworld": "Tatooine",
+    "affiliations": [
+      "Republic"
+    ],
+    "eras": [
+      "Prequel"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/biggs-darklighter.png"
+  },
+  {
+    "id": "wilhuff-tarkin",
+    "name": "Wilhuff Tarkin",
+    "species": "Human",
+    "sex": "Male",
+    "hairColor": "Auburn",
+    "eyeColor": "Blue",
+    "homeworld": "Eriadu",
+    "affiliations": [
+      "Empire",
+      "Sith"
+    ],
+    "eras": [
+      "Prequel",
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/wilhuff-tarkin.png"
+  },
+  {
+    "id": "greedo",
+    "name": "Greedo",
+    "species": "Rodian",
+    "sex": "Male",
+    "hairColor": "N/A",
+    "eyeColor": "Black",
+    "homeworld": "Rodia",
+    "affiliations": [
+      "Republic"
+    ],
+    "eras": [
+      "Prequel"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/greedo.png"
+  },
+  {
+    "id": "jabba-desilijic-tiure",
+    "name": "Jabba Desilijic Tiure",
+    "species": "Hutt",
+    "sex": "N/A",
+    "hairColor": "N/A",
+    "eyeColor": "Orange",
+    "homeworld": "Nal Hutta",
+    "affiliations": [
+      "Republic"
+    ],
+    "eras": [
+      "Prequel",
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/jabba-desilijic-tiure.png"
+  },
+  {
+    "id": "jek-tono-porkins",
+    "name": "Jek Tono Porkins",
+    "species": "Human",
+    "sex": "Male",
+    "hairColor": "Brown",
+    "eyeColor": "Blue",
+    "homeworld": "Bestine IV",
+    "affiliations": [
+      "Republic"
+    ],
+    "eras": [
+      "Prequel"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/jek-tono-porkins.png"
+  },
+  {
+    "id": "palpatine",
+    "name": "Palpatine",
+    "species": "Human",
+    "sex": "Male",
+    "hairColor": "Grey",
+    "eyeColor": "Yellow",
+    "homeworld": "Naboo",
+    "affiliations": [
+      "Empire",
+      "Sith"
+    ],
+    "eras": [
+      "Prequel",
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": true,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/palpatine.png"
+  },
+  {
+    "id": "ig-88",
+    "name": "IG-88",
+    "species": "Droid",
+    "sex": "N/A",
+    "hairColor": "None",
+    "eyeColor": "Red",
+    "homeworld": "unknown",
+    "affiliations": [
+      "Republic"
+    ],
+    "eras": [
+      "Prequel"
+    ],
+    "weapons": [
+      "None"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/ig-88.png"
+  },
+  {
+    "id": "bossk",
+    "name": "Bossk",
+    "species": "Trandoshan",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Red",
+    "homeworld": "Trandosha",
+    "affiliations": [
+      "Republic"
+    ],
+    "eras": [
+      "Prequel"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/bossk.png"
+  },
+  {
+    "id": "lobot",
+    "name": "Lobot",
+    "species": "Human",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Blue",
+    "homeworld": "Bespin",
+    "affiliations": [
+      "Republic"
+    ],
+    "eras": [
+      "Prequel"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/lobot.png"
+  },
+  {
+    "id": "ackbar",
+    "name": "Ackbar",
+    "species": "Mon Calamari",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Orange",
+    "homeworld": "Mon Cala",
+    "affiliations": [
+      "Republic"
+    ],
+    "eras": [
+      "Prequel"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/ackbar.png"
+  },
+  {
+    "id": "arvel-crynyd",
+    "name": "Arvel Crynyd",
+    "species": "Human",
+    "sex": "Male",
+    "hairColor": "Brown",
+    "eyeColor": "Brown",
+    "homeworld": "unknown",
+    "affiliations": [
+      "Republic"
+    ],
+    "eras": [
+      "Prequel"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/arvel-crynyd.png"
+  },
+  {
+    "id": "wicket-systri-warrick",
+    "name": "Wicket Systri Warrick",
+    "species": "Ewok",
+    "sex": "Male",
+    "hairColor": "Brown",
+    "eyeColor": "Brown",
+    "homeworld": "Endor",
+    "affiliations": [
+      "Republic"
+    ],
+    "eras": [
+      "Prequel"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/wicket-systri-warrick.png"
+  },
+  {
+    "id": "nien-nunb",
+    "name": "Nien Nunb",
+    "species": "Sullustan",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Black",
+    "homeworld": "Sullust",
+    "affiliations": [
+      "Republic"
+    ],
+    "eras": [
+      "Prequel"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/nien-nunb.png"
+  },
+  {
+    "id": "nute-gunray",
+    "name": "Nute Gunray",
+    "species": "Neimodian",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Red",
+    "homeworld": "Cato Neimoidia",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/nute-gunray.png"
+  },
+  {
+    "id": "finis-valorum",
+    "name": "Finis Valorum",
+    "species": "Human",
+    "sex": "Male",
+    "hairColor": "Blond",
+    "eyeColor": "Blue",
+    "homeworld": "Coruscant",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/finis-valorum.png"
+  },
+  {
+    "id": "padm-amidala",
+    "name": "Padmé Amidala",
+    "species": "Human",
+    "sex": "Female",
+    "hairColor": "Brown",
+    "eyeColor": "Brown",
+    "homeworld": "Naboo",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/padm-amidala.png"
+  },
+  {
+    "id": "roos-tarpals",
+    "name": "Roos Tarpals",
+    "species": "Gungan",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Orange",
+    "homeworld": "Naboo",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/roos-tarpals.png"
+  },
+  {
+    "id": "rugor-nass",
+    "name": "Rugor Nass",
+    "species": "Gungan",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Orange",
+    "homeworld": "Naboo",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/rugor-nass.png"
+  },
+  {
+    "id": "ric-oli",
+    "name": "Ric Olié",
+    "species": "Human",
+    "sex": "Male",
+    "hairColor": "Brown",
+    "eyeColor": "Blue",
+    "homeworld": "Naboo",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/ric-oli.png"
+  },
+  {
+    "id": "watto",
+    "name": "Watto",
+    "species": "Toydarian",
+    "sex": "Male",
+    "hairColor": "Black",
+    "eyeColor": "Yellow",
+    "homeworld": "Toydaria",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/watto.png"
+  },
+  {
+    "id": "sebulba",
+    "name": "Sebulba",
+    "species": "Dug",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Orange",
+    "homeworld": "Malastare",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/sebulba.png"
+  },
+  {
+    "id": "quarsh-panaka",
+    "name": "Quarsh Panaka",
+    "species": "Human",
+    "sex": "Male",
+    "hairColor": "Black",
+    "eyeColor": "Brown",
+    "homeworld": "Naboo",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/quarsh-panaka.png"
+  },
+  {
+    "id": "shmi-skywalker",
+    "name": "Shmi Skywalker",
+    "species": "Human",
+    "sex": "Female",
+    "hairColor": "Black",
+    "eyeColor": "Brown",
+    "homeworld": "Tatooine",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Lightsaber"
+    ],
+    "forceUser": true,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/shmi-skywalker.png"
+  },
+  {
+    "id": "bib-fortuna",
+    "name": "Bib Fortuna",
+    "species": "Twi'lek",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Pink",
+    "homeworld": "Ryloth",
+    "affiliations": [
+      "Republic"
+    ],
+    "eras": [
+      "Prequel"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/bib-fortuna.png"
+  },
+  {
+    "id": "ayla-secura",
+    "name": "Ayla Secura",
+    "species": "Twi'lek",
+    "sex": "Female",
+    "hairColor": "None",
+    "eyeColor": "Hazel",
+    "homeworld": "Ryloth",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/ayla-secura.png"
+  },
+  {
+    "id": "ratts-tyerel",
+    "name": "Ratts Tyerel",
+    "species": "Aleena",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Unknown",
+    "homeworld": "Aleen Minor",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/ratts-tyerel.png"
+  },
+  {
+    "id": "dud-bolt",
+    "name": "Dud Bolt",
+    "species": "Vulptereen",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Yellow",
+    "homeworld": "Vulpter",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/dud-bolt.png"
+  },
+  {
+    "id": "gasgano",
+    "name": "Gasgano",
+    "species": "Xexto",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Black",
+    "homeworld": "Troiken",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/gasgano.png"
+  },
+  {
+    "id": "ben-quadinaros",
+    "name": "Ben Quadinaros",
+    "species": "Toong",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Orange",
+    "homeworld": "Tund",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/ben-quadinaros.png"
+  },
+  {
+    "id": "ki-adi-mundi",
+    "name": "Ki-Adi-Mundi",
+    "species": "Cerean",
+    "sex": "Male",
+    "hairColor": "White",
+    "eyeColor": "Yellow",
+    "homeworld": "Cerea",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/ki-adi-mundi.png"
+  },
+  {
+    "id": "kit-fisto",
+    "name": "Kit Fisto",
+    "species": "Nautolan",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Black",
+    "homeworld": "Glee Anselm",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/kit-fisto.png"
+  },
+  {
+    "id": "eeth-koth",
+    "name": "Eeth Koth",
+    "species": "Zabrak",
+    "sex": "Male",
+    "hairColor": "Black",
+    "eyeColor": "Brown",
+    "homeworld": "Iridonia",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/eeth-koth.png"
+  },
+  {
+    "id": "adi-gallia",
+    "name": "Adi Gallia",
+    "species": "Tholothian",
+    "sex": "Female",
+    "hairColor": "None",
+    "eyeColor": "Blue",
+    "homeworld": "Coruscant",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/adi-gallia.png"
+  },
+  {
+    "id": "saesee-tiin",
+    "name": "Saesee Tiin",
+    "species": "Iktotchi",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Orange",
+    "homeworld": "Iktotch",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/saesee-tiin.png"
+  },
+  {
+    "id": "yarael-poof",
+    "name": "Yarael Poof",
+    "species": "Quermian",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Yellow",
+    "homeworld": "Quermia",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/yarael-poof.png"
+  },
+  {
+    "id": "plo-koon",
+    "name": "Plo Koon",
+    "species": "Kel Dor",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Black",
+    "homeworld": "Dorin",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/plo-koon.png"
+  },
+  {
+    "id": "mas-amedda",
+    "name": "Mas Amedda",
+    "species": "Chagrian",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Blue",
+    "homeworld": "Champala",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/mas-amedda.png"
+  },
+  {
+    "id": "gregar-typho",
+    "name": "Gregar Typho",
+    "species": "Human",
+    "sex": "Male",
+    "hairColor": "Black",
+    "eyeColor": "Brown",
+    "homeworld": "Naboo",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/gregar-typho.png"
+  },
+  {
+    "id": "cord",
+    "name": "Cordé",
+    "species": "Human",
+    "sex": "Female",
+    "hairColor": "Brown",
+    "eyeColor": "Brown",
+    "homeworld": "Naboo",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/cord.png"
+  },
+  {
+    "id": "cliegg-lars",
+    "name": "Cliegg Lars",
+    "species": "Human",
+    "sex": "Male",
+    "hairColor": "Brown",
+    "eyeColor": "Blue",
+    "homeworld": "Tatooine",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/cliegg-lars.png"
+  },
+  {
+    "id": "poggle-the-lesser",
+    "name": "Poggle the Lesser",
+    "species": "Geonosian",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Yellow",
+    "homeworld": "Geonosis",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/poggle-the-lesser.png"
+  },
+  {
+    "id": "luminara-unduli",
+    "name": "Luminara Unduli",
+    "species": "Mirialan",
+    "sex": "Female",
+    "hairColor": "Black",
+    "eyeColor": "Blue",
+    "homeworld": "Mirial",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/luminara-unduli.png"
+  },
+  {
+    "id": "barriss-offee",
+    "name": "Barriss Offee",
+    "species": "Mirialan",
+    "sex": "Female",
+    "hairColor": "Black",
+    "eyeColor": "Blue",
+    "homeworld": "Mirial",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/barriss-offee.png"
+  },
+  {
+    "id": "dorm",
+    "name": "Dormé",
+    "species": "Human",
+    "sex": "Female",
+    "hairColor": "Brown",
+    "eyeColor": "Brown",
+    "homeworld": "Naboo",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/dorm.png"
+  },
+  {
+    "id": "dooku",
+    "name": "Dooku",
+    "species": "Human",
+    "sex": "Male",
+    "hairColor": "White",
+    "eyeColor": "Brown",
+    "homeworld": "Serenno",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Lightsaber"
+    ],
+    "forceUser": true,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/dooku.png"
+  },
+  {
+    "id": "bail-prestor-organa",
+    "name": "Bail Prestor Organa",
+    "species": "Human",
+    "sex": "Male",
+    "hairColor": "Black",
+    "eyeColor": "Brown",
+    "homeworld": "Alderaan",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/bail-prestor-organa.png"
+  },
+  {
+    "id": "zam-wesell",
+    "name": "Zam Wesell",
+    "species": "Clawdite",
+    "sex": "Female",
+    "hairColor": "Blonde",
+    "eyeColor": "Yellow",
+    "homeworld": "Zolan",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/zam-wesell.png"
+  },
+  {
+    "id": "dexter-jettster",
+    "name": "Dexter Jettster",
+    "species": "Besalisk",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Yellow",
+    "homeworld": "Ojom",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/dexter-jettster.png"
+  },
+  {
+    "id": "lama-su",
+    "name": "Lama Su",
+    "species": "Kaminoan",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Black",
+    "homeworld": "Kamino",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/lama-su.png"
+  },
+  {
+    "id": "taun-we",
+    "name": "Taun We",
+    "species": "Kaminoan",
+    "sex": "Female",
+    "hairColor": "None",
+    "eyeColor": "Black",
+    "homeworld": "Kamino",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/taun-we.png"
+  },
+  {
+    "id": "jocasta-nu",
+    "name": "Jocasta Nu",
+    "species": "Human",
+    "sex": "Female",
+    "hairColor": "White",
+    "eyeColor": "Blue",
+    "homeworld": "Coruscant",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/jocasta-nu.png"
+  },
+  {
+    "id": "r4-p17",
+    "name": "R4-P17",
+    "species": "Human",
+    "sex": "Female",
+    "hairColor": "None",
+    "eyeColor": "Red",
+    "homeworld": "unknown",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/r4-p17.png"
+  },
+  {
+    "id": "wat-tambor",
+    "name": "Wat Tambor",
+    "species": "Skakoan",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Unknown",
+    "homeworld": "Skako",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/wat-tambor.png"
+  },
+  {
+    "id": "san-hill",
+    "name": "San Hill",
+    "species": "Muun",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Gold",
+    "homeworld": "Muunilinst",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/san-hill.png"
+  },
+  {
+    "id": "shaak-ti",
+    "name": "Shaak Ti",
+    "species": "Togruta",
+    "sex": "Female",
+    "hairColor": "None",
+    "eyeColor": "Black",
+    "homeworld": "Shili",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/shaak-ti.png"
+  },
+  {
+    "id": "grievous",
+    "name": "Grievous",
+    "species": "Kaleesh",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Green",
+    "homeworld": "Kalee",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/grievous.png"
+  },
+  {
+    "id": "tarfful",
+    "name": "Tarfful",
+    "species": "Wookie",
+    "sex": "Male",
+    "hairColor": "Brown",
+    "eyeColor": "Blue",
+    "homeworld": "Kashyyyk",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/tarfful.png"
+  },
+  {
+    "id": "raymus-antilles",
+    "name": "Raymus Antilles",
+    "species": "Human",
+    "sex": "Male",
+    "hairColor": "Brown",
+    "eyeColor": "Brown",
+    "homeworld": "Alderaan",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Prequel",
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/raymus-antilles.png"
+  },
+  {
+    "id": "sly-moore",
+    "name": "Sly Moore",
+    "species": "Human",
+    "sex": "Female",
+    "hairColor": "None",
+    "eyeColor": "White",
+    "homeworld": "Umbara",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/sly-moore.png"
+  },
+  {
+    "id": "tion-medon",
+    "name": "Tion Medon",
+    "species": "Pau'an",
+    "sex": "Male",
+    "hairColor": "None",
+    "eyeColor": "Black",
+    "homeworld": "Utapau",
+    "affiliations": [
+      "Rebel Alliance"
+    ],
+    "eras": [
+      "Original"
+    ],
+    "weapons": [
+      "Blaster"
+    ],
+    "forceUser": false,
+    "source": [
+      "movies"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/PLACEHOLDER/tion-medon.png"
+  }
+]

@@ -1,0 +1,62 @@
+================================================================================
+STAR WARS MEDIA SOURCES
+Extracted from Fandom HTML cache
+================================================================================
+
+
+================================================================================
+MOVIES (11)
+================================================================================
+Rogue One: A Star Wars Story
+Solo: A Star Wars Story
+Star Wars: Episode I The Phantom Menace
+Star Wars: Episode II Attack of the Clones
+Star Wars: Episode III Revenge of the Sith
+Star Wars: Episode IV A New Hope
+Star Wars: Episode IX The Rise of Skywalker
+Star Wars: Episode V The Empire Strikes Back
+Star Wars: Episode VI Return of the Jedi
+Star Wars: Episode VII The Force Awakens
+Star Wars: Episode VIII The Last Jedi
+
+================================================================================
+TV (15)
+================================================================================
+Ahsoka
+Andor
+Obi-Wan Kenobi
+Star Wars Rebels
+Star Wars Resistance
+Star Wars: Forces of Destiny
+Star Wars: The Bad Batch
+Star Wars: The Clone Wars
+Star Wars: Visions
+Star Wars: Young Jedi Adventures
+Tales of the Empire
+Tales of the Jedi
+The Acolyte
+The Book of Boba Fett
+The Mandalorian
+
+================================================================================
+GAMES (10)
+================================================================================
+Star Wars Battlefront
+Star Wars Battlefront II
+Star Wars Jedi: Fallen Order
+Star Wars Jedi: Survivor
+Star Wars: Commander
+Star Wars: Galaxy of Heroes
+Star Wars: Knights of the Old Republic
+Star Wars: Republic Commando
+Star Wars: Squadrons
+Star Wars: The Old Republic
+
+================================================================================
+SUMMARY
+================================================================================
+Movies: 11
+TV Shows: 15
+Games: 10
+Books/Comics: 0
+Total: 36

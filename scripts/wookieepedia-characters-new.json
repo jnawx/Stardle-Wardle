@@ -1,0 +1,79 @@
+[
+  {
+    "id": "wookieepedia-welcome-newcomers",
+    "name": "Wookieepedia:Welcome, newcomers",
+    "species": "Unknown",
+    "sex": "Unknown",
+    "hairColor": "Unknown",
+    "eyeColor": "Unknown",
+    "homeworld": "Unknown",
+    "affiliations": [
+      "Unknown"
+    ],
+    "eras": [
+      "Prequel",
+      "Sequel"
+    ],
+    "weapons": [
+      "Lightsaber"
+    ],
+    "forceUser": true,
+    "source": [
+      "movies",
+      "tv"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/0/01/Padawan-slider.png"
+  },
+  {
+    "id": "wookieepedia-manual-of-style",
+    "name": "Wookieepedia:Manual of Style",
+    "species": "Unknown",
+    "sex": "Unknown",
+    "hairColor": "Unknown",
+    "eyeColor": "Unknown",
+    "homeworld": "Unknown",
+    "affiliations": [
+      "Unknown"
+    ],
+    "eras": [
+      "Prequel",
+      "Original",
+      "Sequel"
+    ],
+    "weapons": [
+      "Lightsaber"
+    ],
+    "forceUser": true,
+    "source": [
+      "movies",
+      "tv"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/3/39/Site-community-image"
+  },
+  {
+    "id": "wookieepedia-naming-policy",
+    "name": "Wookieepedia:Naming policy",
+    "species": "Unknown",
+    "sex": "Unknown",
+    "hairColor": "Unknown",
+    "eyeColor": "Unknown",
+    "homeworld": "Unknown",
+    "affiliations": [
+      "Unknown"
+    ],
+    "eras": [
+      "Prequel",
+      "Original",
+      "Sequel"
+    ],
+    "weapons": [
+      "Lightsaber"
+    ],
+    "forceUser": true,
+    "source": [
+      "movies",
+      "tv"
+    ],
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/3/39/Site-community-image"
+  }
+]

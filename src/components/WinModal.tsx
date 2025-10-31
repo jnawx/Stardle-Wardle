@@ -1,10 +1,3 @@
-import type { Character } from '../types/character';
-
-interface WinModalProps {
-  character: Character;
-  guessCount: number;
-}
-
 import { useState } from 'react';
 import type { Character } from '../types/character';
 

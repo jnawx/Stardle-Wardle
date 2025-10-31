@@ -36,7 +36,7 @@ export const placeholderImages: Record<string, string> = {
 };
 
 // Helper function to get character image
-export function getCharacterImage(characterId: string, fallbackUrl?: string): string {
+export function getCharacterImage(characterId: string): string {
   // Using Wookieepedia (Star Wars Wiki) images - more reliable than Disney CDN
   const swApiImages: Record<string, string> = {
     'luke-skywalker': 'https://static.wikia.nocookie.net/starwars/images/2/20/LukeTLJ.jpg',

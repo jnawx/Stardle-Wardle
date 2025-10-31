@@ -3,7 +3,7 @@ import type { Guess } from '../types/character';
 export function generateShareText(
   guesses: Guess[],
   isWon: boolean,
-  characterName: string,
+  _characterName: string,
   dayNumber: number
 ): string {
   const emoji = guesses.map(guess => {

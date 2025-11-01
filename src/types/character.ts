@@ -64,6 +64,16 @@ export interface Guess {
   character: Character;
   comparisons: AttributeComparison[];
   timestamp: number;
+  // Snapshot of tag states after this guess (for animation purposes)
+  tagStatesSnapshot?: {
+    affiliations: TagKnowledgeState;
+    eras: TagKnowledgeState;
+    weapons: TagKnowledgeState;
+    movieAppearances: TagKnowledgeState;
+    tvAppearances: TagKnowledgeState;
+    gameAppearances: TagKnowledgeState;
+    bookComicAppearances: TagKnowledgeState;
+  };
 }
 
 // Track state of each item in array attributes

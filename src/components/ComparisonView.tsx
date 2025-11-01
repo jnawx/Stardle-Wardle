@@ -12,6 +12,7 @@ interface ComparisonViewProps {
   nextKnowledge?: AccumulatedKnowledge;
   isWinningGuess?: boolean;
   isNavigating?: boolean; // True when switching between existing guesses
+  previousGuess?: Guess; // Previous guess for tag state comparison
 }
 
 // Define the media types for labeling
@@ -27,6 +28,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
   const [slideCharacter, setSlideCharacter] = useState(false);
   const [applyTagTransitions, setApplyTagTransitions] = useState(false);
   const [applyLateTransitions, setApplyLateTransitions] = useState(false);
+  const [applyLateTransitionsDelayed, setApplyLateTransitionsDelayed] = useState(false);
 
   // Animation sequence: 
   // - New guess: fade in with slow cascade (2.8s)
@@ -63,10 +65,18 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
   // This allows tags to transition to confirmed-non-match with proper animation timing
   useEffect(() => {
     if (applyTagTransitions && nextKnowledge) {
-      console.log('[Late Transitions] Triggering applyLateTransitions, applyTagTransitions:', applyTagTransitions, 'nextKnowledge exists:', !!nextKnowledge);
-      // Immediately allow late transitions when nextKnowledge appears
-      // This ensures displayState switches before knowledge updates, allowing CSS transitions to work
+      console.log('[Late Transitions] nextKnowledge appeared, preparing transition');
+      // First, mark that we have late transitions pending (shows old state)
       setApplyLateTransitions(true);
+      setApplyLateTransitionsDelayed(false);
+      
+      // After a brief delay, apply the new state to trigger CSS transition
+      const timer = setTimeout(() => {
+        console.log('[Late Transitions] Applying delayed transition to new state');
+        setApplyLateTransitionsDelayed(true);
+      }, 50);
+      
+      return () => clearTimeout(timer);
     }
   }, [nextKnowledge, applyTagTransitions]);
 

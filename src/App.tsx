@@ -5,7 +5,7 @@ import ComparisonView from './components/ComparisonView';
 import WinModal from './components/WinModal2';
 import StatsModal from './components/StatsModal';
 import Hints from './components/Hints';
-import type { Character, Guess, AccumulatedKnowledge } from './types/character';
+import type { Character, Guess, AccumulatedKnowledge, TagKnowledgeState } from './types/character';
 import { compareCharacters, getDailyCharacter, getRandomCharacter, getYesterdaysDailyCharacter } from './utils/gameLogic';
 import { getStats, saveStats, updateStatsAfterWin } from './utils/stats';
 import { getMillisecondsUntilMidnight, formatTimeRemaining } from './utils/timeUtils';
@@ -281,6 +281,20 @@ function App() {
     // Store next knowledge for comparison but don't display it yet
     setNextKnowledge(newKnowledge);
 
+    // Create a snapshot of tag states for this guess (before exact match cleanup)
+    const tagStatesSnapshot = {
+      affiliations: { ...newKnowledge.affiliations } as TagKnowledgeState,
+      eras: { ...newKnowledge.eras } as TagKnowledgeState,
+      weapons: { ...newKnowledge.weapons } as TagKnowledgeState,
+      movieAppearances: { ...newKnowledge.movieAppearances } as TagKnowledgeState,
+      tvAppearances: { ...newKnowledge.tvAppearances } as TagKnowledgeState,
+      gameAppearances: { ...newKnowledge.gameAppearances } as TagKnowledgeState,
+      bookComicAppearances: { ...newKnowledge.bookComicAppearances } as TagKnowledgeState,
+    };
+    
+    // Attach snapshot to the guess
+    newGuess.tagStatesSnapshot = tagStatesSnapshot;
+
     // Add new guess to the beginning of the array (most recent on top)
     setGuesses([newGuess, ...guesses]);
     
@@ -437,6 +451,7 @@ function App() {
                 nextKnowledge={selectedGuessIndex === 0 ? nextKnowledge : undefined}
                 isWinningGuess={isWon && selectedGuessIndex === 0}
                 isNavigating={isNavigatingGuesses}
+                previousGuess={selectedGuessIndex < guesses.length - 1 ? guesses[selectedGuessIndex + 1] : undefined}
               />
             </div>
           )}

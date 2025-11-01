@@ -376,12 +376,14 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     const exactFlagKey = `${comparison.attribute}Exact` as keyof AccumulatedKnowledge;
     const isExactMatch = knowledge[exactFlagKey] as boolean;
     
-    // Count confirmed matches and check if we have any tags
-    const confirmedMatches = Object.values(tagStates).filter(state => state === 'confirmed-match').length;
-    const hasAnyTags = Object.keys(tagStates).length > 0;
+    // Count visible tags (not confirmed-non-match)
+    const visibleTags = Object.values(tagStates).filter(state => state !== 'confirmed-non-match').length;
     
-    // Determine box background color
-    const bgColor = isExactMatch ? 'bg-green-600' : confirmedMatches > 0 ? 'bg-yellow-600' : hasAnyTags ? 'bg-gray-700' : 'bg-gray-700';
+    // Determine box background color:
+    // - Green: exact match found (all tags confirmed)
+    // - Orange/Yellow: has visible tags (confirmed matches or unconfirmed) but not complete
+    // - Gray: no visible tags (either no tags at all, or only confirmed-non-match tags)
+    const bgColor = isExactMatch ? 'bg-green-600' : visibleTags > 0 ? 'bg-yellow-600' : 'bg-gray-700';
     
     // Calculate staggered delay: 150ms per row
     const delay = index * 150;

@@ -395,12 +395,12 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     // - Gray: no visible tags (either no tags at all, or only confirmed-non-match tags)
     const bgColor = isExactMatch ? 'bg-green-600' : visibleTags > 0 ? 'bg-yellow-600' : 'bg-gray-700';
     
-    // Calculate staggered delay: faster for navigation (30ms) vs new guess (150ms)
-    const delayPerRow = isNavigating ? 30 : 150;
-    const delay = index * delayPerRow;
-    
-    // Animation duration: faster for navigation (200ms) vs new guess (500ms)
-    const animDuration = isNavigating ? '0.2s' : '0.5s';
+    // Calculate animation properties
+    // - When navigating: no cascade, all rows fade together quickly
+    // - When new guess: cascade with staggered delays for dramatic effect
+    const delay = isNavigating ? 0 : index * 150;
+    const animDuration = isNavigating ? '0.15s' : '0.5s';
+    const animName = isNavigating ? 'fade-in' : 'fade-in-down';
 
     return (
       <div className="grid grid-cols-2 gap-6">
@@ -408,7 +408,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
         <div 
           className={`${getMatchColor(comparison.match)} px-3 py-1.5 rounded shadow-md transition-all duration-500`}
           style={showGuess ? { 
-            animation: `fade-in-down ${animDuration} ease-out forwards`,
+            animation: `${animName} ${animDuration} ease-out forwards`,
             animationDelay: `${delay}ms`,
             opacity: 0
           } : { opacity: 0 }}
@@ -428,7 +428,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     <div className="space-y-2">
       {/* Headers */}
       <div className="grid grid-cols-2 gap-6 mb-4">
-        <div className={showGuess ? 'animate-fade-in-down' : 'opacity-0'}>
+        <div className={showGuess ? (isNavigating ? 'animate-fade-in' : 'animate-fade-in-down') : 'opacity-0'}>
           <h3 className="text-lg font-bold text-white text-center">
             Guess #{guessNumber} {totalGuesses > 1 && <span className="text-sm opacity-70">of {totalGuesses}</span>}
           </h3>

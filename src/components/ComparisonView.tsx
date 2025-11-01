@@ -262,7 +262,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
         </div>
 
         {/* Right: Knowledge */}
-        <div className={`${bgColor} px-3 py-1.5 rounded shadow-md`}>
+        <div className={`${bgColor} px-3 py-1.5 rounded shadow-md transition-all duration-1000`}>
           {renderKnowledgeArrayCell(label, items, targetItems, comparison.attribute)}
         </div>
       </div>
@@ -389,14 +389,14 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
               ].filter((item): item is typeof singleValueComparisons[0] => item !== undefined);
               
               // Helper to render a single attribute cell
-              const renderAttributeCell = (item: typeof singleValueComparisons[0], isGuess: boolean) => {
+              const renderAttributeCell = (item: typeof singleValueComparisons[0], isGuess: boolean, displayIndex: number) => {
                 if (isGuess) {
                   return (
                     <div 
                       className={`${getMatchColor(item.comparison.match)} px-3 py-1.5 rounded shadow-md h-[52px] transition-all duration-500`}
                       style={showGuess ? { 
                         animation: 'fade-in-down 0.5s ease-out forwards',
-                        animationDelay: `${item.index * 150}ms`,
+                        animationDelay: `${displayIndex * 150}ms`,
                         opacity: 0
                       } : { opacity: 0 }}
                     >
@@ -416,7 +416,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
                   const isNew = isNewlyConfirmed(item.comparison.attribute);
                   
                   return (
-                    <div className={`${hasKnowledge ? 'bg-green-600' : 'bg-gray-700'} px-3 py-1.5 rounded shadow-md h-[52px]`}>
+                    <div className={`px-3 py-1.5 rounded shadow-md h-[52px] transition-all duration-1000 ${hasKnowledge ? 'bg-green-600' : 'bg-gray-700'}`}>
                       <div className="flex flex-col">
                         <div className="text-xs font-bold opacity-70 mb-0.5">{item.label}</div>
                         {hasKnowledge ? (
@@ -443,21 +443,21 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
                   <div className="space-y-2">
                     {/* Sex | Species | World */}
                     <div className="grid grid-cols-3 gap-2">
-                      {orderedComparisons[0] && renderAttributeCell(orderedComparisons[0], true)}
-                      {orderedComparisons[1] && renderAttributeCell(orderedComparisons[1], true)}
-                      {orderedComparisons[2] && renderAttributeCell(orderedComparisons[2], true)}
+                      {orderedComparisons[0] && renderAttributeCell(orderedComparisons[0], true, 0)}
+                      {orderedComparisons[1] && renderAttributeCell(orderedComparisons[1], true, 1)}
+                      {orderedComparisons[2] && renderAttributeCell(orderedComparisons[2], true, 2)}
                     </div>
                     
                     {/* Hair Color | Eye Color */}
                     <div className="grid grid-cols-2 gap-2">
-                      {orderedComparisons[3] && renderAttributeCell(orderedComparisons[3], true)}
-                      {orderedComparisons[4] && renderAttributeCell(orderedComparisons[4], true)}
+                      {orderedComparisons[3] && renderAttributeCell(orderedComparisons[3], true, 3)}
+                      {orderedComparisons[4] && renderAttributeCell(orderedComparisons[4], true, 4)}
                     </div>
                     
                     {/* Force User | Speaks Basic */}
                     <div className="grid grid-cols-2 gap-2">
-                      {orderedComparisons[5] && renderAttributeCell(orderedComparisons[5], true)}
-                      {orderedComparisons[6] && renderAttributeCell(orderedComparisons[6], true)}
+                      {orderedComparisons[5] && renderAttributeCell(orderedComparisons[5], true, 5)}
+                      {orderedComparisons[6] && renderAttributeCell(orderedComparisons[6], true, 6)}
                     </div>
                   </div>
                   
@@ -465,21 +465,21 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
                   <div className="space-y-2">
                     {/* Sex | Species | World */}
                     <div className="grid grid-cols-3 gap-2">
-                      {orderedComparisons[0] && renderAttributeCell(orderedComparisons[0], false)}
-                      {orderedComparisons[1] && renderAttributeCell(orderedComparisons[1], false)}
-                      {orderedComparisons[2] && renderAttributeCell(orderedComparisons[2], false)}
+                      {orderedComparisons[0] && renderAttributeCell(orderedComparisons[0], false, 0)}
+                      {orderedComparisons[1] && renderAttributeCell(orderedComparisons[1], false, 1)}
+                      {orderedComparisons[2] && renderAttributeCell(orderedComparisons[2], false, 2)}
                     </div>
                     
                     {/* Hair Color | Eye Color */}
                     <div className="grid grid-cols-2 gap-2">
-                      {orderedComparisons[3] && renderAttributeCell(orderedComparisons[3], false)}
-                      {orderedComparisons[4] && renderAttributeCell(orderedComparisons[4], false)}
+                      {orderedComparisons[3] && renderAttributeCell(orderedComparisons[3], false, 3)}
+                      {orderedComparisons[4] && renderAttributeCell(orderedComparisons[4], false, 4)}
                     </div>
                     
                     {/* Force User | Speaks Basic */}
                     <div className="grid grid-cols-2 gap-2">
-                      {orderedComparisons[5] && renderAttributeCell(orderedComparisons[5], false)}
-                      {orderedComparisons[6] && renderAttributeCell(orderedComparisons[6], false)}
+                      {orderedComparisons[5] && renderAttributeCell(orderedComparisons[5], false, 5)}
+                      {orderedComparisons[6] && renderAttributeCell(orderedComparisons[6], false, 6)}
                     </div>
                   </div>
                 </div>
@@ -506,9 +506,10 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
                 return indexA - indexB;
               });
               
-              return sortedArrayComparisons.map((item) => (
+              // Render with sequential display indices starting from 7 (after single-value attributes)
+              return sortedArrayComparisons.map((item, displayIndex) => (
                 <div key={item.comparison.attribute}>
-                  {renderArrayRow(item.comparison, item.label, item.target, item.index)}
+                  {renderArrayRow(item.comparison, item.label, item.target, 7 + displayIndex)}
                 </div>
               ));
             })()}

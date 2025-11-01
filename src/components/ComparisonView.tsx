@@ -452,16 +452,21 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     // Animation duration: faster for navigation (200ms) vs new guess (500ms)
     const animDuration = isNavigating ? '0.2s' : '0.5s';
 
+    // Use key to force React to treat this as a new element only when guess changes
+    // This prevents animations from re-running on other state changes
+    const guessKey = `${latestGuess.timestamp}-${index}`;
+    
     return (
       <div className="grid grid-cols-2 gap-6">
         {/* Left: Guess */}
         <div 
-          className={`${getMatchColor(comparison.match)} px-3 py-1.5 rounded shadow-md transition-all duration-500 ${showGuess ? 'animate-fade-in-down' : ''}`}
-          style={{ 
+          key={guessKey}
+          className={`${getMatchColor(comparison.match)} px-3 py-1.5 rounded shadow-md transition-all duration-500`}
+          style={showGuess ? { 
+            animation: `fade-in-down ${animDuration} ease-out forwards`,
             animationDelay: `${delay}ms`,
-            animationDuration: animDuration,
-            opacity: showGuess ? undefined : 0
-          }}
+            opacity: 0
+          } : { opacity: 0 }}
         >
           {renderGuessArrayCell(comparison, label)}
         </div>

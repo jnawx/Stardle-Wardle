@@ -25,44 +25,27 @@ const MEDIA_TYPES = {
 const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, targetCharacter, nextKnowledge, isWinningGuess, isNavigating }: ComparisonViewProps) => {
   const [showGuess, setShowGuess] = useState(false);
   const [slideCharacter, setSlideCharacter] = useState(false);
-  const [isFadingOut, setIsFadingOut] = useState(false);
 
   // Animation sequence: 
-  // - New guess: fade in with cascade
-  // - Navigation: fade out, then fade in (no cascade)
+  // - New guess: fade in with slow cascade (2.8s)
+  // - Navigation: fade in with quick cascade (0.75s)
   useEffect(() => {
-    if (isNavigating) {
-      // When navigating, do a quick fade out/in
-      setIsFadingOut(true);
-      setShowGuess(false);
-      
-      // After brief fade out, fade back in
-      const fadeOutTimer = setTimeout(() => {
-        setIsFadingOut(false);
-        setShowGuess(true);
-      }, 100); // 100ms fade out
-      
-      return () => clearTimeout(fadeOutTimer);
-    } else {
-      // For new guesses, normal cascade animation
-      setIsFadingOut(false);
-      setShowGuess(false);
-      setSlideCharacter(false);
-      
-      // Start guess fade-in
-      const guessTimer = setTimeout(() => setShowGuess(true), 50);
-      
-      // If winning guess, slide character after cascade completes
-      let characterTimer: ReturnType<typeof setTimeout> | undefined;
-      if (isWinningGuess) {
-        characterTimer = setTimeout(() => setSlideCharacter(true), 2800);
-      }
-      
-      return () => {
-        clearTimeout(guessTimer);
-        if (characterTimer) clearTimeout(characterTimer);
-      };
+    setShowGuess(false);
+    setSlideCharacter(false);
+    
+    // Start guess fade-in
+    const guessTimer = setTimeout(() => setShowGuess(true), 50);
+    
+    // If winning guess, slide character after cascade completes
+    let characterTimer: ReturnType<typeof setTimeout> | undefined;
+    if (isWinningGuess && !isNavigating) {
+      characterTimer = setTimeout(() => setSlideCharacter(true), 2800);
     }
+    
+    return () => {
+      clearTimeout(guessTimer);
+      if (characterTimer) clearTimeout(characterTimer);
+    };
   }, [latestGuess.timestamp, isWinningGuess, isNavigating]);
 
   // Helper to check if an item is newly confirmed (will be in nextKnowledge but not current knowledge)
@@ -413,30 +396,22 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     const bgColor = isExactMatch ? 'bg-green-600' : visibleTags > 0 ? 'bg-yellow-600' : 'bg-gray-700';
     
     // Calculate animation properties
-    // - When navigating: no cascade, all rows fade together quickly
-    // - When new guess: cascade with staggered delays for dramatic effect
-    const delay = isNavigating ? 0 : index * 150;
-    const animDuration = isNavigating ? '0.15s' : '0.5s';
-    const animName = isNavigating ? 'fade-in' : 'fade-in-down';
-
-    // Handle opacity for fade out/in during navigation
-    let rowOpacity: number | undefined = undefined;
-    if (isFadingOut) {
-      rowOpacity = 0;
-    } else if (!showGuess) {
-      rowOpacity = 0;
-    }
+    // - When navigating: quick cascade (0.75s total = 14 rows * ~50ms)
+    // - When new guess: slow cascade (2.8s total = 14 rows * 150ms + 700ms for last item)
+    const delay = isNavigating ? index * 50 : index * 150;
+    const animDuration = isNavigating ? '0.25s' : '0.5s';
+    const animName = 'fade-in-down';
 
     return (
       <div className="grid grid-cols-2 gap-6">
         {/* Left: Guess */}
         <div 
-          className={`${getMatchColor(comparison.match)} px-3 py-1.5 rounded shadow-md transition-opacity duration-100`}
-          style={showGuess && !isFadingOut ? { 
+          className={`${getMatchColor(comparison.match)} px-3 py-1.5 rounded shadow-md`}
+          style={showGuess ? { 
             animation: `${animName} ${animDuration} ease-out forwards`,
             animationDelay: `${delay}ms`,
             opacity: 0
-          } : { opacity: rowOpacity ?? 0 }}
+          } : { opacity: 0 }}
         >
           {renderGuessArrayCell(comparison, label)}
         </div>
@@ -454,8 +429,11 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
       {/* Headers */}
       <div className="grid grid-cols-2 gap-6 mb-4">
         <div 
-          className={`transition-opacity duration-100 ${!isFadingOut && showGuess ? (isNavigating ? 'animate-fade-in' : 'animate-fade-in-down') : ''}`}
-          style={{ opacity: isFadingOut || !showGuess ? 0 : 1 }}
+          style={showGuess ? { 
+            animation: `fade-in-down ${isNavigating ? '0.25s' : '0.5s'} ease-out forwards`,
+            animationDelay: '0ms',
+            opacity: 0
+          } : { opacity: 0 }}
         >
           <h3 className="text-lg font-bold text-white text-center">
             Guess #{guessNumber} {totalGuesses > 1 && <span className="text-sm opacity-70">of {totalGuesses}</span>}
@@ -589,12 +567,16 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
               // Helper to render a single attribute cell
               const renderAttributeCell = (item: typeof singleValueComparisons[0], isGuess: boolean, displayIndex: number) => {
                 if (isGuess) {
+                  // Calculate delay: quick cascade for navigation (50ms), slow for new guess (150ms)
+                  const cellDelay = isNavigating ? displayIndex * 50 : displayIndex * 150;
+                  const cellDuration = isNavigating ? '0.25s' : '0.5s';
+                  
                   return (
                     <div 
-                      className={`${getMatchColor(item.comparison.match)} px-3 py-1.5 rounded shadow-md h-[52px] transition-all duration-500`}
+                      className={`${getMatchColor(item.comparison.match)} px-3 py-1.5 rounded shadow-md h-[52px]`}
                       style={showGuess ? { 
-                        animation: 'fade-in-down 0.5s ease-out forwards',
-                        animationDelay: `${displayIndex * 150}ms`,
+                        animation: `fade-in-down ${cellDuration} ease-out forwards`,
+                        animationDelay: `${cellDelay}ms`,
                         opacity: 0
                       } : { opacity: 0 }}
                     >

@@ -451,9 +451,11 @@ function App() {
                       <button
                         key={guess.timestamp}
                         onClick={() => {
-                          // Set navigating to true if clicking a different guess than currently selected
-                          setIsNavigatingGuesses(index !== selectedGuessIndex);
-                          setSelectedGuessIndex(index);
+                          // Only trigger animation if clicking a different guess
+                          if (index !== selectedGuessIndex) {
+                            setIsNavigatingGuesses(true);
+                            setSelectedGuessIndex(index);
+                          }
                         }}
                         className={`flex-shrink-0 flex flex-col items-center gap-1 p-2 rounded-lg transition-all relative ${
                           selectedGuessIndex === index

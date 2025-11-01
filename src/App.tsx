@@ -314,8 +314,13 @@ function App() {
         }
       });
       
-      setKnowledge(finalKnowledge);
-      setNextKnowledge(undefined);
+      // Update nextKnowledge FIRST so ComparisonView can detect the transition
+      setNextKnowledge(finalKnowledge);
+      // Then update knowledge after a brief moment to trigger the transition
+      setTimeout(() => {
+        setKnowledge(finalKnowledge);
+        setNextKnowledge(undefined);
+      }, 50);
       setPendingKnowledgeTimer(null);
     }, 3900);
     setPendingKnowledgeTimer(knowledgeTimer);

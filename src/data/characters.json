@@ -1718,8 +1718,7 @@
     ],
     "eras": [
       "The Galactic Republic",
-      "The Galactic Empire",
-      "The New Republic"
+      "The Galactic Empire"
     ],
     "weapons": ["None"],
     "forceUser": false,

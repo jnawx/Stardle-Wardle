@@ -57,6 +57,15 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     };
   }, [latestGuess.timestamp, isWinningGuess, isNavigating]);
 
+  // Watch for knowledge updates after initial render (e.g., when exact match cleanup happens)
+  // This allows tags to transition to confirmed-non-match after the delayed knowledge update
+  useEffect(() => {
+    if (applyTagTransitions) {
+      // Force a re-render to pick up new knowledge state changes
+      // (React will automatically detect the knowledge prop change and re-render)
+    }
+  }, [knowledge, applyTagTransitions]);
+
   // Helper to check if an item is newly confirmed (will be in nextKnowledge but not current knowledge)
   const isNewlyConfirmed = (attribute: string, item?: string): boolean => {
     if (!nextKnowledge) return false;

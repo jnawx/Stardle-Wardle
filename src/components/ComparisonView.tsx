@@ -23,12 +23,10 @@ const MEDIA_TYPES = {
   bookComicAppearances: 'Books/Comics'
 } as const;
 
-const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, targetCharacter, nextKnowledge, isWinningGuess, isNavigating }: ComparisonViewProps) => {
+const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, targetCharacter, nextKnowledge, isWinningGuess, isNavigating, previousGuess }: ComparisonViewProps) => {
   const [showGuess, setShowGuess] = useState(false);
   const [slideCharacter, setSlideCharacter] = useState(false);
   const [applyTagTransitions, setApplyTagTransitions] = useState(false);
-  const [applyLateTransitions, setApplyLateTransitions] = useState(false);
-  const [applyLateTransitionsDelayed, setApplyLateTransitionsDelayed] = useState(false);
 
   // Animation sequence: 
   // - New guess: fade in with slow cascade (2.8s)
@@ -37,7 +35,6 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     setShowGuess(false);
     setSlideCharacter(false);
     setApplyTagTransitions(false);
-    setApplyLateTransitions(false);
     
     // Start guess fade-in
     const guessTimer = setTimeout(() => setShowGuess(true), 50);
@@ -60,25 +57,6 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
       if (characterTimer) clearTimeout(characterTimer);
     };
   }, [latestGuess.timestamp, isWinningGuess, isNavigating]);
-
-  // Watch for late knowledge updates (e.g., when exact match cleanup happens after initial transitions)
-  // This allows tags to transition to confirmed-non-match with proper animation timing
-  useEffect(() => {
-    if (applyTagTransitions && nextKnowledge) {
-      console.log('[Late Transitions] nextKnowledge appeared, preparing transition');
-      // First, mark that we have late transitions pending (shows old state)
-      setApplyLateTransitions(true);
-      setApplyLateTransitionsDelayed(false);
-      
-      // After a brief delay, apply the new state to trigger CSS transition
-      const timer = setTimeout(() => {
-        console.log('[Late Transitions] Applying delayed transition to new state');
-        setApplyLateTransitionsDelayed(true);
-      }, 50);
-      
-      return () => clearTimeout(timer);
-    }
-  }, [nextKnowledge, applyTagTransitions]);
 
   // Helper to check if an item is newly confirmed (will be in nextKnowledge but not current knowledge)
   const isNewlyConfirmed = (attribute: string, item?: string): boolean => {
@@ -250,6 +228,9 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     _targetItems: string[] | undefined,
     attributeName: string
   ) => {
+    // Get previous tag states from the previous guess's snapshot
+    const prevTagStates = previousGuess?.tagStatesSnapshot?.[attributeName as keyof typeof previousGuess.tagStatesSnapshot];
+    
     // Get next tag states if available
     const nextTagStates = nextKnowledge 
       ? (nextKnowledge[attributeName as keyof AccumulatedKnowledge] as import('../types/character').TagKnowledgeState)
@@ -367,43 +348,15 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
         <div className={`flex flex-wrap gap-1 ${heightClass} overflow-y-auto content-start`}>
           {/* Show current tags with smooth CSS transitions for color changes */}
           {sortedCurrentTags.map(({ tag, state }) => {
-            // Determine what state to display: old state initially, then transition to new state
-            const newState = nextTagStates?.[tag] ?? state;
+            // Get previous state from previous guess's snapshot (if available)
+            const prevState = prevTagStates?.[tag] ?? state;
             
-            // Debug logging
-            if (state !== newState && newState === 'confirmed-non-match') {
-              console.log(`[Tag Transition Debug] Tag: ${tag}, Attribute: ${attributeName}`);
-              console.log(`  Current state: ${state}, New state: ${newState}`);
-              console.log(`  applyTagTransitions: ${applyTagTransitions}, applyLateTransitions: ${applyLateTransitions}`);
-              console.log(`  nextTagStates exists: ${!!nextTagStates}`);
-            }
+            // Determine display state based on animation timing
+            // Before cascade completes: show previous state
+            // After cascade: transition to current state
+            const displayState = (applyTagTransitions || isNavigating) ? state : prevState;
             
-            // For late transitions (exact match cleanup), only apply if applyLateTransitions is true
-            // For initial transitions, apply if applyTagTransitions is true
-            let displayState = state;
-            if (isNavigating) {
-              displayState = newState;
-            } else if (nextTagStates && nextTagStates[tag] !== undefined) {
-              // This tag has a next state in nextKnowledge
-              if (applyLateTransitions) {
-                // Apply late transitions (exact match cleanup)
-                displayState = newState;
-                console.log(`  -> Applying late transition, displayState: ${displayState}`);
-              } else if (!applyTagTransitions) {
-                // Before initial cascade completes, show old state
-                displayState = state;
-              } else if (newState !== state) {
-                // After initial cascade, if state changed, keep showing old state until late transition
-                displayState = state;
-                console.log(`  -> Waiting for late transition, displayState: ${displayState}`);
-              } else {
-                // State hasn't changed, show current state
-                displayState = newState;
-              }
-            } else if (applyTagTransitions) {
-              // No next state, and initial transitions done, show current state
-              displayState = state;
-            }
+            console.log(`[Tag ${tag}] prev: ${prevState}, current: ${state}, display: ${displayState}, applyTransitions: ${applyTagTransitions}`);
             
             // Filter out confirmed-non-match after a delay to allow fade animation
             const shouldShow = displayState !== 'confirmed-non-match' || tagsToFadeOut.includes(tag);
@@ -413,7 +366,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
             const isFadingOut = displayState === 'confirmed-non-match';
             
             // Check if this tag's state changed (for pulse animation)
-            const isChanging = !isNavigating && (applyTagTransitions || applyLateTransitions) && state !== newState && !isFadingOut;
+            const isChanging = !isNavigating && applyTagTransitions && prevState !== state && !isFadingOut;
             
             return (
               <div

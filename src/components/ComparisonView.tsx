@@ -431,11 +431,23 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     // Count visible tags (not confirmed-non-match)
     const visibleTags = Object.values(tagStates).filter(state => state !== 'confirmed-non-match').length;
     
+    // Check if exact match was found in a PREVIOUS guess (already in knowledge from before)
+    const prevExactMatch = previousGuess?.tagStatesSnapshot ? 
+      Object.values(previousGuess.tagStatesSnapshot[comparison.attribute as keyof typeof previousGuess.tagStatesSnapshot] || {})
+        .some(state => state === 'confirmed-match') &&
+      Object.values(previousGuess.tagStatesSnapshot[comparison.attribute as keyof typeof previousGuess.tagStatesSnapshot] || {})
+        .filter(state => state !== 'confirmed-non-match').length === 
+      Object.values(previousGuess.tagStatesSnapshot[comparison.attribute as keyof typeof previousGuess.tagStatesSnapshot] || {})
+        .filter(state => state === 'confirmed-match').length
+      : false;
+    
     // Determine box background color:
-    // - Green: exact match found (all tags confirmed) - only after applyBoxColors
+    // - Green: exact match found (all tags confirmed)
+    //   - Show immediately if it was found in a previous guess (prevExactMatch)
+    //   - For current guess, wait for applyBoxColors animation timing
     // - Orange/Yellow: has visible tags (confirmed matches or unconfirmed) but not complete
     // - Gray: no visible tags (either no tags at all, or only confirmed-non-match tags)
-    const bgColor = (isExactMatch && applyBoxColors) ? 'bg-green-600' : visibleTags > 0 ? 'bg-yellow-600' : 'bg-gray-700';
+    const bgColor = (isExactMatch && (prevExactMatch || applyBoxColors || isNavigating)) ? 'bg-green-600' : visibleTags > 0 ? 'bg-yellow-600' : 'bg-gray-700';
     
     // Calculate animation properties
     // - When navigating: quick cascade (0.75s total = 14 rows * ~50ms)

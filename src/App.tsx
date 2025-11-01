@@ -278,6 +278,37 @@ function App() {
       }
     });
     
+    // Auto-confirm: If all target tags are individually confirmed as matches, mark category as exact
+    const arrayAttributes = ['affiliations', 'eras', 'weapons', 'movieAppearances', 
+                             'tvAppearances', 'gameAppearances', 'bookComicAppearances'];
+    
+    arrayAttributes.forEach(attr => {
+      const targetTags = targetCharacter[attr as keyof Character] as string[] | undefined;
+      if (!targetTags || targetTags.length === 0) return;
+      
+      const tagStates = newKnowledge[attr as keyof AccumulatedKnowledge] as any;
+      const exactFlagKey = `${attr}Exact` as keyof AccumulatedKnowledge;
+      const alreadyExact = newKnowledge[exactFlagKey] as boolean;
+      
+      if (alreadyExact) return; // Already marked as exact
+      
+      // Check if ALL target tags are confirmed as matches
+      const allTargetTagsConfirmed = targetTags.every(tag => tagStates[tag] === 'confirmed-match');
+      
+      if (allTargetTagsConfirmed) {
+        console.log(`[Auto-confirm] All ${attr} tags individually confirmed, marking as exact match`);
+        // Mark category as exact
+        (newKnowledge as any)[exactFlagKey] = true;
+        
+        // Mark any other known tags as confirmed-non-match
+        Object.keys(tagStates).forEach(tag => {
+          if (tagStates[tag] !== 'confirmed-match' && tagStates[tag] !== 'confirmed-non-match') {
+            tagStates[tag] = 'confirmed-non-match';
+          }
+        });
+      }
+    });
+    
     // Store next knowledge for comparison but don't display it yet
     setNextKnowledge(newKnowledge);
 

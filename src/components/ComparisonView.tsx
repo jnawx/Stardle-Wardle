@@ -25,6 +25,7 @@ const MEDIA_TYPES = {
 const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, targetCharacter, nextKnowledge, isWinningGuess, isNavigating }: ComparisonViewProps) => {
   const [showGuess, setShowGuess] = useState(false);
   const [slideCharacter, setSlideCharacter] = useState(false);
+  const [applyTagTransitions, setApplyTagTransitions] = useState(false);
 
   // Animation sequence: 
   // - New guess: fade in with slow cascade (2.8s)
@@ -32,9 +33,16 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
   useEffect(() => {
     setShowGuess(false);
     setSlideCharacter(false);
+    setApplyTagTransitions(false);
     
     // Start guess fade-in
     const guessTimer = setTimeout(() => setShowGuess(true), 50);
+    
+    // Apply tag color transitions after cascade animation completes
+    // Navigation: 0.75s cascade, New guess: 2.8s cascade
+    const tagTransitionTimer = setTimeout(() => {
+      setApplyTagTransitions(true);
+    }, isNavigating ? 750 : 2800);
     
     // If winning guess, slide character after cascade completes
     let characterTimer: ReturnType<typeof setTimeout> | undefined;
@@ -44,6 +52,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     
     return () => {
       clearTimeout(guessTimer);
+      clearTimeout(tagTransitionTimer);
       if (characterTimer) clearTimeout(characterTimer);
     };
   }, [latestGuess.timestamp, isWinningGuess, isNavigating]);
@@ -246,11 +255,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
         // Otherwise, filter out confirmed-non-match
         return state !== 'confirmed-non-match' && (!isExactMatch || state === 'confirmed-match');
       })
-      .map(([tag, state]) => {
-        // Use nextKnowledge state if available for smooth transitions
-        const displayState = nextTagStates?.[tag] ?? state;
-        return { tag, state: displayState };
-      });
+      .map(([tag, state]) => ({ tag, state }));
     
     // Find new tags from next state (excluding confirmed-non-match)
     const newTags = nextTagStates 
@@ -339,21 +344,24 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
         <div className={`flex flex-wrap gap-1 ${heightClass} overflow-y-auto content-start`}>
           {/* Show current tags with smooth CSS transitions for color changes */}
           {sortedCurrentTags.map(({ tag, state }) => {
+            // Determine what state to display: old state initially, then transition to new state
+            const newState = nextTagStates?.[tag] ?? state;
+            const displayState = (applyTagTransitions || isNavigating) ? newState : state;
+            
             // Filter out confirmed-non-match after a delay to allow fade animation
-            const shouldShow = state !== 'confirmed-non-match' || tagsToFadeOut.includes(tag);
+            const shouldShow = displayState !== 'confirmed-non-match' || tagsToFadeOut.includes(tag);
             
             if (!shouldShow) return null;
             
-            const isFadingOut = state === 'confirmed-non-match';
+            const isFadingOut = displayState === 'confirmed-non-match';
             
             // Check if this tag's state changed (for pulse animation)
-            const oldState = tagStates[tag];
-            const isChanging = !isNavigating && nextTagStates && oldState !== state && !isFadingOut;
+            const isChanging = !isNavigating && applyTagTransitions && state !== newState && !isFadingOut;
             
             return (
               <div
                 key={`current-${tag}`}
-                className={getTagStyle(state, isChanging || false, isFadingOut && !isNavigating)}
+                className={getTagStyle(displayState, isChanging, isFadingOut && !isNavigating)}
                 style={isFadingOut && !isNavigating ? {
                   animationDelay: '0.7s', // Fade out after color transition
                   animationFillMode: 'forwards'

@@ -33,10 +33,16 @@ export default function CharacterSearch({
         
         if (!searchNormalized) return false;
         
-        // Helper function to check if search matches start of any word
+        // Helper function to check if search matches start of any word or the full normalized name
         const matchesAnyWord = (text: string): boolean => {
           // Normalize text: lowercase and keep spaces to identify word boundaries
           const textLower = text.toLowerCase();
+          
+          // First check if the fully normalized name starts with the search
+          const fullNormalized = textLower.replace(/[^a-z0-9]/g, '');
+          if (fullNormalized.startsWith(searchNormalized)) {
+            return true;
+          }
           
           // Split into words (by spaces, hyphens, parentheses, etc.)
           const words = textLower.split(/[\s\-()]+/).filter(w => w.length > 0);

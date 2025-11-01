@@ -113,7 +113,10 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
 
   const renderGuessArrayCell = (comparison: AttributeComparison, label: string) => {
     const guessedTags = (comparison.value as string[]) || [];
-    const tagStates = knowledge[comparison.attribute as keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookComicAppearances'>];
+    // Use nextKnowledge if available (for the most recent guess with smart inference applied)
+    // Otherwise use current knowledge
+    const knowledgeToUse = nextKnowledge || knowledge;
+    const tagStates = knowledgeToUse[comparison.attribute as keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookComicAppearances'>];
     
     // Determine color for each tag based on its state and the comparison result
     const tagItems = guessedTags.map(tag => {
@@ -221,16 +224,37 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     const exactFlagKey = `${attributeName}Exact` as keyof AccumulatedKnowledge;
     const isExactMatch = knowledge[exactFlagKey] as boolean;
     
+    // Filter out confirmed-non-match tags - don't show them
     // If exact match found, only show confirmed-match tags
     const currentTags = Object.entries(tagStates)
-      .filter(([_, state]) => !isExactMatch || state === 'confirmed-match')
+      .filter(([_, state]) => state !== 'confirmed-non-match' && (!isExactMatch || state === 'confirmed-match'))
       .map(([tag, state]) => ({ tag, state }));
     
-    // Find new tags from next state
+    // Find new tags from next state (excluding confirmed-non-match)
     const newTags = nextTagStates 
       ? Object.entries(nextTagStates)
-          .filter(([tag]) => !(tag in tagStates))
+          .filter(([tag, state]) => !(tag in tagStates) && state !== 'confirmed-non-match')
           .map(([tag, state]) => ({ tag, state }))
+      : [];
+    
+    // Find tags that changed state (for color transitions)
+    const changedTags = nextTagStates
+      ? Object.entries(tagStates)
+          .filter(([tag, oldState]) => {
+            const newState = nextTagStates[tag];
+            return newState !== undefined && newState !== oldState;
+          })
+          .map(([tag]) => tag)
+      : [];
+    
+    // Find tags that became confirmed-non-match (need to fade out)
+    const tagsToFadeOut = nextTagStates
+      ? Object.entries(tagStates)
+          .filter(([tag, oldState]) => {
+            const newState = nextTagStates[tag];
+            return oldState !== 'confirmed-non-match' && newState === 'confirmed-non-match';
+          })
+          .map(([tag]) => tag)
       : [];
     
     // Sort tags chronologically based on attribute type
@@ -271,17 +295,36 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     
     const heightClass = getArrayHeight(attributeName);
     
-    const getTagStyle = (state: string) => {
+    const getTagStyle = (state: string, isChanging: boolean = false, isFadingOut: boolean = false) => {
+      let baseStyle = "";
       switch (state) {
         case 'confirmed-match':
-          return "bg-green-500 bg-opacity-30 px-1.5 py-0.5 rounded text-xs border border-green-400 h-fit";
+          baseStyle = "bg-green-500 bg-opacity-30 px-1.5 py-0.5 rounded text-xs border border-green-400 h-fit";
+          break;
         case 'unconfirmed':
-          return "bg-yellow-500 bg-opacity-40 px-1.5 py-0.5 rounded text-xs border border-yellow-400 h-fit";
+          baseStyle = "bg-yellow-500 bg-opacity-40 px-1.5 py-0.5 rounded text-xs border border-yellow-400 h-fit";
+          break;
         case 'confirmed-non-match':
-          return "bg-gray-600 px-1.5 py-0.5 rounded text-xs border border-gray-500 h-fit";
+          baseStyle = "bg-gray-600 px-1.5 py-0.5 rounded text-xs border border-gray-500 h-fit";
+          break;
         default:
-          return "bg-gray-600 px-1.5 py-0.5 rounded text-xs border border-gray-500 h-fit";
+          baseStyle = "bg-gray-600 px-1.5 py-0.5 rounded text-xs border border-gray-500 h-fit";
       }
+      
+      // Add transition class for smooth color changes
+      let transitionClass = "transition-all duration-700";
+      
+      // Add pulse animation for changing tags (after new tags slide in)
+      if (isChanging && nextKnowledge) {
+        transitionClass += " animate-pulse-once";
+      }
+      
+      // Add fade out animation for tags becoming non-matches
+      if (isFadingOut && nextKnowledge) {
+        transitionClass += " animate-fade-out";
+      }
+      
+      return `${baseStyle} ${transitionClass}`;
     };
 
     return (
@@ -289,19 +332,32 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
         <div className="text-sm font-bold opacity-70">{label}</div>
         {/* Fixed height with overflow scroll to accommodate varying content */}
         <div className={`flex flex-wrap gap-1 ${heightClass} overflow-y-auto content-start`}>
-          {/* Show current tags (no animation) */}
-          {sortedCurrentTags.map(({ tag, state }, idx) => (
+          {/* Show current tags with potential state changes */}
+          {sortedCurrentTags.map(({ tag, state }) => {
+            const isChanging = changedTags.includes(tag);
+            const isFadingOut = tagsToFadeOut.includes(tag);
+            const nextState = nextTagStates ? nextTagStates[tag] : state;
+            
+            return (
+              <div
+                key={`current-${tag}`}
+                className={getTagStyle(nextState, isChanging, isFadingOut)}
+                style={isChanging ? {
+                  animationDelay: '3.8s', // After new tags slide in (2.8s + 1s slide duration)
+                  animationFillMode: 'forwards'
+                } : isFadingOut ? {
+                  animationDelay: '4.8s', // After pulse completes
+                  animationFillMode: 'forwards'
+                } : undefined}
+              >
+                {tag}
+              </div>
+            );
+          })}
+          {/* Show new tags with slide animation */}
+          {nextKnowledge && sortedNewTags.map(({ tag, state }) => (
             <div
-              key={`current-${idx}`}
-              className={`${getTagStyle(state)} transition-all duration-1000`}
-            >
-              {tag}
-            </div>
-          ))}
-          {/* Show new tags with animation */}
-          {nextKnowledge && sortedNewTags.map(({ tag, state }, idx) => (
-            <div
-              key={`new-${idx}`}
+              key={`new-${tag}`}
               className={`${getTagStyle(state)} animate-slide-left-to-right`}
               style={{ animationDelay: '2.8s', opacity: 0, animationFillMode: 'forwards' }}
             >

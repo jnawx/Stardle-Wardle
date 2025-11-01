@@ -213,6 +213,7 @@ function App() {
           // Partial match: complex logic for unconfirmed tags
           const guessedTags = comp.value as string[];
           
+          // First, mark all newly guessed tags as unconfirmed (unless already confirmed)
           guessedTags.forEach(tag => {
             const currentState = tagStates[tag] || 'unguessed';
             
@@ -225,15 +226,24 @@ function App() {
             tagStates[tag] = 'unconfirmed';
           });
           
-          // Smart inference: Try to deduce states based on accumulated knowledge
-          // Count how many unconfirmed/unguessed tags we have
+          // Smart inference: Try to deduce which tags are matches
           const unconfirmedTags = guessedTags.filter(tag => tagStates[tag] === 'unconfirmed');
           const confirmedNonMatches = guessedTags.filter(tag => tagStates[tag] === 'confirmed-non-match').length;
           
-          // If matched items + confirmed non-matches = total guessed items - 1, 
-          // we can deduce the remaining unconfirmed item must be a match
+          // Calculate how many tags in this guess are NOT matches
+          // nonMatchingTagsCount = total guessed - matched count (from target character)
           const matchedCount = (comp.matchedItems?.length || 0);
-          if (matchedCount + confirmedNonMatches === guessedTags.length - 1 && unconfirmedTags.length === 1) {
+          const nonMatchingInGuess = guessedTags.length - matchedCount;
+          
+          // If all non-matching tags are accounted for (confirmed-non-match + unconfirmed we can deduce),
+          // then remaining unconfirmed must be matches
+          if (confirmedNonMatches === nonMatchingInGuess && unconfirmedTags.length > 0) {
+            // All the unconfirmed tags must be matches
+            unconfirmedTags.forEach(tag => {
+              tagStates[tag] = 'confirmed-match';
+            });
+          } else if (confirmedNonMatches + unconfirmedTags.length === nonMatchingInGuess + 1 && unconfirmedTags.length === 1) {
+            // Only one unconfirmed tag and we can deduce it must be a match
             tagStates[unconfirmedTags[0]] = 'confirmed-match';
           }
         }

@@ -442,7 +442,7 @@
     "affiliations": ["Jedi Order", "Sith"],
     "eras": ["The High Republic"],
     "weapons": ["Melee (Lightsaber)"],
-    "forceUser": false,
+    "forceUser": true,
     "speaksBasic": true,
     "quoteHint": "I have no name. But the Jedi like you might call me… Sith.",
     "masterHint": "A Sith Lord who was trained by Darth Plagueis during the High Republic era. He eventually tried to take on his own apprentice.",

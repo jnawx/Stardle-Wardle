@@ -256,23 +256,19 @@ function App() {
           
           // Smart inference: Try to deduce which tags are matches
           const unconfirmedTags = guessedTags.filter(tag => tagStates[tag] === 'unconfirmed');
-          const confirmedNonMatches = guessedTags.filter(tag => tagStates[tag] === 'confirmed-non-match').length;
-          
-          // Calculate how many tags in this guess are NOT matches
-          // nonMatchingTagsCount = total guessed - matched count (from target character)
           const matchedCount = (comp.matchedItems?.length || 0);
-          const nonMatchingInGuess = guessedTags.length - matchedCount;
           
-          // If all non-matching tags are accounted for (confirmed-non-match + unconfirmed we can deduce),
-          // then remaining unconfirmed must be matches
-          if (confirmedNonMatches === nonMatchingInGuess && unconfirmedTags.length > 0) {
-            // All the unconfirmed tags must be matches
-            unconfirmedTags.forEach(tag => {
-              tagStates[tag] = 'confirmed-match';
-            });
-          } else if (confirmedNonMatches + unconfirmedTags.length === nonMatchingInGuess + 1 && unconfirmedTags.length === 1) {
-            // Only one unconfirmed tag and we can deduce it must be a match
-            tagStates[unconfirmedTags[0]] = 'confirmed-match';
+          // Single-tag deduction: If only ONE unconfirmed tag in this guess and it's a partial match,
+          // and all OTHER tags in this guess are confirmed non-matches, then this tag must be the match
+          if (unconfirmedTags.length === 1 && matchedCount > 0) {
+            // Check if all other guessed tags are confirmed non-matches
+            const allOthersAreNonMatches = guessedTags.filter(t => t !== unconfirmedTags[0])
+              .every(t => tagStates[t] === 'confirmed-non-match');
+            
+            if (allOthersAreNonMatches) {
+              // This single unconfirmed tag must be the match
+              tagStates[unconfirmedTags[0]] = 'confirmed-match';
+            }
           }
         }
       }
@@ -388,11 +384,11 @@ function App() {
     // Check if won - delay modal appearance with smooth slide in
     if (isCorrect) {
       setIsWon(true);
-      // Delay win modal until after all animations complete (extra 500ms for breathing room)
+      // Delay win modal until after all animations complete (extra time for user to enjoy the win)
       const winTimer = setTimeout(() => {
         setShowWinModal(true);
         setPendingWinTimer(null);
-      }, 4500);
+      }, 6000);
       setPendingWinTimer(winTimer);
     }
   };
@@ -426,14 +422,16 @@ function App() {
               )}
               
               {/* Search Bar */}
-              <div className="flex-1">
-                <CharacterSearch
-                  characters={characters}
-                  onSelectCharacter={handleGuess}
-                  disabled={isWon}
-                  guessedCharacterIds={guesses.map(g => g.character.id)}
-                />
-              </div>
+              {!showWinModal && (
+                <div className="flex-1">
+                  <CharacterSearch
+                    characters={characters}
+                    onSelectCharacter={handleGuess}
+                    disabled={isWon}
+                    guessedCharacterIds={guesses.map(g => g.character.id)}
+                  />
+                </div>
+              )}
               
               {/* Spacer for visual balance */}
               <div className="w-[88px]"></div>

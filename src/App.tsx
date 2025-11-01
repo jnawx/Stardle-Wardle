@@ -46,6 +46,7 @@ function App() {
   });
   const [nextKnowledge, setNextKnowledge] = useState<AccumulatedKnowledge | undefined>(undefined);
   const [selectedGuessIndex, setSelectedGuessIndex] = useState(0); // Index of guess to display (0 = latest)
+  const [isNavigatingGuesses, setIsNavigatingGuesses] = useState(false); // True when switching between old guesses
   const [quoteHintUsed, setQuoteHintUsed] = useState(false);
   const [masterHintUsed, setMasterHintUsed] = useState(false);
   const [pendingKnowledgeTimer, setPendingKnowledgeTimer] = useState<ReturnType<typeof setTimeout> | null>(null);
@@ -137,6 +138,9 @@ function App() {
     if (guesses.some(g => g.character.id === character.id)) {
       return;
     }
+
+    // Reset navigation flag when making a new guess
+    setIsNavigatingGuesses(false);
 
     const comparisons = compareCharacters(character, targetCharacter);
     const newGuess: Guess = {
@@ -365,6 +369,7 @@ function App() {
                 targetCharacter={targetCharacter}
                 nextKnowledge={selectedGuessIndex === 0 ? nextKnowledge : undefined}
                 isWinningGuess={isWon && selectedGuessIndex === 0}
+                isNavigating={isNavigatingGuesses && selectedGuessIndex !== 0}
               />
             </div>
           )}
@@ -398,7 +403,10 @@ function App() {
                     {guesses.map((guess, index) => (
                       <button
                         key={guess.timestamp}
-                        onClick={() => setSelectedGuessIndex(index)}
+                        onClick={() => {
+                          setIsNavigatingGuesses(index !== 0); // Not navigating if selecting the latest guess
+                          setSelectedGuessIndex(index);
+                        }}
                         className={`flex-shrink-0 flex flex-col items-center gap-1 p-2 rounded-lg transition-all relative ${
                           selectedGuessIndex === index
                             ? 'bg-sw-yellow text-black scale-105 shadow-lg'

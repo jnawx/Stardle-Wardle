@@ -11,6 +11,7 @@ interface ComparisonViewProps {
   targetCharacter: Character;
   nextKnowledge?: AccumulatedKnowledge;
   isWinningGuess?: boolean;
+  isNavigating?: boolean; // True when switching between existing guesses
 }
 
 // Define the media types for labeling
@@ -21,21 +22,23 @@ const MEDIA_TYPES = {
   bookComicAppearances: 'Books/Comics'
 } as const;
 
-const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, targetCharacter, nextKnowledge, isWinningGuess }: ComparisonViewProps) => {
+const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, targetCharacter, nextKnowledge, isWinningGuess, isNavigating }: ComparisonViewProps) => {
   const [showGuess, setShowGuess] = useState(false);
   const [slideCharacter, setSlideCharacter] = useState(false);
 
   // Animation sequence: fade in guess, then slide in new knowledge
+  // Use faster animations when navigating between existing guesses
   useEffect(() => {
     setShowGuess(false);
     setSlideCharacter(false);
     
-    // Start guess fade-in immediately
-    const guessTimer = setTimeout(() => setShowGuess(true), 50);
+    // Start guess fade-in immediately (faster for navigation)
+    const delay = isNavigating ? 10 : 50;
+    const guessTimer = setTimeout(() => setShowGuess(true), delay);
     
     // If winning guess, slide character after cascade completes (2800ms - after all rows fade in)
     let characterTimer: ReturnType<typeof setTimeout> | undefined;
-    if (isWinningGuess) {
+    if (isWinningGuess && !isNavigating) {
       characterTimer = setTimeout(() => setSlideCharacter(true), 2800);
     }
     
@@ -43,7 +46,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
       clearTimeout(guessTimer);
       if (characterTimer) clearTimeout(characterTimer);
     };
-  }, [latestGuess.timestamp, isWinningGuess]);
+  }, [latestGuess.timestamp, isWinningGuess, isNavigating]);
 
   // Helper to check if an item is newly confirmed (will be in nextKnowledge but not current knowledge)
   const isNewlyConfirmed = (attribute: string, item?: string): boolean => {
@@ -347,37 +350,48 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
             const isFadingOut = tagsToFadeOut.includes(tag);
             const nextState = nextTagStates ? nextTagStates[tag] : state;
             
-            // Build inline style for animations
+            // Build inline style for animations (skip animations when navigating)
             let inlineStyle: React.CSSProperties | undefined = undefined;
-            if (isChanging) {
-              inlineStyle = {
-                animationDelay: '3.8s',
-                animationFillMode: 'forwards'
-              };
-            } else if (isFadingOut) {
-              inlineStyle = {
-                animationDelay: '4.8s',
-                animationFillMode: 'forwards',
-                opacity: 1 // Start visible
-              };
+            if (!isNavigating) {
+              if (isChanging) {
+                inlineStyle = {
+                  animationDelay: '3.8s',
+                  animationFillMode: 'forwards'
+                };
+              } else if (isFadingOut) {
+                inlineStyle = {
+                  animationDelay: '4.8s',
+                  animationFillMode: 'forwards',
+                  opacity: 1 // Start visible
+                };
+              }
             }
             
             return (
               <div
                 key={`current-${tag}`}
-                className={getTagStyle(nextState, isChanging, isFadingOut)}
+                className={getTagStyle(nextState, isChanging && !isNavigating, isFadingOut && !isNavigating)}
                 style={inlineStyle}
               >
                 {tag}
               </div>
             );
           })}
-          {/* Show new tags with slide animation */}
-          {nextKnowledge && sortedNewTags.map(({ tag, state }) => (
+          {/* Show new tags with slide animation (skip when navigating) */}
+          {!isNavigating && nextKnowledge && sortedNewTags.map(({ tag, state }) => (
             <div
               key={`new-${tag}`}
               className={`${getTagStyle(state)} animate-slide-left-to-right`}
               style={{ animationDelay: '2.8s', opacity: 0, animationFillMode: 'forwards' }}
+            >
+              {tag}
+            </div>
+          ))}
+          {/* Show new tags immediately when navigating */}
+          {isNavigating && sortedNewTags.map(({ tag, state }) => (
+            <div
+              key={`new-${tag}`}
+              className={getTagStyle(state)}
             >
               {tag}
             </div>
@@ -403,8 +417,12 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     // - Gray: no visible tags (either no tags at all, or only confirmed-non-match tags)
     const bgColor = isExactMatch ? 'bg-green-600' : visibleTags > 0 ? 'bg-yellow-600' : 'bg-gray-700';
     
-    // Calculate staggered delay: 150ms per row
-    const delay = index * 150;
+    // Calculate staggered delay: faster for navigation (30ms) vs new guess (150ms)
+    const delayPerRow = isNavigating ? 30 : 150;
+    const delay = index * delayPerRow;
+    
+    // Animation duration: faster for navigation (200ms) vs new guess (500ms)
+    const animDuration = isNavigating ? '0.2s' : '0.5s';
 
     return (
       <div className="grid grid-cols-2 gap-6">
@@ -412,7 +430,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
         <div 
           className={`${getMatchColor(comparison.match)} px-3 py-1.5 rounded shadow-md transition-all duration-500`}
           style={showGuess ? { 
-            animation: 'fade-in-down 0.5s ease-out forwards',
+            animation: `fade-in-down ${animDuration} ease-out forwards`,
             animationDelay: `${delay}ms`,
             opacity: 0
           } : { opacity: 0 }}

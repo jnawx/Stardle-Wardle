@@ -103,11 +103,11 @@ function shuffleWithSeed<T>(array: T[], seed: number): T[] {
 }
 
 /**
- * Get a deterministic daily character based on date
+ * Get a deterministic daily character based on date (uses UTC)
  */
 export function getDailyCharacter(characters: Character[], date: Date = new Date()): Character {
-  // Reset time to midnight for consistency
-  const dateOnly = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  // Reset time to UTC midnight for consistency across timezones
+  const dateOnly = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
   const daysSinceEpoch = Math.floor(dateOnly.getTime() / (1000 * 60 * 60 * 24));
   
   // Filter to enabled characters
@@ -127,11 +127,11 @@ export function getDailyCharacter(characters: Character[], date: Date = new Date
 }
 
 /**
- * Get yesterday's daily character
+ * Get yesterday's daily character (uses UTC)
  */
 export function getYesterdaysDailyCharacter(characters: Character[]): Character {
   const yesterday = new Date();
-  yesterday.setDate(yesterday.getDate() - 1);
+  yesterday.setUTCDate(yesterday.getUTCDate() - 1);
   return getDailyCharacter(characters, yesterday);
 }
 

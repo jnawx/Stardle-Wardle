@@ -206,6 +206,15 @@ function App() {
             });
           }
           (newKnowledge as any)[exactFlagKey] = true;
+          
+          // Mark all unguessed or unconfirmed tags as confirmed-non-match
+          // since we now know the complete set
+          Object.keys(tagStates).forEach(tag => {
+            const state = tagStates[tag];
+            if (state === 'unguessed' || state === 'unconfirmed') {
+              tagStates[tag] = 'confirmed-non-match';
+            }
+          });
         } else if (comp.match === 'none') {
           // No matches: mark all guessed items as confirmed-non-match
           if (Array.isArray(comp.value)) {

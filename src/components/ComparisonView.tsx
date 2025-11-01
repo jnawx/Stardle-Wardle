@@ -224,10 +224,25 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     const exactFlagKey = `${attributeName}Exact` as keyof AccumulatedKnowledge;
     const isExactMatch = knowledge[exactFlagKey] as boolean;
     
-    // Filter out confirmed-non-match tags - don't show them
+    // Find tags that became confirmed-non-match (need to fade out)
+    const tagsToFadeOut = nextTagStates
+      ? Object.entries(tagStates)
+          .filter(([tag, oldState]) => {
+            const newState = nextTagStates[tag];
+            return oldState !== 'confirmed-non-match' && newState === 'confirmed-non-match';
+          })
+          .map(([tag]) => tag)
+      : [];
+    
+    // Filter tags: exclude confirmed-non-match UNLESS they're fading out (need to show them temporarily)
     // If exact match found, only show confirmed-match tags
     const currentTags = Object.entries(tagStates)
-      .filter(([_, state]) => state !== 'confirmed-non-match' && (!isExactMatch || state === 'confirmed-match'))
+      .filter(([tag, state]) => {
+        // Keep tags that are fading out so we can animate them
+        if (tagsToFadeOut.includes(tag)) return true;
+        // Otherwise, filter out confirmed-non-match
+        return state !== 'confirmed-non-match' && (!isExactMatch || state === 'confirmed-match');
+      })
       .map(([tag, state]) => ({ tag, state }));
     
     // Find new tags from next state (excluding confirmed-non-match)
@@ -237,22 +252,13 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
           .map(([tag, state]) => ({ tag, state }))
       : [];
     
-    // Find tags that changed state (for color transitions)
+    // Find tags that changed state (for color transitions, excluding tags fading out)
     const changedTags = nextTagStates
       ? Object.entries(tagStates)
           .filter(([tag, oldState]) => {
             const newState = nextTagStates[tag];
-            return newState !== undefined && newState !== oldState;
-          })
-          .map(([tag]) => tag)
-      : [];
-    
-    // Find tags that became confirmed-non-match (need to fade out)
-    const tagsToFadeOut = nextTagStates
-      ? Object.entries(tagStates)
-          .filter(([tag, oldState]) => {
-            const newState = nextTagStates[tag];
-            return oldState !== 'confirmed-non-match' && newState === 'confirmed-non-match';
+            // Changed but NOT becoming confirmed-non-match (those are handled separately)
+            return newState !== undefined && newState !== oldState && newState !== 'confirmed-non-match';
           })
           .map(([tag]) => tag)
       : [];
@@ -299,32 +305,35 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
       let baseStyle = "";
       switch (state) {
         case 'confirmed-match':
-          baseStyle = "bg-green-500 bg-opacity-30 px-1.5 py-0.5 rounded text-xs border border-green-400 h-fit";
+          baseStyle = "bg-green-500 bg-opacity-30 border-green-400";
           break;
         case 'unconfirmed':
-          baseStyle = "bg-yellow-500 bg-opacity-40 px-1.5 py-0.5 rounded text-xs border border-yellow-400 h-fit";
+          baseStyle = "bg-yellow-500 bg-opacity-40 border-yellow-400";
           break;
         case 'confirmed-non-match':
-          baseStyle = "bg-gray-600 px-1.5 py-0.5 rounded text-xs border border-gray-500 h-fit";
+          baseStyle = "bg-gray-600 border-gray-500";
           break;
         default:
-          baseStyle = "bg-gray-600 px-1.5 py-0.5 rounded text-xs border border-gray-500 h-fit";
+          baseStyle = "bg-gray-600 border-gray-500";
       }
+      
+      // Common styles for all tags
+      let commonStyle = "px-1.5 py-0.5 rounded text-xs border h-fit";
       
       // Add transition class for smooth color changes
       let transitionClass = "transition-all duration-700";
       
       // Add pulse animation for changing tags (after new tags slide in)
-      if (isChanging && nextKnowledge) {
+      if (isChanging) {
         transitionClass += " animate-pulse-once";
       }
       
       // Add fade out animation for tags becoming non-matches
-      if (isFadingOut && nextKnowledge) {
+      if (isFadingOut) {
         transitionClass += " animate-fade-out";
       }
       
-      return `${baseStyle} ${transitionClass}`;
+      return `${baseStyle} ${commonStyle} ${transitionClass}`;
     };
 
     return (
@@ -338,17 +347,26 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
             const isFadingOut = tagsToFadeOut.includes(tag);
             const nextState = nextTagStates ? nextTagStates[tag] : state;
             
+            // Build inline style for animations
+            let inlineStyle: React.CSSProperties | undefined = undefined;
+            if (isChanging) {
+              inlineStyle = {
+                animationDelay: '3.8s',
+                animationFillMode: 'forwards'
+              };
+            } else if (isFadingOut) {
+              inlineStyle = {
+                animationDelay: '4.8s',
+                animationFillMode: 'forwards',
+                opacity: 1 // Start visible
+              };
+            }
+            
             return (
               <div
                 key={`current-${tag}`}
                 className={getTagStyle(nextState, isChanging, isFadingOut)}
-                style={isChanging ? {
-                  animationDelay: '3.8s', // After new tags slide in (2.8s + 1s slide duration)
-                  animationFillMode: 'forwards'
-                } : isFadingOut ? {
-                  animationDelay: '4.8s', // After pulse completes
-                  animationFillMode: 'forwards'
-                } : undefined}
+                style={inlineStyle}
               >
                 {tag}
               </div>

@@ -26,36 +26,62 @@ const MEDIA_TYPES = {
 const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, targetCharacter, nextKnowledge, isWinningGuess, isNavigating, previousGuess }: ComparisonViewProps) => {
   const [showGuess, setShowGuess] = useState(false);
   const [slideCharacter, setSlideCharacter] = useState(false);
-  const [applyTagTransitions, setApplyTagTransitions] = useState(false);
+  const [showNewTags, setShowNewTags] = useState(false);
+  const [applyTagColorTransitions, setApplyTagColorTransitions] = useState(false);
+  const [fadeOutGrayTags, setFadeOutGrayTags] = useState(false);
+  const [applyBoxColors, setApplyBoxColors] = useState(false);
 
   // Animation sequence: 
-  // - New guess: fade in with slow cascade (2.8s)
-  // - Navigation: fade in with quick cascade (0.75s)
+  // 1. Cascade animation (0-2800ms for new guess, 0-750ms for navigation)
+  // 2. Slide in new tags (2800ms, duration 500ms)
+  // 3. Transition orange → green/gray with pulse (3300ms, duration 700ms)
+  // 4. Fade out gray tags (4000ms, duration 700ms)
+  // 5. Change box colors to green for exact matches (4700ms)
+  // 6. Slide character if winning (optional)
   useEffect(() => {
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    
+    // Reset all animation states
     setShowGuess(false);
     setSlideCharacter(false);
-    setApplyTagTransitions(false);
+    setShowNewTags(false);
+    setApplyTagColorTransitions(false);
+    setFadeOutGrayTags(false);
+    setApplyBoxColors(false);
     
-    // Start guess fade-in
-    const guessTimer = setTimeout(() => setShowGuess(true), 50);
+    const cascadeDuration = isNavigating ? 750 : 2800;
     
-    // Apply tag color transitions after cascade animation completes
-    // Navigation: 0.75s cascade, New guess: 2.8s cascade
-    const tagTransitionTimer = setTimeout(() => {
-      setApplyTagTransitions(true);
-    }, isNavigating ? 750 : 2800);
+    // Step 1: Start guess fade-in (cascade animation)
+    timers.push(setTimeout(() => setShowGuess(true), 50));
     
-    // If winning guess, slide character after cascade completes
-    let characterTimer: ReturnType<typeof setTimeout> | undefined;
-    if (isWinningGuess && !isNavigating) {
-      characterTimer = setTimeout(() => setSlideCharacter(true), 2800);
+    if (!isNavigating) {
+      // For new guesses, run the full animation sequence
+      // Step 2: Slide in new tags after cascade completes
+      timers.push(setTimeout(() => setShowNewTags(true), cascadeDuration));
+      
+      // Step 3: Transition tag colors after new tags slide in (500ms slide duration)
+      timers.push(setTimeout(() => setApplyTagColorTransitions(true), cascadeDuration + 500));
+      
+      // Step 4: Fade out gray tags after color transitions (700ms transition duration)
+      timers.push(setTimeout(() => setFadeOutGrayTags(true), cascadeDuration + 500 + 700));
+      
+      // Step 5: Apply box colors after gray tags start fading (immediately, box transitions are slow)
+      timers.push(setTimeout(() => setApplyBoxColors(true), cascadeDuration + 500 + 700));
+      
+      // Step 6: Slide winning character after everything (if winning guess)
+      if (isWinningGuess) {
+        timers.push(setTimeout(() => setSlideCharacter(true), cascadeDuration + 500 + 700 + 700));
+      }
+    } else {
+      // For navigation, apply everything immediately after cascade
+      timers.push(setTimeout(() => {
+        setShowNewTags(true);
+        setApplyTagColorTransitions(true);
+        setApplyBoxColors(true);
+      }, cascadeDuration));
     }
     
-    return () => {
-      clearTimeout(guessTimer);
-      clearTimeout(tagTransitionTimer);
-      if (characterTimer) clearTimeout(characterTimer);
-    };
+    return () => timers.forEach(timer => clearTimeout(timer));
   }, [latestGuess.timestamp, isWinningGuess, isNavigating]);
 
   // Helper to check if an item is newly confirmed (will be in nextKnowledge but not current knowledge)
@@ -352,28 +378,27 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
             const prevState = prevTagStates?.[tag] ?? state;
             
             // Determine display state based on animation timing
-            // Before cascade completes: show previous state
-            // After cascade: transition to current state
-            const displayState = (applyTagTransitions || isNavigating) ? state : prevState;
+            // Before color transitions: show previous state
+            // After color transitions: show current state
+            const displayState = (applyTagColorTransitions || isNavigating) ? state : prevState;
             
-            console.log(`[Tag ${tag}] prev: ${prevState}, current: ${state}, display: ${displayState}, applyTransitions: ${applyTagTransitions}`);
+            console.log(`[Tag ${tag}] prev: ${prevState}, current: ${state}, display: ${displayState}, applyColorTransitions: ${applyTagColorTransitions}`);
             
-            // Filter out confirmed-non-match after a delay to allow fade animation
-            const shouldShow = displayState !== 'confirmed-non-match' || tagsToFadeOut.includes(tag);
+            // Filter out confirmed-non-match tags that should fade out
+            const shouldFadeOut = displayState === 'confirmed-non-match' && fadeOutGrayTags;
+            const shouldShow = displayState !== 'confirmed-non-match' || !fadeOutGrayTags;
             
-            if (!shouldShow) return null;
-            
-            const isFadingOut = displayState === 'confirmed-non-match';
+            if (!shouldShow && !shouldFadeOut) return null;
             
             // Check if this tag's state changed (for pulse animation)
-            const isChanging = !isNavigating && applyTagTransitions && prevState !== state && !isFadingOut;
+            const isChanging = !isNavigating && applyTagColorTransitions && prevState !== state && displayState !== 'confirmed-non-match';
             
             return (
               <div
                 key={`current-${tag}`}
-                className={getTagStyle(displayState, isChanging, isFadingOut && !isNavigating)}
-                style={isFadingOut && !isNavigating ? {
-                  animationDelay: '0.7s', // Fade out after color transition
+                className={getTagStyle(displayState, isChanging, shouldFadeOut && !isNavigating)}
+                style={shouldFadeOut && !isNavigating ? {
+                  animationDelay: '0s', // Fade out immediately when fadeOutGrayTags becomes true
                   animationFillMode: 'forwards'
                 } : undefined}
               >
@@ -381,21 +406,12 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
               </div>
             );
           })}
-          {/* Show new tags with slide animation (skip when navigating) */}
-          {!isNavigating && nextKnowledge && sortedNewTags.map(({ tag, state }) => (
+          {/* Show new tags with slide animation */}
+          {showNewTags && sortedNewTags.map(({ tag, state }) => (
             <div
               key={`new-${tag}`}
-              className={`${getTagStyle(state)} animate-slide-left-to-right`}
-              style={{ animationDelay: '2.8s', opacity: 0, animationFillMode: 'forwards' }}
-            >
-              {tag}
-            </div>
-          ))}
-          {/* Show new tags immediately when navigating */}
-          {isNavigating && sortedNewTags.map(({ tag, state }) => (
-            <div
-              key={`new-${tag}`}
-              className={getTagStyle(state)}
+              className={`${getTagStyle(state)} ${isNavigating ? '' : 'animate-slide-left-to-right'}`}
+              style={isNavigating ? undefined : { animationDelay: '0s', opacity: 0, animationFillMode: 'forwards' }}
             >
               {tag}
             </div>
@@ -416,10 +432,10 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     const visibleTags = Object.values(tagStates).filter(state => state !== 'confirmed-non-match').length;
     
     // Determine box background color:
-    // - Green: exact match found (all tags confirmed)
+    // - Green: exact match found (all tags confirmed) - only after applyBoxColors
     // - Orange/Yellow: has visible tags (confirmed matches or unconfirmed) but not complete
     // - Gray: no visible tags (either no tags at all, or only confirmed-non-match tags)
-    const bgColor = isExactMatch ? 'bg-green-600' : visibleTags > 0 ? 'bg-yellow-600' : 'bg-gray-700';
+    const bgColor = (isExactMatch && applyBoxColors) ? 'bg-green-600' : visibleTags > 0 ? 'bg-yellow-600' : 'bg-gray-700';
     
     // Calculate animation properties
     // - When navigating: quick cascade (0.75s total = 14 rows * ~50ms)

@@ -29,13 +29,20 @@ function App() {
   const [showStats, setShowStats] = useState(false);
   const [stats, setStats] = useState(getStats());
   const [knowledge, setKnowledge] = useState<AccumulatedKnowledge>({
-    affiliations: [],
-    eras: [],
-    weapons: [],
-    movieAppearances: [],
-    tvAppearances: [],
-    gameAppearances: [],
-    bookComicAppearances: [],
+    affiliations: {},
+    eras: {},
+    weapons: {},
+    movieAppearances: {},
+    tvAppearances: {},
+    gameAppearances: {},
+    bookComicAppearances: {},
+    affiliationsExact: false,
+    erasExact: false,
+    weaponsExact: false,
+    movieAppearancesExact: false,
+    tvAppearancesExact: false,
+    gameAppearancesExact: false,
+    bookComicAppearancesExact: false,
   });
   const [nextKnowledge, setNextKnowledge] = useState<AccumulatedKnowledge | undefined>(undefined);
   const [selectedGuessIndex, setSelectedGuessIndex] = useState(0); // Index of guess to display (0 = latest)
@@ -76,13 +83,20 @@ function App() {
     setMasterHintUsed(false);
     setSelectedGuessIndex(0);
     setKnowledge({
-      affiliations: [],
-      eras: [],
-      weapons: [],
-      movieAppearances: [],
-      tvAppearances: [],
-      gameAppearances: [],
-      bookComicAppearances: [],
+      affiliations: {},
+      eras: {},
+      weapons: {},
+      movieAppearances: {},
+      tvAppearances: {},
+      gameAppearances: {},
+      bookComicAppearances: {},
+      affiliationsExact: false,
+      erasExact: false,
+      weaponsExact: false,
+      movieAppearancesExact: false,
+      tvAppearancesExact: false,
+      gameAppearancesExact: false,
+      bookComicAppearancesExact: false,
     });
     setNextKnowledge(undefined);
     
@@ -149,7 +163,17 @@ function App() {
     }
 
     // Calculate new accumulated knowledge based on this guess (using baseKnowledge)
-    const newKnowledge = { ...baseKnowledge };
+    const newKnowledge: AccumulatedKnowledge = {
+      ...baseKnowledge,
+      affiliations: { ...baseKnowledge.affiliations },
+      eras: { ...baseKnowledge.eras },
+      weapons: { ...baseKnowledge.weapons },
+      movieAppearances: { ...baseKnowledge.movieAppearances },
+      tvAppearances: { ...baseKnowledge.tvAppearances },
+      gameAppearances: { ...baseKnowledge.gameAppearances },
+      bookComicAppearances: { ...baseKnowledge.bookComicAppearances },
+    };
+    
     comparisons.forEach(comp => {
       if (comp.match === 'exact') {
         // Single-value attributes
@@ -162,12 +186,57 @@ function App() {
         else if (comp.attribute === 'speaksBasic') newKnowledge.speaksBasic = comp.value as boolean;
       }
       
-      // Array attributes: add matched items
-      if (comp.matchedItems && comp.matchedItems.length > 0) {
-        const arrayAttr = comp.attribute as keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookComicAppearances'>;
-        const existingItems = new Set(newKnowledge[arrayAttr]);
-        comp.matchedItems.forEach(item => existingItems.add(item));
-        newKnowledge[arrayAttr] = Array.from(existingItems);
+      // Array attributes: update tag states based on match type
+      if (comp.attribute === 'affiliations' || comp.attribute === 'eras' || comp.attribute === 'weapons' ||
+          comp.attribute === 'movieAppearances' || comp.attribute === 'tvAppearances' || 
+          comp.attribute === 'gameAppearances' || comp.attribute === 'bookComicAppearances') {
+        
+        const tagStates = newKnowledge[comp.attribute];
+        const exactFlagKey = `${comp.attribute}Exact` as keyof AccumulatedKnowledge;
+        
+        if (comp.match === 'exact' && comp.isCompleteSet) {
+          // Exact match: mark all guessed items as confirmed-match
+          if (comp.matchedItems) {
+            comp.matchedItems.forEach(item => {
+              tagStates[item] = 'confirmed-match';
+            });
+          }
+          (newKnowledge as any)[exactFlagKey] = true;
+        } else if (comp.match === 'none') {
+          // No matches: mark all guessed items as confirmed-non-match
+          if (Array.isArray(comp.value)) {
+            (comp.value as string[]).forEach(item => {
+              tagStates[item] = 'confirmed-non-match';
+            });
+          }
+        } else if (comp.match === 'partial') {
+          // Partial match: complex logic for unconfirmed tags
+          const guessedTags = comp.value as string[];
+          
+          guessedTags.forEach(tag => {
+            const currentState = tagStates[tag] || 'unguessed';
+            
+            // If already confirmed, don't change
+            if (currentState === 'confirmed-match' || currentState === 'confirmed-non-match') {
+              return;
+            }
+            
+            // Mark as unconfirmed (we can't tell which matched in a partial match)
+            tagStates[tag] = 'unconfirmed';
+          });
+          
+          // Smart inference: Try to deduce states based on accumulated knowledge
+          // Count how many unconfirmed/unguessed tags we have
+          const unconfirmedTags = guessedTags.filter(tag => tagStates[tag] === 'unconfirmed');
+          const confirmedNonMatches = guessedTags.filter(tag => tagStates[tag] === 'confirmed-non-match').length;
+          
+          // If matched items + confirmed non-matches = total guessed items - 1, 
+          // we can deduce the remaining unconfirmed item must be a match
+          const matchedCount = (comp.matchedItems?.length || 0);
+          if (matchedCount + confirmedNonMatches === guessedTags.length - 1 && unconfirmedTags.length === 1) {
+            tagStates[unconfirmedTags[0]] = 'confirmed-match';
+          }
+        }
       }
     });
     

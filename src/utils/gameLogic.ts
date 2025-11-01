@@ -72,12 +72,17 @@ export function compareCharacters(
 
   return attributes.map(attribute => {
     const comparisonResult = compareValues(guessCharacter[attribute], targetCharacter[attribute]);
+    
+    // Check if this is a complete set match for array attributes
+    const isCompleteSet = comparisonResult.match === 'exact';
+    
     return {
       attribute,
       value: guessCharacter[attribute] ?? [],
       match: comparisonResult.match,
       matchedItems: comparisonResult.matchedItems,
       unmatchedItems: comparisonResult.unmatchedItems,
+      isCompleteSet,
     };
   });
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { Guess, AccumulatedKnowledge, Character, AttributeComparison } from '../types/character';
 import { attributeDisplayNames } from '../config/gameConfig';
-import { eraOrder, movieOrder, tvShowOrder, sortByOrder } from '../config/chronologicalOrder';
+import { eraOrder, movieOrder, tvShowOrder } from '../config/chronologicalOrder';
 
 interface ComparisonViewProps {
   latestGuess: Guess;
@@ -50,16 +50,19 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     if (!nextKnowledge) return false;
     
     if (item) {
-      // Check if this specific item is new
-      const currentItems = knowledge[attribute as keyof AccumulatedKnowledge];
-      const nextItems = nextKnowledge[attribute as keyof AccumulatedKnowledge];
+      // Check if this specific tag's state changed
+      const currentStates = knowledge[attribute as keyof AccumulatedKnowledge];
+      const nextStates = nextKnowledge[attribute as keyof AccumulatedKnowledge];
       
-      if (Array.isArray(nextItems)) {
-        const currentArray = Array.isArray(currentItems) ? currentItems : [];
-        return nextItems.includes(item) && !currentArray.includes(item);
+      // Handle TagKnowledgeState objects
+      if (typeof currentStates === 'object' && !Array.isArray(currentStates) && currentStates !== null &&
+          typeof nextStates === 'object' && !Array.isArray(nextStates) && nextStates !== null) {
+        const currentState = (currentStates as any)[item];
+        const nextState = (nextStates as any)[item];
+        return nextState !== undefined && (currentState === undefined || currentState !== nextState);
       }
     } else {
-      // Check if the whole attribute is newly confirmed
+      // Check if the whole attribute is newly confirmed (for single-value attributes)
       const currentValue = knowledge[attribute as keyof AccumulatedKnowledge];
       const nextValue = nextKnowledge[attribute as keyof AccumulatedKnowledge];
       
@@ -109,62 +112,93 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
   };
 
   const renderGuessArrayCell = (comparison: AttributeComparison, label: string) => {
-    const matchedItems = comparison.matchedItems || [];
-    const unmatchedItems = comparison.unmatchedItems || [];
+    const guessedTags = (comparison.value as string[]) || [];
+    const tagStates = knowledge[comparison.attribute as keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookComicAppearances'>];
     
-    // Combine all items with their match status
-    const allItems = [
-      ...matchedItems.map(item => ({ item, matched: true })),
-      ...unmatchedItems.map(item => ({ item, matched: false }))
-    ];
+    // Determine color for each tag based on its state and the comparison result
+    const tagItems = guessedTags.map(tag => {
+      const currentState = (tagStates as any)[tag] || 'unguessed';
+      
+      let displayState: 'green' | 'orange' | 'gray';
+      
+      if (comparison.match === 'exact' && comparison.isCompleteSet) {
+        // Exact match: all tags are confirmed matches (green)
+        displayState = 'green';
+      } else if (comparison.match === 'none') {
+        // No match: all tags are confirmed non-matches (gray)
+        displayState = 'gray';
+      } else if (comparison.match === 'partial') {
+        // Partial match: show based on current knowledge state
+        if (currentState === 'confirmed-match') {
+          displayState = 'green';
+        } else if (currentState === 'confirmed-non-match') {
+          displayState = 'gray';
+        } else {
+          // Unguessed or unconfirmed: show as orange (uncertain)
+          displayState = 'orange';
+        }
+      } else {
+        displayState = 'gray';
+      }
+      
+      return { tag, displayState };
+    });
     
-    // Sort all items together chronologically based on attribute type
-    let sortedItems = allItems;
+    // Sort items chronologically based on attribute type
+    let sortedItems = tagItems;
     if (comparison.attribute === 'eras') {
-      sortedItems = allItems.sort((a, b) => {
-        const indexA = eraOrder.indexOf(a.item);
-        const indexB = eraOrder.indexOf(b.item);
+      sortedItems = tagItems.sort((a, b) => {
+        const indexA = eraOrder.indexOf(a.tag);
+        const indexB = eraOrder.indexOf(b.tag);
         if (indexA !== -1 && indexB !== -1) return indexA - indexB;
         if (indexA !== -1) return -1;
         if (indexB !== -1) return 1;
-        return a.item.localeCompare(b.item);
+        return a.tag.localeCompare(b.tag);
       });
     } else if (comparison.attribute === 'movieAppearances') {
-      sortedItems = allItems.sort((a, b) => {
-        const indexA = movieOrder.indexOf(a.item);
-        const indexB = movieOrder.indexOf(b.item);
+      sortedItems = tagItems.sort((a, b) => {
+        const indexA = movieOrder.indexOf(a.tag);
+        const indexB = movieOrder.indexOf(b.tag);
         if (indexA !== -1 && indexB !== -1) return indexA - indexB;
         if (indexA !== -1) return -1;
         if (indexB !== -1) return 1;
-        return a.item.localeCompare(b.item);
+        return a.tag.localeCompare(b.tag);
       });
     } else if (comparison.attribute === 'tvAppearances') {
-      sortedItems = allItems.sort((a, b) => {
-        const indexA = tvShowOrder.indexOf(a.item);
-        const indexB = tvShowOrder.indexOf(b.item);
+      sortedItems = tagItems.sort((a, b) => {
+        const indexA = tvShowOrder.indexOf(a.tag);
+        const indexB = tvShowOrder.indexOf(b.tag);
         if (indexA !== -1 && indexB !== -1) return indexA - indexB;
         if (indexA !== -1) return -1;
         if (indexB !== -1) return 1;
-        return a.item.localeCompare(b.item);
+        return a.tag.localeCompare(b.tag);
       });
     }
     
     const heightClass = getArrayHeight(comparison.attribute);
+    
+    const getTagStyle = (state: 'green' | 'orange' | 'gray') => {
+      switch (state) {
+        case 'green':
+          return "bg-green-500 bg-opacity-30 px-1.5 py-0.5 rounded text-xs border border-green-400 h-fit";
+        case 'orange':
+          return "bg-yellow-500 bg-opacity-40 px-1.5 py-0.5 rounded text-xs border border-yellow-400 h-fit";
+        case 'gray':
+          return "bg-gray-600 px-1.5 py-0.5 rounded text-xs border border-gray-500 h-fit";
+      }
+    };
 
     return (
       <div className="flex flex-col gap-1">
         <div className="text-sm font-bold opacity-70">{label}</div>
         {/* Fixed height with overflow scroll to accommodate varying content */}
         <div className={`flex flex-wrap gap-1 ${heightClass} overflow-y-auto content-start`}>
-          {sortedItems.map(({ item, matched }) => (
+          {sortedItems.map(({ tag, displayState }) => (
             <div
-              key={item}
-              className={matched 
-                ? "bg-green-500 bg-opacity-30 px-1.5 py-0.5 rounded text-xs border border-green-400 h-fit"
-                : "bg-gray-600 px-1.5 py-0.5 rounded text-xs border border-gray-500 h-fit"
-              }
+              key={tag}
+              className={getTagStyle(displayState)}
             >
-              {item}
+              {tag}
             </div>
           ))}
         </div>
@@ -174,54 +208,104 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
 
   const renderKnowledgeArrayCell = (
     label: string,
-    items: string[],
+    tagStates: import('../types/character').TagKnowledgeState,
     _targetItems: string[] | undefined,
     attributeName: string
   ) => {
-    // Get next items if available
-    const nextItems = nextKnowledge 
-      ? (nextKnowledge[attributeName as keyof AccumulatedKnowledge] as string[] || [])
+    // Get next tag states if available
+    const nextTagStates = nextKnowledge 
+      ? (nextKnowledge[attributeName as keyof AccumulatedKnowledge] as import('../types/character').TagKnowledgeState)
+      : null;
+    
+    // Check if exact match has been found
+    const exactFlagKey = `${attributeName}Exact` as keyof AccumulatedKnowledge;
+    const isExactMatch = knowledge[exactFlagKey] as boolean;
+    
+    // If exact match found, only show confirmed-match tags
+    const currentTags = Object.entries(tagStates)
+      .filter(([_, state]) => !isExactMatch || state === 'confirmed-match')
+      .map(([tag, state]) => ({ tag, state }));
+    
+    // Find new tags from next state
+    const newTags = nextTagStates 
+      ? Object.entries(nextTagStates)
+          .filter(([tag]) => !(tag in tagStates))
+          .map(([tag, state]) => ({ tag, state }))
       : [];
     
-    // Sort items chronologically based on attribute type
-    let sortedCurrentItems = [...items];
-    let sortedNewItems = nextItems.filter(item => !items.includes(item));
+    // Sort tags chronologically based on attribute type
+    const sortTag = (items: { tag: string; state: any }[]) => {
+      if (attributeName === 'eras') {
+        return items.sort((a, b) => {
+          const indexA = eraOrder.indexOf(a.tag);
+          const indexB = eraOrder.indexOf(b.tag);
+          if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+          if (indexA !== -1) return -1;
+          if (indexB !== -1) return 1;
+          return a.tag.localeCompare(b.tag);
+        });
+      } else if (attributeName === 'movieAppearances') {
+        return items.sort((a, b) => {
+          const indexA = movieOrder.indexOf(a.tag);
+          const indexB = movieOrder.indexOf(b.tag);
+          if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+          if (indexA !== -1) return -1;
+          if (indexB !== -1) return 1;
+          return a.tag.localeCompare(b.tag);
+        });
+      } else if (attributeName === 'tvAppearances') {
+        return items.sort((a, b) => {
+          const indexA = tvShowOrder.indexOf(a.tag);
+          const indexB = tvShowOrder.indexOf(b.tag);
+          if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+          if (indexA !== -1) return -1;
+          if (indexB !== -1) return 1;
+          return a.tag.localeCompare(b.tag);
+        });
+      }
+      return items;
+    };
     
-    if (attributeName === 'eras') {
-      sortedCurrentItems = sortByOrder(sortedCurrentItems, eraOrder);
-      sortedNewItems = sortByOrder(sortedNewItems, eraOrder);
-    } else if (attributeName === 'movieAppearances') {
-      sortedCurrentItems = sortByOrder(sortedCurrentItems, movieOrder);
-      sortedNewItems = sortByOrder(sortedNewItems, movieOrder);
-    } else if (attributeName === 'tvAppearances') {
-      sortedCurrentItems = sortByOrder(sortedCurrentItems, tvShowOrder);
-      sortedNewItems = sortByOrder(sortedNewItems, tvShowOrder);
-    }
+    const sortedCurrentTags = sortTag(currentTags);
+    const sortedNewTags = sortTag(newTags);
     
     const heightClass = getArrayHeight(attributeName);
+    
+    const getTagStyle = (state: string) => {
+      switch (state) {
+        case 'confirmed-match':
+          return "bg-green-500 bg-opacity-30 px-1.5 py-0.5 rounded text-xs border border-green-400 h-fit";
+        case 'unconfirmed':
+          return "bg-yellow-500 bg-opacity-40 px-1.5 py-0.5 rounded text-xs border border-yellow-400 h-fit";
+        case 'confirmed-non-match':
+          return "bg-gray-600 px-1.5 py-0.5 rounded text-xs border border-gray-500 h-fit";
+        default:
+          return "bg-gray-600 px-1.5 py-0.5 rounded text-xs border border-gray-500 h-fit";
+      }
+    };
 
     return (
       <div className="flex flex-col gap-1">
         <div className="text-sm font-bold opacity-70">{label}</div>
         {/* Fixed height with overflow scroll to accommodate varying content */}
         <div className={`flex flex-wrap gap-1 ${heightClass} overflow-y-auto content-start`}>
-          {/* Show current items (no animation) - match guess styling */}
-          {sortedCurrentItems.map((item, idx) => (
+          {/* Show current tags (no animation) */}
+          {sortedCurrentTags.map(({ tag, state }, idx) => (
             <div
               key={`current-${idx}`}
-              className="bg-green-500 bg-opacity-30 px-1.5 py-0.5 rounded text-xs border border-green-400 h-fit"
+              className={`${getTagStyle(state)} transition-all duration-1000`}
             >
-              {item}
+              {tag}
             </div>
           ))}
-          {/* Show new items with animation - match guess styling */}
-          {nextKnowledge && sortedNewItems.map((item, idx) => (
+          {/* Show new tags with animation */}
+          {nextKnowledge && sortedNewTags.map(({ tag, state }, idx) => (
             <div
               key={`new-${idx}`}
-              className="bg-green-500 bg-opacity-30 px-1.5 py-0.5 rounded text-xs border border-green-400 h-fit animate-slide-left-to-right"
+              className={`${getTagStyle(state)} animate-slide-left-to-right`}
               style={{ animationDelay: '2.8s', opacity: 0, animationFillMode: 'forwards' }}
             >
-              {item}
+              {tag}
             </div>
           ))}
         </div>
@@ -230,19 +314,18 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
   };
 
   const renderArrayRow = (comparison: AttributeComparison, label: string, targetItems: string[] | undefined, index: number) => {
-    const items = knowledge[comparison.attribute as keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookComicAppearances'>] as string[];
+    const tagStates = knowledge[comparison.attribute as keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookComicAppearances'>] as import('../types/character').TagKnowledgeState;
     
-    const targetArray = targetItems || [];
-    const targetHasNone = targetArray.length === 1 && targetArray[0] === 'None';
+    // Check if exact match has been found
+    const exactFlagKey = `${comparison.attribute}Exact` as keyof AccumulatedKnowledge;
+    const isExactMatch = knowledge[exactFlagKey] as boolean;
     
-    // Use CURRENT items to determine current state (not next items)
-    const knowledgeHasNone = items.length === 1 && items[0] === 'None';
-    const currentAllItemsFound = targetHasNone
-      ? knowledgeHasNone
-      : targetArray.length > 0 && items.length === targetArray.length;
+    // Count confirmed matches and check if we have any tags
+    const confirmedMatches = Object.values(tagStates).filter(state => state === 'confirmed-match').length;
+    const hasAnyTags = Object.keys(tagStates).length > 0;
     
-    const hasItems = items.length > 0;
-    const bgColor = currentAllItemsFound ? 'bg-green-600' : hasItems ? 'bg-yellow-600' : 'bg-gray-700';
+    // Determine box background color
+    const bgColor = isExactMatch ? 'bg-green-600' : confirmedMatches > 0 ? 'bg-yellow-600' : hasAnyTags ? 'bg-gray-700' : 'bg-gray-700';
     
     // Calculate staggered delay: 150ms per row
     const delay = index * 150;
@@ -263,7 +346,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
 
         {/* Right: Knowledge */}
         <div className={`${bgColor} px-3 py-1.5 rounded shadow-md transition-all duration-1000`}>
-          {renderKnowledgeArrayCell(label, items, targetItems, comparison.attribute)}
+          {renderKnowledgeArrayCell(label, tagStates, targetItems, comparison.attribute)}
         </div>
       </div>
     );

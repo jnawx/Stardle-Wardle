@@ -290,21 +290,28 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
         </div>
         <div>
           <h3 className="text-lg font-bold text-white text-center">Confirmed Knowledge</h3>
-          <div className="flex items-center justify-center gap-3 mt-2">
+          <div className="flex items-center justify-center gap-3 mt-2 relative">
             {isWinningGuess ? (
               <>
-                {/* Show placeholder until slide animation starts */}
-                {!slideCharacter && (
-                  <>
-                    <div className="w-16 h-16 bg-gray-700 rounded flex items-center justify-center">
-                      <span className="text-gray-500 text-xs">?</span>
-                    </div>
-                    <div className="text-lg font-bold text-gray-500">Target Character</div>
-                  </>
-                )}
-                {/* Show character with slide animation */}
+                {/* Placeholder - stays visible and fades out */}
+                <div className="absolute inset-0 flex items-center justify-center gap-3">
+                  <div 
+                    className="w-16 h-16 bg-gray-700 rounded flex items-center justify-center transition-opacity duration-1000"
+                    style={{ opacity: slideCharacter ? 0 : 1 }}
+                  >
+                    <span className="text-gray-500 text-xs">?</span>
+                  </div>
+                  <div 
+                    className="text-lg font-bold text-gray-500 transition-opacity duration-1000"
+                    style={{ opacity: slideCharacter ? 0 : 1 }}
+                  >
+                    Target Character
+                  </div>
+                </div>
+                
+                {/* Character - slides in on top */}
                 {slideCharacter && (
-                  <>
+                  <div className="flex items-center justify-center gap-3">
                     <div 
                       className="w-16 h-16 bg-sw-gray rounded overflow-hidden border-2 border-green-500 animate-slide-left-to-right"
                       style={{ animationDelay: '0s', opacity: 0, animationFillMode: 'forwards' }}
@@ -321,7 +328,15 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
                     >
                       {latestGuess.character.name}
                     </div>
-                  </>
+                  </div>
+                )}
+                
+                {/* Spacer to maintain layout when not sliding in */}
+                {!slideCharacter && (
+                  <div className="flex items-center justify-center gap-3 opacity-0">
+                    <div className="w-16 h-16"></div>
+                    <div className="text-lg font-bold">Placeholder</div>
+                  </div>
                 )}
               </>
             ) : (

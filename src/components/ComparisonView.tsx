@@ -63,6 +63,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
   // This allows tags to transition to confirmed-non-match with proper animation timing
   useEffect(() => {
     if (applyTagTransitions && nextKnowledge) {
+      console.log('[Late Transitions] Triggering applyLateTransitions, applyTagTransitions:', applyTagTransitions, 'nextKnowledge exists:', !!nextKnowledge);
       // Immediately allow late transitions when nextKnowledge appears
       // This ensures displayState switches before knowledge updates, allowing CSS transitions to work
       setApplyLateTransitions(true);
@@ -359,6 +360,14 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
             // Determine what state to display: old state initially, then transition to new state
             const newState = nextTagStates?.[tag] ?? state;
             
+            // Debug logging
+            if (state !== newState && newState === 'confirmed-non-match') {
+              console.log(`[Tag Transition Debug] Tag: ${tag}, Attribute: ${attributeName}`);
+              console.log(`  Current state: ${state}, New state: ${newState}`);
+              console.log(`  applyTagTransitions: ${applyTagTransitions}, applyLateTransitions: ${applyLateTransitions}`);
+              console.log(`  nextTagStates exists: ${!!nextTagStates}`);
+            }
+            
             // For late transitions (exact match cleanup), only apply if applyLateTransitions is true
             // For initial transitions, apply if applyTagTransitions is true
             let displayState = state;
@@ -369,12 +378,14 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
               if (applyLateTransitions) {
                 // Apply late transitions (exact match cleanup)
                 displayState = newState;
+                console.log(`  -> Applying late transition, displayState: ${displayState}`);
               } else if (!applyTagTransitions) {
                 // Before initial cascade completes, show old state
                 displayState = state;
               } else if (newState !== state) {
                 // After initial cascade, if state changed, keep showing old state until late transition
                 displayState = state;
+                console.log(`  -> Waiting for late transition, displayState: ${displayState}`);
               } else {
                 // State hasn't changed, show current state
                 displayState = newState;

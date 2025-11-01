@@ -318,13 +318,16 @@ function App() {
       
       // If we're doing exact match cleanup, we need to trigger transitions properly
       if (hasExactMatchCleanup) {
+        console.log('[Knowledge Update] Exact match cleanup detected, setting nextKnowledge first');
         // First, set nextKnowledge so ComparisonView sees what's about to change
         setNextKnowledge(finalKnowledge);
         // Wait for render, then trigger the actual knowledge update to start CSS transitions
         setTimeout(() => {
+          console.log('[Knowledge Update] Updating knowledge after 50ms');
           setKnowledge(finalKnowledge);
           // Keep nextKnowledge around longer for fade-out detection
           setTimeout(() => {
+            console.log('[Knowledge Update] Clearing nextKnowledge after 1500ms');
             setNextKnowledge(undefined);
           }, 1500); // Keep it for transition (700ms) + fade-out (700ms) + buffer
         }, 50);

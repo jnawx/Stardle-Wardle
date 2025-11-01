@@ -25,24 +25,16 @@ const MEDIA_TYPES = {
 const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, targetCharacter, nextKnowledge, isWinningGuess, isNavigating }: ComparisonViewProps) => {
   const [showGuess, setShowGuess] = useState(false);
   const [slideCharacter, setSlideCharacter] = useState(false);
-  const [applyColorTransitions, setApplyColorTransitions] = useState(false);
 
   // Animation sequence: fade in guess, then slide in new knowledge
   // Use faster animations when navigating between existing guesses
   useEffect(() => {
     setShowGuess(false);
     setSlideCharacter(false);
-    setApplyColorTransitions(false);
     
     // Start guess fade-in immediately (faster for navigation)
     const delay = isNavigating ? 10 : 50;
     const guessTimer = setTimeout(() => setShowGuess(true), delay);
-    
-    // Apply color transitions after new tags have slid in (3.8s)
-    let colorTimer: ReturnType<typeof setTimeout> | undefined;
-    if (!isNavigating && nextKnowledge) {
-      colorTimer = setTimeout(() => setApplyColorTransitions(true), 3800);
-    }
     
     // If winning guess, slide character after cascade completes (2800ms - after all rows fade in)
     let characterTimer: ReturnType<typeof setTimeout> | undefined;
@@ -52,10 +44,9 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     
     return () => {
       clearTimeout(guessTimer);
-      if (colorTimer) clearTimeout(colorTimer);
       if (characterTimer) clearTimeout(characterTimer);
     };
-  }, [latestGuess.timestamp, isWinningGuess, isNavigating, nextKnowledge]);
+  }, [latestGuess.timestamp, isWinningGuess, isNavigating]);
 
   // Helper to check if an item is newly confirmed (will be in nextKnowledge but not current knowledge)
   const isNewlyConfirmed = (attribute: string, item?: string): boolean => {
@@ -264,17 +255,6 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
           .map(([tag, state]) => ({ tag, state }))
       : [];
     
-    // Find tags that changed state (for color transitions, excluding tags fading out)
-    const changedTags = nextTagStates
-      ? Object.entries(tagStates)
-          .filter(([tag, oldState]) => {
-            const newState = nextTagStates[tag];
-            // Changed but NOT becoming confirmed-non-match (those are handled separately)
-            return newState !== undefined && newState !== oldState && newState !== 'confirmed-non-match';
-          })
-          .map(([tag]) => tag)
-      : [];
-    
     // Sort tags chronologically based on attribute type
     const sortTag = (items: { tag: string; state: any }[]) => {
       if (attributeName === 'eras') {
@@ -313,21 +293,23 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     
     const heightClass = getArrayHeight(attributeName);
     
-    const getTagColors = (state: string) => {
+    const getTagStyle = (state: string, isChanging: boolean = false, isFadingOut: boolean = false) => {
+      let baseStyle = "";
       switch (state) {
         case 'confirmed-match':
-          return { bg: 'rgba(34, 197, 94, 0.3)', border: 'rgb(74, 222, 128)' }; // green-500 with opacity
+          baseStyle = "bg-green-500 bg-opacity-30 border-green-400";
+          break;
         case 'unconfirmed':
-          return { bg: 'rgba(234, 179, 8, 0.4)', border: 'rgb(250, 204, 21)' }; // yellow-500 with opacity
+          baseStyle = "bg-yellow-500 bg-opacity-40 border-yellow-400";
+          break;
         case 'confirmed-non-match':
-          return { bg: 'rgb(75, 85, 99)', border: 'rgb(107, 114, 128)' }; // gray-600
+          baseStyle = "bg-gray-600 border-gray-500";
+          break;
         default:
-          return { bg: 'rgb(75, 85, 99)', border: 'rgb(107, 114, 128)' };
+          baseStyle = "bg-gray-600 border-gray-500";
       }
-    };
-    
-    const getTagClassName = (isChanging: boolean = false, isFadingOut: boolean = false) => {
-      // Common styles for all tags (no color classes, those will be inline)
+      
+      // Common styles for all tags
       let commonStyle = "px-1.5 py-0.5 rounded text-xs border h-fit";
       
       // Add transition class for smooth color changes
@@ -343,7 +325,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
         transitionClass += " animate-fade-out";
       }
       
-      return `${commonStyle} ${transitionClass}`;
+      return `${baseStyle} ${commonStyle} ${transitionClass}`;
     };
 
     return (
@@ -351,79 +333,47 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
         <div className="text-sm font-bold opacity-70">{label}</div>
         {/* Fixed height with overflow scroll to accommodate varying content */}
         <div className={`flex flex-wrap gap-1 ${heightClass} overflow-y-auto content-start`}>
-          {/* Show current tags with potential state changes */}
+          {/* Show current tags with smooth CSS transitions for color changes */}
           {sortedCurrentTags.map(({ tag, state }) => {
-            const isChanging = changedTags.includes(tag);
-            const isFadingOut = tagsToFadeOut.includes(tag);
-            const nextState = nextTagStates ? nextTagStates[tag] : state;
+            // Filter out confirmed-non-match after a delay to allow fade animation
+            const shouldShow = state !== 'confirmed-non-match' || tagsToFadeOut.includes(tag);
             
-            // Use current state initially, then switch to nextState when applyColorTransitions is true
-            // For immediate navigation, use nextState directly
-            const displayState = isNavigating ? nextState : (applyColorTransitions ? nextState : state);
-            const colors = getTagColors(displayState);
+            if (!shouldShow) return null;
             
-            // Build inline style for colors and animations (skip animations when navigating)
-            let inlineStyle: React.CSSProperties = {
-              backgroundColor: colors.bg,
-              borderColor: colors.border
-            };
-            
-            if (!isNavigating) {
-              if (isChanging) {
-                inlineStyle.animationDelay = '3.8s';
-                inlineStyle.animationFillMode = 'forwards';
-              } else if (isFadingOut) {
-                inlineStyle.animationDelay = '4.8s';
-                inlineStyle.animationFillMode = 'forwards';
-                inlineStyle.opacity = 1; // Start visible
-              }
-            }
+            const isFadingOut = state === 'confirmed-non-match';
             
             return (
               <div
                 key={`current-${tag}`}
-                className={getTagClassName(isChanging && !isNavigating, isFadingOut && !isNavigating)}
-                style={inlineStyle}
+                className={getTagStyle(state, false, isFadingOut && !isNavigating)}
+                style={isFadingOut && !isNavigating ? {
+                  animationDelay: '0.7s', // Fade out after color transition
+                  animationFillMode: 'forwards'
+                } : undefined}
               >
                 {tag}
               </div>
             );
           })}
           {/* Show new tags with slide animation (skip when navigating) */}
-          {!isNavigating && nextKnowledge && sortedNewTags.map(({ tag, state }) => {
-            const colors = getTagColors(state);
-            return (
-              <div
-                key={`new-${tag}`}
-                className={`${getTagClassName()} animate-slide-left-to-right`}
-                style={{ 
-                  backgroundColor: colors.bg,
-                  borderColor: colors.border,
-                  animationDelay: '2.8s', 
-                  opacity: 0, 
-                  animationFillMode: 'forwards' 
-                }}
-              >
-                {tag}
-              </div>
-            );
-          })}
+          {!isNavigating && nextKnowledge && sortedNewTags.map(({ tag, state }) => (
+            <div
+              key={`new-${tag}`}
+              className={`${getTagStyle(state)} animate-slide-left-to-right`}
+              style={{ animationDelay: '2.8s', opacity: 0, animationFillMode: 'forwards' }}
+            >
+              {tag}
+            </div>
+          ))}
           {/* Show new tags immediately when navigating */}
-          {isNavigating && sortedNewTags.map(({ tag, state }) => {
-            const colors = getTagColors(state);
-            return (
-              <div
-                key={`new-${tag}`}
-                className={getTagClassName()}
-                style={{
-                  backgroundColor: colors.bg,
-                  borderColor: colors.border
-                }}
-              >
-                {tag}
-              </div>
-            );
-          })}
+          {isNavigating && sortedNewTags.map(({ tag, state }) => (
+            <div
+              key={`new-${tag}`}
+              className={getTagStyle(state)}
+            >
+              {tag}
+            </div>
+          ))}
         </div>
       </div>
     );
@@ -452,15 +402,10 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     // Animation duration: faster for navigation (200ms) vs new guess (500ms)
     const animDuration = isNavigating ? '0.2s' : '0.5s';
 
-    // Use key to force React to treat this as a new element only when guess changes
-    // This prevents animations from re-running on other state changes
-    const guessKey = `${latestGuess.timestamp}-${index}`;
-    
     return (
       <div className="grid grid-cols-2 gap-6">
         {/* Left: Guess */}
         <div 
-          key={guessKey}
           className={`${getMatchColor(comparison.match)} px-3 py-1.5 rounded shadow-md transition-all duration-500`}
           style={showGuess ? { 
             animation: `fade-in-down ${animDuration} ease-out forwards`,

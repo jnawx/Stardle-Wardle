@@ -102,13 +102,13 @@ const KnowledgeTracker = ({ knowledge, targetCharacter }: KnowledgeTrackerProps)
       {renderSingleValue('Force User', knowledge.forceUser)}
 
       {/* Array attributes */}
-      {renderArrayValue('Affiliations', knowledge.affiliations, targetCharacter.affiliations)}
-      {renderArrayValue('Eras', knowledge.eras, targetCharacter.eras)}
-      {renderArrayValue('Weapons', knowledge.weapons, targetCharacter.weapons)}
-      {renderArrayValue('Movies', knowledge.movieAppearances, targetCharacter.movieAppearances)}
-      {renderArrayValue('TV Shows', knowledge.tvAppearances, targetCharacter.tvAppearances)}
-      {renderArrayValue('Games', knowledge.gameAppearances, targetCharacter.gameAppearances)}
-      {renderArrayValue('Books/Comics', knowledge.bookComicAppearances, targetCharacter.bookComicAppearances)}
+      {renderArrayValue('Affiliations', Object.keys(knowledge.affiliations).filter(k => knowledge.affiliations[k] === 'confirmed-match'), targetCharacter.affiliations)}
+      {renderArrayValue('Eras', Object.keys(knowledge.eras).filter(k => knowledge.eras[k] === 'confirmed-match'), targetCharacter.eras)}
+      {renderArrayValue('Weapons', Object.keys(knowledge.weapons).filter(k => knowledge.weapons[k] === 'confirmed-match'), targetCharacter.weapons)}
+      {renderArrayValue('Movies', Object.keys(knowledge.movieAppearances).filter(k => knowledge.movieAppearances[k] === 'confirmed-match'), targetCharacter.movieAppearances)}
+      {renderArrayValue('TV Shows', Object.keys(knowledge.tvAppearances).filter(k => knowledge.tvAppearances[k] === 'confirmed-match'), targetCharacter.tvAppearances)}
+      {renderArrayValue('Games', Object.keys(knowledge.gameAppearances).filter(k => knowledge.gameAppearances[k] === 'confirmed-match'), targetCharacter.gameAppearances)}
+      {renderArrayValue('Books/Comics', Object.keys(knowledge.bookComicAppearances).filter(k => knowledge.bookComicAppearances[k] === 'confirmed-match'), targetCharacter.bookComicAppearances)}
     </div>
   );
 };

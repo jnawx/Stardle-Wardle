@@ -207,14 +207,9 @@ function App() {
           }
           (newKnowledge as any)[exactFlagKey] = true;
           
-          // Mark all unguessed or unconfirmed tags as confirmed-non-match
-          // since we now know the complete set
-          Object.keys(tagStates).forEach(tag => {
-            const state = tagStates[tag];
-            if (state === 'unguessed' || state === 'unconfirmed') {
-              tagStates[tag] = 'confirmed-non-match';
-            }
-          });
+          // NOTE: We DON'T mark unguessed/unconfirmed tags as confirmed-non-match here
+          // because we want the animations to play first. This will be done after
+          // the animation delay when we apply the knowledge state.
         } else if (comp.match === 'none') {
           // No matches: mark all guessed items as confirmed-non-match
           if (Array.isArray(comp.value)) {
@@ -276,7 +271,30 @@ function App() {
     
     // Delay knowledge update until after cascade and slide complete (2800ms cascade + 1000ms slide)
     const knowledgeTimer = setTimeout(() => {
-      setKnowledge(newKnowledge);
+      // Before applying, mark any unguessed/unconfirmed tags as non-matches for exact matches
+      const finalKnowledge = { ...newKnowledge };
+      
+      // Process each array attribute to clean up after exact matches
+      const arrayAttributes = ['affiliations', 'eras', 'weapons', 'movieAppearances', 
+                               'tvAppearances', 'gameAppearances', 'bookComicAppearances'];
+      
+      arrayAttributes.forEach(attr => {
+        const exactFlagKey = `${attr}Exact` as keyof AccumulatedKnowledge;
+        const isExact = finalKnowledge[exactFlagKey] as boolean;
+        
+        if (isExact) {
+          const tagStates = finalKnowledge[attr as keyof AccumulatedKnowledge] as any;
+          // Mark all unguessed or unconfirmed tags as confirmed-non-match
+          Object.keys(tagStates).forEach(tag => {
+            const state = tagStates[tag];
+            if (state === 'unguessed' || state === 'unconfirmed') {
+              tagStates[tag] = 'confirmed-non-match';
+            }
+          });
+        }
+      });
+      
+      setKnowledge(finalKnowledge);
       setNextKnowledge(undefined);
       setPendingKnowledgeTimer(null);
     }, 3900);

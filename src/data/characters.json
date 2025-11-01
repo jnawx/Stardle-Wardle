@@ -2112,7 +2112,7 @@
     "affiliations": ["Galactic Republic (Military)"],
     "eras": ["The Galactic Republic", "The Galactic Empire"],
     "weapons": ["Ranged (Blaster)"],
-    "forceUser": true,
+    "forceUser": false,
     "speaksBasic": true,
     "quoteHint": "It's not about that. It's about fighting for our brothers.",
     "masterHint": "Clone trooper thought dead at the Citadel, rescued and enhanced with cybernetics, joined Clone Force 99.",

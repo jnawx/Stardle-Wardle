@@ -198,6 +198,9 @@ function App() {
         const tagStates = newKnowledge[comp.attribute];
         const exactFlagKey = `${comp.attribute}Exact` as keyof AccumulatedKnowledge;
         
+        // Check if we already found the exact match in a previous guess
+        const alreadyFoundExact = baseKnowledge[exactFlagKey] as boolean;
+        
         if (comp.match === 'exact' && comp.isCompleteSet) {
           // Exact match: mark all guessed items as confirmed-match
           if (comp.matchedItems) {
@@ -210,6 +213,17 @@ function App() {
           // NOTE: We DON'T mark unguessed/unconfirmed tags as confirmed-non-match here
           // because we want the animations to play first. This will be done after
           // the animation delay when we apply the knowledge state.
+        } else if (alreadyFoundExact) {
+          // If we already found exact match previously, any tag we haven't seen must be a non-match
+          const guessedTags = Array.isArray(comp.value) ? comp.value as string[] : [];
+          guessedTags.forEach(tag => {
+            const currentState = tagStates[tag];
+            // If tag is not in our knowledge yet, or is unconfirmed, mark it as non-match
+            // (confirmed-match tags were already set when we found the exact match)
+            if (!currentState || currentState === 'unguessed' || currentState === 'unconfirmed') {
+              tagStates[tag] = 'confirmed-non-match';
+            }
+          });
         } else if (comp.match === 'none') {
           // No matches: mark all guessed items as confirmed-non-match
           if (Array.isArray(comp.value)) {
@@ -227,6 +241,12 @@ function App() {
             
             // If already confirmed, don't change
             if (currentState === 'confirmed-match' || currentState === 'confirmed-non-match') {
+              return;
+            }
+            
+            // If we already found the exact match, any new tag must be a non-match
+            if (alreadyFoundExact) {
+              tagStates[tag] = 'confirmed-non-match';
               return;
             }
             

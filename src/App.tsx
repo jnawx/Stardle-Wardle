@@ -416,7 +416,7 @@ function App() {
                 targetCharacter={targetCharacter}
                 nextKnowledge={selectedGuessIndex === 0 ? nextKnowledge : undefined}
                 isWinningGuess={isWon && selectedGuessIndex === 0}
-                isNavigating={isNavigatingGuesses && selectedGuessIndex !== 0}
+                isNavigating={isNavigatingGuesses}
               />
             </div>
           )}
@@ -451,7 +451,8 @@ function App() {
                       <button
                         key={guess.timestamp}
                         onClick={() => {
-                          setIsNavigatingGuesses(index !== 0); // Not navigating if selecting the latest guess
+                          // Set navigating to true if clicking a different guess than currently selected
+                          setIsNavigatingGuesses(index !== selectedGuessIndex);
                           setSelectedGuessIndex(index);
                         }}
                         className={`flex-shrink-0 flex flex-col items-center gap-1 p-2 rounded-lg transition-all relative ${

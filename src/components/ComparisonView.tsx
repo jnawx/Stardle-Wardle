@@ -25,27 +25,44 @@ const MEDIA_TYPES = {
 const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, targetCharacter, nextKnowledge, isWinningGuess, isNavigating }: ComparisonViewProps) => {
   const [showGuess, setShowGuess] = useState(false);
   const [slideCharacter, setSlideCharacter] = useState(false);
+  const [isFadingOut, setIsFadingOut] = useState(false);
 
-  // Animation sequence: fade in guess, then slide in new knowledge
-  // Use faster animations when navigating between existing guesses
+  // Animation sequence: 
+  // - New guess: fade in with cascade
+  // - Navigation: fade out, then fade in (no cascade)
   useEffect(() => {
-    setShowGuess(false);
-    setSlideCharacter(false);
-    
-    // Start guess fade-in immediately (faster for navigation)
-    const delay = isNavigating ? 10 : 50;
-    const guessTimer = setTimeout(() => setShowGuess(true), delay);
-    
-    // If winning guess, slide character after cascade completes (2800ms - after all rows fade in)
-    let characterTimer: ReturnType<typeof setTimeout> | undefined;
-    if (isWinningGuess && !isNavigating) {
-      characterTimer = setTimeout(() => setSlideCharacter(true), 2800);
+    if (isNavigating) {
+      // When navigating, do a quick fade out/in
+      setIsFadingOut(true);
+      setShowGuess(false);
+      
+      // After brief fade out, fade back in
+      const fadeOutTimer = setTimeout(() => {
+        setIsFadingOut(false);
+        setShowGuess(true);
+      }, 100); // 100ms fade out
+      
+      return () => clearTimeout(fadeOutTimer);
+    } else {
+      // For new guesses, normal cascade animation
+      setIsFadingOut(false);
+      setShowGuess(false);
+      setSlideCharacter(false);
+      
+      // Start guess fade-in
+      const guessTimer = setTimeout(() => setShowGuess(true), 50);
+      
+      // If winning guess, slide character after cascade completes
+      let characterTimer: ReturnType<typeof setTimeout> | undefined;
+      if (isWinningGuess) {
+        characterTimer = setTimeout(() => setSlideCharacter(true), 2800);
+      }
+      
+      return () => {
+        clearTimeout(guessTimer);
+        if (characterTimer) clearTimeout(characterTimer);
+      };
     }
-    
-    return () => {
-      clearTimeout(guessTimer);
-      if (characterTimer) clearTimeout(characterTimer);
-    };
   }, [latestGuess.timestamp, isWinningGuess, isNavigating]);
 
   // Helper to check if an item is newly confirmed (will be in nextKnowledge but not current knowledge)
@@ -402,16 +419,24 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     const animDuration = isNavigating ? '0.15s' : '0.5s';
     const animName = isNavigating ? 'fade-in' : 'fade-in-down';
 
+    // Handle opacity for fade out/in during navigation
+    let rowOpacity: number | undefined = undefined;
+    if (isFadingOut) {
+      rowOpacity = 0;
+    } else if (!showGuess) {
+      rowOpacity = 0;
+    }
+
     return (
       <div className="grid grid-cols-2 gap-6">
         {/* Left: Guess */}
         <div 
-          className={`${getMatchColor(comparison.match)} px-3 py-1.5 rounded shadow-md transition-all duration-500`}
-          style={showGuess ? { 
+          className={`${getMatchColor(comparison.match)} px-3 py-1.5 rounded shadow-md transition-opacity duration-100`}
+          style={showGuess && !isFadingOut ? { 
             animation: `${animName} ${animDuration} ease-out forwards`,
             animationDelay: `${delay}ms`,
             opacity: 0
-          } : { opacity: 0 }}
+          } : { opacity: rowOpacity ?? 0 }}
         >
           {renderGuessArrayCell(comparison, label)}
         </div>
@@ -428,7 +453,10 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     <div className="space-y-2">
       {/* Headers */}
       <div className="grid grid-cols-2 gap-6 mb-4">
-        <div className={showGuess ? (isNavigating ? 'animate-fade-in' : 'animate-fade-in-down') : 'opacity-0'}>
+        <div 
+          className={`transition-opacity duration-100 ${!isFadingOut && showGuess ? (isNavigating ? 'animate-fade-in' : 'animate-fade-in-down') : ''}`}
+          style={{ opacity: isFadingOut || !showGuess ? 0 : 1 }}
+        >
           <h3 className="text-lg font-bold text-white text-center">
             Guess #{guessNumber} {totalGuesses > 1 && <span className="text-sm opacity-70">of {totalGuesses}</span>}
           </h3>

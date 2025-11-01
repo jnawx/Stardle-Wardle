@@ -456,12 +456,12 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
       <div className="grid grid-cols-2 gap-6">
         {/* Left: Guess */}
         <div 
-          className={`${getMatchColor(comparison.match)} px-3 py-1.5 rounded shadow-md transition-all duration-500`}
-          style={showGuess ? { 
-            animation: `fade-in-down ${animDuration} ease-out forwards`,
+          className={`${getMatchColor(comparison.match)} px-3 py-1.5 rounded shadow-md transition-all duration-500 ${showGuess ? 'animate-fade-in-down' : ''}`}
+          style={{ 
             animationDelay: `${delay}ms`,
-            opacity: 0
-          } : { opacity: 0 }}
+            animationDuration: animDuration,
+            opacity: showGuess ? undefined : 0
+          }}
         >
           {renderGuessArrayCell(comparison, label)}
         </div>

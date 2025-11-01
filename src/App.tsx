@@ -5,7 +5,7 @@ import ComparisonView from './components/ComparisonView';
 import WinModal from './components/WinModal2';
 import StatsModal from './components/StatsModal';
 import Hints from './components/Hints';
-import type { Character, Guess, AccumulatedKnowledge } from './types/character';
+import type { Character, Guess, AccumulatedKnowledge, TagKnowledgeState } from './types/character';
 import { compareCharacters, getDailyCharacter, getRandomCharacter, getYesterdaysDailyCharacter } from './utils/gameLogic';
 import { getStats, saveStats, updateStatsAfterWin } from './utils/stats';
 import { getMillisecondsUntilMidnight, formatTimeRemaining } from './utils/timeUtils';
@@ -29,16 +29,24 @@ function App() {
   const [showStats, setShowStats] = useState(false);
   const [stats, setStats] = useState(getStats());
   const [knowledge, setKnowledge] = useState<AccumulatedKnowledge>({
-    affiliations: [],
-    eras: [],
-    weapons: [],
-    movieAppearances: [],
-    tvAppearances: [],
-    gameAppearances: [],
-    bookComicAppearances: [],
+    affiliations: {},
+    eras: {},
+    weapons: {},
+    movieAppearances: {},
+    tvAppearances: {},
+    gameAppearances: {},
+    bookComicAppearances: {},
+    affiliationsExact: false,
+    erasExact: false,
+    weaponsExact: false,
+    movieAppearancesExact: false,
+    tvAppearancesExact: false,
+    gameAppearancesExact: false,
+    bookComicAppearancesExact: false,
   });
   const [nextKnowledge, setNextKnowledge] = useState<AccumulatedKnowledge | undefined>(undefined);
   const [selectedGuessIndex, setSelectedGuessIndex] = useState(0); // Index of guess to display (0 = latest)
+  const [isNavigatingGuesses, setIsNavigatingGuesses] = useState(false); // True when switching between old guesses
   const [quoteHintUsed, setQuoteHintUsed] = useState(false);
   const [masterHintUsed, setMasterHintUsed] = useState(false);
   const [pendingKnowledgeTimer, setPendingKnowledgeTimer] = useState<ReturnType<typeof setTimeout> | null>(null);
@@ -76,13 +84,20 @@ function App() {
     setMasterHintUsed(false);
     setSelectedGuessIndex(0);
     setKnowledge({
-      affiliations: [],
-      eras: [],
-      weapons: [],
-      movieAppearances: [],
-      tvAppearances: [],
-      gameAppearances: [],
-      bookComicAppearances: [],
+      affiliations: {},
+      eras: {},
+      weapons: {},
+      movieAppearances: {},
+      tvAppearances: {},
+      gameAppearances: {},
+      bookComicAppearances: {},
+      affiliationsExact: false,
+      erasExact: false,
+      weaponsExact: false,
+      movieAppearancesExact: false,
+      tvAppearancesExact: false,
+      gameAppearancesExact: false,
+      bookComicAppearancesExact: false,
     });
     setNextKnowledge(undefined);
     
@@ -124,6 +139,9 @@ function App() {
       return;
     }
 
+    // Reset navigation flag when making a new guess
+    setIsNavigatingGuesses(false);
+
     const comparisons = compareCharacters(character, targetCharacter);
     const newGuess: Guess = {
       character,
@@ -149,7 +167,17 @@ function App() {
     }
 
     // Calculate new accumulated knowledge based on this guess (using baseKnowledge)
-    const newKnowledge = { ...baseKnowledge };
+    const newKnowledge: AccumulatedKnowledge = {
+      ...baseKnowledge,
+      affiliations: { ...baseKnowledge.affiliations },
+      eras: { ...baseKnowledge.eras },
+      weapons: { ...baseKnowledge.weapons },
+      movieAppearances: { ...baseKnowledge.movieAppearances },
+      tvAppearances: { ...baseKnowledge.tvAppearances },
+      gameAppearances: { ...baseKnowledge.gameAppearances },
+      bookComicAppearances: { ...baseKnowledge.bookComicAppearances },
+    };
+    
     comparisons.forEach(comp => {
       if (comp.match === 'exact') {
         // Single-value attributes
@@ -162,17 +190,137 @@ function App() {
         else if (comp.attribute === 'speaksBasic') newKnowledge.speaksBasic = comp.value as boolean;
       }
       
-      // Array attributes: add matched items
-      if (comp.matchedItems && comp.matchedItems.length > 0) {
-        const arrayAttr = comp.attribute as keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookComicAppearances'>;
-        const existingItems = new Set(newKnowledge[arrayAttr]);
-        comp.matchedItems.forEach(item => existingItems.add(item));
-        newKnowledge[arrayAttr] = Array.from(existingItems);
+      // Array attributes: update tag states based on match type
+      if (comp.attribute === 'affiliations' || comp.attribute === 'eras' || comp.attribute === 'weapons' ||
+          comp.attribute === 'movieAppearances' || comp.attribute === 'tvAppearances' || 
+          comp.attribute === 'gameAppearances' || comp.attribute === 'bookComicAppearances') {
+        
+        const tagStates = newKnowledge[comp.attribute];
+        const exactFlagKey = `${comp.attribute}Exact` as keyof AccumulatedKnowledge;
+        
+        // Check if we already found the exact match in a previous guess
+        const alreadyFoundExact = baseKnowledge[exactFlagKey] as boolean;
+        
+        if (comp.match === 'exact' && comp.isCompleteSet) {
+          // Exact match: mark all guessed items as confirmed-match
+          if (comp.matchedItems) {
+            comp.matchedItems.forEach(item => {
+              tagStates[item] = 'confirmed-match';
+            });
+          }
+          (newKnowledge as any)[exactFlagKey] = true;
+          
+          // NOTE: We DON'T mark unguessed/unconfirmed tags as confirmed-non-match here
+          // because we want the animations to play first. This will be done after
+          // the animation delay when we apply the knowledge state.
+        } else if (alreadyFoundExact) {
+          // If we already found exact match previously, any tag we haven't seen must be a non-match
+          const guessedTags = Array.isArray(comp.value) ? comp.value as string[] : [];
+          guessedTags.forEach(tag => {
+            const currentState = tagStates[tag];
+            // If tag is not in our knowledge yet, or is unconfirmed, mark it as non-match
+            // (confirmed-match tags were already set when we found the exact match)
+            if (!currentState || currentState === 'unguessed' || currentState === 'unconfirmed') {
+              tagStates[tag] = 'confirmed-non-match';
+            }
+          });
+        } else if (comp.match === 'none') {
+          // No matches: mark all guessed items as confirmed-non-match
+          if (Array.isArray(comp.value)) {
+            (comp.value as string[]).forEach(item => {
+              tagStates[item] = 'confirmed-non-match';
+            });
+          }
+        } else if (comp.match === 'partial') {
+          // Partial match: complex logic for unconfirmed tags
+          const guessedTags = comp.value as string[];
+          
+          // First, mark all newly guessed tags as unconfirmed (unless already confirmed)
+          guessedTags.forEach(tag => {
+            const currentState = tagStates[tag] || 'unguessed';
+            
+            // If already confirmed, don't change
+            if (currentState === 'confirmed-match' || currentState === 'confirmed-non-match') {
+              return;
+            }
+            
+            // If we already found the exact match, any new tag must be a non-match
+            if (alreadyFoundExact) {
+              tagStates[tag] = 'confirmed-non-match';
+              return;
+            }
+            
+            // Mark as unconfirmed (we can't tell which matched in a partial match)
+            tagStates[tag] = 'unconfirmed';
+          });
+          
+          // Smart inference: Try to deduce which tags are matches
+          const unconfirmedTags = guessedTags.filter(tag => tagStates[tag] === 'unconfirmed');
+          const matchedCount = (comp.matchedItems?.length || 0);
+          
+          // Single-tag deduction: If only ONE unconfirmed tag in this guess and it's a partial match,
+          // and all OTHER tags in this guess are confirmed non-matches, then this tag must be the match
+          if (unconfirmedTags.length === 1 && matchedCount > 0) {
+            // Check if all other guessed tags are confirmed non-matches
+            const allOthersAreNonMatches = guessedTags.filter(t => t !== unconfirmedTags[0])
+              .every(t => tagStates[t] === 'confirmed-non-match');
+            
+            if (allOthersAreNonMatches) {
+              // This single unconfirmed tag must be the match
+              tagStates[unconfirmedTags[0]] = 'confirmed-match';
+            }
+          }
+        }
+      }
+    });
+    
+    // Auto-confirm: If all target tags are individually confirmed as matches, mark category as exact
+    const arrayAttributes = ['affiliations', 'eras', 'weapons', 'movieAppearances', 
+                             'tvAppearances', 'gameAppearances', 'bookComicAppearances'];
+    
+    arrayAttributes.forEach(attr => {
+      const targetTags = targetCharacter[attr as keyof Character] as string[] | undefined;
+      if (!targetTags || targetTags.length === 0) return;
+      
+      const tagStates = newKnowledge[attr as keyof AccumulatedKnowledge] as any;
+      const exactFlagKey = `${attr}Exact` as keyof AccumulatedKnowledge;
+      const alreadyExact = newKnowledge[exactFlagKey] as boolean;
+      
+      if (alreadyExact) return; // Already marked as exact
+      
+      // Check if ALL target tags are confirmed as matches
+      const allTargetTagsConfirmed = targetTags.every(tag => tagStates[tag] === 'confirmed-match');
+      
+      if (allTargetTagsConfirmed) {
+        console.log(`[Auto-confirm] All ${attr} tags individually confirmed, marking as exact match`);
+        // Mark category as exact
+        (newKnowledge as any)[exactFlagKey] = true;
+        
+        // Mark any other known tags as confirmed-non-match
+        Object.keys(tagStates).forEach(tag => {
+          if (tagStates[tag] !== 'confirmed-match' && tagStates[tag] !== 'confirmed-non-match') {
+            tagStates[tag] = 'confirmed-non-match';
+          }
+        });
       }
     });
     
     // Store next knowledge for comparison but don't display it yet
     setNextKnowledge(newKnowledge);
+
+    // Create a snapshot of tag states for this guess (before exact match cleanup)
+    const tagStatesSnapshot = {
+      affiliations: { ...newKnowledge.affiliations } as TagKnowledgeState,
+      eras: { ...newKnowledge.eras } as TagKnowledgeState,
+      weapons: { ...newKnowledge.weapons } as TagKnowledgeState,
+      movieAppearances: { ...newKnowledge.movieAppearances } as TagKnowledgeState,
+      tvAppearances: { ...newKnowledge.tvAppearances } as TagKnowledgeState,
+      gameAppearances: { ...newKnowledge.gameAppearances } as TagKnowledgeState,
+      bookComicAppearances: { ...newKnowledge.bookComicAppearances } as TagKnowledgeState,
+    };
+    
+    // Attach snapshot to the guess
+    newGuess.tagStatesSnapshot = tagStatesSnapshot;
 
     // Add new guess to the beginning of the array (most recent on top)
     setGuesses([newGuess, ...guesses]);
@@ -184,8 +332,51 @@ function App() {
     
     // Delay knowledge update until after cascade and slide complete (2800ms cascade + 1000ms slide)
     const knowledgeTimer = setTimeout(() => {
-      setKnowledge(newKnowledge);
-      setNextKnowledge(undefined);
+      // Before applying, mark any unguessed/unconfirmed tags as non-matches for exact matches
+      const finalKnowledge = { ...newKnowledge };
+      let hasExactMatchCleanup = false;
+      
+      // Process each array attribute to clean up after exact matches
+      const arrayAttributes = ['affiliations', 'eras', 'weapons', 'movieAppearances', 
+                               'tvAppearances', 'gameAppearances', 'bookComicAppearances'];
+      
+      arrayAttributes.forEach(attr => {
+        const exactFlagKey = `${attr}Exact` as keyof AccumulatedKnowledge;
+        const isExact = finalKnowledge[exactFlagKey] as boolean;
+        
+        if (isExact) {
+          const tagStates = finalKnowledge[attr as keyof AccumulatedKnowledge] as any;
+          // Mark all unguessed or unconfirmed tags as confirmed-non-match
+          Object.keys(tagStates).forEach(tag => {
+            const state = tagStates[tag];
+            if (state === 'unguessed' || state === 'unconfirmed') {
+              tagStates[tag] = 'confirmed-non-match';
+              hasExactMatchCleanup = true;
+            }
+          });
+        }
+      });
+      
+      // If we're doing exact match cleanup, we need to trigger transitions properly
+      if (hasExactMatchCleanup) {
+        console.log('[Knowledge Update] Exact match cleanup detected, setting nextKnowledge first');
+        // First, set nextKnowledge so ComparisonView sees what's about to change
+        setNextKnowledge(finalKnowledge);
+        // Wait for render, then trigger the actual knowledge update to start CSS transitions
+        setTimeout(() => {
+          console.log('[Knowledge Update] Updating knowledge after 50ms');
+          setKnowledge(finalKnowledge);
+          // Keep nextKnowledge around longer for fade-out detection
+          setTimeout(() => {
+            console.log('[Knowledge Update] Clearing nextKnowledge after 1500ms');
+            setNextKnowledge(undefined);
+          }, 1500); // Keep it for transition (700ms) + fade-out (700ms) + buffer
+        }, 50);
+      } else {
+        // No exact match cleanup needed, just update normally
+        setKnowledge(finalKnowledge);
+        setNextKnowledge(undefined);
+      }
       setPendingKnowledgeTimer(null);
     }, 3900);
     setPendingKnowledgeTimer(knowledgeTimer);
@@ -193,11 +384,11 @@ function App() {
     // Check if won - delay modal appearance with smooth slide in
     if (isCorrect) {
       setIsWon(true);
-      // Delay win modal until after all animations complete (extra 500ms for breathing room)
+      // Delay win modal until after all animations complete (extra time for user to enjoy the win)
       const winTimer = setTimeout(() => {
         setShowWinModal(true);
         setPendingWinTimer(null);
-      }, 4500);
+      }, 6000);
       setPendingWinTimer(winTimer);
     }
   };
@@ -231,14 +422,16 @@ function App() {
               )}
               
               {/* Search Bar */}
-              <div className="flex-1">
-                <CharacterSearch
-                  characters={characters}
-                  onSelectCharacter={handleGuess}
-                  disabled={isWon}
-                  guessedCharacterIds={guesses.map(g => g.character.id)}
-                />
-              </div>
+              {!showWinModal && (
+                <div className="flex-1">
+                  <CharacterSearch
+                    characters={characters}
+                    onSelectCharacter={handleGuess}
+                    disabled={isWon}
+                    guessedCharacterIds={guesses.map(g => g.character.id)}
+                  />
+                </div>
+              )}
               
               {/* Spacer for visual balance */}
               <div className="w-[88px]"></div>
@@ -286,6 +479,8 @@ function App() {
                 targetCharacter={targetCharacter}
                 nextKnowledge={selectedGuessIndex === 0 ? nextKnowledge : undefined}
                 isWinningGuess={isWon && selectedGuessIndex === 0}
+                isNavigating={isNavigatingGuesses}
+                previousGuess={selectedGuessIndex < guesses.length - 1 ? guesses[selectedGuessIndex + 1] : undefined}
               />
             </div>
           )}
@@ -319,7 +514,13 @@ function App() {
                     {guesses.map((guess, index) => (
                       <button
                         key={guess.timestamp}
-                        onClick={() => setSelectedGuessIndex(index)}
+                        onClick={() => {
+                          // Only trigger animation if clicking a different guess
+                          if (index !== selectedGuessIndex) {
+                            setIsNavigatingGuesses(true);
+                            setSelectedGuessIndex(index);
+                          }
+                        }}
                         className={`flex-shrink-0 flex flex-col items-center gap-1 p-2 rounded-lg transition-all relative ${
                           selectedGuessIndex === index
                             ? 'bg-sw-yellow text-black scale-105 shadow-lg'

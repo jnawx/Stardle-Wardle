@@ -442,7 +442,7 @@
     "affiliations": ["Jedi Order", "Sith"],
     "eras": ["The High Republic"],
     "weapons": ["Melee (Lightsaber)"],
-    "forceUser": false,
+    "forceUser": true,
     "speaksBasic": true,
     "quoteHint": "I have no name. But the Jedi like you might call me… Sith.",
     "masterHint": "A Sith Lord who was trained by Darth Plagueis during the High Republic era. He eventually tried to take on his own apprentice.",
@@ -1718,8 +1718,7 @@
     ],
     "eras": [
       "The Galactic Republic",
-      "The Galactic Empire",
-      "The New Republic"
+      "The Galactic Empire"
     ],
     "weapons": ["None"],
     "forceUser": false,
@@ -2112,7 +2111,7 @@
     "affiliations": ["Galactic Republic (Military)"],
     "eras": ["The Galactic Republic", "The Galactic Empire"],
     "weapons": ["Ranged (Blaster)"],
-    "forceUser": true,
+    "forceUser": false,
     "speaksBasic": true,
     "quoteHint": "It's not about that. It's about fighting for our brothers.",
     "masterHint": "Clone trooper thought dead at the Citadel, rescued and enhanced with cybernetics, joined Clone Force 99.",

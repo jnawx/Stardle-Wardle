@@ -63,13 +63,9 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
   // This allows tags to transition to confirmed-non-match with proper animation timing
   useEffect(() => {
     if (applyTagTransitions && nextKnowledge) {
-      // Reset late transitions flag when nextKnowledge appears
-      setApplyLateTransitions(false);
-      // After a brief moment, allow the late transitions to apply
-      const lateTimer = setTimeout(() => {
-        setApplyLateTransitions(true);
-      }, 50);
-      return () => clearTimeout(lateTimer);
+      // Immediately allow late transitions when nextKnowledge appears
+      // This ensures displayState switches before knowledge updates, allowing CSS transitions to work
+      setApplyLateTransitions(true);
     }
   }, [nextKnowledge, applyTagTransitions]);
 

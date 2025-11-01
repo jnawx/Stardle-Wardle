@@ -293,6 +293,7 @@ function App() {
     const knowledgeTimer = setTimeout(() => {
       // Before applying, mark any unguessed/unconfirmed tags as non-matches for exact matches
       const finalKnowledge = { ...newKnowledge };
+      let hasExactMatchCleanup = false;
       
       // Process each array attribute to clean up after exact matches
       const arrayAttributes = ['affiliations', 'eras', 'weapons', 'movieAppearances', 
@@ -309,18 +310,29 @@ function App() {
             const state = tagStates[tag];
             if (state === 'unguessed' || state === 'unconfirmed') {
               tagStates[tag] = 'confirmed-non-match';
+              hasExactMatchCleanup = true;
             }
           });
         }
       });
       
-      // Update nextKnowledge FIRST so ComparisonView can detect the transition
-      setNextKnowledge(finalKnowledge);
-      // Then update knowledge after a brief moment to trigger the transition
-      setTimeout(() => {
+      // If we're doing exact match cleanup, we need to trigger transitions properly
+      if (hasExactMatchCleanup) {
+        // First, set nextKnowledge so ComparisonView sees what's about to change
+        setNextKnowledge(finalKnowledge);
+        // Wait for render, then trigger the actual knowledge update to start CSS transitions
+        setTimeout(() => {
+          setKnowledge(finalKnowledge);
+          // Keep nextKnowledge around longer for fade-out detection
+          setTimeout(() => {
+            setNextKnowledge(undefined);
+          }, 1500); // Keep it for transition (700ms) + fade-out (700ms) + buffer
+        }, 50);
+      } else {
+        // No exact match cleanup needed, just update normally
         setKnowledge(finalKnowledge);
         setNextKnowledge(undefined);
-      }, 50);
+      }
       setPendingKnowledgeTimer(null);
     }, 3900);
     setPendingKnowledgeTimer(knowledgeTimer);

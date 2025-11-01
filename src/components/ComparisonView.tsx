@@ -26,6 +26,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
   const [showGuess, setShowGuess] = useState(false);
   const [slideCharacter, setSlideCharacter] = useState(false);
   const [applyTagTransitions, setApplyTagTransitions] = useState(false);
+  const [applyLateTransitions, setApplyLateTransitions] = useState(false);
 
   // Animation sequence: 
   // - New guess: fade in with slow cascade (2.8s)
@@ -34,6 +35,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     setShowGuess(false);
     setSlideCharacter(false);
     setApplyTagTransitions(false);
+    setApplyLateTransitions(false);
     
     // Start guess fade-in
     const guessTimer = setTimeout(() => setShowGuess(true), 50);
@@ -57,14 +59,19 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     };
   }, [latestGuess.timestamp, isWinningGuess, isNavigating]);
 
-  // Watch for knowledge updates after initial render (e.g., when exact match cleanup happens)
-  // This allows tags to transition to confirmed-non-match after the delayed knowledge update
+  // Watch for late knowledge updates (e.g., when exact match cleanup happens after initial transitions)
+  // This allows tags to transition to confirmed-non-match with proper animation timing
   useEffect(() => {
-    if (applyTagTransitions) {
-      // Force a re-render to pick up new knowledge state changes
-      // (React will automatically detect the knowledge prop change and re-render)
+    if (applyTagTransitions && nextKnowledge) {
+      // Reset late transitions flag when nextKnowledge appears
+      setApplyLateTransitions(false);
+      // After a brief moment, allow the late transitions to apply
+      const lateTimer = setTimeout(() => {
+        setApplyLateTransitions(true);
+      }, 50);
+      return () => clearTimeout(lateTimer);
     }
-  }, [knowledge, applyTagTransitions]);
+  }, [nextKnowledge, applyTagTransitions]);
 
   // Helper to check if an item is newly confirmed (will be in nextKnowledge but not current knowledge)
   const isNewlyConfirmed = (attribute: string, item?: string): boolean => {
@@ -355,7 +362,31 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
           {sortedCurrentTags.map(({ tag, state }) => {
             // Determine what state to display: old state initially, then transition to new state
             const newState = nextTagStates?.[tag] ?? state;
-            const displayState = (applyTagTransitions || isNavigating) ? newState : state;
+            
+            // For late transitions (exact match cleanup), only apply if applyLateTransitions is true
+            // For initial transitions, apply if applyTagTransitions is true
+            let displayState = state;
+            if (isNavigating) {
+              displayState = newState;
+            } else if (nextTagStates && nextTagStates[tag] !== undefined) {
+              // This tag has a next state in nextKnowledge
+              if (applyLateTransitions) {
+                // Apply late transitions (exact match cleanup)
+                displayState = newState;
+              } else if (!applyTagTransitions) {
+                // Before initial cascade completes, show old state
+                displayState = state;
+              } else if (newState !== state) {
+                // After initial cascade, if state changed, keep showing old state until late transition
+                displayState = state;
+              } else {
+                // State hasn't changed, show current state
+                displayState = newState;
+              }
+            } else if (applyTagTransitions) {
+              // No next state, and initial transitions done, show current state
+              displayState = state;
+            }
             
             // Filter out confirmed-non-match after a delay to allow fade animation
             const shouldShow = displayState !== 'confirmed-non-match' || tagsToFadeOut.includes(tag);
@@ -365,7 +396,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
             const isFadingOut = displayState === 'confirmed-non-match';
             
             // Check if this tag's state changed (for pulse animation)
-            const isChanging = !isNavigating && applyTagTransitions && state !== newState && !isFadingOut;
+            const isChanging = !isNavigating && (applyTagTransitions || applyLateTransitions) && state !== newState && !isFadingOut;
             
             return (
               <div

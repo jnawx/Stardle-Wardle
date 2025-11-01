@@ -246,7 +246,11 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
         // Otherwise, filter out confirmed-non-match
         return state !== 'confirmed-non-match' && (!isExactMatch || state === 'confirmed-match');
       })
-      .map(([tag, state]) => ({ tag, state }));
+      .map(([tag, state]) => {
+        // Use nextKnowledge state if available for smooth transitions
+        const displayState = nextTagStates?.[tag] ?? state;
+        return { tag, state: displayState };
+      });
     
     // Find new tags from next state (excluding confirmed-non-match)
     const newTags = nextTagStates 
@@ -342,10 +346,14 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
             
             const isFadingOut = state === 'confirmed-non-match';
             
+            // Check if this tag's state changed (for pulse animation)
+            const oldState = tagStates[tag];
+            const isChanging = !isNavigating && nextTagStates && oldState !== state && !isFadingOut;
+            
             return (
               <div
                 key={`current-${tag}`}
-                className={getTagStyle(state, false, isFadingOut && !isNavigating)}
+                className={getTagStyle(state, isChanging || false, isFadingOut && !isNavigating)}
                 style={isFadingOut && !isNavigating ? {
                   animationDelay: '0.7s', // Fade out after color transition
                   animationFillMode: 'forwards'

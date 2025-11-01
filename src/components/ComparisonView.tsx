@@ -495,7 +495,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     
     // Count visible tags (not confirmed-non-match) for both current and previous states
     const visibleTags = Object.values(tagStates).filter(state => state !== 'confirmed-non-match').length;
-    const prevVisibleTags = prevTagStates ? Object.values(prevTagStates).filter(state => state !== 'confirmed-non-match').length : visibleTags;
+    const prevVisibleTags = prevTagStates ? Object.values(prevTagStates).filter(state => state !== 'confirmed-non-match').length : 0;
     
     // Check if exact match was ALREADY found in a previous guess (box should already be green)
     const prevExactFlagKey = `${comparison.attribute}Exact` as keyof AccumulatedKnowledge;

@@ -239,9 +239,7 @@
     "hairColor": "None",
     "eyeColor": "Brown/Hazel",
     "homeworld": "Kamino",
-    "affiliations": [
-      "Affiliation Galactic RepublicClone Force 99Galactic Empire Imperial Army"
-    ],
+    "affiliations": ["Galactic Republic (Military)"],
     "eras": ["The Galactic Republic", "The Galactic Empire"],
     "weapons": ["Ranged (Blaster)"],
     "forceUser": false,

@@ -1,0 +1,262 @@
+Tag state change [affiliations]: {guessNumber: 1, tag: 'Jedi Order', currentState: 'undefined', nextState: 'confirmed-non-match'}
+ComparisonView.tsx:86 Tag state change [affiliations]: {guessNumber: 1, tag: 'Sith', currentState: 'undefined', nextState: 'confirmed-non-match'}
+ComparisonView.tsx:86 Tag state change [affiliations]: {guessNumber: 1, tag: 'Galactic Empire (Military)', currentState: 'undefined', nextState: 'confirmed-non-match'}
+ComparisonView.tsx:86 Tag state change [affiliations]: {guessNumber: 1, tag: 'Galactic Republic (Military)', currentState: 'undefined', nextState: 'confirmed-non-match'}
+ComparisonView.tsx:86 Tag state change [eras]: {guessNumber: 1, tag: 'The Galactic Republic', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [eras]: {guessNumber: 1, tag: 'The Galactic Empire', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [weapons]: {guessNumber: 1, tag: 'Melee (Lightsaber)', currentState: 'undefined', nextState: 'confirmed-non-match'}
+ComparisonView.tsx:86 Tag state change [movieAppearances]: {guessNumber: 1, tag: 'A New Hope', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [movieAppearances]: {guessNumber: 1, tag: 'Attack of the Clones', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [movieAppearances]: {guessNumber: 1, tag: 'Return of the Jedi', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [movieAppearances]: {guessNumber: 1, tag: 'Revenge of the Sith', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [movieAppearances]: {guessNumber: 1, tag: 'Rogue One', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [movieAppearances]: {guessNumber: 1, tag: 'The Empire Strikes Back', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [movieAppearances]: {guessNumber: 1, tag: 'The Phantom Menace', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [tvAppearances]: {guessNumber: 1, tag: 'Ahsoka', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [tvAppearances]: {guessNumber: 1, tag: 'Forces of Destiny', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [tvAppearances]: {guessNumber: 1, tag: 'Obi-Wan Kenobi', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [tvAppearances]: {guessNumber: 1, tag: 'Rebels', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [tvAppearances]: {guessNumber: 1, tag: 'Tales of the Empire', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [tvAppearances]: {guessNumber: 1, tag: 'Tales of the Jedi', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [tvAppearances]: {guessNumber: 1, tag: 'The Clone Wars', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [tvAppearances]: {guessNumber: 1, tag: 'Visions', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [gameAppearances]: {guessNumber: 1, tag: 'Battlefront', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [gameAppearances]: {guessNumber: 1, tag: 'Battlefront II', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [gameAppearances]: {guessNumber: 1, tag: 'Commander', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [gameAppearances]: {guessNumber: 1, tag: 'Jedi: Fallen Order', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [gameAppearances]: {guessNumber: 1, tag: 'Jedi: Survivor', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [gameAppearances]: {guessNumber: 1, tag: 'Squadrons', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:120 needsColorTransition result: false for guess 1
+ComparisonView.tsx:86 Tag state change [affiliations]: {guessNumber: 1, tag: 'Jedi Order', currentState: 'undefined', nextState: 'confirmed-non-match'}
+ComparisonView.tsx:86 Tag state change [affiliations]: {guessNumber: 1, tag: 'Sith', currentState: 'undefined', nextState: 'confirmed-non-match'}
+ComparisonView.tsx:86 Tag state change [affiliations]: {guessNumber: 1, tag: 'Galactic Empire (Military)', currentState: 'undefined', nextState: 'confirmed-non-match'}
+ComparisonView.tsx:86 Tag state change [affiliations]: {guessNumber: 1, tag: 'Galactic Republic (Military)', currentState: 'undefined', nextState: 'confirmed-non-match'}
+ComparisonView.tsx:86 Tag state change [eras]: {guessNumber: 1, tag: 'The Galactic Republic', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [eras]: {guessNumber: 1, tag: 'The Galactic Empire', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [weapons]: {guessNumber: 1, tag: 'Melee (Lightsaber)', currentState: 'undefined', nextState: 'confirmed-non-match'}
+ComparisonView.tsx:86 Tag state change [movieAppearances]: {guessNumber: 1, tag: 'A New Hope', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [movieAppearances]: {guessNumber: 1, tag: 'Attack of the Clones', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [movieAppearances]: {guessNumber: 1, tag: 'Return of the Jedi', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [movieAppearances]: {guessNumber: 1, tag: 'Revenge of the Sith', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [movieAppearances]: {guessNumber: 1, tag: 'Rogue One', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [movieAppearances]: {guessNumber: 1, tag: 'The Empire Strikes Back', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [movieAppearances]: {guessNumber: 1, tag: 'The Phantom Menace', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [tvAppearances]: {guessNumber: 1, tag: 'Ahsoka', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [tvAppearances]: {guessNumber: 1, tag: 'Forces of Destiny', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [tvAppearances]: {guessNumber: 1, tag: 'Obi-Wan Kenobi', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [tvAppearances]: {guessNumber: 1, tag: 'Rebels', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [tvAppearances]: {guessNumber: 1, tag: 'Tales of the Empire', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [tvAppearances]: {guessNumber: 1, tag: 'Tales of the Jedi', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [tvAppearances]: {guessNumber: 1, tag: 'The Clone Wars', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [tvAppearances]: {guessNumber: 1, tag: 'Visions', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [gameAppearances]: {guessNumber: 1, tag: 'Battlefront', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [gameAppearances]: {guessNumber: 1, tag: 'Battlefront II', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [gameAppearances]: {guessNumber: 1, tag: 'Commander', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [gameAppearances]: {guessNumber: 1, tag: 'Jedi: Fallen Order', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [gameAppearances]: {guessNumber: 1, tag: 'Jedi: Survivor', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [gameAppearances]: {guessNumber: 1, tag: 'Squadrons', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:120 needsColorTransition result: false for guess 1
+ComparisonView.tsx:165 needsFadeGray result: false for guess 1
+ComparisonView.tsx:165 needsFadeGray result: false for guess 1
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054403916, phase: 'hidden', hasKnowledge: false, hasNextKnowledge: true, displayHasKnowledge: false, …}
+ComparisonView.tsx:705 Render at: 1762054403917 Phase: hidden isAfterUpdateBoxes: false displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054403923, phase: 'hidden', hasKnowledge: false, hasNextKnowledge: true, displayHasKnowledge: false, …}
+ComparisonView.tsx:705 Render at: 1762054403924 Phase: hidden isAfterUpdateBoxes: false displayVisible: 0
+ComparisonView.tsx:180 Animation effect triggered for guess 1 at 1762054403932
+ComparisonView.tsx:181   needsColorTransition: false
+ComparisonView.tsx:182   needsFadeGray: false
+ComparisonView.tsx:213 After slideNew, cumulativeTime: 2800
+ComparisonView.tsx:222 Skipping colorTransition, adding 50ms buffer
+ComparisonView.tsx:237 Skipping fadeGray, adding 50ms buffer
+ComparisonView.tsx:254 Skipping consolidate, adding 150ms buffer for CSS animation
+ComparisonView.tsx:259 Total time to updateBoxes: 3050
+ComparisonView.tsx:180 Animation effect triggered for guess 1 at 1762054403933
+ComparisonView.tsx:181   needsColorTransition: false
+ComparisonView.tsx:182   needsFadeGray: false
+ComparisonView.tsx:213 After slideNew, cumulativeTime: 2800
+ComparisonView.tsx:222 Skipping colorTransition, adding 50ms buffer
+ComparisonView.tsx:237 Skipping fadeGray, adding 50ms buffer
+ComparisonView.tsx:254 Skipping consolidate, adding 150ms buffer for CSS animation
+ComparisonView.tsx:259 Total time to updateBoxes: 3050
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054404037, phase: 'cascade', hasKnowledge: false, hasNextKnowledge: true, displayHasKnowledge: false, …}
+ComparisonView.tsx:705 Render at: 1762054404038 Phase: cascade isAfterUpdateBoxes: false displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054404043, phase: 'cascade', hasKnowledge: false, hasNextKnowledge: true, displayHasKnowledge: false, …}
+ComparisonView.tsx:705 Render at: 1762054404044 Phase: cascade isAfterUpdateBoxes: false displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054404731, phase: 'cascade', hasKnowledge: false, hasNextKnowledge: true, displayHasKnowledge: false, …}
+ComparisonView.tsx:705 Render at: 1762054404732 Phase: cascade isAfterUpdateBoxes: false displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054404736, phase: 'cascade', hasKnowledge: false, hasNextKnowledge: true, displayHasKnowledge: false, …}
+ComparisonView.tsx:705 Render at: 1762054404737 Phase: cascade isAfterUpdateBoxes: false displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054405731, phase: 'cascade', hasKnowledge: false, hasNextKnowledge: true, displayHasKnowledge: false, …}
+ComparisonView.tsx:705 Render at: 1762054405732 Phase: cascade isAfterUpdateBoxes: false displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054405736, phase: 'cascade', hasKnowledge: false, hasNextKnowledge: true, displayHasKnowledge: false, …}
+ComparisonView.tsx:705 Render at: 1762054405737 Phase: cascade isAfterUpdateBoxes: false displayVisible: 0
+ComparisonView.tsx:206 slideNew phase starts at: 1762054405743
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054405745, phase: 'slideNew', hasKnowledge: false, hasNextKnowledge: true, displayHasKnowledge: false, …}
+ComparisonView.tsx:705 Render at: 1762054405746 Phase: slideNew isAfterUpdateBoxes: false displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054405750, phase: 'slideNew', hasKnowledge: false, hasNextKnowledge: true, displayHasKnowledge: false, …}
+ComparisonView.tsx:705 Render at: 1762054405751 Phase: slideNew isAfterUpdateBoxes: false displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054406731, phase: 'slideNew', hasKnowledge: false, hasNextKnowledge: true, displayHasKnowledge: false, …}
+ComparisonView.tsx:705 Render at: 1762054406732 Phase: slideNew isAfterUpdateBoxes: false displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054406736, phase: 'slideNew', hasKnowledge: false, hasNextKnowledge: true, displayHasKnowledge: false, …}
+ComparisonView.tsx:705 Render at: 1762054406737 Phase: slideNew isAfterUpdateBoxes: false displayVisible: 0
+ComparisonView.tsx:215 colorTransition phase starts at: 1762054406741
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054406743, phase: 'colorTransition', hasKnowledge: false, hasNextKnowledge: true, displayHasKnowledge: false, …}
+ComparisonView.tsx:705 Render at: 1762054406743 Phase: colorTransition isAfterUpdateBoxes: false displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054406747, phase: 'colorTransition', hasKnowledge: false, hasNextKnowledge: true, displayHasKnowledge: false, …}
+ComparisonView.tsx:705 Render at: 1762054406748 Phase: colorTransition isAfterUpdateBoxes: false displayVisible: 0
+ComparisonView.tsx:230 fadeGray phase starts at: 1762054406785
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054406787, phase: 'fadeGray', hasKnowledge: false, hasNextKnowledge: true, displayHasKnowledge: false, …}
+ComparisonView.tsx:705 Render at: 1762054406788 Phase: fadeGray isAfterUpdateBoxes: false displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054406792, phase: 'fadeGray', hasKnowledge: false, hasNextKnowledge: true, displayHasKnowledge: false, …}
+ComparisonView.tsx:705 Render at: 1762054406793 Phase: fadeGray isAfterUpdateBoxes: false displayVisible: 0
+ComparisonView.tsx:244 consolidate phase starts at: 1762054406836
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054406837, phase: 'consolidate', hasKnowledge: false, hasNextKnowledge: true, displayHasKnowledge: false, …}
+ComparisonView.tsx:705 Render at: 1762054406838 Phase: consolidate isAfterUpdateBoxes: false displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054406842, phase: 'consolidate', hasKnowledge: false, hasNextKnowledge: true, displayHasKnowledge: false, …}
+ComparisonView.tsx:705 Render at: 1762054406843 Phase: consolidate isAfterUpdateBoxes: false displayVisible: 0
+ComparisonView.tsx:261 updateBoxes phase starts at: 1762054406985
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054406987, phase: 'updateBoxes', hasKnowledge: false, hasNextKnowledge: true, displayHasKnowledge: true, …}
+ComparisonView.tsx:705 Render at: 1762054406988 Phase: updateBoxes isAfterUpdateBoxes: true displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054406992, phase: 'updateBoxes', hasKnowledge: false, hasNextKnowledge: true, displayHasKnowledge: true, …}
+ComparisonView.tsx:705 Render at: 1762054406993 Phase: updateBoxes isAfterUpdateBoxes: true displayVisible: 0
+ComparisonView.tsx:278 complete phase starts at: 1762054407035
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054407037, phase: 'complete', hasKnowledge: false, hasNextKnowledge: true, displayHasKnowledge: true, …}
+ComparisonView.tsx:705 Render at: 1762054407038 Phase: complete isAfterUpdateBoxes: true displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054407042, phase: 'complete', hasKnowledge: false, hasNextKnowledge: true, displayHasKnowledge: true, …}
+ComparisonView.tsx:705 Render at: 1762054407043 Phase: complete isAfterUpdateBoxes: true displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054407742, phase: 'complete', hasKnowledge: false, hasNextKnowledge: true, displayHasKnowledge: true, …}
+ComparisonView.tsx:705 Render at: 1762054407743 Phase: complete isAfterUpdateBoxes: true displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054407747, phase: 'complete', hasKnowledge: false, hasNextKnowledge: true, displayHasKnowledge: true, …}
+ComparisonView.tsx:705 Render at: 1762054407748 Phase: complete isAfterUpdateBoxes: true displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054407814, phase: 'complete', hasKnowledge: true, hasNextKnowledge: false, displayHasKnowledge: true, …}
+ComparisonView.tsx:705 Render at: 1762054407815 Phase: complete isAfterUpdateBoxes: true displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054407819, phase: 'complete', hasKnowledge: true, hasNextKnowledge: false, displayHasKnowledge: true, …}
+ComparisonView.tsx:705 Render at: 1762054407820 Phase: complete isAfterUpdateBoxes: true displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054408731, phase: 'complete', hasKnowledge: true, hasNextKnowledge: false, displayHasKnowledge: true, …}
+ComparisonView.tsx:705 Render at: 1762054408732 Phase: complete isAfterUpdateBoxes: true displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054408736, phase: 'complete', hasKnowledge: true, hasNextKnowledge: false, displayHasKnowledge: true, …}
+ComparisonView.tsx:705 Render at: 1762054408737 Phase: complete isAfterUpdateBoxes: true displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054409732, phase: 'complete', hasKnowledge: true, hasNextKnowledge: false, displayHasKnowledge: true, …}
+ComparisonView.tsx:705 Render at: 1762054409733 Phase: complete isAfterUpdateBoxes: true displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054409737, phase: 'complete', hasKnowledge: true, hasNextKnowledge: false, displayHasKnowledge: true, …}
+ComparisonView.tsx:705 Render at: 1762054409738 Phase: complete isAfterUpdateBoxes: true displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054410730, phase: 'complete', hasKnowledge: true, hasNextKnowledge: false, displayHasKnowledge: true, …}
+ComparisonView.tsx:705 Render at: 1762054410731 Phase: complete isAfterUpdateBoxes: true displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054410735, phase: 'complete', hasKnowledge: true, hasNextKnowledge: false, displayHasKnowledge: true, …}
+ComparisonView.tsx:705 Render at: 1762054410739 Phase: complete isAfterUpdateBoxes: true displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054411743, phase: 'complete', hasKnowledge: true, hasNextKnowledge: false, displayHasKnowledge: true, …}
+ComparisonView.tsx:705 Render at: 1762054411744 Phase: complete isAfterUpdateBoxes: true displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054411749, phase: 'complete', hasKnowledge: true, hasNextKnowledge: false, displayHasKnowledge: true, …}
+ComparisonView.tsx:705 Render at: 1762054411749 Phase: complete isAfterUpdateBoxes: true displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054412732, phase: 'complete', hasKnowledge: true, hasNextKnowledge: false, displayHasKnowledge: true, …}
+ComparisonView.tsx:705 Render at: 1762054412733 Phase: complete isAfterUpdateBoxes: true displayVisible: 0
+ComparisonView.tsx:922 Single value debug: {timestamp: 1762054412737, phase: 'complete', hasKnowledge: true, hasNextKnowledge: false, displayHasKnowledge: true, …}
+ComparisonView.tsx:705 Render at: 1762054412738 Phase: complete isAfterUpdateBoxes: true displayVisible: 0
+ComparisonView.tsx:86 Tag state change [affiliations]: {guessNumber: 2, tag: 'Rebel Alliance (Military)', currentState: 'undefined', nextState: 'confirmed-match'}
+ComparisonView.tsx:86 Tag state change [movieAppearances]: {guessNumber: 2, tag: 'None', currentState: 'undefined', nextState: 'confirmed-non-match'}
+ComparisonView.tsx:86 Tag state change [tvAppearances]: {guessNumber: 2, tag: 'The Bad Batch', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [gameAppearances]: {guessNumber: 2, tag: 'None', currentState: 'undefined', nextState: 'confirmed-non-match'}
+ComparisonView.tsx:120 needsColorTransition result: false for guess 2
+ComparisonView.tsx:86 Tag state change [affiliations]: {guessNumber: 2, tag: 'Rebel Alliance (Military)', currentState: 'undefined', nextState: 'confirmed-match'}
+ComparisonView.tsx:86 Tag state change [movieAppearances]: {guessNumber: 2, tag: 'None', currentState: 'undefined', nextState: 'confirmed-non-match'}
+ComparisonView.tsx:86 Tag state change [tvAppearances]: {guessNumber: 2, tag: 'The Bad Batch', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [gameAppearances]: {guessNumber: 2, tag: 'None', currentState: 'undefined', nextState: 'confirmed-non-match'}
+ComparisonView.tsx:120 needsColorTransition result: false for guess 2
+ComparisonView.tsx:165 needsFadeGray result: false for guess 2
+ComparisonView.tsx:165 needsFadeGray result: false for guess 2
+ComparisonView.tsx:180 Animation effect triggered for guess 2 at 1762054413610
+ComparisonView.tsx:181   needsColorTransition: false
+ComparisonView.tsx:182   needsFadeGray: false
+ComparisonView.tsx:213 After slideNew, cumulativeTime: 2800
+ComparisonView.tsx:222 Skipping colorTransition, adding 50ms buffer
+ComparisonView.tsx:237 Skipping fadeGray, adding 50ms buffer
+ComparisonView.tsx:254 Skipping consolidate, adding 150ms buffer for CSS animation
+ComparisonView.tsx:259 Total time to updateBoxes: 3050
+ComparisonView.tsx:206 slideNew phase starts at: 1762054415418
+ComparisonView.tsx:215 colorTransition phase starts at: 1762054416418
+ComparisonView.tsx:230 fadeGray phase starts at: 1762054416468
+ComparisonView.tsx:244 consolidate phase starts at: 1762054416519
+ComparisonView.tsx:261 updateBoxes phase starts at: 1762054416662
+ComparisonView.tsx:278 complete phase starts at: 1762054416719
+ComparisonView.tsx:86 Tag state change [eras]: {guessNumber: 3, tag: 'The Galactic Empire', currentState: 'unconfirmed', nextState: 'confirmed-match'}
+ComparisonView.tsx:105 Tag needs color transition: {guessNumber: 3, attribute: 'eras', tag: 'The Galactic Empire', currentState: 'unconfirmed', nextState: 'confirmed-match', …}
+ComparisonView.tsx:120 needsColorTransition result: true for guess 3
+ComparisonView.tsx:86 Tag state change [eras]: {guessNumber: 3, tag: 'The Galactic Empire', currentState: 'unconfirmed', nextState: 'confirmed-match'}
+ComparisonView.tsx:105 Tag needs color transition: {guessNumber: 3, attribute: 'eras', tag: 'The Galactic Empire', currentState: 'unconfirmed', nextState: 'confirmed-match', …}
+ComparisonView.tsx:120 needsColorTransition result: true for guess 3
+ComparisonView.tsx:150 Tag needs fade to gray: {guessNumber: 3, attribute: 'gameAppearances', tag: 'Jedi: Fallen Order', currentState: 'unconfirmed', nextState: 'confirmed-non-match', …}
+ComparisonView.tsx:165 needsFadeGray result: true for guess 3
+ComparisonView.tsx:150 Tag needs fade to gray: {guessNumber: 3, attribute: 'gameAppearances', tag: 'Jedi: Fallen Order', currentState: 'unconfirmed', nextState: 'confirmed-non-match', …}
+ComparisonView.tsx:165 needsFadeGray result: true for guess 3
+ComparisonView.tsx:180 Animation effect triggered for guess 3 at 1762054461644
+ComparisonView.tsx:181   needsColorTransition: true
+ComparisonView.tsx:182   needsFadeGray: true
+ComparisonView.tsx:213 After slideNew, cumulativeTime: 2800
+ComparisonView.tsx:219 Adding colorTransition: 1000ms
+ComparisonView.tsx:234 Adding fadeGray: 700ms
+ComparisonView.tsx:251 Adding consolidate: 300ms
+ComparisonView.tsx:259 Total time to updateBoxes: 4800
+ComparisonView.tsx:206 slideNew phase starts at: 1762054463452
+ComparisonView.tsx:215 colorTransition phase starts at: 1762054464453
+ComparisonView.tsx:230 fadeGray phase starts at: 1762054465451
+ComparisonView.tsx:244 consolidate phase starts at: 1762054466148
+ComparisonView.tsx:261 updateBoxes phase starts at: 1762054466445
+ComparisonView.tsx:278 complete phase starts at: 1762054466496
+ComparisonView.tsx:86 Tag state change [affiliations]: {guessNumber: 4, tag: 'New Republic/Resistance (Military)', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [eras]: {guessNumber: 4, tag: 'The New Republic', currentState: 'undefined', nextState: 'confirmed-match'}
+ComparisonView.tsx:86 Tag state change [weapons]: {guessNumber: 4, tag: 'Ranged (Blaster)', currentState: 'undefined', nextState: 'confirmed-match'}
+ComparisonView.tsx:86 Tag state change [gameAppearances]: {guessNumber: 4, tag: 'Battlefront II', currentState: 'unconfirmed', nextState: 'confirmed-match'}
+ComparisonView.tsx:105 Tag needs color transition: {guessNumber: 4, attribute: 'gameAppearances', tag: 'Battlefront II', currentState: 'unconfirmed', nextState: 'confirmed-match', …}
+ComparisonView.tsx:120 needsColorTransition result: true for guess 4
+ComparisonView.tsx:86 Tag state change [affiliations]: {guessNumber: 4, tag: 'New Republic/Resistance (Military)', currentState: 'undefined', nextState: 'unconfirmed'}
+ComparisonView.tsx:86 Tag state change [eras]: {guessNumber: 4, tag: 'The New Republic', currentState: 'undefined', nextState: 'confirmed-match'}
+ComparisonView.tsx:86 Tag state change [weapons]: {guessNumber: 4, tag: 'Ranged (Blaster)', currentState: 'undefined', nextState: 'confirmed-match'}
+ComparisonView.tsx:86 Tag state change [gameAppearances]: {guessNumber: 4, tag: 'Battlefront II', currentState: 'unconfirmed', nextState: 'confirmed-match'}
+ComparisonView.tsx:105 Tag needs color transition: {guessNumber: 4, attribute: 'gameAppearances', tag: 'Battlefront II', currentState: 'unconfirmed', nextState: 'confirmed-match', …}
+ComparisonView.tsx:120 needsColorTransition result: true for guess 4
+ComparisonView.tsx:165 needsFadeGray result: false for guess 4
+ComparisonView.tsx:165 needsFadeGray result: false for guess 4
+ComparisonView.tsx:180 Animation effect triggered for guess 4 at 1762054471888
+ComparisonView.tsx:181   needsColorTransition: true
+ComparisonView.tsx:182   needsFadeGray: false
+ComparisonView.tsx:213 After slideNew, cumulativeTime: 2800
+ComparisonView.tsx:219 Adding colorTransition: 1000ms
+ComparisonView.tsx:237 Skipping fadeGray, adding 50ms buffer
+ComparisonView.tsx:254 Skipping consolidate, adding 150ms buffer for CSS animation
+ComparisonView.tsx:259 Total time to updateBoxes: 4000
+ComparisonView.tsx:206 slideNew phase starts at: 1762054473692
+ComparisonView.tsx:215 colorTransition phase starts at: 1762054474693
+ComparisonView.tsx:230 fadeGray phase starts at: 1762054475691
+ComparisonView.tsx:244 consolidate phase starts at: 1762054475753
+App.tsx:362 [Knowledge Update] Exact match cleanup detected, setting nextKnowledge first
+App.tsx:367 [Knowledge Update] Updating knowledge after 50ms
+ComparisonView.tsx:261 updateBoxes phase starts at: 1762054475894
+ComparisonView.tsx:278 complete phase starts at: 1762054475941
+App.tsx:371 [Knowledge Update] Clearing nextKnowledge after 1500ms
+ComparisonView.tsx:86 Tag state change [affiliations]: {guessNumber: 5, tag: 'New Republic/Resistance (Military)', currentState: 'unconfirmed', nextState: 'confirmed-match'}
+ComparisonView.tsx:86 Tag state change [affiliations]: {guessNumber: 5, tag: 'Galactic Empire (Non-Military)', currentState: 'undefined', nextState: 'confirmed-match'}
+ComparisonView.tsx:105 Tag needs color transition: {guessNumber: 5, attribute: 'affiliations', tag: 'New Republic/Resistance (Military)', currentState: 'unconfirmed', nextState: 'confirmed-match', …}
+ComparisonView.tsx:120 needsColorTransition result: true for guess 5
+ComparisonView.tsx:86 Tag state change [affiliations]: {guessNumber: 5, tag: 'New Republic/Resistance (Military)', currentState: 'unconfirmed', nextState: 'confirmed-match'}
+ComparisonView.tsx:86 Tag state change [affiliations]: {guessNumber: 5, tag: 'Galactic Empire (Non-Military)', currentState: 'undefined', nextState: 'confirmed-match'}
+ComparisonView.tsx:105 Tag needs color transition: {guessNumber: 5, attribute: 'affiliations', tag: 'New Republic/Resistance (Military)', currentState: 'unconfirmed', nextState: 'confirmed-match', …}
+ComparisonView.tsx:120 needsColorTransition result: true for guess 5
+ComparisonView.tsx:165 needsFadeGray result: false for guess 5
+ComparisonView.tsx:165 needsFadeGray result: false for guess 5
+ComparisonView.tsx:180 Animation effect triggered for guess 5 at 1762054487186
+ComparisonView.tsx:181   needsColorTransition: true
+ComparisonView.tsx:182   needsFadeGray: false
+ComparisonView.tsx:213 After slideNew, cumulativeTime: 2800
+ComparisonView.tsx:219 Adding colorTransition: 1000ms
+ComparisonView.tsx:237 Skipping fadeGray, adding 50ms buffer
+ComparisonView.tsx:254 Skipping consolidate, adding 150ms buffer for CSS animation
+ComparisonView.tsx:259 Total time to updateBoxes: 4000
+ComparisonView.tsx:206 slideNew phase starts at: 1762054488988
+ComparisonView.tsx:215 colorTransition phase starts at: 1762054489994
+ComparisonView.tsx:230 fadeGray phase starts at: 1762054490994
+ComparisonView.tsx:244 consolidate phase starts at: 1762054491040
+App.tsx:362 [Knowledge Update] Exact match cleanup detected, setting nextKnowledge first
+App.tsx:367 [Knowledge Update] Updating knowledge after 50ms
+ComparisonView.tsx:261 updateBoxes phase starts at: 1762054491194
+ComparisonView.tsx:278 complete phase starts at: 1762054491944
+App.tsx:371 [Knowledge Update] Clearing nextKnowledge after 1500ms

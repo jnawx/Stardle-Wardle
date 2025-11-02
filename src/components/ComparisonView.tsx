@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useRef } from 'react';
 import type { Guess, AccumulatedKnowledge, Character, AttributeComparison } from '../types/character';
 import { attributeDisplayNames } from '../config/gameConfig';
 import { eraOrder, movieOrder, tvShowOrder } from '../config/chronologicalOrder';
@@ -39,27 +39,60 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
   // Phase duration constants (in milliseconds)
   const PHASE_DURATIONS = {
     hidden: 100,
-    cascade: 1700,
-    slideNew: 1000,  // Match the CSS animation duration (1s) so animation completes before phase change
-    colorTransition: 1000,  // Increased from 700ms to 1000ms for slower orange->green transition
-    fadeGray: 700,
-    consolidate: 300,
-    slideCharacter: 700
+    cascade: 2000,   // Rows fade in with staggered delay
+    slideNew: 2000,  // New tags/values slide in from left
+    colorTransition: 2000, // Tags transition from orange to green
+    fadeGray: 2000,  // Non-matching tags fade to gray and shrink
+    consolidate: 2000, // Remaining tags slide together to fill space
+    updateBoxes: 2000, // Box colors change
+    slideCharacter: 2000 // Character image slides in (winning animation)
   };
 
   // Detect if we need colorTransition and fadeGray phases
+  // Capture knowledge states at the moment the guess is made (don't recalculate when props update mid-animation)
+  const initialKnowledgeRef = useRef<AccumulatedKnowledge | null>(null);
+  const initialNextKnowledgeRef = useRef<AccumulatedKnowledge | undefined | null>(null);
+  const lastGuessTimestampRef = useRef<number | null>(null);
+  
+  // When a new guess arrives, capture the initial state
+  if (latestGuess && latestGuess.timestamp !== lastGuessTimestampRef.current) {
+    initialKnowledgeRef.current = knowledge;
+    initialNextKnowledgeRef.current = nextKnowledge;
+    lastGuessTimestampRef.current = latestGuess.timestamp;
+  }
+
   const needsColorTransition = useMemo(() => {
-    if (!nextKnowledge) return false;
+    const knowledgeSnapshot = initialKnowledgeRef.current;
+    const nextKnowledgeSnapshot = initialNextKnowledgeRef.current;
+    
+    if (!nextKnowledgeSnapshot) return false;
     
     // Check all tag-based attributes for any tags changing color from unconfirmed (orange)
     const attributes: (keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookComicAppearances'>)[] = 
       ['affiliations', 'eras', 'weapons', 'movieAppearances', 'tvAppearances', 'gameAppearances', 'bookComicAppearances'];
     
-    return attributes.some(attr => {
-      const currentStates = knowledge[attr] as import('../types/character').TagKnowledgeState;
-      const nextStates = nextKnowledge[attr] as import('../types/character').TagKnowledgeState;
+    const result = attributes.some(attr => {
+      const currentStates = knowledgeSnapshot?.[attr] as import('../types/character').TagKnowledgeState;
+      const nextStates = nextKnowledgeSnapshot[attr] as import('../types/character').TagKnowledgeState;
       
       if (!currentStates || !nextStates) return false;
+      
+      // Debug: Log all tags and their state transitions
+      if (guessNumber <= 5) {
+        const allTags = new Set([...Object.keys(currentStates || {}), ...Object.keys(nextStates || {})]);
+        allTags.forEach(tag => {
+          const currentState = currentStates?.[tag];
+          const nextState = nextStates?.[tag];
+          if (currentState !== nextState) {
+            console.log(`Tag state change [${attr}]:`, {
+              guessNumber,
+              tag,
+              currentState: currentState || 'undefined',
+              nextState: nextState || 'undefined'
+            });
+          }
+        });
+      }
       
       // Check if any tag is changing from unconfirmed (orange) to any other color
       // This includes: unconfirmed → confirmed-match (orange → green)
@@ -67,21 +100,43 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
       return Object.entries(nextStates).some(([tag, nextState]) => {
         const currentState = currentStates[tag];
         // Need transition if: tag was unconfirmed and is changing to something else
-        return currentState === 'unconfirmed' && nextState !== 'unconfirmed';
+        const needsTransition = currentState === 'unconfirmed' && nextState !== 'unconfirmed';
+        
+        if (needsTransition && guessNumber <= 5) {
+          console.log('Tag needs color transition:', {
+            guessNumber,
+            attribute: attr,
+            tag,
+            currentState,
+            nextState,
+            timestamp: Date.now()
+          });
+        }
+        
+        return needsTransition;
       });
     });
-  }, [knowledge, nextKnowledge, latestGuess.timestamp]);
+    
+    if (guessNumber <= 5) {
+      console.log('needsColorTransition result:', result, 'for guess', guessNumber);
+    }
+    
+    return result;
+  }, [latestGuess?.timestamp, guessNumber]);
 
   const needsFadeGray = useMemo(() => {
-    if (!nextKnowledge) return false;
+    const knowledgeSnapshot = initialKnowledgeRef.current;
+    const nextKnowledgeSnapshot = initialNextKnowledgeRef.current;
+    
+    if (!nextKnowledgeSnapshot) return false;
     
     // Check all tag-based attributes for any tags transitioning to confirmed-non-match
     const attributes: (keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookComicAppearances'>)[] = 
       ['affiliations', 'eras', 'weapons', 'movieAppearances', 'tvAppearances', 'gameAppearances', 'bookComicAppearances'];
     
-    return attributes.some(attr => {
-      const currentStates = knowledge[attr] as import('../types/character').TagKnowledgeState;
-      const nextStates = nextKnowledge[attr] as import('../types/character').TagKnowledgeState;
+    const result = attributes.some(attr => {
+      const currentStates = knowledgeSnapshot?.[attr] as import('../types/character').TagKnowledgeState;
+      const nextStates = nextKnowledgeSnapshot[attr] as import('../types/character').TagKnowledgeState;
       
       if (!currentStates || !nextStates) return false;
       
@@ -90,14 +145,43 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
       return Object.entries(nextStates).some(([tag, nextState]) => {
         const currentState = currentStates[tag];
         // Need fade if: tag exists and is becoming confirmed-non-match
-        return currentState && currentState !== 'confirmed-non-match' && nextState === 'confirmed-non-match';
+        const needsFade = currentState && currentState !== 'confirmed-non-match' && nextState === 'confirmed-non-match';
+        
+        if (needsFade && guessNumber <= 5) {
+          console.log('Tag needs fade to gray:', {
+            guessNumber,
+            attribute: attr,
+            tag,
+            currentState,
+            nextState,
+            timestamp: Date.now()
+          });
+        }
+        
+        return needsFade;
       });
     });
-  }, [knowledge, nextKnowledge, latestGuess.timestamp]);
+    
+    if (guessNumber <= 5) {
+      console.log('needsFadeGray result:', result, 'for guess', guessNumber);
+    }
+    
+    return result;
+  }, [latestGuess?.timestamp, guessNumber]);
 
   // Animation phase state machine - controls all animation timing
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = [];
+    
+    // Calculate phase needs ONCE at the start of the animation, don't recalculate when props update
+    const needsColorTransitionNow = needsColorTransition;
+    const needsFadeGrayNow = needsFadeGray;
+    
+    if (guessNumber <= 5) {
+      console.log('Animation effect triggered for guess', guessNumber, 'at', Date.now());
+      console.log('  needsColorTransition:', needsColorTransitionNow);
+      console.log('  needsFadeGray:', needsFadeGrayNow);
+    }
     
     // Reset to hidden state
     setAnimationPhase('hidden');
@@ -108,91 +192,98 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
       return () => timers.forEach(timer => clearTimeout(timer));
     }
     
-    // New guess: sequential phase transitions
+    // New guess: sequential phase transitions - each phase completes before next begins
     let cumulativeTime = 0;
     
-    // Phase 1: hidden → cascade (initial delay to prevent flash)
+    // Phase 1: hidden → cascade (brief delay to prevent flash)
     cumulativeTime += PHASE_DURATIONS.hidden;
     timers.push(setTimeout(() => {
+      console.log('cascade phase starts at:', Date.now());
       setAnimationPhase('cascade');
     }, cumulativeTime));
     
-    // Phase 2: cascade → slideNew (after cascade animation completes)
+    // Phase 2: cascade → slideNew (rows fade in with stagger)
     cumulativeTime += PHASE_DURATIONS.cascade;
     timers.push(setTimeout(() => {
+      console.log('slideNew phase starts at:', Date.now());
       setAnimationPhase('slideNew');
     }, cumulativeTime));
     
-    // Phase 3: slideNew → colorTransition (after new tags slide in)
-    // Skip colorTransition duration if no tags need to change from unconfirmed to confirmed-match
+    // Phase 3: slideNew → colorTransition (new content slides in from left)
     cumulativeTime += PHASE_DURATIONS.slideNew;
-    console.log('After slideNew, cumulativeTime:', cumulativeTime);
     timers.push(setTimeout(() => {
       console.log('colorTransition phase starts at:', Date.now());
       setAnimationPhase('colorTransition');
     }, cumulativeTime));
-    if (needsColorTransition) {
-      console.log('Adding colorTransition: 1000ms');
+    
+    // Only add colorTransition duration if tags need to change color
+    if (needsColorTransitionNow) {
+      console.log('Tags need color transition - adding 2000ms');
       cumulativeTime += PHASE_DURATIONS.colorTransition;
     } else {
-      console.log('Skipping colorTransition, adding 50ms buffer');
-      // Add small buffer to prevent React batching issues when skipping
-      cumulativeTime += 50;
+      console.log('No color transition needed - skipping to next phase instantly');
+      cumulativeTime += 0; // Instant transition
     }
     
-    // Phase 4: colorTransition → fadeGray
-    // Skip fadeGray duration if no tags need to fade to confirmed-non-match
+    // Phase 4: colorTransition → fadeGray (tags fade to gray if non-matching)
     timers.push(setTimeout(() => {
       console.log('fadeGray phase starts at:', Date.now());
       setAnimationPhase('fadeGray');
     }, cumulativeTime));
-    if (needsFadeGray) {
-      console.log('Adding fadeGray: 700ms');
+    
+    if (needsFadeGrayNow) {
+      console.log('Tags need to fade gray - adding 2000ms');
       cumulativeTime += PHASE_DURATIONS.fadeGray;
     } else {
-      console.log('Skipping fadeGray, adding 50ms buffer');
-      // Add small buffer to prevent React batching issues when skipping
-      cumulativeTime += 50;
+      console.log('No fade to gray needed - skipping to next phase instantly');
+      cumulativeTime += 0; // Instant transition
     }
     
-    // Phase 5: fadeGray → consolidate (after gray tags fade out)
+    // Phase 5: fadeGray → consolidate (remaining tags slide together)
     timers.push(setTimeout(() => {
       console.log('consolidate phase starts at:', Date.now());
       setAnimationPhase('consolidate');
     }, cumulativeTime));
     
-    // Phase 6: consolidate → updateBoxes (after tags slide together)
-    // Skip consolidate duration if nothing faded out (nothing to consolidate)
-    if (needsFadeGray) {
-      console.log('Adding consolidate: 300ms');
+    if (needsFadeGrayNow) {
+      console.log('Consolidation needed - adding 2000ms');
       cumulativeTime += PHASE_DURATIONS.consolidate;
     } else {
-      console.log('Skipping consolidate, adding 150ms buffer for CSS animation');
-      // Add buffer to account for CSS slide animation delay (250ms) + animation (1000ms) = 1250ms total
-      // slideNew phase is 1000ms, skipped phases added 100ms (2x50ms), so we need 150ms more
-      cumulativeTime += 150;
+      console.log('No consolidation needed - skipping to next phase instantly');
+      cumulativeTime += 0; // Instant transition
     }
-    console.log('Total time to updateBoxes:', cumulativeTime);
+    
+    // Phase 6: consolidate → updateBoxes (box colors change)
     timers.push(setTimeout(() => {
       console.log('updateBoxes phase starts at:', Date.now());
       setAnimationPhase('updateBoxes');
     }, cumulativeTime));
     
-    // Phase 7: updateBoxes → slideCharacter (if winning guess)
+    // Always show box color changes for full duration
+    console.log('Box colors updating - adding 2000ms');
+    cumulativeTime += PHASE_DURATIONS.updateBoxes;
+    
+    // Phase 7: updateBoxes → slideCharacter (character image slides in if winning)
     if (isWinningGuess) {
       timers.push(setTimeout(() => {
+        console.log('slideCharacter phase starts at:', Date.now());
         setAnimationPhase('slideCharacter');
       }, cumulativeTime));
+      console.log('Character slide animation - adding 2000ms');
       cumulativeTime += PHASE_DURATIONS.slideCharacter;
     }
     
-    // Final: → complete (all animations finished)
+    // Final: → complete (all animations finished, win modal can appear)
     timers.push(setTimeout(() => {
+      console.log('complete phase starts at:', Date.now());
       setAnimationPhase('complete');
     }, cumulativeTime));
     
     return () => timers.forEach(timer => clearTimeout(timer));
-  }, [latestGuess.timestamp, isWinningGuess, isNavigating, needsColorTransition, needsFadeGray]);
+    // Note: needsColorTransition and needsFadeGray are NOT in deps because we capture their values
+    // at the start of the effect (needsColorTransitionNow, needsFadeGrayNow) to prevent retriggering
+    // when knowledge props update mid-animation
+  }, [latestGuess.timestamp, isWinningGuess, isNavigating]);
 
   // Helper to check if an item is newly confirmed (will be in nextKnowledge but not current knowledge)
   const isNewlyConfirmed = (attribute: string, item?: string): boolean => {
@@ -262,9 +353,13 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
 
   const renderGuessArrayCell = (comparison: AttributeComparison, label: string) => {
     const guessedTags = (comparison.value as string[]) || [];
-    // Use nextKnowledge if available (for the most recent guess with smart inference applied)
-    // Otherwise use current knowledge
-    const knowledgeToUse = nextKnowledge || knowledge;
+    
+    // Use captured snapshots during animation to prevent mid-animation updates from affecting display
+    // After animation completes, use current props
+    const knowledgeToUse = animationPhase === 'complete' 
+      ? (nextKnowledge || knowledge)
+      : (initialNextKnowledgeRef.current || initialKnowledgeRef.current || knowledge);
+    
     const tagStates = knowledgeToUse[comparison.attribute as keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookComicAppearances'>];
     
     // Determine color for each tag based on its state and the comparison result
@@ -364,25 +459,25 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     _targetItems: string[] | undefined,
     attributeName: string
   ) => {
-    // Get previous tag states from the previous guess's snapshot
-    const prevTagStates = previousGuess?.tagStatesSnapshot?.[attributeName as keyof typeof previousGuess.tagStatesSnapshot];
+    // Get tag states BEFORE this guess (from captured snapshot)
+    const knowledgeBeforeGuess = initialKnowledgeRef.current || knowledge;
+    const prevTagStates = knowledgeBeforeGuess[attributeName as keyof AccumulatedKnowledge] as import('../types/character').TagKnowledgeState | undefined;
     
-    // Get next tag states if available
-    const nextTagStates = nextKnowledge 
-      ? (nextKnowledge[attributeName as keyof AccumulatedKnowledge] as import('../types/character').TagKnowledgeState)
-      : null;
+    // Get tag states AFTER this guess (from captured snapshot)
+    const knowledgeAfterGuess = initialNextKnowledgeRef.current || nextKnowledge || knowledge;
+    const nextTagStates = knowledgeAfterGuess[attributeName as keyof AccumulatedKnowledge] as import('../types/character').TagKnowledgeState | undefined;
     
     // Check if exact match has been found
     const exactFlagKey = `${attributeName}Exact` as keyof AccumulatedKnowledge;
     const isExactMatch = knowledge[exactFlagKey] as boolean;
     
     // Find tags that became confirmed-non-match (need to fade out)
-    // Compare previous guess's snapshot with current state
-    const tagsToFadeOut = prevTagStates
-      ? Object.entries(tagStates)
-          .filter(([tag, currentState]) => {
+    // Compare states BEFORE this guess with states AFTER this guess
+    const tagsToFadeOut = prevTagStates && nextTagStates
+      ? Object.entries(nextTagStates)
+          .filter(([tag, nextState]) => {
             const prevState = prevTagStates[tag];
-            return prevState && prevState !== 'confirmed-non-match' && currentState === 'confirmed-non-match';
+            return prevState && prevState !== 'confirmed-non-match' && nextState === 'confirmed-non-match';
           })
           .map(([tag]) => tag)
       : [];
@@ -490,7 +585,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
         <div className={`flex flex-wrap gap-1 ${heightClass} overflow-y-auto content-start`}>
           {/* Show current tags with smooth CSS transitions for color changes */}
           {sortedCurrentTags.map(({ tag, state }) => {
-            // Get previous state from previous guess's snapshot (if available)
+            // Get state BEFORE this guess from captured snapshot
             const prevState = prevTagStates?.[tag] ?? state;
             
             // Determine display state based on animation phase
@@ -591,19 +686,28 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     
     // Check if any tags are transitioning from unconfirmed to confirmed-match
     // If no unconfirmed tags exist, we can update the box color earlier (during colorTransition)
-    const hasUnconfirmedTags = Object.values(tagStates).some(state => state === 'unconfirmed');
-    const earlyBoxUpdate = !hasUnconfirmedTags && isPhaseAtOrAfter('colorTransition');
-    
     // Determine box background color with animation phase:
-    // If no unconfirmed tags: update during colorTransition phase (fills "dead time")
-    // Otherwise: update during updateBoxes phase (after all tag animations complete)
-    const displayVisibleTags = (isPhaseAtOrAfter('updateBoxes') || earlyBoxUpdate) ? visibleTags : prevVisibleTags;
-    const displayIsExact = (isPhaseAtOrAfter('updateBoxes') || earlyBoxUpdate) ? isExactMatch : prevExactMatch;
+    // Use nextKnowledge during updateBoxes phase (before knowledge state updates from parent)
+    const nextTagStates = nextKnowledge?.[comparison.attribute as keyof AccumulatedKnowledge] as import('../types/character').TagKnowledgeState | undefined;
+    const nextVisibleTags = nextTagStates ? Object.values(nextTagStates).filter(state => state !== 'confirmed-non-match').length : visibleTags;
+    const nextExactFlagKey = `${comparison.attribute}Exact` as keyof AccumulatedKnowledge;
+    const nextIsExact = nextKnowledge ? (nextKnowledge[nextExactFlagKey] as boolean) : isExactMatch;
+    
+    const displayVisibleTags = isPhaseAtOrAfter('updateBoxes') ? nextVisibleTags : prevVisibleTags;
+    const displayIsExact = isPhaseAtOrAfter('updateBoxes') ? nextIsExact : prevExactMatch;
     
     // - Green: exact match found (all tags confirmed)
     // - Orange/Yellow: has visible tags (confirmed matches or unconfirmed) but not complete
     // - Gray: no visible tags (either no tags at all, or only confirmed-non-match tags)
     const bgColor = displayIsExact ? 'bg-green-600' : displayVisibleTags > 0 ? 'bg-yellow-600' : 'bg-gray-700';
+    
+    // Debug: Log when box color changes AND every render
+    if (comparison.attribute === 'affiliations' && guessNumber === 1) {
+      if (prevVisibleTags !== displayVisibleTags) {
+        console.log('Box color CHANGED at:', Date.now(), 'Phase:', animationPhase, 'prevVisible:', prevVisibleTags, '→ newVisible:', displayVisibleTags, 'bgColor:', bgColor);
+      }
+      console.log('Render at:', Date.now(), 'Phase:', animationPhase, 'isAfterUpdateBoxes:', isPhaseAtOrAfter('updateBoxes'), 'displayVisible:', displayVisibleTags);
+    }
     
     // Calculate animation properties
     // - When navigating: quick cascade (0.75s total = 14 rows * ~50ms)
@@ -629,7 +733,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
         </div>
 
         {/* Right: Knowledge */}
-        <div className={`${bgColor} px-3 py-1.5 rounded shadow-md transition-colors duration-150`}>
+        <div className={`${bgColor} px-3 py-1.5 rounded shadow-md transition-colors duration-2000`}>
           {renderKnowledgeArrayCell(label, tagStates, targetItems, comparison.attribute)}
         </div>
       </div>
@@ -814,8 +918,24 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
                   // Show new single values during slideNew phase (same time as tags slide in)
                   const shouldShowNewValue = isPhaseAtOrAfter('slideNew');
                   
+                  // Use nextKnowledge for immediate box color, but fall back to knowledge once it updates
+                  const displayHasKnowledge = isPhaseAtOrAfter('updateBoxes') ? (hasNextKnowledge || hasKnowledge) : hasKnowledge;
+                  
+                  // Debug logging for single value attributes (species)
+                  if (item.comparison.attribute === 'species' && guessNumber === 1) {
+                    console.log('Single value debug:', {
+                      timestamp: Date.now(),
+                      phase: animationPhase,
+                      hasKnowledge,
+                      hasNextKnowledge,
+                      displayHasKnowledge,
+                      knowledgeValue,
+                      nextValue
+                    });
+                  }
+                  
                   return (
-                    <div className={`px-3 py-1.5 rounded shadow-md h-[52px] transition-colors duration-150 ${hasKnowledge ? 'bg-green-600' : 'bg-gray-700'}`}>
+                    <div className={`px-3 py-1.5 rounded shadow-md h-[52px] transition-colors duration-2000 ${displayHasKnowledge ? 'bg-green-600' : 'bg-gray-700'}`}>
                       <div className="flex flex-col">
                         <div className="text-xs font-bold opacity-70 mb-0.5">{item.label}</div>
                         {hasKnowledge ? (

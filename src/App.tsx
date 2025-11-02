@@ -381,14 +381,17 @@ function App() {
     }, 3900);
     setPendingKnowledgeTimer(knowledgeTimer);
     
-    // Check if won - delay modal appearance with smooth slide in
+    // Check if won - delay modal appearance until after character slide animation completes
     if (isCorrect) {
       setIsWon(true);
-      // Delay win modal until after all animations complete (extra time for user to enjoy the win)
+      // Delay win modal until after all animations complete:
+      // hidden(100) + cascade(2000) + slideNew(2000) + colorTransition(2000) + fadeGray(2000) + 
+      // consolidate(2000) + updateBoxes(2000) + slideCharacter(2000) = 14100ms total
+      // Add 500ms buffer for modal to appear after character slide finishes
       const winTimer = setTimeout(() => {
         setShowWinModal(true);
         setPendingWinTimer(null);
-      }, 6000);
+      }, 14600);
       setPendingWinTimer(winTimer);
     }
   };

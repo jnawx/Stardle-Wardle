@@ -157,8 +157,20 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     console.log('Total time to consolidate:', cumulativeTime);
     
     // Phase 6: consolidate → updateBoxes (after tags slide together)
-    cumulativeTime += PHASE_DURATIONS.consolidate;
+    // Skip consolidate duration if nothing faded out (nothing to consolidate)
+    if (needsFadeGray) {
+      console.log('Adding consolidate duration: 300ms');
+      cumulativeTime += PHASE_DURATIONS.consolidate;
+    } else {
+      console.log('Skipping consolidate duration (0ms) - nothing to consolidate');
+      // Add buffer to account for CSS slide animation delay (250ms) + animation (1000ms) = 1250ms total
+      // slideNew phase is 1000ms, so we need 250ms more
+      cumulativeTime += 250;
+      console.log('Adding 250ms buffer for CSS animation delay');
+    }
+    console.log('Total time to updateBoxes:', cumulativeTime);
     timers.push(setTimeout(() => {
+      console.log('updateBoxes phase triggered at:', Date.now());
       setAnimationPhase('updateBoxes');
     }, cumulativeTime));
     

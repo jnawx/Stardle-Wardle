@@ -773,17 +773,17 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
                   const currentDisplayValue = typeof knowledgeValue === 'boolean' ? (knowledgeValue ? 'Yes' : 'No') : knowledgeValue;
                   const isNew = isNewlyConfirmed(item.comparison.attribute);
                   
+                  // Show single value attributes during consolidate phase (when tags are shifting)
+                  const shouldShowNew = isNew && hasNextKnowledge && isPhaseAtOrAfter('consolidate');
+                  
                   return (
                     <div className={`px-3 py-1.5 rounded shadow-md h-[52px] transition-all duration-1000 ${hasKnowledge ? 'bg-green-600' : 'bg-gray-700'}`}>
                       <div className="flex flex-col">
                         <div className="text-xs font-bold opacity-70 mb-0.5">{item.label}</div>
                         {hasKnowledge ? (
                           <div className="text-sm font-bold">{currentDisplayValue as string}</div>
-                        ) : hasNextKnowledge && isNew ? (
-                          <div 
-                            className="text-sm font-bold animate-slide-left-to-right"
-                            style={{ animationDelay: '2.8s', opacity: 0, animationFillMode: 'forwards' }}
-                          >
+                        ) : shouldShowNew ? (
+                          <div className="text-sm font-bold animate-slide-left-to-right">
                             {displayValue as string}
                           </div>
                         ) : (

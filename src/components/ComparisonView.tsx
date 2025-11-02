@@ -97,6 +97,13 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     // Reset to hidden state
     setAnimationPhase('hidden');
     
+    // Debug logging
+    console.log('=== Animation Phase Debug ===');
+    console.log('needsColorTransition:', needsColorTransition);
+    console.log('needsFadeGray:', needsFadeGray);
+    console.log('previousGuess exists:', !!previousGuess);
+    console.log('nextKnowledge exists:', !!nextKnowledge);
+    
     // Navigation: skip all animations, jump to complete
     if (isNavigating) {
       setAnimationPhase('complete');
@@ -125,7 +132,10 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
       setAnimationPhase('colorTransition');
     }, cumulativeTime));
     if (needsColorTransition) {
+      console.log('Adding colorTransition duration: 1000ms');
       cumulativeTime += PHASE_DURATIONS.colorTransition;
+    } else {
+      console.log('Skipping colorTransition duration (0ms)');
     }
     
     // Phase 4: colorTransition → fadeGray
@@ -134,13 +144,17 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
       setAnimationPhase('fadeGray');
     }, cumulativeTime));
     if (needsFadeGray) {
+      console.log('Adding fadeGray duration: 700ms');
       cumulativeTime += PHASE_DURATIONS.fadeGray;
+    } else {
+      console.log('Skipping fadeGray duration (0ms)');
     }
     
     // Phase 5: fadeGray → consolidate (after gray tags fade out)
     timers.push(setTimeout(() => {
       setAnimationPhase('consolidate');
     }, cumulativeTime));
+    console.log('Total time to consolidate:', cumulativeTime);
     
     // Phase 6: consolidate → updateBoxes (after tags slide together)
     cumulativeTime += PHASE_DURATIONS.consolidate;

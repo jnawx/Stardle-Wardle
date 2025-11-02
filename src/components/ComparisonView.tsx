@@ -102,11 +102,6 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     // Reset to hidden state
     setAnimationPhase('hidden');
     
-    // Debug logging
-    console.log('=== Animation Timing Debug ===');
-    console.log('needsColorTransition:', needsColorTransition);
-    console.log('needsFadeGray:', needsFadeGray);
-    
     // Navigation: skip all animations, jump to complete
     if (isNavigating) {
       setAnimationPhase('complete');
@@ -634,7 +629,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
         </div>
 
         {/* Right: Knowledge */}
-        <div className={`${bgColor} px-3 py-1.5 rounded shadow-md transition-all duration-1000`}>
+        <div className={`${bgColor} px-3 py-1.5 rounded shadow-md transition-colors duration-150`}>
           {renderKnowledgeArrayCell(label, tagStates, targetItems, comparison.attribute)}
         </div>
       </div>
@@ -820,7 +815,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
                   const shouldShowNewValue = isPhaseAtOrAfter('slideNew');
                   
                   return (
-                    <div className={`px-3 py-1.5 rounded shadow-md h-[52px] transition-all duration-1000 ${hasKnowledge ? 'bg-green-600' : 'bg-gray-700'}`}>
+                    <div className={`px-3 py-1.5 rounded shadow-md h-[52px] transition-colors duration-150 ${hasKnowledge ? 'bg-green-600' : 'bg-gray-700'}`}>
                       <div className="flex flex-col">
                         <div className="text-xs font-bold opacity-70 mb-0.5">{item.label}</div>
                         {hasKnowledge ? (

@@ -119,22 +119,28 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     }, cumulativeTime));
     
     // Phase 3: slideNew → colorTransition (after new tags slide in)
-    // Skip colorTransition if no tags need to change from unconfirmed to confirmed-match
+    // Skip colorTransition if no tags need to change from unconfirmed to confirmed-match, but add a small buffer delay
     cumulativeTime += PHASE_DURATIONS.slideNew;
     if (needsColorTransition) {
       timers.push(setTimeout(() => {
         setAnimationPhase('colorTransition');
       }, cumulativeTime));
       cumulativeTime += PHASE_DURATIONS.colorTransition;
+    } else {
+      // Add a small buffer delay even when skipping colorTransition to give user time to see the state
+      cumulativeTime += 400;
     }
     
     // Phase 4: colorTransition → fadeGray
-    // Skip fadeGray if no tags need to fade to confirmed-non-match
+    // Skip fadeGray if no tags need to fade to confirmed-non-match, but add a small buffer delay
     if (needsFadeGray) {
       timers.push(setTimeout(() => {
         setAnimationPhase('fadeGray');
       }, cumulativeTime));
       cumulativeTime += PHASE_DURATIONS.fadeGray;
+    } else {
+      // Add a small buffer delay even when skipping fadeGray to give user time to see the state
+      cumulativeTime += 400;
     }
     
     // Phase 5: fadeGray → consolidate (after gray tags fade out)
@@ -773,8 +779,8 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
                   const currentDisplayValue = typeof knowledgeValue === 'boolean' ? (knowledgeValue ? 'Yes' : 'No') : knowledgeValue;
                   const isNew = isNewlyConfirmed(item.comparison.attribute);
                   
-                  // Show single value attributes during consolidate phase (when tags are shifting)
-                  const shouldShowNew = isNew && hasNextKnowledge && isPhaseAtOrAfter('consolidate');
+                  // Show single value attributes during updateBoxes phase (after tags finish consolidating)
+                  const shouldShowNew = isNew && hasNextKnowledge && isPhaseAtOrAfter('updateBoxes');
                   
                   return (
                     <div className={`px-3 py-1.5 rounded shadow-md h-[52px] transition-all duration-1000 ${hasKnowledge ? 'bg-green-600' : 'bg-gray-700'}`}>

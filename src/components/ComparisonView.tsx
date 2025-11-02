@@ -119,28 +119,22 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     }, cumulativeTime));
     
     // Phase 3: slideNew → colorTransition (after new tags slide in)
-    // Skip colorTransition if no tags need to change from unconfirmed to confirmed-match, but add a small buffer delay
+    // Skip colorTransition if no tags need to change from unconfirmed to confirmed-match
     cumulativeTime += PHASE_DURATIONS.slideNew;
     if (needsColorTransition) {
       timers.push(setTimeout(() => {
         setAnimationPhase('colorTransition');
       }, cumulativeTime));
       cumulativeTime += PHASE_DURATIONS.colorTransition;
-    } else {
-      // Add a small buffer delay even when skipping colorTransition to give user time to see the state
-      cumulativeTime += 400;
     }
     
     // Phase 4: colorTransition → fadeGray
-    // Skip fadeGray if no tags need to fade to confirmed-non-match, but add a small buffer delay
+    // Skip fadeGray if no tags need to fade to confirmed-non-match
     if (needsFadeGray) {
       timers.push(setTimeout(() => {
         setAnimationPhase('fadeGray');
       }, cumulativeTime));
       cumulativeTime += PHASE_DURATIONS.fadeGray;
-    } else {
-      // Add a small buffer delay even when skipping fadeGray to give user time to see the state
-      cumulativeTime += 400;
     }
     
     // Phase 5: fadeGray → consolidate (after gray tags fade out)
@@ -778,9 +772,8 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
                   const displayValue = typeof nextValue === 'boolean' ? (nextValue ? 'Yes' : 'No') : nextValue;
                   const currentDisplayValue = typeof knowledgeValue === 'boolean' ? (knowledgeValue ? 'Yes' : 'No') : knowledgeValue;
                   const isNew = isNewlyConfirmed(item.comparison.attribute);
-                  
-                  // Show single value attributes during updateBoxes phase (after tags finish consolidating)
-                  const shouldShowNew = isNew && hasNextKnowledge && isPhaseAtOrAfter('updateBoxes');
+                  // Show new single values during slideNew phase (same time as tags slide in)
+                  const shouldShowNewValue = isPhaseAtOrAfter('slideNew');
                   
                   return (
                     <div className={`px-3 py-1.5 rounded shadow-md h-[52px] transition-all duration-1000 ${hasKnowledge ? 'bg-green-600' : 'bg-gray-700'}`}>
@@ -788,8 +781,10 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
                         <div className="text-xs font-bold opacity-70 mb-0.5">{item.label}</div>
                         {hasKnowledge ? (
                           <div className="text-sm font-bold">{currentDisplayValue as string}</div>
-                        ) : shouldShowNew ? (
-                          <div className="text-sm font-bold animate-slide-left-to-right">
+                        ) : hasNextKnowledge && isNew && shouldShowNewValue ? (
+                          <div 
+                            className="text-sm font-bold animate-slide-left-to-right"
+                          >
                             {displayValue as string}
                           </div>
                         ) : (

@@ -97,13 +97,6 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     // Reset to hidden state
     setAnimationPhase('hidden');
     
-    // Debug logging
-    console.log('=== Animation Phase Debug ===');
-    console.log('needsColorTransition:', needsColorTransition);
-    console.log('needsFadeGray:', needsFadeGray);
-    console.log('previousGuess exists:', !!previousGuess);
-    console.log('nextKnowledge exists:', !!nextKnowledge);
-    
     // Navigation: skip all animations, jump to complete
     if (isNavigating) {
       setAnimationPhase('complete');
@@ -132,10 +125,10 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
       setAnimationPhase('colorTransition');
     }, cumulativeTime));
     if (needsColorTransition) {
-      console.log('Adding colorTransition duration: 1000ms');
       cumulativeTime += PHASE_DURATIONS.colorTransition;
     } else {
-      console.log('Skipping colorTransition duration (0ms)');
+      // Add small buffer to prevent React batching issues when skipping
+      cumulativeTime += 50;
     }
     
     // Phase 4: colorTransition → fadeGray
@@ -144,33 +137,27 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
       setAnimationPhase('fadeGray');
     }, cumulativeTime));
     if (needsFadeGray) {
-      console.log('Adding fadeGray duration: 700ms');
       cumulativeTime += PHASE_DURATIONS.fadeGray;
     } else {
-      console.log('Skipping fadeGray duration (0ms)');
+      // Add small buffer to prevent React batching issues when skipping
+      cumulativeTime += 50;
     }
     
     // Phase 5: fadeGray → consolidate (after gray tags fade out)
     timers.push(setTimeout(() => {
       setAnimationPhase('consolidate');
     }, cumulativeTime));
-    console.log('Total time to consolidate:', cumulativeTime);
     
     // Phase 6: consolidate → updateBoxes (after tags slide together)
     // Skip consolidate duration if nothing faded out (nothing to consolidate)
     if (needsFadeGray) {
-      console.log('Adding consolidate duration: 300ms');
       cumulativeTime += PHASE_DURATIONS.consolidate;
     } else {
-      console.log('Skipping consolidate duration (0ms) - nothing to consolidate');
       // Add buffer to account for CSS slide animation delay (250ms) + animation (1000ms) = 1250ms total
-      // slideNew phase is 1000ms, so we need 250ms more
-      cumulativeTime += 250;
-      console.log('Adding 250ms buffer for CSS animation delay');
+      // slideNew phase is 1000ms, skipped phases added 100ms (2x50ms), so we need 150ms more
+      cumulativeTime += 150;
     }
-    console.log('Total time to updateBoxes:', cumulativeTime);
     timers.push(setTimeout(() => {
-      console.log('updateBoxes phase triggered at:', Date.now());
       setAnimationPhase('updateBoxes');
     }, cumulativeTime));
     

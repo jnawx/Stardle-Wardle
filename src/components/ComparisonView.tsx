@@ -586,10 +586,13 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
       <div className="grid grid-cols-2 gap-6">
         {/* Left: Guess */}
         <div 
-          className={`${getMatchColor(comparison.match)} px-3 py-1.5 rounded shadow-md ${animationPhase === 'hidden' ? 'opacity-0' : ''}`}
+          className={`${getMatchColor(comparison.match)} px-3 py-1.5 rounded shadow-md opacity-0`}
           style={animationPhase === 'cascade' ? { 
             animation: `${animName} ${animDuration} ease-out forwards`,
             animationDelay: `${delay}ms`
+          } : isPhaseAtOrAfter('slideNew') ? {
+            opacity: 1,
+            transform: 'translateY(0)'
           } : {}}
         >
           {renderGuessArrayCell(comparison, label)}
@@ -608,10 +611,13 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
       {/* Headers */}
       <div className="grid grid-cols-2 gap-6 mb-4">
         <div 
-          className={animationPhase === 'hidden' ? 'opacity-0' : ''}
+          className="opacity-0"
           style={animationPhase === 'cascade' ? { 
             animation: `fade-in-down ${isNavigating ? '0.25s' : '0.5s'} ease-out forwards`,
             animationDelay: '0ms'
+          } : isPhaseAtOrAfter('slideNew') ? {
+            opacity: 1,
+            transform: 'translateY(0)'
           } : {}}
         >
           <h3 className="text-lg font-bold text-white text-center">
@@ -752,10 +758,13 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
                   
                   return (
                     <div 
-                      className={`${getMatchColor(item.comparison.match)} px-3 py-1.5 rounded shadow-md h-[52px] ${animationPhase === 'hidden' ? 'opacity-0' : ''}`}
+                      className={`${getMatchColor(item.comparison.match)} px-3 py-1.5 rounded shadow-md h-[52px] opacity-0`}
                       style={animationPhase === 'cascade' ? { 
                         animation: `fade-in-down ${cellDuration} ease-out forwards`,
                         animationDelay: `${cellDelay}ms`
+                      } : isPhaseAtOrAfter('slideNew') ? {
+                        opacity: 1,
+                        transform: 'translateY(0)'
                       } : {}}
                     >
                       <div className="flex flex-col">

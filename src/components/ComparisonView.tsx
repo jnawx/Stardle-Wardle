@@ -102,6 +102,11 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     // Reset to hidden state
     setAnimationPhase('hidden');
     
+    // Debug logging
+    console.log('=== Animation Timing Debug ===');
+    console.log('needsColorTransition:', needsColorTransition);
+    console.log('needsFadeGray:', needsFadeGray);
+    
     // Navigation: skip all animations, jump to complete
     if (isNavigating) {
       setAnimationPhase('complete');
@@ -126,12 +131,16 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     // Phase 3: slideNew → colorTransition (after new tags slide in)
     // Skip colorTransition duration if no tags need to change from unconfirmed to confirmed-match
     cumulativeTime += PHASE_DURATIONS.slideNew;
+    console.log('After slideNew, cumulativeTime:', cumulativeTime);
     timers.push(setTimeout(() => {
+      console.log('colorTransition phase starts at:', Date.now());
       setAnimationPhase('colorTransition');
     }, cumulativeTime));
     if (needsColorTransition) {
+      console.log('Adding colorTransition: 1000ms');
       cumulativeTime += PHASE_DURATIONS.colorTransition;
     } else {
+      console.log('Skipping colorTransition, adding 50ms buffer');
       // Add small buffer to prevent React batching issues when skipping
       cumulativeTime += 50;
     }
@@ -139,30 +148,38 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     // Phase 4: colorTransition → fadeGray
     // Skip fadeGray duration if no tags need to fade to confirmed-non-match
     timers.push(setTimeout(() => {
+      console.log('fadeGray phase starts at:', Date.now());
       setAnimationPhase('fadeGray');
     }, cumulativeTime));
     if (needsFadeGray) {
+      console.log('Adding fadeGray: 700ms');
       cumulativeTime += PHASE_DURATIONS.fadeGray;
     } else {
+      console.log('Skipping fadeGray, adding 50ms buffer');
       // Add small buffer to prevent React batching issues when skipping
       cumulativeTime += 50;
     }
     
     // Phase 5: fadeGray → consolidate (after gray tags fade out)
     timers.push(setTimeout(() => {
+      console.log('consolidate phase starts at:', Date.now());
       setAnimationPhase('consolidate');
     }, cumulativeTime));
     
     // Phase 6: consolidate → updateBoxes (after tags slide together)
     // Skip consolidate duration if nothing faded out (nothing to consolidate)
     if (needsFadeGray) {
+      console.log('Adding consolidate: 300ms');
       cumulativeTime += PHASE_DURATIONS.consolidate;
     } else {
+      console.log('Skipping consolidate, adding 150ms buffer for CSS animation');
       // Add buffer to account for CSS slide animation delay (250ms) + animation (1000ms) = 1250ms total
       // slideNew phase is 1000ms, skipped phases added 100ms (2x50ms), so we need 150ms more
       cumulativeTime += 150;
     }
+    console.log('Total time to updateBoxes:', cumulativeTime);
     timers.push(setTimeout(() => {
+      console.log('updateBoxes phase starts at:', Date.now());
       setAnimationPhase('updateBoxes');
     }, cumulativeTime));
     

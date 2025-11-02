@@ -49,46 +49,50 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
 
   // Detect if we need colorTransition and fadeGray phases
   const needsColorTransition = useMemo(() => {
-    if (!nextKnowledge || !previousGuess) return false;
+    if (!nextKnowledge) return false;
     
     // Check all tag-based attributes for any tags transitioning from unconfirmed to confirmed-match
     const attributes: (keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookComicAppearances'>)[] = 
       ['affiliations', 'eras', 'weapons', 'movieAppearances', 'tvAppearances', 'gameAppearances', 'bookComicAppearances'];
     
     return attributes.some(attr => {
-      const prevStates = previousGuess.tagStatesSnapshot?.[attr];
+      const currentStates = knowledge[attr] as import('../types/character').TagKnowledgeState;
       const nextStates = nextKnowledge[attr] as import('../types/character').TagKnowledgeState;
       
-      if (!prevStates || !nextStates) return false;
+      if (!currentStates || !nextStates) return false;
       
-      // Check if any tag changed from unconfirmed to confirmed-match
+      // Check if any tag is changing from unconfirmed to confirmed-match
+      // Compare current knowledge with next knowledge (after this guess)
       return Object.entries(nextStates).some(([tag, nextState]) => {
-        const prevState = prevStates[tag];
-        return prevState === 'unconfirmed' && nextState === 'confirmed-match';
+        const currentState = currentStates[tag];
+        // Need transition if: tag was unconfirmed and becomes confirmed-match
+        return currentState === 'unconfirmed' && nextState === 'confirmed-match';
       });
     });
-  }, [nextKnowledge, previousGuess, latestGuess.timestamp]);
+  }, [knowledge, nextKnowledge, latestGuess.timestamp]);
 
   const needsFadeGray = useMemo(() => {
-    if (!previousGuess) return false;
+    if (!nextKnowledge) return false;
     
     // Check all tag-based attributes for any tags transitioning to confirmed-non-match
     const attributes: (keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookComicAppearances'>)[] = 
       ['affiliations', 'eras', 'weapons', 'movieAppearances', 'tvAppearances', 'gameAppearances', 'bookComicAppearances'];
     
     return attributes.some(attr => {
-      const prevStates = previousGuess.tagStatesSnapshot?.[attr];
       const currentStates = knowledge[attr] as import('../types/character').TagKnowledgeState;
+      const nextStates = nextKnowledge[attr] as import('../types/character').TagKnowledgeState;
       
-      if (!prevStates || !currentStates) return false;
+      if (!currentStates || !nextStates) return false;
       
-      // Check if any tag changed to confirmed-non-match
-      return Object.entries(currentStates).some(([tag, currentState]) => {
-        const prevState = prevStates[tag];
-        return prevState && prevState !== 'confirmed-non-match' && currentState === 'confirmed-non-match';
+      // Check if any tag is changing to confirmed-non-match
+      // Compare current knowledge with next knowledge (after this guess)
+      return Object.entries(nextStates).some(([tag, nextState]) => {
+        const currentState = currentStates[tag];
+        // Need fade if: tag exists and is becoming confirmed-non-match
+        return currentState && currentState !== 'confirmed-non-match' && nextState === 'confirmed-non-match';
       });
     });
-  }, [knowledge, previousGuess, latestGuess.timestamp]);
+  }, [knowledge, nextKnowledge, latestGuess.timestamp]);
 
   // Animation phase state machine - controls all animation timing
   useEffect(() => {

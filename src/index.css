@@ -180,7 +180,7 @@
     opacity: 0;
     transform: translateX(-150px);
     /* Run animation once and hold final state */
-    animation: slide-left-to-right 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: slide-left-to-right 1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
   }
   
   .animate-slide-right {

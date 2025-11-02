@@ -51,7 +51,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
   const needsColorTransition = useMemo(() => {
     if (!nextKnowledge) return false;
     
-    // Check all tag-based attributes for any tags transitioning from unconfirmed to confirmed-match
+    // Check all tag-based attributes for any tags changing color from unconfirmed (orange)
     const attributes: (keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookComicAppearances'>)[] = 
       ['affiliations', 'eras', 'weapons', 'movieAppearances', 'tvAppearances', 'gameAppearances', 'bookComicAppearances'];
     
@@ -61,12 +61,13 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
       
       if (!currentStates || !nextStates) return false;
       
-      // Check if any tag is changing from unconfirmed to confirmed-match
-      // Compare current knowledge with next knowledge (after this guess)
+      // Check if any tag is changing from unconfirmed (orange) to any other color
+      // This includes: unconfirmed → confirmed-match (orange → green)
+      //           AND: unconfirmed → confirmed-non-match (orange → gray)
       return Object.entries(nextStates).some(([tag, nextState]) => {
         const currentState = currentStates[tag];
-        // Need transition if: tag was unconfirmed and becomes confirmed-match
-        return currentState === 'unconfirmed' && nextState === 'confirmed-match';
+        // Need transition if: tag was unconfirmed and is changing to something else
+        return currentState === 'unconfirmed' && nextState !== 'unconfirmed';
       });
     });
   }, [knowledge, nextKnowledge, latestGuess.timestamp]);

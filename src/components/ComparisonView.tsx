@@ -119,21 +119,21 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     }, cumulativeTime));
     
     // Phase 3: slideNew → colorTransition (after new tags slide in)
-    // Skip colorTransition if no tags need to change from unconfirmed to confirmed-match
+    // Skip colorTransition duration if no tags need to change from unconfirmed to confirmed-match
     cumulativeTime += PHASE_DURATIONS.slideNew;
+    timers.push(setTimeout(() => {
+      setAnimationPhase('colorTransition');
+    }, cumulativeTime));
     if (needsColorTransition) {
-      timers.push(setTimeout(() => {
-        setAnimationPhase('colorTransition');
-      }, cumulativeTime));
       cumulativeTime += PHASE_DURATIONS.colorTransition;
     }
     
     // Phase 4: colorTransition → fadeGray
-    // Skip fadeGray if no tags need to fade to confirmed-non-match
+    // Skip fadeGray duration if no tags need to fade to confirmed-non-match
+    timers.push(setTimeout(() => {
+      setAnimationPhase('fadeGray');
+    }, cumulativeTime));
     if (needsFadeGray) {
-      timers.push(setTimeout(() => {
-        setAnimationPhase('fadeGray');
-      }, cumulativeTime));
       cumulativeTime += PHASE_DURATIONS.fadeGray;
     }
     

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import type { Guess, AccumulatedKnowledge, Character, AttributeComparison } from '../types/character';
 import { attributeDisplayNames } from '../config/gameConfig';
 import { eraOrder, movieOrder, tvShowOrder } from '../config/chronologicalOrder';
@@ -39,13 +39,57 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
   // Phase duration constants (in milliseconds)
   const PHASE_DURATIONS = {
     hidden: 100,
-    cascade: 2400,
+    cascade: 1700,
     slideNew: 1000,  // Match the CSS animation duration (1s) so animation completes before phase change
     colorTransition: 1000,  // Increased from 700ms to 1000ms for slower orange->green transition
     fadeGray: 700,
     consolidate: 300,
     slideCharacter: 700
   };
+
+  // Detect if we need colorTransition and fadeGray phases
+  const needsColorTransition = useMemo(() => {
+    if (!nextKnowledge || !previousGuess) return false;
+    
+    // Check all tag-based attributes for any tags transitioning from unconfirmed to confirmed-match
+    const attributes: (keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookComicAppearances'>)[] = 
+      ['affiliations', 'eras', 'weapons', 'movieAppearances', 'tvAppearances', 'gameAppearances', 'bookComicAppearances'];
+    
+    return attributes.some(attr => {
+      const prevStates = previousGuess.tagStatesSnapshot?.[attr];
+      const nextStates = nextKnowledge[attr] as import('../types/character').TagKnowledgeState;
+      
+      if (!prevStates || !nextStates) return false;
+      
+      // Check if any tag changed from unconfirmed to confirmed-match
+      return Object.entries(nextStates).some(([tag, nextState]) => {
+        const prevState = prevStates[tag];
+        return prevState === 'unconfirmed' && nextState === 'confirmed-match';
+      });
+    });
+  }, [nextKnowledge, previousGuess, latestGuess.timestamp]);
+
+  const needsFadeGray = useMemo(() => {
+    if (!previousGuess) return false;
+    
+    // Check all tag-based attributes for any tags transitioning to confirmed-non-match
+    const attributes: (keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookComicAppearances'>)[] = 
+      ['affiliations', 'eras', 'weapons', 'movieAppearances', 'tvAppearances', 'gameAppearances', 'bookComicAppearances'];
+    
+    return attributes.some(attr => {
+      const prevStates = previousGuess.tagStatesSnapshot?.[attr];
+      const currentStates = knowledge[attr] as import('../types/character').TagKnowledgeState;
+      
+      if (!prevStates || !currentStates) return false;
+      
+      // Check if any tag changed to confirmed-non-match
+      return Object.entries(currentStates).some(([tag, currentState]) => {
+        const prevState = prevStates[tag];
+        return prevState && prevState !== 'confirmed-non-match' && currentState === 'confirmed-non-match';
+      });
+    });
+  }, [knowledge, previousGuess, latestGuess.timestamp]);
+
   // Animation phase state machine - controls all animation timing
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = [];
@@ -75,19 +119,25 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     }, cumulativeTime));
     
     // Phase 3: slideNew → colorTransition (after new tags slide in)
+    // Skip colorTransition if no tags need to change from unconfirmed to confirmed-match
     cumulativeTime += PHASE_DURATIONS.slideNew;
-    timers.push(setTimeout(() => {
-      setAnimationPhase('colorTransition');
-    }, cumulativeTime));
+    if (needsColorTransition) {
+      timers.push(setTimeout(() => {
+        setAnimationPhase('colorTransition');
+      }, cumulativeTime));
+      cumulativeTime += PHASE_DURATIONS.colorTransition;
+    }
     
     // Phase 4: colorTransition → fadeGray
-    cumulativeTime += PHASE_DURATIONS.colorTransition;
-    timers.push(setTimeout(() => {
-      setAnimationPhase('fadeGray');
-    }, cumulativeTime));
+    // Skip fadeGray if no tags need to fade to confirmed-non-match
+    if (needsFadeGray) {
+      timers.push(setTimeout(() => {
+        setAnimationPhase('fadeGray');
+      }, cumulativeTime));
+      cumulativeTime += PHASE_DURATIONS.fadeGray;
+    }
     
     // Phase 5: fadeGray → consolidate (after gray tags fade out)
-    cumulativeTime += PHASE_DURATIONS.fadeGray;
     timers.push(setTimeout(() => {
       setAnimationPhase('consolidate');
     }, cumulativeTime));
@@ -112,7 +162,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     }, cumulativeTime));
     
     return () => timers.forEach(timer => clearTimeout(timer));
-  }, [latestGuess.timestamp, isWinningGuess, isNavigating]);
+  }, [latestGuess.timestamp, isWinningGuess, isNavigating, needsColorTransition, needsFadeGray]);
 
   // Helper to check if an item is newly confirmed (will be in nextKnowledge but not current knowledge)
   const isNewlyConfirmed = (attribute: string, item?: string): boolean => {
@@ -509,11 +559,16 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
         .filter(state => state === 'confirmed-match').length
       : false;
     
+    // Check if any tags are transitioning from unconfirmed to confirmed-match
+    // If no unconfirmed tags exist, we can update the box color earlier (during colorTransition)
+    const hasUnconfirmedTags = Object.values(tagStates).some(state => state === 'unconfirmed');
+    const earlyBoxUpdate = !hasUnconfirmedTags && isPhaseAtOrAfter('colorTransition');
+    
     // Determine box background color with animation phase:
-    // Before updateBoxes phase: use previous state's visible tag count and previous exact match status
-    // After updateBoxes phase: use current state's visible tag count and current exact match status
-    const displayVisibleTags = isPhaseAtOrAfter('updateBoxes') ? visibleTags : prevVisibleTags;
-    const displayIsExact = isPhaseAtOrAfter('updateBoxes') ? isExactMatch : prevExactMatch;
+    // If no unconfirmed tags: update during colorTransition phase (fills "dead time")
+    // Otherwise: update during updateBoxes phase (after all tag animations complete)
+    const displayVisibleTags = (isPhaseAtOrAfter('updateBoxes') || earlyBoxUpdate) ? visibleTags : prevVisibleTags;
+    const displayIsExact = (isPhaseAtOrAfter('updateBoxes') || earlyBoxUpdate) ? isExactMatch : prevExactMatch;
     
     // - Green: exact match found (all tags confirmed)
     // - Orange/Yellow: has visible tags (confirmed matches or unconfirmed) but not complete

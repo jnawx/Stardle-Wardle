@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import CharacterSearch from './components/CharacterSearch';
+import CharacterFilter from './components/CharacterFilter';
 import ComparisonView from './components/ComparisonView';
 import WinModal from './components/WinModal';
 import StatsModal from './components/StatsModal';
@@ -28,6 +29,7 @@ function App() {
   const [showWinModal, setShowWinModal] = useState(false);
   const [showStats, setShowStats] = useState(false);
   const [stats, setStats] = useState(getStats());
+  const [filteredCharacters, setFilteredCharacters] = useState<Character[]>(characters);
   const [knowledge, setKnowledge] = useState<AccumulatedKnowledge>({
     affiliations: {},
     eras: {},
@@ -95,6 +97,7 @@ function App() {
     setMasterHintUsed(false);
     setSelectedGuessIndex(0);
     setAnimationComplete(false);
+    setFilteredCharacters(characters); // Reset filter to show all characters
     setKnowledge({
       affiliations: {},
       eras: {},
@@ -410,6 +413,15 @@ function App() {
 
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-5xl mx-auto">
+          {/* Character Filter */}
+          {!showWinModal && guesses.length === 0 && (
+            <CharacterFilter
+              characters={characters}
+              guessedCharacterIds={[]}
+              onFilterChange={setFilteredCharacters}
+            />
+          )}
+
           {/* Search Input with Hints */}
           <div className="mb-8 animate-fade-in">
             <div className="flex items-center justify-center gap-4 max-w-2xl mx-auto">
@@ -432,7 +444,7 @@ function App() {
               {!showWinModal && (
                 <div className="flex-1">
                   <CharacterSearch
-                    characters={characters}
+                    characters={filteredCharacters}
                     onSelectCharacter={handleGuess}
                     disabled={isWon}
                     guessedCharacterIds={guesses.map(g => g.character.id)}

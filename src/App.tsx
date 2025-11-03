@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import CharacterSearch from './components/CharacterSearch';
 import ComparisonView from './components/ComparisonView';
-import WinModal from './components/WinModal2';
+import WinModal from './components/WinModal';
 import StatsModal from './components/StatsModal';
 import Hints from './components/Hints';
 import type { Character, Guess, AccumulatedKnowledge, TagKnowledgeState } from './types/character';

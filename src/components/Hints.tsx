@@ -43,16 +43,20 @@ const Hints = ({
   }, [masterHintEnabled, masterHintUsed, guessCount]);
 
   const handleQuoteHintClick = () => {
-    if (!quoteHintUsed && quoteHintEnabled) {
+    if (quoteHintEnabled) {
       setShowQuoteHint(true);
-      onQuoteHintClick();
+      if (!quoteHintUsed) {
+        onQuoteHintClick();
+      }
     }
   };
 
   const handleMasterHintClick = () => {
-    if (!masterHintUsed && masterHintEnabled) {
+    if (masterHintEnabled) {
       setShowMasterHint(true);
-      onMasterHintClick();
+      if (!masterHintUsed) {
+        onMasterHintClick();
+      }
     }
   };
 

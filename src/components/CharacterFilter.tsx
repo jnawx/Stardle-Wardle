@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import type { Character, AttributeKey } from '../types/character';
 
 interface CharacterFilterProps {
@@ -39,83 +39,46 @@ export default function CharacterFilter({
 
   // Get available values for each attribute from unguessed characters
   const attributeValues = useMemo(() => {
-    const values: Record<FilterableAttribute, string[]> = {
-      species: [],
-      sex: [],
-      hairColor: [],
-      eyeColor: [],
-      homeworld: [],
-      affiliations: [],
-      eras: [],
-      weapons: [],
-      movieAppearances: [],
-      tvAppearances: [],
-      gameAppearances: [],
-      bookComicAppearances: [],
+    const values: Record<FilterableAttribute, Set<string>> = {
+      species: new Set(),
+      sex: new Set(),
+      hairColor: new Set(),
+      eyeColor: new Set(),
+      homeworld: new Set(),
+      affiliations: new Set(),
+      eras: new Set(),
+      weapons: new Set(),
+      movieAppearances: new Set(),
+      tvAppearances: new Set(),
+      gameAppearances: new Set(),
+      bookComicAppearances: new Set(),
     };
 
     unguessedCharacters.forEach(char => {
       // Single value attributes
-      if (char.species && !values.species.includes(char.species)) {
-        values.species.push(char.species);
-      }
-      if (char.sex && !values.sex.includes(char.sex)) {
-        values.sex.push(char.sex);
-      }
-      if (char.hairColor && !values.hairColor.includes(char.hairColor)) {
-        values.hairColor.push(char.hairColor);
-      }
-      if (char.eyeColor && !values.eyeColor.includes(char.eyeColor)) {
-        values.eyeColor.push(char.eyeColor);
-      }
-      if (char.homeworld && !values.homeworld.includes(char.homeworld)) {
-        values.homeworld.push(char.homeworld);
-      }
+      if (char.species) values.species.add(char.species);
+      if (char.sex) values.sex.add(char.sex);
+      if (char.hairColor) values.hairColor.add(char.hairColor);
+      if (char.eyeColor) values.eyeColor.add(char.eyeColor);
+      if (char.homeworld) values.homeworld.add(char.homeworld);
 
       // Array attributes
-      char.affiliations?.forEach(aff => {
-        if (!values.affiliations.includes(aff)) {
-          values.affiliations.push(aff);
-        }
-      });
-      char.eras?.forEach(era => {
-        if (!values.eras.includes(era)) {
-          values.eras.push(era);
-        }
-      });
-      char.weapons?.forEach(weapon => {
-        if (!values.weapons.includes(weapon)) {
-          values.weapons.push(weapon);
-        }
-      });
-      char.movieAppearances?.forEach(movie => {
-        if (!values.movieAppearances.includes(movie)) {
-          values.movieAppearances.push(movie);
-        }
-      });
-      char.tvAppearances?.forEach(tv => {
-        if (!values.tvAppearances.includes(tv)) {
-          values.tvAppearances.push(tv);
-        }
-      });
-      char.gameAppearances?.forEach(game => {
-        if (!values.gameAppearances.includes(game)) {
-          values.gameAppearances.push(game);
-        }
-      });
-      char.bookComicAppearances?.forEach(book => {
-        if (!values.bookComicAppearances.includes(book)) {
-          values.bookComicAppearances.push(book);
-        }
-      });
+      char.affiliations?.forEach(aff => values.affiliations.add(aff));
+      char.eras?.forEach(era => values.eras.add(era));
+      char.weapons?.forEach(weapon => values.weapons.add(weapon));
+      char.movieAppearances?.forEach(movie => values.movieAppearances.add(movie));
+      char.tvAppearances?.forEach(tv => values.tvAppearances.add(tv));
+      char.gameAppearances?.forEach(game => values.gameAppearances.add(game));
+      char.bookComicAppearances?.forEach(book => values.bookComicAppearances.add(book));
     });
 
-    // Sort values alphabetically
+    // Convert Sets to sorted arrays
+    const result: Record<FilterableAttribute, string[]> = {} as any;
     Object.keys(values).forEach(key => {
-      values[key as FilterableAttribute].sort((a, b) => a.localeCompare(b));
+      result[key as FilterableAttribute] = Array.from(values[key as FilterableAttribute]).sort((a, b) => a.localeCompare(b));
     });
 
-    return values;
+    return result;
   }, [unguessedCharacters]);
 
   // Filter characters based on selected attribute and value
@@ -138,7 +101,7 @@ export default function CharacterFilter({
   }, [characters, selectedAttribute, selectedValue]);
 
   // Notify parent of filter changes
-  useMemo(() => {
+  useEffect(() => {
     onFilterChange(filteredCharacters);
   }, [filteredCharacters, onFilterChange]);
 

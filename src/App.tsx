@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Header from './components/Header';
 import CharacterSearch from './components/CharacterSearch';
 import CharacterFilter from './components/CharacterFilter';
@@ -17,7 +17,7 @@ type GameMode = 'daily' | 'random';
 function App() {
   const allCharacters = charactersData as Character[];
   // Filter to only enabled characters
-  const characters = allCharacters.filter(c => c.enabled);
+  const characters = useMemo(() => allCharacters.filter(c => c.enabled), [allCharacters]);
   
   const [gameMode, setGameMode] = useState<GameMode>('daily');
   const [targetCharacter, setTargetCharacter] = useState<Character>(

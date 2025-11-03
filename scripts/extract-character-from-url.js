@@ -163,83 +163,110 @@ function parseInfobox(html) {
 }
 
 /**
+ * Extract species from fandom data
+ */
+function extractSpecies(fandomData) {
+  if (!fandomData.species) return null;
+  const species = extractPrimaryValue(fandomData.species);
+  return (species && species.length > 0 && species.length < 50) ? species : null;
+}
+
+/**
+ * Extract sex/gender from fandom data
+ */
+function extractSex(fandomData) {
+  if (!fandomData.gender) return null;
+  const gender = extractPrimaryValue(fandomData.gender);
+  if (!gender) return null;
+
+  const genderLower = gender.toLowerCase();
+  if (genderLower.includes('male') && !genderLower.includes('female')) {
+    return 'Male';
+  } else if (genderLower.includes('female')) {
+    return 'Female';
+  } else if (genderLower.includes('none')) {
+    return 'None';
+  }
+  return null;
+}
+
+/**
+ * Extract hair color from fandom data
+ */
+function extractHairColor(fandomData) {
+  if (!fandomData.hair) return null;
+  const hair = extractPrimaryValue(fandomData.hair);
+  return (hair && hair.length > 0 && hair.length < 30) ? hair : null;
+}
+
+/**
+ * Extract eye color from fandom data
+ */
+function extractEyeColor(fandomData) {
+  if (!fandomData.eyes) return [];
+  const eyes = extractPrimaryValue(fandomData.eyes);
+  return (eyes && eyes.length > 0 && eyes.length < 30) ? [eyes] : [];
+}
+
+/**
+ * Extract homeworld from fandom data
+ */
+function extractHomeworld(fandomData) {
+  if (!fandomData.homeworld) return null;
+  const homeworld = extractPrimaryValue(fandomData.homeworld);
+  return (homeworld && homeworld.length > 0 && homeworld.length < 50) ? homeworld : null;
+}
+
+/**
+ * Extract affiliations from fandom data
+ */
+function extractAffiliations(fandomData) {
+  if (!fandomData.affiliation) return [];
+  const affiliation = extractPrimaryValue(fandomData.affiliation);
+  return (affiliation && affiliation.length > 2 && affiliation.length < 100) ? [affiliation] : [];
+}
+
+/**
+ * Determine if character is a Force user
+ */
+function extractForceUser(fandomData) {
+  // Check for masters/apprentices (strong indicator)
+  if (fandomData.masters || fandomData.apprentices) {
+    return true;
+  }
+
+  // Check affiliations for Jedi/Sith
+  if (fandomData.affiliation) {
+    const affLower = fandomData.affiliation.toLowerCase();
+    if (affLower.includes('jedi') || affLower.includes('sith')) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+/**
+ * Extract image URL from fandom data
+ */
+function extractImageUrl(fandomData) {
+  return fandomData.imageUrl || null;
+}
+
+/**
  * Map Fandom data to character attributes (basic version)
  */
 function mapToCharacterAttributes(fandomData) {
-  const mapped = {};
-
-  // Species
-  if (fandomData.species) {
-    const species = extractPrimaryValue(fandomData.species);
-    if (species && species.length > 0 && species.length < 50) {
-      mapped.species = species;
-    }
-  }
-
-  // Sex/Gender
-  if (fandomData.gender) {
-    const gender = extractPrimaryValue(fandomData.gender);
-    if (gender) {
-      // Map gender to sex options
-      const genderLower = gender.toLowerCase();
-      if (genderLower.includes('male') && !genderLower.includes('female')) {
-        mapped.sex = 'Male';
-      } else if (genderLower.includes('female')) {
-        mapped.sex = 'Female';
-      } else if (genderLower.includes('none')) {
-        mapped.sex = 'None';
-      }
-    }
-  }
-
-  // Hair Color
-  if (fandomData.hair) {
-    const hair = extractPrimaryValue(fandomData.hair);
-    if (hair && hair.length > 0 && hair.length < 30) {
-      mapped.hairColor = hair;
-    }
-  }
-
-  // Eye Color
-  if (fandomData.eyes) {
-    const eyes = extractPrimaryValue(fandomData.eyes);
-    if (eyes && eyes.length > 0 && eyes.length < 30) {
-      mapped.eyeColor = [eyes]; // Store as array
-    }
-  }
-
-  // Homeworld
-  if (fandomData.homeworld) {
-    const homeworld = extractPrimaryValue(fandomData.homeworld);
-    if (homeworld && homeworld.length > 0 && homeworld.length < 50) {
-      mapped.homeworld = homeworld;
-    }
-  }
-
-  // Affiliation (basic - take first one)
-  if (fandomData.affiliation) {
-    const affiliation = extractPrimaryValue(fandomData.affiliation);
-    if (affiliation && affiliation.length > 2 && affiliation.length < 100) {
-      mapped.affiliations = [affiliation];
-    }
-  }
-
-  // Check if Force user based on masters/apprentices or Jedi/Sith affiliation
-  if (fandomData.masters || fandomData.apprentices) {
-    mapped.forceUser = true;
-  } else if (fandomData.affiliation) {
-    const affLower = fandomData.affiliation.toLowerCase();
-    if (affLower.includes('jedi') || affLower.includes('sith')) {
-      mapped.forceUser = true;
-    }
-  }
-
-  // Image URL
-  if (fandomData.imageUrl) {
-    mapped.imageUrl = fandomData.imageUrl;
-  }
-
-  return mapped;
+  return {
+    species: extractSpecies(fandomData),
+    sex: extractSex(fandomData),
+    hairColor: extractHairColor(fandomData),
+    eyeColor: extractEyeColor(fandomData),
+    homeworld: extractHomeworld(fandomData),
+    affiliations: extractAffiliations(fandomData),
+    forceUser: extractForceUser(fandomData),
+    imageUrl: extractImageUrl(fandomData)
+  };
 }
 
 /**
@@ -371,16 +398,17 @@ async function main() {
 
       // Update with new extracted data (only if fields are null/empty)
       Object.keys(extractedAttributes).forEach(key => {
-        if (extractedAttributes[key] !== null && extractedAttributes[key] !== undefined) {
-          if (Array.isArray(extractedAttributes[key])) {
+        const newValue = extractedAttributes[key];
+        if (newValue !== null && newValue !== undefined) {
+          if (Array.isArray(newValue)) {
             // For arrays, only update if empty
             if (existingChar[key] && existingChar[key].length === 0) {
-              existingChar[key] = extractedAttributes[key];
+              existingChar[key] = newValue;
             }
           } else {
             // For single values, only update if null
             if (existingChar[key] === null) {
-              existingChar[key] = extractedAttributes[key];
+              existingChar[key] = newValue;
             }
           }
         }

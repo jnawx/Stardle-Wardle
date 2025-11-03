@@ -51,6 +51,7 @@ function App() {
   const [masterHintUsed, setMasterHintUsed] = useState(false);
   const [pendingKnowledgeTimer, setPendingKnowledgeTimer] = useState<ReturnType<typeof setTimeout> | null>(null);
   const [pendingWinTimer, setPendingWinTimer] = useState<ReturnType<typeof setTimeout> | null>(null);
+  const [animationComplete, setAnimationComplete] = useState(false);
 
   // Update countdown timer (always runs to show when next daily character arrives)
   useEffect(() => {
@@ -64,6 +65,16 @@ function App() {
     
     return () => clearInterval(interval);
   }, []);
+
+  // Show win modal 1 second after animation completes
+  useEffect(() => {
+    if (isWon && animationComplete) {
+      const winTimer = setTimeout(() => {
+        setShowWinModal(true);
+      }, 1000);
+      setPendingWinTimer(winTimer);
+    }
+  }, [isWon, animationComplete]);
 
   // Save stats when won
   useEffect(() => {
@@ -83,6 +94,7 @@ function App() {
     setQuoteHintUsed(false);
     setMasterHintUsed(false);
     setSelectedGuessIndex(0);
+    setAnimationComplete(false);
     setKnowledge({
       affiliations: {},
       eras: {},
@@ -141,6 +153,7 @@ function App() {
 
     // Reset navigation flag when making a new guess
     setIsNavigatingGuesses(false);
+    setAnimationComplete(false);
 
     const comparisons = compareCharacters(character, targetCharacter);
     const newGuess: Guess = {
@@ -381,18 +394,9 @@ function App() {
     }, 3900);
     setPendingKnowledgeTimer(knowledgeTimer);
     
-    // Check if won - delay modal appearance until after character slide animation completes
+    // Check if won
     if (isCorrect) {
       setIsWon(true);
-      // Delay win modal until after all animations complete:
-      // hidden(100) + cascade(2000) + slideNew(2000) + colorTransition(2000) + fadeGray(2000) + 
-      // consolidate(2000) + updateBoxes(2000) + slideCharacter(2000) = 14100ms total
-      // Add 500ms buffer for modal to appear after character slide finishes
-      const winTimer = setTimeout(() => {
-        setShowWinModal(true);
-        setPendingWinTimer(null);
-      }, 14600);
-      setPendingWinTimer(winTimer);
     }
   };
 
@@ -484,6 +488,7 @@ function App() {
                 isWinningGuess={isWon && selectedGuessIndex === 0}
                 isNavigating={isNavigatingGuesses}
                 previousGuess={selectedGuessIndex < guesses.length - 1 ? guesses[selectedGuessIndex + 1] : undefined}
+                onAnimationComplete={(isWinning) => isWinning && setAnimationComplete(true)}
               />
             </div>
           )}

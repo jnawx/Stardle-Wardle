@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import type { Character, AttributeKey } from '../types/character';
 
-interface CharacterFilterProps {
+interface AttributeSearchProps {
   characters: Character[];
   guessedCharacterIds: string[];
   onSelectCharacter: (character: Character) => void;
@@ -25,12 +25,12 @@ const ATTRIBUTE_LABELS: Record<FilterableAttribute, string> = {
   bookComicAppearances: 'Books/Comics',
 };
 
-export default function CharacterFilter({
+export default function AttributeSearch({
   characters,
   guessedCharacterIds,
   onSelectCharacter,
   disabled = false,
-}: CharacterFilterProps) {
+}: AttributeSearchProps) {
   const [selectedAttribute, setSelectedAttribute] = useState<FilterableAttribute | ''>('');
   const [selectedValue, setSelectedValue] = useState<string>('');
   const [showDropdown, setShowDropdown] = useState(false);
@@ -85,6 +85,18 @@ export default function CharacterFilter({
     return result;
   }, [unguessedCharacters]);
 
+  // Get available attributes (only those with values)
+  const availableAttributes = useMemo(() => {
+    const available: FilterableAttribute[] = [];
+    Object.keys(ATTRIBUTE_LABELS).forEach(key => {
+      const attrKey = key as FilterableAttribute;
+      if (attributeValues[attrKey].length > 0) {
+        available.push(attrKey);
+      }
+    });
+    return available;
+  }, [attributeValues]);
+
   // Filter characters based on selected attribute and value
   const filteredCharacters = useMemo(() => {
     if (!selectedAttribute || !selectedValue) {
@@ -109,11 +121,12 @@ export default function CharacterFilter({
     });
   }, [characters, selectedAttribute, selectedValue, guessedCharacterIds]);
 
-  // Handle click outside to close dropdown
+  // Handle click outside to close dropdown and reset value
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setShowDropdown(false);
+        setSelectedValue(''); // Reset value dropdown when clicking outside
       }
     }
 
@@ -138,119 +151,92 @@ export default function CharacterFilter({
     // Keep the filter active for potential multiple selections
   };
 
-  const clearFilter = () => {
-    setSelectedAttribute('');
-    setSelectedValue('');
-    setShowDropdown(false);
-  };
-
   const hasActiveFilter = selectedAttribute && selectedValue;
 
   return (
-    <div className="bg-sw-gray rounded-lg p-4 border-2 border-gray-600 mb-4">
-      <div className="flex items-center gap-4 flex-wrap">
-        <div className="flex items-center gap-2">
-          <label className="text-white text-sm font-medium">Filter by:</label>
-          <select
-            value={selectedAttribute}
-            onChange={(e) => handleAttributeChange(e.target.value as FilterableAttribute | '')}
-            disabled={disabled}
-            className="bg-gray-700 text-white border border-gray-600 rounded px-3 py-1 text-sm focus:border-sw-yellow focus:outline-none disabled:opacity-50"
-          >
-            <option value="">No filter</option>
-            {Object.entries(ATTRIBUTE_LABELS).map(([key, label]) => (
-              <option key={key} value={key}>
-                {label}
-              </option>
-            ))}
-          </select>
-        </div>
+    <div className="relative">
+      {/* Attribute and Value Selectors */}
+      <div className="flex gap-2">
+        <select
+          value={selectedAttribute}
+          onChange={(e) => handleAttributeChange(e.target.value as FilterableAttribute | '')}
+          disabled={disabled}
+          className="flex-1 min-w-0 px-4 py-3 bg-sw-gray text-white border-2 border-gray-600 rounded-lg
+                     focus:border-sw-yellow focus:outline-none focus:ring-2 focus:ring-sw-yellow focus:ring-opacity-50
+                     disabled:opacity-50 disabled:cursor-not-allowed
+                     text-lg"
+        >
+          <option value="">Select attribute...</option>
+          {availableAttributes.map((key) => (
+            <option key={key} value={key}>
+              {ATTRIBUTE_LABELS[key]}
+            </option>
+          ))}
+        </select>
 
-        {selectedAttribute && (
-          <div className="flex items-center gap-2">
-            <span className="text-white text-sm">with value:</span>
-            <select
-              value={selectedValue}
-              onChange={(e) => handleValueChange(e.target.value)}
-              disabled={disabled}
-              className="bg-gray-700 text-white border border-gray-600 rounded px-3 py-1 text-sm focus:border-sw-yellow focus:outline-none disabled:opacity-50"
-            >
-              <option value="">Select value...</option>
-              {attributeValues[selectedAttribute].map((value) => (
-                <option key={value} value={value}>
-                  {value}
-                </option>
-              ))}
-            </select>
-          </div>
-        )}
-
-        {hasActiveFilter && (
-          <button
-            onClick={clearFilter}
-            disabled={disabled}
-            className="text-sw-yellow hover:text-yellow-300 text-sm underline focus:outline-none disabled:opacity-50"
-          >
-            Clear filter
-          </button>
-        )}
+        <select
+          value={selectedValue}
+          onChange={(e) => handleValueChange(e.target.value)}
+          disabled={disabled || !selectedAttribute}
+          className="flex-1 min-w-0 px-4 py-3 bg-sw-gray text-white border-2 border-gray-600 rounded-lg
+                     focus:border-sw-yellow focus:outline-none focus:ring-2 focus:ring-sw-yellow focus:ring-opacity-50
+                     disabled:opacity-50 disabled:cursor-not-allowed
+                     text-lg"
+        >
+          <option value="">Select value...</option>
+          {selectedAttribute && attributeValues[selectedAttribute].map((value) => (
+            <option key={value} value={value}>
+              {value}
+            </option>
+          ))}
+        </select>
       </div>
-
-      {hasActiveFilter && (
-        <div className="mt-2 text-sm text-gray-400">
-          Found {filteredCharacters.length} character{filteredCharacters.length !== 1 ? 's' : ''} with{' '}
-          <span className="text-sw-yellow font-medium">
-            {ATTRIBUTE_LABELS[selectedAttribute]}: {selectedValue}
-          </span>
-        </div>
-      )}
 
       {/* Character Dropdown */}
       {hasActiveFilter && showDropdown && filteredCharacters.length > 0 && !disabled && (
         <div
           ref={dropdownRef}
-          className="relative mt-4"
+          className="absolute z-10 w-full mt-2 bg-sw-gray border-2 border-gray-600 rounded-lg
+                     max-h-64 overflow-y-auto shadow-xl"
         >
-          <div className="bg-gray-800 border-2 border-gray-600 rounded-lg max-h-64 overflow-y-auto shadow-xl">
-            {filteredCharacters.map((character) => (
-              <button
-                key={character.id}
-                onClick={() => handleCharacterSelect(character)}
-                className="w-full px-4 py-3 text-left hover:bg-gray-700 transition-all duration-200
+          {filteredCharacters.map((character) => (
+            <button
+              key={character.id}
+              onClick={() => handleCharacterSelect(character)}
+              className="w-full px-4 py-3 text-left hover:bg-gray-700 transition-all duration-200
                          border-b border-gray-700 last:border-b-0
                          focus:bg-gray-700 focus:outline-none flex items-center gap-3"
-              >
-                <div className="w-12 h-12 rounded overflow-hidden border-2 border-gray-600 flex-shrink-0">
-                  <img
-                    src={character.imageUrl || ''}
-                    alt={character.name}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      // Show placeholder if image fails to load
-                      e.currentTarget.style.display = 'none';
-                      if (e.currentTarget.nextElementSibling) {
-                        (e.currentTarget.nextElementSibling as HTMLElement).style.display = 'flex';
-                      }
-                    }}
-                  />
-                  <div className="w-full h-full bg-gray-700 hidden items-center justify-center text-gray-500 text-xs">
-                    ?
-                  </div>
+            >
+              <div className="w-12 h-12 rounded overflow-hidden border-2 border-gray-600 flex-shrink-0">
+                <img
+                  src={character.imageUrl || ''}
+                  alt={character.name}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    // Show placeholder if image fails to load
+                    e.currentTarget.style.display = 'none';
+                    if (e.currentTarget.nextElementSibling) {
+                      (e.currentTarget.nextElementSibling as HTMLElement).style.display = 'flex';
+                    }
+                  }}
+                />
+                <div className="w-full h-full bg-gray-700 hidden items-center justify-center text-gray-500 text-xs">
+                  ?
                 </div>
-                <div className="flex-1">
-                  <div className="text-white font-medium">{character.name}</div>
-                  <div className="text-sm text-gray-400">
-                    {character.species} • {character.homeworld}
-                  </div>
+              </div>
+              <div className="flex-1">
+                <div className="text-white font-medium">{character.name}</div>
+                <div className="text-sm text-gray-400">
+                  {character.species} • {character.homeworld}
                 </div>
-              </button>
-            ))}
-          </div>
+              </div>
+            </button>
+          ))}
         </div>
       )}
 
       {hasActiveFilter && showDropdown && filteredCharacters.length === 0 && (
-        <div className="mt-4 bg-gray-800 border-2 border-gray-600 rounded-lg px-4 py-3 text-gray-400 text-center">
+        <div className="absolute z-10 w-full mt-2 bg-sw-gray border-2 border-gray-600 rounded-lg px-4 py-3 text-gray-400 text-center">
           No characters found with the selected filter
         </div>
       )}

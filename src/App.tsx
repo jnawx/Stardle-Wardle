@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import Header from './components/Header';
 import CharacterSearch from './components/CharacterSearch';
-import CharacterFilter from './components/CharacterFilter';
+import AttributeSearch from './components/AttributeSearch';
 import ComparisonView from './components/ComparisonView';
 import WinModal from './components/WinModal';
 import StatsModal from './components/StatsModal';
@@ -53,6 +53,7 @@ function App() {
   const [pendingKnowledgeTimer, setPendingKnowledgeTimer] = useState<ReturnType<typeof setTimeout> | null>(null);
   const [pendingWinTimer, setPendingWinTimer] = useState<ReturnType<typeof setTimeout> | null>(null);
   const [animationComplete, setAnimationComplete] = useState(false);
+  const [useAttributeSearch, setUseAttributeSearch] = useState(false);
 
   // Update countdown timer (always runs to show when next daily character arrives)
   useEffect(() => {
@@ -411,16 +412,6 @@ function App() {
 
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-5xl mx-auto">
-          {/* Character Filter */}
-          {!showWinModal && guesses.length === 0 && (
-            <CharacterFilter
-              characters={characters}
-              guessedCharacterIds={[]}
-              onSelectCharacter={handleGuess}
-              disabled={isWon}
-            />
-          )}
-
           {/* Search Input with Hints */}
           <div className="mb-8 animate-fade-in">
             <div className="flex items-center justify-center gap-4 max-w-2xl mx-auto">
@@ -439,15 +430,54 @@ function App() {
                 <div className="w-[88px]"></div>
               )}
               
-              {/* Search Bar */}
+              {/* Search Interface */}
               {!showWinModal && (
                 <div className="flex-1">
-                  <CharacterSearch
-                    characters={characters}
-                    onSelectCharacter={handleGuess}
-                    disabled={isWon}
-                    guessedCharacterIds={guesses.map(g => g.character.id)}
-                  />
+                  {/* Search Mode Toggle */}
+                  <div className="flex justify-center mb-2">
+                    <div className="flex items-center gap-1">
+                      <span className="text-xs text-gray-400">Search by:</span>
+                      <div className="flex bg-gray-800 rounded-md p-0.5">
+                        <button
+                          onClick={() => setUseAttributeSearch(false)}
+                          className={`px-2 py-0.5 text-xs rounded transition-all ${
+                            !useAttributeSearch
+                              ? 'bg-sw-yellow text-black'
+                              : 'text-gray-400 hover:text-white'
+                          }`}
+                        >
+                          Name
+                        </button>
+                        <button
+                          onClick={() => setUseAttributeSearch(true)}
+                          className={`px-2 py-0.5 text-xs rounded transition-all ${
+                            useAttributeSearch
+                              ? 'bg-sw-yellow text-black'
+                              : 'text-gray-400 hover:text-white'
+                          }`}
+                        >
+                          Attribute
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Search Input */}
+                  {useAttributeSearch ? (
+                    <AttributeSearch
+                      characters={characters}
+                      guessedCharacterIds={guesses.map(g => g.character.id)}
+                      onSelectCharacter={handleGuess}
+                      disabled={isWon}
+                    />
+                  ) : (
+                    <CharacterSearch
+                      characters={characters}
+                      onSelectCharacter={handleGuess}
+                      disabled={isWon}
+                      guessedCharacterIds={guesses.map(g => g.character.id)}
+                    />
+                  )}
                 </div>
               )}
               

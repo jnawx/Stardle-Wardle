@@ -29,7 +29,6 @@ function App() {
   const [showWinModal, setShowWinModal] = useState(false);
   const [showStats, setShowStats] = useState(false);
   const [stats, setStats] = useState(getStats());
-  const [filteredCharacters, setFilteredCharacters] = useState<Character[]>(characters);
   const [knowledge, setKnowledge] = useState<AccumulatedKnowledge>({
     affiliations: {},
     eras: {},
@@ -97,7 +96,6 @@ function App() {
     setMasterHintUsed(false);
     setSelectedGuessIndex(0);
     setAnimationComplete(false);
-    setFilteredCharacters(characters); // Reset filter to show all characters
     setKnowledge({
       affiliations: {},
       eras: {},
@@ -418,7 +416,8 @@ function App() {
             <CharacterFilter
               characters={characters}
               guessedCharacterIds={[]}
-              onFilterChange={setFilteredCharacters}
+              onSelectCharacter={handleGuess}
+              disabled={isWon}
             />
           )}
 
@@ -444,7 +443,7 @@ function App() {
               {!showWinModal && (
                 <div className="flex-1">
                   <CharacterSearch
-                    characters={filteredCharacters}
+                    characters={characters}
                     onSelectCharacter={handleGuess}
                     disabled={isWon}
                     guessedCharacterIds={guesses.map(g => g.character.id)}

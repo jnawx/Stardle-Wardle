@@ -1,10 +1,11 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import type { Character, AttributeKey } from '../types/character';
 
 interface CharacterFilterProps {
   characters: Character[];
   guessedCharacterIds: string[];
-  onFilterChange: (filteredCharacters: Character[]) => void;
+  onSelectCharacter: (character: Character) => void;
+  disabled?: boolean;
 }
 
 type FilterableAttribute = Exclude<AttributeKey, 'forceUser' | 'speaksBasic'>;
@@ -27,10 +28,13 @@ const ATTRIBUTE_LABELS: Record<FilterableAttribute, string> = {
 export default function CharacterFilter({
   characters,
   guessedCharacterIds,
-  onFilterChange,
+  onSelectCharacter,
+  disabled = false,
 }: CharacterFilterProps) {
   const [selectedAttribute, setSelectedAttribute] = useState<FilterableAttribute | ''>('');
   const [selectedValue, setSelectedValue] = useState<string>('');
+  const [showDropdown, setShowDropdown] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Get unguessed characters
   const unguessedCharacters = useMemo(() => {
@@ -84,10 +88,15 @@ export default function CharacterFilter({
   // Filter characters based on selected attribute and value
   const filteredCharacters = useMemo(() => {
     if (!selectedAttribute || !selectedValue) {
-      return characters; // Return all characters if no filter is applied
+      return [];
     }
 
     return characters.filter(char => {
+      // Don't include guessed characters
+      if (guessedCharacterIds.includes(char.id)) {
+        return false;
+      }
+
       const attrValue = char[selectedAttribute];
 
       if (Array.isArray(attrValue)) {
@@ -98,26 +107,44 @@ export default function CharacterFilter({
         return attrValue === selectedValue;
       }
     });
-  }, [characters, selectedAttribute, selectedValue]);
+  }, [characters, selectedAttribute, selectedValue, guessedCharacterIds]);
 
-  // Notify parent of filter changes
+  // Handle click outside to close dropdown
   useEffect(() => {
-    onFilterChange(filteredCharacters);
-  }, [filteredCharacters, onFilterChange]);
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setShowDropdown(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleAttributeChange = (attribute: FilterableAttribute | '') => {
     setSelectedAttribute(attribute);
-    setSelectedValue(''); // Reset value when attribute changes
+    setSelectedValue('');
+    setShowDropdown(false);
   };
 
   const handleValueChange = (value: string) => {
     setSelectedValue(value);
+    setShowDropdown(true);
+  };
+
+  const handleCharacterSelect = (character: Character) => {
+    onSelectCharacter(character);
+    setShowDropdown(false);
+    // Keep the filter active for potential multiple selections
   };
 
   const clearFilter = () => {
     setSelectedAttribute('');
     setSelectedValue('');
+    setShowDropdown(false);
   };
+
+  const hasActiveFilter = selectedAttribute && selectedValue;
 
   return (
     <div className="bg-sw-gray rounded-lg p-4 border-2 border-gray-600 mb-4">
@@ -127,7 +154,8 @@ export default function CharacterFilter({
           <select
             value={selectedAttribute}
             onChange={(e) => handleAttributeChange(e.target.value as FilterableAttribute | '')}
-            className="bg-gray-700 text-white border border-gray-600 rounded px-3 py-1 text-sm focus:border-sw-yellow focus:outline-none"
+            disabled={disabled}
+            className="bg-gray-700 text-white border border-gray-600 rounded px-3 py-1 text-sm focus:border-sw-yellow focus:outline-none disabled:opacity-50"
           >
             <option value="">No filter</option>
             {Object.entries(ATTRIBUTE_LABELS).map(([key, label]) => (
@@ -144,7 +172,8 @@ export default function CharacterFilter({
             <select
               value={selectedValue}
               onChange={(e) => handleValueChange(e.target.value)}
-              className="bg-gray-700 text-white border border-gray-600 rounded px-3 py-1 text-sm focus:border-sw-yellow focus:outline-none"
+              disabled={disabled}
+              className="bg-gray-700 text-white border border-gray-600 rounded px-3 py-1 text-sm focus:border-sw-yellow focus:outline-none disabled:opacity-50"
             >
               <option value="">Select value...</option>
               {attributeValues[selectedAttribute].map((value) => (
@@ -156,22 +185,73 @@ export default function CharacterFilter({
           </div>
         )}
 
-        {(selectedAttribute || selectedValue) && (
+        {hasActiveFilter && (
           <button
             onClick={clearFilter}
-            className="text-sw-yellow hover:text-yellow-300 text-sm underline focus:outline-none"
+            disabled={disabled}
+            className="text-sw-yellow hover:text-yellow-300 text-sm underline focus:outline-none disabled:opacity-50"
           >
             Clear filter
           </button>
         )}
       </div>
 
-      {selectedAttribute && selectedValue && (
+      {hasActiveFilter && (
         <div className="mt-2 text-sm text-gray-400">
-          Showing {filteredCharacters.length} character{filteredCharacters.length !== 1 ? 's' : ''} with{' '}
+          Found {filteredCharacters.length} character{filteredCharacters.length !== 1 ? 's' : ''} with{' '}
           <span className="text-sw-yellow font-medium">
             {ATTRIBUTE_LABELS[selectedAttribute]}: {selectedValue}
           </span>
+        </div>
+      )}
+
+      {/* Character Dropdown */}
+      {hasActiveFilter && showDropdown && filteredCharacters.length > 0 && !disabled && (
+        <div
+          ref={dropdownRef}
+          className="relative mt-4"
+        >
+          <div className="bg-gray-800 border-2 border-gray-600 rounded-lg max-h-64 overflow-y-auto shadow-xl">
+            {filteredCharacters.map((character) => (
+              <button
+                key={character.id}
+                onClick={() => handleCharacterSelect(character)}
+                className="w-full px-4 py-3 text-left hover:bg-gray-700 transition-all duration-200
+                         border-b border-gray-700 last:border-b-0
+                         focus:bg-gray-700 focus:outline-none flex items-center gap-3"
+              >
+                <div className="w-12 h-12 rounded overflow-hidden border-2 border-gray-600 flex-shrink-0">
+                  <img
+                    src={character.imageUrl || ''}
+                    alt={character.name}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Show placeholder if image fails to load
+                      e.currentTarget.style.display = 'none';
+                      if (e.currentTarget.nextElementSibling) {
+                        (e.currentTarget.nextElementSibling as HTMLElement).style.display = 'flex';
+                      }
+                    }}
+                  />
+                  <div className="w-full h-full bg-gray-700 hidden items-center justify-center text-gray-500 text-xs">
+                    ?
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <div className="text-white font-medium">{character.name}</div>
+                  <div className="text-sm text-gray-400">
+                    {character.species} • {character.homeworld}
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {hasActiveFilter && showDropdown && filteredCharacters.length === 0 && (
+        <div className="mt-4 bg-gray-800 border-2 border-gray-600 rounded-lg px-4 py-3 text-gray-400 text-center">
+          No characters found with the selected filter
         </div>
       )}
     </div>

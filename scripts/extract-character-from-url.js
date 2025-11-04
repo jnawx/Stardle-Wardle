@@ -204,10 +204,10 @@ function extractHairColor(fandomData, attributeOptions) {
  * Extract eye color from fandom data
  */
 function extractEyeColor(fandomData, attributeOptions) {
-  if (!fandomData.eyes) return [];
+  if (!fandomData.eyes) return null;
   const eyes = extractPrimaryValue(fandomData.eyes);
   const matchedColor = matchEyeColor(eyes, attributeOptions);
-  return matchedColor ? [matchedColor] : [];
+  return matchedColor || null;
 }
 
 /**
@@ -387,7 +387,7 @@ function createBasicCharacter(name, url) {
     species: null,
     sex: null,
     hairColor: null,
-    eyeColor: [],
+    eyeColor: null,
     homeworld: null,
     affiliations: [],
     eras: [],

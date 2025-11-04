@@ -59,6 +59,7 @@ node scripts/extract-character-from-url.js --force-update "https://starwars.fand
 The tool intelligently maps various color descriptions to standardized categories:
 
 **Hair Colors:**
+
 - "black", "ebony", "raven" → "Black"
 - "brown", "chestnut", "auburn" → "Brown"
 - "blonde", "golden", "yellow" → "Blonde"
@@ -68,6 +69,7 @@ The tool intelligently maps various color descriptions to standardized categorie
 - "none", "bald", "shaved" → "None"
 
 **Eye Colors:**
+
 - "brown", "hazel", "amber" → "Brown/Hazel"
 - "blue", "green", "turquoise", "emerald" → "Blue/Green"
 - "yellow", "red", "orange", "gold" → "Yellow/Red"
@@ -75,9 +77,33 @@ The tool intelligently maps various color descriptions to standardized categorie
 - "black", "dark" → "Black"
 - "none", "blind" → "None"
 
-## Output
+## Intelligent Species Handling
 
-Characters are saved to `src/data/characters_new.json` with the full character schema including all required fields initialized to appropriate defaults.
+The script includes smart species detection that filters out generic or placeholder species names. When an unrecognized species is encountered, the script prompts for user input:
+
+### Species Filtering
+- **Filtered Out**: `"Yoda's species"`, `"Unknown"`, `"Unnamed"`, lowercase `"human"`
+- **Allowed**: Proper species names from `attribute-options.json`, `"Human"` (proper case)
+
+### Interactive Prompts
+When a species doesn't match expected criteria, you'll be prompted with three options:
+
+1. **Set species to "Unknown"** - Uses the standard "Unknown" category
+2. **Add species to attribute options and use it** - Adds the species to the options file and uses it
+3. **Leave species as null** - Sets species to null (default for invalid input)
+
+### Example Interaction
+```
+❓ Species "Yoda's species" doesn't match expected criteria.
+Choose how to handle this species:
+1) Set species to "Unknown"
+2) Add species to attribute options and use it
+3) Leave species as null
+Enter choice (1-3): 2
+✅ Added "Yoda's species" to species options
+```
+
+This ensures data quality while allowing flexibility for unique or new species.
 
 ## Future Enhancements
 

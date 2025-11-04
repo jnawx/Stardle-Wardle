@@ -20,6 +20,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const CHARACTERS_NEW_FILE = path.join(__dirname, '..', 'src', 'data', 'characters_new.json');
+const ATTRIBUTE_OPTIONS_FILE = path.join(__dirname, '..', 'src', 'data', 'attribute-options.json');
 
 /**
  * Download HTML content from a URL
@@ -193,19 +194,20 @@ function extractSex(fandomData) {
 /**
  * Extract hair color from fandom data
  */
-function extractHairColor(fandomData) {
+function extractHairColor(fandomData, attributeOptions) {
   if (!fandomData.hair) return null;
   const hair = extractPrimaryValue(fandomData.hair);
-  return (hair && hair.length > 0 && hair.length < 30) ? hair : null;
+  return matchHairColor(hair, attributeOptions);
 }
 
 /**
  * Extract eye color from fandom data
  */
-function extractEyeColor(fandomData) {
+function extractEyeColor(fandomData, attributeOptions) {
   if (!fandomData.eyes) return [];
   const eyes = extractPrimaryValue(fandomData.eyes);
-  return (eyes && eyes.length > 0 && eyes.length < 30) ? [eyes] : [];
+  const matchedColor = matchEyeColor(eyes, attributeOptions);
+  return matchedColor ? [matchedColor] : [];
 }
 
 /**
@@ -247,6 +249,98 @@ function extractForceUser(fandomData) {
 }
 
 /**
+ * Load attribute options from attribute-options.json
+ */
+function loadAttributeOptions() {
+  try {
+    const data = fs.readFileSync(ATTRIBUTE_OPTIONS_FILE, 'utf8');
+    return JSON.parse(data);
+  } catch (error) {
+    console.error(`❌ Error loading attribute options: ${error.message}`);
+    return null;
+  }
+}
+
+/**
+ * Match hair color to available options
+ */
+function matchHairColor(colorText, attributeOptions) {
+  if (!colorText || !attributeOptions?.hairColor) return null;
+
+  const text = colorText.toLowerCase().trim();
+
+  // Direct matches
+  for (const option of attributeOptions.hairColor) {
+    if (text === option.toLowerCase()) {
+      return option;
+    }
+  }
+
+  // Pattern matching for common variations
+  if (text.includes('black') || text.includes('ebony') || text.includes('raven')) {
+    return 'Black';
+  }
+  if (text.includes('brown') || text.includes('chestnut') || text.includes('auburn')) {
+    return 'Brown';
+  }
+  if (text.includes('blonde') || text.includes('golden') || text.includes('yellow')) {
+    return 'Blonde';
+  }
+  if (text.includes('red') || text.includes('ginger') || text.includes('copper')) {
+    return 'Red';
+  }
+  if (text.includes('gray') || text.includes('grey') || text.includes('silver')) {
+    return 'Gray';
+  }
+  if (text.includes('white') || text.includes('platinum')) {
+    return 'White';
+  }
+  if (text.includes('none') || text.includes('bald') || text.includes('shaved')) {
+    return 'None';
+  }
+
+  return null; // No match found
+}
+
+/**
+ * Match eye color to available options
+ */
+function matchEyeColor(colorText, attributeOptions) {
+  if (!colorText || !attributeOptions?.eyeColor) return null;
+
+  const text = colorText.toLowerCase().trim();
+
+  // Direct matches
+  for (const option of attributeOptions.eyeColor) {
+    if (text === option.toLowerCase()) {
+      return option;
+    }
+  }
+
+  // Pattern matching for common variations
+  if (text.includes('brown') || text.includes('hazel') || text.includes('amber')) {
+    return 'Brown/Hazel';
+  }
+  if (text.includes('blue') || text.includes('green') || text.includes('turquoise') || text.includes('emerald')) {
+    return 'Blue/Green';
+  }
+  if (text.includes('yellow') || text.includes('red') || text.includes('orange') || text.includes('gold')) {
+    return 'Yellow/Red';
+  }
+  if (text.includes('gray') || text.includes('grey') || text.includes('white') || text.includes('silver')) {
+    return 'Gray/White';
+  }
+  if (text.includes('black') || text.includes('dark')) {
+    return 'Black';
+  }
+  if (text.includes('none') || text.includes('blind')) {
+    return 'None';
+  }
+
+  return null; // No match found
+}
+
+/**
  * Extract image URL from fandom data
  */
 function extractImageUrl(fandomData) {
@@ -256,12 +350,12 @@ function extractImageUrl(fandomData) {
 /**
  * Map Fandom data to character attributes (basic version)
  */
-function mapToCharacterAttributes(fandomData) {
+function mapToCharacterAttributes(fandomData, attributeOptions) {
   return {
     species: extractSpecies(fandomData),
     sex: extractSex(fandomData),
-    hairColor: extractHairColor(fandomData),
-    eyeColor: extractEyeColor(fandomData),
+    hairColor: extractHairColor(fandomData, attributeOptions),
+    eyeColor: extractEyeColor(fandomData, attributeOptions),
     homeworld: extractHomeworld(fandomData),
     affiliations: extractAffiliations(fandomData),
     forceUser: extractForceUser(fandomData),
@@ -304,7 +398,7 @@ function createBasicCharacter(name, url) {
     tvAppearances: [],
     gameAppearances: [],
     bookComicAppearances: [],
-    enabled: true,
+    enabled: false,
     quoteHint: null,
     masterHint: null,
     imageUrl: null,
@@ -351,11 +445,15 @@ function saveCharacters(characters) {
 async function main() {
   console.log('🔍 Star Wars Character Extractor from Fandom URL\n');
 
-  // Get URL from command line arguments
-  const url = process.argv[2];
+  // Parse command line arguments
+  const args = process.argv.slice(2);
+  const forceUpdate = args.includes('--force-update');
+  const url = args.find(arg => !arg.startsWith('--'));
+
   if (!url) {
-    console.error('❌ Usage: node scripts/extract-character-from-url.js <fandom-url>');
+    console.error('❌ Usage: node scripts/extract-character-from-url.js [--force-update] <fandom-url>');
     console.error('   Example: node scripts/extract-character-from-url.js "https://starwars.fandom.com/wiki/Luke_Skywalker"');
+    console.error('   Example: node scripts/extract-character-from-url.js --force-update "https://starwars.fandom.com/wiki/Luke_Skywalker"');
     process.exit(1);
   }
 
@@ -376,9 +474,16 @@ async function main() {
     const characterId = generateCharacterId(characterName);
     console.log(`🆔 Character ID: "${characterId}"`);
 
+    // Load attribute options
+    const attributeOptions = loadAttributeOptions();
+    if (!attributeOptions) {
+      console.error('❌ Could not load attribute options. Exiting.');
+      process.exit(1);
+    }
+
     // Parse the infobox data
     const fandomData = parseInfobox(html);
-    const extractedAttributes = fandomData ? mapToCharacterAttributes(fandomData) : {};
+    const extractedAttributes = fandomData ? mapToCharacterAttributes(fandomData, attributeOptions) : {};
 
     if (fandomData) {
       console.log(`📊 Extracted ${Object.keys(extractedAttributes).length} attributes from infobox`);
@@ -393,31 +498,46 @@ async function main() {
     const existingIndex = characters.findIndex(char => char.id === characterId);
 
     if (existingIndex >= 0) {
-      console.log(`📝 Character "${characterName}" already exists. Updating...`);
       const existingChar = characters[existingIndex];
+      console.log(`📝 Character "${characterName}" already exists. ${existingChar.enabled ? 'Enabled' : 'Disabled'}.`);
 
-      // Update with new extracted data (only if fields are null/empty)
-      Object.keys(extractedAttributes).forEach(key => {
-        const newValue = extractedAttributes[key];
-        if (newValue !== null && newValue !== undefined) {
-          if (Array.isArray(newValue)) {
-            // For arrays, only update if empty
-            if (existingChar[key] && existingChar[key].length === 0) {
-              existingChar[key] = newValue;
-            }
-          } else {
-            // For single values, only update if null
-            if (existingChar[key] === null) {
-              existingChar[key] = newValue;
+      // Check if we can update this character
+      if (existingChar.enabled && !forceUpdate) {
+        console.log(`⚠️  Character is enabled. Use --force-update to update enabled characters.`);
+        console.log(`💾 No changes made to existing character.`);
+      } else {
+        // Update with new extracted data (only if fields are null/empty)
+        let updated = false;
+        Object.keys(extractedAttributes).forEach(key => {
+          const newValue = extractedAttributes[key];
+          if (newValue !== null && newValue !== undefined) {
+            if (Array.isArray(newValue)) {
+              // For arrays, only update if empty
+              if (existingChar[key] && existingChar[key].length === 0) {
+                existingChar[key] = newValue;
+                updated = true;
+              }
+            } else {
+              // For single values, only update if null
+              if (existingChar[key] === null) {
+                existingChar[key] = newValue;
+                updated = true;
+              }
             }
           }
-        }
-      });
+        });
 
-      // Always update the source URL
-      existingChar.sourceUrl = url;
+        // Always update the source URL
+        existingChar.sourceUrl = url;
+
+        if (updated) {
+          console.log(`✅ Updated character with new data`);
+        } else {
+          console.log(`⏭️  No new data to update`);
+        }
+      }
     } else {
-      console.log(`🆕 Creating new character "${characterName}"`);
+      console.log(`🆕 Creating new character "${characterName}" (disabled by default)`);
       // Create new character with extracted data
       const newCharacter = createBasicCharacter(characterName, url);
 

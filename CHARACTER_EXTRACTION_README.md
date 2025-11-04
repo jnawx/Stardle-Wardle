@@ -79,22 +79,23 @@ The tool intelligently maps various color descriptions to standardized categorie
 
 ## Intelligent Species Handling
 
-The script includes smart species detection that filters out generic or placeholder species names. When an unrecognized species is encountered, the script prompts for user input:
+The script includes smart species detection that dynamically checks against the `attribute-options.json` file. When a species is found that doesn't exist in the options, the script prompts for user input:
 
-### Species Filtering
-- **Filtered Out**: `"Yoda's species"`, `"Unknown"`, `"Unnamed"`, lowercase `"human"`
-- **Allowed**: Proper species names from `attribute-options.json`, `"Human"` (proper case)
+### Dynamic Species Validation
+- **Valid Species**: Any species listed in `attribute-options.json` is accepted automatically
+- **Invalid Species**: Species not in the options trigger an interactive prompt
+- **No Hardcoded Filtering**: The script relies entirely on the current attribute options
 
 ### Interactive Prompts
-When a species doesn't match expected criteria, you'll be prompted with three options:
+When encountering a species not in the attribute options, you'll be prompted with three options:
 
 1. **Set species to "Unknown"** - Uses the standard "Unknown" category
-2. **Add species to attribute options and use it** - Adds the species to the options file and uses it
-3. **Leave species as null** - Sets species to null (default for invalid input)
+2. **Add species to attribute options and use it** - Expands the species list dynamically
+3. **Leave species as null** - Sets species to null for invalid entries
 
 ### Example Interaction
 ```
-❓ Species "Yoda's species" doesn't match expected criteria.
+❓ Species "Yoda's species" is not in the attribute options.
 Choose how to handle this species:
 1) Set species to "Unknown"
 2) Add species to attribute options and use it

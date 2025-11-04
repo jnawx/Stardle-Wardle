@@ -123,7 +123,7 @@
     "id": "yoda",
     "name": "Yoda",
     "additionalNames": [],
-    "species": null,
+    "species": "Yoda's species",
     "sex": "Male",
     "hairColor": "White",
     "eyeColor": "Blue/Green",

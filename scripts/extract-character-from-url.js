@@ -6,15 +6,17 @@
  * This script takes a Fandom URL and creates/updates a character entry
  * in data/characters_new.json with basic information extracted from the page.
  *
- * Usage: node scripts/extract-character-from-url.js <fandom-url>
+ * Usage: node scripts/extract-character-from-url.js [--force-update] <fandom-url>
  *
  * Example:
  * node scripts/extract-character-from-url.js "https://starwars.fandom.com/wiki/Luke_Skywalker"
+ * node scripts/extract-character-from-url.js --force-update "https://starwars.fandom.com/wiki/Luke_Skywalker"
  */
 
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import readline from 'readline';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -166,7 +168,7 @@ function parseInfobox(html) {
 /**
  * Extract species from fandom data
  */
-function extractSpecies(fandomData) {
+async function extractSpecies(fandomData, attributeOptions) {
   if (!fandomData.species) return null;
   const species = extractPrimaryValue(fandomData.species);
 
@@ -176,9 +178,14 @@ function extractSpecies(fandomData) {
   const lowerSpecies = species.toLowerCase();
   if (lowerSpecies.includes("'s species") ||
       lowerSpecies.includes("unknown") ||
-      lowerSpecies.includes("unnamed") ||
-      lowerSpecies === "human" && lowerSpecies !== species) { // Allow "Human" but not lowercase variants
-    return null;
+      lowerSpecies.includes("unnamed")) {
+    // Prompt user for how to handle this species
+    return await promptSpeciesHandling(species, attributeOptions);
+  }
+
+  // Allow "Human" but reject lowercase variants
+  if (lowerSpecies === "human" && species !== "Human") {
+    return await promptSpeciesHandling(species, attributeOptions);
   }
 
   return species;
@@ -274,6 +281,65 @@ function loadAttributeOptions() {
 }
 
 /**
+ * Save attribute options to attribute-options.json
+ */
+function saveAttributeOptions(options) {
+  try {
+    fs.writeFileSync(ATTRIBUTE_OPTIONS_FILE, JSON.stringify(options, null, 2));
+    console.log(`💾 Updated attribute options file`);
+  } catch (error) {
+    console.error(`❌ Error saving attribute options: ${error.message}`);
+  }
+}
+
+/**
+ * Prompt user for species handling when species doesn't match criteria
+ */
+function promptSpeciesHandling(fandomSpecies, attributeOptions) {
+  return new Promise((resolve) => {
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
+
+    console.log(`\n❓ Species "${fandomSpecies}" doesn't match expected criteria.`);
+    console.log('Choose how to handle this species:');
+    console.log('1) Set species to "Unknown"');
+    console.log('2) Add species to attribute options and use it');
+    console.log('3) Leave species as null');
+
+    rl.question('Enter choice (1-3): ', (answer) => {
+      rl.close();
+
+      switch (answer.trim()) {
+        case '1':
+          console.log('✅ Setting species to "Unknown"');
+          resolve('Unknown');
+          break;
+        case '2':
+          // Add to attribute options
+          if (!attributeOptions.species.includes(fandomSpecies)) {
+            attributeOptions.species.push(fandomSpecies);
+            attributeOptions.species.sort(); // Keep alphabetically sorted
+            saveAttributeOptions(attributeOptions);
+            console.log(`✅ Added "${fandomSpecies}" to species options`);
+          }
+          resolve(fandomSpecies);
+          break;
+        case '3':
+          console.log('✅ Leaving species as null');
+          resolve(null);
+          break;
+        default:
+          console.log('❌ Invalid choice, defaulting to null');
+          resolve(null);
+          break;
+      }
+    });
+  });
+}
+
+/**
  * Match hair color to available options
  */
 function matchHairColor(colorText, attributeOptions) {
@@ -362,9 +428,9 @@ function extractImageUrl(fandomData) {
 /**
  * Map Fandom data to character attributes (basic version)
  */
-function mapToCharacterAttributes(fandomData, attributeOptions) {
+async function mapToCharacterAttributes(fandomData, attributeOptions) {
   return {
-    species: extractSpecies(fandomData),
+    species: await extractSpecies(fandomData, attributeOptions),
     sex: extractSex(fandomData),
     hairColor: extractHairColor(fandomData, attributeOptions),
     eyeColor: extractEyeColor(fandomData, attributeOptions),
@@ -495,7 +561,7 @@ async function main() {
 
     // Parse the infobox data
     const fandomData = parseInfobox(html);
-    const extractedAttributes = fandomData ? mapToCharacterAttributes(fandomData, attributeOptions) : {};
+    const extractedAttributes = fandomData ? await mapToCharacterAttributes(fandomData, attributeOptions) : {};
 
     if (fandomData) {
       console.log(`📊 Extracted ${Object.keys(extractedAttributes).length} attributes from infobox`);

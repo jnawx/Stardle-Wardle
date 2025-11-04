@@ -169,7 +169,19 @@ function parseInfobox(html) {
 function extractSpecies(fandomData) {
   if (!fandomData.species) return null;
   const species = extractPrimaryValue(fandomData.species);
-  return (species && species.length > 0 && species.length < 50) ? species : null;
+
+  // Filter out generic or unknown species names
+  if (!species || species.length === 0 || species.length >= 50) return null;
+
+  const lowerSpecies = species.toLowerCase();
+  if (lowerSpecies.includes("'s species") ||
+      lowerSpecies.includes("unknown") ||
+      lowerSpecies.includes("unnamed") ||
+      lowerSpecies === "human" && lowerSpecies !== species) { // Allow "Human" but not lowercase variants
+    return null;
+  }
+
+  return species;
 }
 
 /**

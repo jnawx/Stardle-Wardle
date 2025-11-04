@@ -172,23 +172,16 @@ async function extractSpecies(fandomData, attributeOptions) {
   if (!fandomData.species) return null;
   const species = extractPrimaryValue(fandomData.species);
 
-  // Filter out generic or unknown species names
+  // Filter out invalid species names
   if (!species || species.length === 0 || species.length >= 50) return null;
 
-  const lowerSpecies = species.toLowerCase();
-  if (lowerSpecies.includes("'s species") ||
-      lowerSpecies.includes("unknown") ||
-      lowerSpecies.includes("unnamed")) {
-    // Prompt user for how to handle this species
-    return await promptSpeciesHandling(species, attributeOptions);
+  // Check if species exists in attribute options
+  if (attributeOptions.species && attributeOptions.species.includes(species)) {
+    return species;
   }
 
-  // Allow "Human" but reject lowercase variants
-  if (lowerSpecies === "human" && species !== "Human") {
-    return await promptSpeciesHandling(species, attributeOptions);
-  }
-
-  return species;
+  // Species not in options - prompt user for how to handle it
+  return await promptSpeciesHandling(species, attributeOptions);
 }
 
 /**
@@ -302,7 +295,7 @@ function promptSpeciesHandling(fandomSpecies, attributeOptions) {
       output: process.stdout
     });
 
-    console.log(`\n❓ Species "${fandomSpecies}" doesn't match expected criteria.`);
+    console.log(`\n❓ Species "${fandomSpecies}" is not in the attribute options.`);
     console.log('Choose how to handle this species:');
     console.log('1) Set species to "Unknown"');
     console.log('2) Add species to attribute options and use it');

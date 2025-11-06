@@ -1541,7 +1541,7 @@
     "affiliations": ["Galactic Republic (Non-Military)"],
     "eras": ["The Galactic Republic"],
     "weapons": ["None"],
-    "forceUser": true,
+    "forceUser": false,
     "speaksBasic": true,
     "quoteHint": "Oh, mooie-mooie! I love you!",
     "masterHint": "Clumsy Gungan outcast who befriended the Jedi and later became a senator, accidentally helped Palpatine gain emergency powers.",
@@ -2469,7 +2469,7 @@
     "masterHint": "Led the mission to steal the Death Star plans on Scarif.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/b/b3/JynErsoPromo.png",
     "enabled": true,
-    "movieAppearances": ["Rogue One", "Solo"],
+    "movieAppearances": ["Rogue One"],
     "tvAppearances": ["Forces of Destiny"],
     "gameAppearances": ["Battlefront"],
     "bookComicAppearances": ["None"]

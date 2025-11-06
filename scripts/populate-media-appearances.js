@@ -242,8 +242,8 @@ characters.forEach(char => {
   if (char.gameAppearances && char.gameAppearances.length === 0) {
     char.gameAppearances = ["None"];
   }
-  if (char.bookComicAppearances && char.bookComicAppearances.length === 0) {
-    char.bookComicAppearances = ["None"];
+  if (char.bookAppearances && char.bookAppearances.length === 0) {
+    char.bookAppearances = ["None"];
   }
 });
 

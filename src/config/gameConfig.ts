@@ -21,7 +21,7 @@ export interface GameConfig {
     movieAppearances: boolean;
     tvAppearances: boolean;
     gameAppearances: boolean;
-    bookComicAppearances: boolean;
+    bookAppearances: boolean;
   };
 }
 
@@ -47,7 +47,7 @@ export const defaultGameConfig: GameConfig = {
     movieAppearances: true,
     tvAppearances: true,
     gameAppearances: true,
-    bookComicAppearances: false, // Disabled by default (no data yet)
+    bookAppearances: false, // Disabled by default (no data yet)
   },
 };
 
@@ -68,7 +68,7 @@ export function getEnabledAttributes(config: GameConfig = defaultGameConfig): st
     'movieAppearances',
     'tvAppearances',
     'gameAppearances',
-    'bookComicAppearances',
+    'bookAppearances',
     'affiliations',
     'eras',
     'weapons',
@@ -95,5 +95,5 @@ export const attributeDisplayNames: Record<string, string> = {
   movieAppearances: 'Movies',
   tvAppearances: 'TV Shows',
   gameAppearances: 'Games',
-  bookComicAppearances: 'Books/Comics',
+  bookAppearances: 'Books',
 };

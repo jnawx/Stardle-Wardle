@@ -3,48 +3,135 @@
     "id": "luke-skywalker",
     "name": "Luke Skywalker",
     "additionalNames": [],
-    "species": null,
-    "sex": null,
+    "species": "Human",
+    "sex": "Male",
     "hairColor": null,
-    "eyeColor": null,
-    "homeworld": null,
-    "affiliations": [],
+    "eyeColor": "Blue/Green",
+    "skinColor": null,
+    "homeworld": "Tatooine",
+    "birthYear": "19 BBY",
+    "deathYear": "34 ABY",
+    "height": "1.72 meters",
+    "mass": "73 kilograms",
+    "affiliations": [
+      "Affiliation Alliance to Restore the RepublicRed Squadron"
+    ],
     "eras": [],
     "weapons": [],
-    "forceUser": false,
+    "forceUser": true,
     "speaksBasic": true,
-    "movieAppearances": [],
-    "tvAppearances": [],
-    "gameAppearances": [],
-    "bookComicAppearances": [],
+    "movieAppearances": [
+      "Revenge of the Sith",
+      "A New Hope",
+      "The Empire Strikes Back",
+      "Return of the Jedi",
+      "The Force Awakens",
+      "The Last Jedi",
+      "The Rise of Skywalker"
+    ],
+    "tvAppearances": [
+      "Forces of Destiny",
+      "Rebels",
+      "The Mandalorian",
+      "Resistance"
+    ],
+    "gameAppearances": [
+      "Battlefront II",
+      "Commander",
+      "Squadrons"
+    ],
+    "bookAppearances": [
+      "The Princess and the Scoundrel",
+      "Shadow of the Sith"
+    ],
     "enabled": false,
     "quoteHint": null,
     "masterHint": null,
-    "imageUrl": null,
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/3/3d/LukeSkywalker.png/revision/latest/scale-to-width-down/1200?cb=20241221010122",
     "sourceUrl": "https://starwars.fandom.com/wiki/Luke_Skywalker"
+  },
+  {
+    "id": "chewbacca",
+    "name": "Chewbacca",
+    "additionalNames": [],
+    "species": "Wookiee",
+    "sex": "Male",
+    "hairColor": "Brown",
+    "eyeColor": "Blue/Green",
+    "skinColor": null,
+    "homeworld": "Kashyyyk",
+    "birthYear": "200 BBY",
+    "deathYear": null,
+    "height": "2.28 meters",
+    "mass": "112 kilograms",
+    "affiliations": [
+      "Affiliation Galactic RepublicKachirho Wookiee Militia"
+    ],
+    "eras": [],
+    "weapons": [],
+    "forceUser": false,
+    "speaksBasic": false,
+    "movieAppearances": [],
+    "tvAppearances": [],
+    "gameAppearances": [],
+    "bookAppearances": [],
+    "enabled": false,
+    "quoteHint": null,
+    "masterHint": null,
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/4/48/Chewbacca_TLJ.png/revision/latest/scale-to-width-down/1200?cb=20221108044917",
+    "sourceUrl": "https://starwars.fandom.com/wiki/Chewbacca"
   },
   {
     "id": "darth-vader",
     "name": "Darth Vader",
     "additionalNames": [],
-    "species": null,
-    "sex": null,
+    "species": "Human",
+    "sex": "Male",
     "hairColor": null,
-    "eyeColor": null,
-    "homeworld": null,
-    "affiliations": [],
+    "eyeColor": "Blue/Green",
+    "skinColor": null,
+    "homeworld": "Tatooine",
+    "birthYear": "41 BBY",
+    "deathYear": "4 ABY",
+    "height": "1.35 meters  - 1.88 meters",
+    "mass": "120 kilograms",
+    "affiliations": [
+      "Affiliation Jedi OrderJedi High Council"
+    ],
     "eras": [],
     "weapons": [],
-    "forceUser": false,
+    "forceUser": true,
     "speaksBasic": true,
-    "movieAppearances": [],
-    "tvAppearances": [],
-    "gameAppearances": [],
-    "bookComicAppearances": [],
+    "movieAppearances": [
+      "The Phantom Menace",
+      "Attack of the Clones",
+      "Revenge of the Sith",
+      "Rogue One",
+      "A New Hope",
+      "The Empire Strikes Back",
+      "Return of the Jedi"
+    ],
+    "tvAppearances": [
+      "The Clone Wars",
+      "Star Wars: Tales",
+      "Forces of Destiny",
+      "Rebels"
+    ],
+    "gameAppearances": [
+      "Battlefront II",
+      "Uprising",
+      "Commander",
+      "Squadrons"
+    ],
+    "bookAppearances": [
+      "Dark Disciple",
+      "Lost Stars",
+      "Shadow of the Sith"
+    ],
     "enabled": false,
     "quoteHint": null,
     "masterHint": null,
-    "imageUrl": null,
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/6/6f/Anakin_Skywalker_RotS.png/revision/latest?cb=20130621175844",
     "sourceUrl": "https://starwars.fandom.com/wiki/Darth_Vader"
   },
   {
@@ -55,45 +142,45 @@
     "sex": "Male",
     "hairColor": "Brown",
     "eyeColor": "Brown/Hazel",
+    "skinColor": null,
     "homeworld": "Corellia",
-    "affiliations": [],
+    "birthYear": "32 BBY",
+    "deathYear": "34 ABY",
+    "height": "1.8 meters",
+    "mass": "80 kilograms",
+    "affiliations": [
+      "Affiliation White Worms"
+    ],
     "eras": [],
     "weapons": [],
-    "forceUser": true,
+    "forceUser": false,
     "speaksBasic": true,
-    "movieAppearances": [],
-    "tvAppearances": [],
-    "gameAppearances": [],
-    "bookComicAppearances": [],
+    "movieAppearances": [
+      "Solo",
+      "A New Hope",
+      "The Empire Strikes Back",
+      "Return of the Jedi",
+      "The Force Awakens",
+      "The Rise of Skywalker"
+    ],
+    "tvAppearances": [
+      "Forces of Destiny",
+      "Resistance"
+    ],
+    "gameAppearances": [
+      "Battlefront II",
+      "Commander"
+    ],
+    "bookAppearances": [
+      "Most Wanted",
+      "The Princess and the Scoundrel",
+      "Last Shot"
+    ],
     "enabled": false,
     "quoteHint": null,
     "masterHint": null,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/e/e2/TFAHanSolo.png/revision/latest/scale-to-width-down/1200?cb=20160208055002",
     "sourceUrl": "https://starwars.fandom.com/wiki/Han_Solo"
-  },
-  {
-    "id": "princess-leia",
-    "name": "Princess Leia",
-    "additionalNames": [],
-    "species": "Human",
-    "sex": "Female",
-    "hairColor": "Brown",
-    "eyeColor": "Brown/Hazel",
-    "homeworld": "Alderaan",
-    "affiliations": [],
-    "eras": [],
-    "weapons": [],
-    "forceUser": true,
-    "speaksBasic": true,
-    "movieAppearances": [],
-    "tvAppearances": [],
-    "gameAppearances": [],
-    "bookComicAppearances": [],
-    "enabled": false,
-    "quoteHint": null,
-    "masterHint": null,
-    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/f/f1/Leia_Organa_TROS.png/revision/latest/scale-to-width-down/1200?cb=20200102034101",
-    "sourceUrl": "https://starwars.fandom.com/wiki/Princess_Leia"
   },
   {
     "id": "obi-wan-kenobi",
@@ -103,46 +190,42 @@
     "sex": "Male",
     "hairColor": "Brown",
     "eyeColor": "Blue/Green",
+    "skinColor": null,
     "homeworld": "Stewjon",
-    "affiliations": [],
-    "eras": [],
-    "weapons": [],
-    "forceUser": true,
-    "speaksBasic": true,
-    "movieAppearances": [],
-    "tvAppearances": [],
-    "gameAppearances": [],
-    "bookComicAppearances": [],
-    "enabled": false,
-    "quoteHint": null,
-    "masterHint": null,
-    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/4/4e/ObiWanHS-SWE.jpg/revision/latest?cb=20111115052816",
-    "sourceUrl": "https://starwars.fandom.com/wiki/Obi-Wan_Kenobi"
-  },
-  {
-    "id": "yoda",
-    "name": "Yoda",
-    "additionalNames": [],
-    "species": "Yoda's species",
-    "sex": "Male",
-    "hairColor": "White",
-    "eyeColor": "Blue/Green",
-    "homeworld": "Unknown",
+    "birthYear": "57 BBY",
+    "deathYear": "0 BBY",
+    "height": "1.79 meters",
+    "mass": "81 kilograms",
     "affiliations": [
-      "Affiliation Jedi OrderJedi High CouncilGalactic RepublicGrand Army of the Republic"
+      "Affiliation Jedi OrderKybuck Clan"
     ],
     "eras": [],
     "weapons": [],
     "forceUser": true,
     "speaksBasic": true,
-    "movieAppearances": [],
-    "tvAppearances": [],
-    "gameAppearances": [],
-    "bookComicAppearances": [],
+    "movieAppearances": [
+      "The Phantom Menace",
+      "Attack of the Clones",
+      "Revenge of the Sith",
+      "A New Hope",
+      "The Empire Strikes Back",
+      "Return of the Jedi"
+    ],
+    "tvAppearances": [
+      "The Clone Wars",
+      "Star Wars: Tales",
+      "Rebels"
+    ],
+    "gameAppearances": [
+      "Battlefront II"
+    ],
+    "bookAppearances": [
+      "Dark Disciple"
+    ],
     "enabled": false,
     "quoteHint": null,
     "masterHint": null,
-    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/d/d6/Yoda_SWSB.png/revision/latest/scale-to-width-down/1200?cb=20150206140125",
-    "sourceUrl": "https://starwars.fandom.com/wiki/Yoda"
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/4/4e/ObiWanHS-SWE.jpg/revision/latest?cb=20111115052816",
+    "sourceUrl": "https://starwars.fandom.com/wiki/Obi-Wan_Kenobi"
   }
 ]

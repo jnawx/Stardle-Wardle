@@ -108,7 +108,7 @@ const KnowledgeTracker = ({ knowledge, targetCharacter }: KnowledgeTrackerProps)
       {renderArrayValue('Movies', Object.keys(knowledge.movieAppearances).filter(k => knowledge.movieAppearances[k] === 'confirmed-match'), targetCharacter.movieAppearances)}
       {renderArrayValue('TV Shows', Object.keys(knowledge.tvAppearances).filter(k => knowledge.tvAppearances[k] === 'confirmed-match'), targetCharacter.tvAppearances)}
       {renderArrayValue('Games', Object.keys(knowledge.gameAppearances).filter(k => knowledge.gameAppearances[k] === 'confirmed-match'), targetCharacter.gameAppearances)}
-      {renderArrayValue('Books/Comics', Object.keys(knowledge.bookComicAppearances).filter(k => knowledge.bookComicAppearances[k] === 'confirmed-match'), targetCharacter.bookComicAppearances)}
+      {renderArrayValue('Books/Comics', Object.keys(knowledge.bookAppearances).filter(k => knowledge.bookAppearances[k] === 'confirmed-match'), targetCharacter.bookAppearances)}
     </div>
   );
 };

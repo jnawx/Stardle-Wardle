@@ -29,7 +29,7 @@ export const defaultGameConfig: GameConfig = {
     movieAppearances: true,
     tvAppearances: true,
     gameAppearances: true,
-    bookComicAppearances: false, // ✅ Already disabled
+    bookAppearances: false, // ✅ Already disabled
   },
 };
 ```
@@ -54,7 +54,7 @@ export const defaultGameConfig: GameConfig = {
     movieAppearances: false,
     tvAppearances: false,
     gameAppearances: false,
-    bookComicAppearances: false,
+    bookAppearances: false,
   },
 };
 ```
@@ -79,7 +79,7 @@ export const defaultGameConfig: GameConfig = {
     movieAppearances: true,
     tvAppearances: false,
     gameAppearances: false,
-    bookComicAppearances: false,
+    bookAppearances: false,
   },
 };
 ```
@@ -168,7 +168,7 @@ movieAppearances: true,
 movieAppearances: true,
 tvAppearances: false,
 gameAppearances: false,
-bookComicAppearances: false,
+bookAppearances: false,
 ```
 
 ## Display Names

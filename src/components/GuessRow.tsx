@@ -12,7 +12,7 @@ const MEDIA_TYPES = {
   movieAppearances: 'Movies',
   tvAppearances: 'TV',
   gameAppearances: 'Games',
-  bookComicAppearances: 'Books/Comics'
+  bookAppearances: 'Books'
 } as const;
 
 export default function GuessRow({ characterName, imageUrl, comparisons, animate = false }: GuessRowProps) {

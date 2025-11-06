@@ -36,14 +36,14 @@ function App() {
     movieAppearances: {},
     tvAppearances: {},
     gameAppearances: {},
-    bookComicAppearances: {},
+    bookAppearances: {},
     affiliationsExact: false,
     erasExact: false,
     weaponsExact: false,
     movieAppearancesExact: false,
     tvAppearancesExact: false,
     gameAppearancesExact: false,
-    bookComicAppearancesExact: false,
+    bookAppearancesExact: false,
   });
   const [nextKnowledge, setNextKnowledge] = useState<AccumulatedKnowledge | undefined>(undefined);
   const [selectedGuessIndex, setSelectedGuessIndex] = useState(0); // Index of guess to display (0 = latest)
@@ -104,14 +104,14 @@ function App() {
       movieAppearances: {},
       tvAppearances: {},
       gameAppearances: {},
-      bookComicAppearances: {},
+      bookAppearances: {},
       affiliationsExact: false,
       erasExact: false,
       weaponsExact: false,
       movieAppearancesExact: false,
       tvAppearancesExact: false,
       gameAppearancesExact: false,
-      bookComicAppearancesExact: false,
+      bookAppearancesExact: false,
     });
     setNextKnowledge(undefined);
     
@@ -190,7 +190,7 @@ function App() {
       movieAppearances: { ...baseKnowledge.movieAppearances },
       tvAppearances: { ...baseKnowledge.tvAppearances },
       gameAppearances: { ...baseKnowledge.gameAppearances },
-      bookComicAppearances: { ...baseKnowledge.bookComicAppearances },
+      bookAppearances: { ...baseKnowledge.bookAppearances },
     };
     
     comparisons.forEach(comp => {
@@ -208,7 +208,7 @@ function App() {
       // Array attributes: update tag states based on match type
       if (comp.attribute === 'affiliations' || comp.attribute === 'eras' || comp.attribute === 'weapons' ||
           comp.attribute === 'movieAppearances' || comp.attribute === 'tvAppearances' || 
-          comp.attribute === 'gameAppearances' || comp.attribute === 'bookComicAppearances') {
+          comp.attribute === 'gameAppearances' || comp.attribute === 'bookAppearances') {
         
         const tagStates = newKnowledge[comp.attribute];
         const exactFlagKey = `${comp.attribute}Exact` as keyof AccumulatedKnowledge;
@@ -291,7 +291,7 @@ function App() {
     
     // Auto-confirm: If all target tags are individually confirmed as matches, mark category as exact
     const arrayAttributes = ['affiliations', 'eras', 'weapons', 'movieAppearances', 
-                             'tvAppearances', 'gameAppearances', 'bookComicAppearances'];
+                             'tvAppearances', 'gameAppearances', 'bookAppearances'];
     
     arrayAttributes.forEach(attr => {
       const targetTags = targetCharacter[attr as keyof Character] as string[] | undefined;
@@ -331,7 +331,7 @@ function App() {
       movieAppearances: { ...newKnowledge.movieAppearances } as TagKnowledgeState,
       tvAppearances: { ...newKnowledge.tvAppearances } as TagKnowledgeState,
       gameAppearances: { ...newKnowledge.gameAppearances } as TagKnowledgeState,
-      bookComicAppearances: { ...newKnowledge.bookComicAppearances } as TagKnowledgeState,
+      bookAppearances: { ...newKnowledge.bookAppearances } as TagKnowledgeState,
     };
     
     // Attach snapshot to the guess
@@ -353,7 +353,7 @@ function App() {
       
       // Process each array attribute to clean up after exact matches
       const arrayAttributes = ['affiliations', 'eras', 'weapons', 'movieAppearances', 
-                               'tvAppearances', 'gameAppearances', 'bookComicAppearances'];
+                               'tvAppearances', 'gameAppearances', 'bookAppearances'];
       
       arrayAttributes.forEach(attr => {
         const exactFlagKey = `${attr}Exact` as keyof AccumulatedKnowledge;

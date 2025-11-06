@@ -73,7 +73,7 @@ const mediaToEras = {
 /**
  * Get eras from a character's media appearances
  */
-function getErasFromMedia(movieAppearances = [], tvAppearances = [], gameAppearances = [], bookComicAppearances = []) {
+function getErasFromMedia(movieAppearances = [], tvAppearances = [], gameAppearances = [], bookAppearances = []) {
   const eras = new Set();
 
   // Process movies
@@ -104,7 +104,7 @@ function getErasFromMedia(movieAppearances = [], tvAppearances = [], gameAppeara
   });
 
   // Process books/comics
-  bookComicAppearances.forEach(book => {
+  bookAppearances.forEach(book => {
     if (book === 'None') return;
     const bookEras = mediaToEras.booksComics[book];
     if (bookEras) {
@@ -133,13 +133,13 @@ let skipped = 0;
 let noMedia = 0;
 
 characters.forEach(char => {
-  const { movieAppearances, tvAppearances, gameAppearances, bookComicAppearances } = char;
+  const { movieAppearances, tvAppearances, gameAppearances, bookAppearances } = char;
   
   // Check if character has any media appearances
   const hasMovies = movieAppearances && movieAppearances.length > 0 && movieAppearances[0] !== 'None';
   const hasTV = tvAppearances && tvAppearances.length > 0 && tvAppearances[0] !== 'None';
   const hasGames = gameAppearances && gameAppearances.length > 0 && gameAppearances[0] !== 'None';
-  const hasBooks = bookComicAppearances && bookComicAppearances.length > 0 && bookComicAppearances[0] !== 'None';
+  const hasBooks = bookAppearances && bookAppearances.length > 0 && bookAppearances[0] !== 'None';
   
   if (!hasMovies && !hasTV && !hasGames && !hasBooks) {
     console.log(`⏭️  ${char.name} - No media appearances found`);
@@ -152,7 +152,7 @@ characters.forEach(char => {
     movieAppearances || [],
     tvAppearances || [],
     gameAppearances || [],
-    bookComicAppearances || []
+    bookAppearances || []
   );
   
   if (derivedEras.length === 0) {

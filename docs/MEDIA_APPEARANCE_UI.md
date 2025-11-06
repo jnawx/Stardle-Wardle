@@ -127,5 +127,5 @@ Media appearances can be toggled on/off in `src/config/gameConfig.ts`:
 movieAppearances: true,      // Enabled
 tvAppearances: true,          // Enabled
 gameAppearances: true,        // Enabled
-bookComicAppearances: false,  // Disabled (no data yet)
+bookAppearances: false,  // Disabled (no data yet)
 ```

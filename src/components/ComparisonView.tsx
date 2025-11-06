@@ -21,7 +21,7 @@ const MEDIA_TYPES = {
   movieAppearances: 'Movies',
   tvAppearances: 'TV',
   gameAppearances: 'Games',
-  bookComicAppearances: 'Books/Comics'
+  bookAppearances: 'Books'
 } as const;
 
 // Animation type and constants
@@ -368,8 +368,8 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     if (!nextKnowledgeSnapshot) return false;
     
     // Check all tag-based attributes for any tags changing color from unconfirmed (orange)
-    const attributes: (keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookComicAppearances'>)[] = 
-      ['affiliations', 'eras', 'weapons', 'movieAppearances', 'tvAppearances', 'gameAppearances', 'bookComicAppearances'];
+    const attributes: (keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookAppearances'>)[] = 
+      ['affiliations', 'eras', 'weapons', 'movieAppearances', 'tvAppearances', 'gameAppearances', 'bookAppearances'];
     
     const result = attributes.some(attr => {
       const currentStates = knowledgeSnapshot?.[attr] as import('../types/character').TagKnowledgeState;
@@ -404,8 +404,8 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     // On a winning guess, exact match cleanup makes remaining tags gray
     // This happens before we can detect the transition, so check if any tags exist that are now gray
     if (isWinningGuess) {
-      const attributes: (keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookComicAppearances'>)[] = 
-        ['affiliations', 'eras', 'weapons', 'movieAppearances', 'tvAppearances', 'gameAppearances', 'bookComicAppearances'];
+      const attributes: (keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookAppearances'>)[] = 
+        ['affiliations', 'eras', 'weapons', 'movieAppearances', 'tvAppearances', 'gameAppearances', 'bookAppearances'];
       
       const hasGrayTags = attributes.some(attr => {
         const nextStates = nextKnowledgeSnapshot[attr] as import('../types/character').TagKnowledgeState;
@@ -417,8 +417,8 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     }
     
     // Check all tag-based attributes for any tags transitioning to confirmed-non-match
-    const attributes: (keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookComicAppearances'>)[] = 
-      ['affiliations', 'eras', 'weapons', 'movieAppearances', 'tvAppearances', 'gameAppearances', 'bookComicAppearances'];
+    const attributes: (keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookAppearances'>)[] = 
+      ['affiliations', 'eras', 'weapons', 'movieAppearances', 'tvAppearances', 'gameAppearances', 'bookAppearances'];
     
     let result = attributes.some(attr => {
       const currentStates = knowledgeSnapshot?.[attr] as import('../types/character').TagKnowledgeState;
@@ -455,7 +455,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
     
     // For exact matches, always include fadeGray phase because cleanup will create gray tags
     if (!result) {
-      const exactAttributes = ['affiliations', 'eras', 'weapons', 'movieAppearances', 'tvAppearances', 'gameAppearances', 'bookComicAppearances'];
+      const exactAttributes = ['affiliations', 'eras', 'weapons', 'movieAppearances', 'tvAppearances', 'gameAppearances', 'bookAppearances'];
       result = exactAttributes.some(attr => {
         const exactFlagKey = `${attr}Exact` as keyof AccumulatedKnowledge;
         return nextKnowledgeSnapshot[exactFlagKey] as boolean;
@@ -558,7 +558,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
       ? (nextKnowledge || knowledge)
       : (initialNextKnowledgeRef.current || initialKnowledgeRef.current || knowledge);
     
-    const tagStates = knowledgeToUse[comparison.attribute as keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookComicAppearances'>];
+    const tagStates = knowledgeToUse[comparison.attribute as keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookAppearances'>];
     
     // Determine color for each tag based on its state and the comparison result
     const tagItems = guessedTags.map(tag => {
@@ -754,7 +754,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
   };
 
   const renderArrayRow = (comparison: AttributeComparison, label: string, index: number) => {
-    const tagStates = knowledge[comparison.attribute as keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookComicAppearances'>] as import('../types/character').TagKnowledgeState;
+    const tagStates = knowledge[comparison.attribute as keyof Pick<AccumulatedKnowledge, 'affiliations' | 'eras' | 'weapons' | 'movieAppearances' | 'tvAppearances' | 'gameAppearances' | 'bookAppearances'>] as import('../types/character').TagKnowledgeState;
     
     // Check if exact match has been found
     const exactFlagKey = `${comparison.attribute}Exact` as keyof AccumulatedKnowledge;
@@ -1013,7 +1013,7 @@ const ComparisonView = ({ latestGuess, guessNumber, totalGuesses, knowledge, tar
                 'movieAppearances',
                 'tvAppearances',
                 'gameAppearances',
-                'bookComicAppearances'
+                'bookAppearances'
               ];
               
               // Sort array comparisons by the defined order

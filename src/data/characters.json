@@ -18,7 +18,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Mandalorian"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/1/16/Gideon_Armored.png"
   },
@@ -45,7 +45,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["None"],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/1/15/Iden_Versio_BF2.png",
     "fandomUrl": "https://starwars.fandom.com/wiki/Iden_Versio"
@@ -76,7 +76,7 @@
     ],
     "tvAppearances": ["The Clone Wars", "The Bad Batch"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/3/37/Mas_Amedda_SWCT.png",
     "fandomUrl": "https://starwars.fandom.com/wiki/Mas_Amedda"
@@ -100,7 +100,7 @@
     "movieAppearances": ["Attack of the Clones", "Revenge of the Sith"],
     "tvAppearances": ["The Clone Wars", "Rebels"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/9/91/LuminaraUnduli-Encyclopedia.png",
     "fandomUrl": "https://starwars.fandom.com/wiki/Luminara_Unduli"
@@ -124,7 +124,7 @@
     "movieAppearances": ["The Phantom Menace", "Revenge of the Sith"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/6/63/BossNass-SWCT.png"
   },
@@ -147,7 +147,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/0/0e/AdmiralTrenchHS-SWCT.png",
     "fandomUrl": "https://starwars.fandom.com/wiki/Admiral_Trench"
@@ -171,7 +171,7 @@
     "movieAppearances": ["Rogue One"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/d/d0/Bodhi_Rook_Fathead.png",
     "fandomUrl": "https://starwars.fandom.com/wiki/Bodhi_Rook"
@@ -203,7 +203,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Bad Batch", "Rebels", "Ahsoka", "Forces of Destiny"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/b/bb/Chopper_Live_Action.png"
   },
@@ -226,7 +226,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars", "The Bad Batch"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/e/ed/Tech-2024VIP.png"
   },
@@ -249,7 +249,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Bad Batch", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/0/07/Wrecker-UB.png",
     "fandomUrl": "https://starwars.fandom.com/wiki/Wrecker"
@@ -273,7 +273,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Bad Batch", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/1/1d/Hunter-DisneyPlus.png"
   },
@@ -299,7 +299,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Mandalorian"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/3/32/CaraDuneS2-EW.png"
   },
@@ -322,7 +322,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/9/9c/99-ARCT.png"
   },
@@ -353,7 +353,7 @@
     ],
     "tvAppearances": ["Rebels", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/f/fe/Jabba_MMSWCA.png"
   },
@@ -376,7 +376,7 @@
     "movieAppearances": ["Solo"],
     "tvAppearances": ["Forces of Destiny"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/0/05/QiraDress-SWI185.png",
     "fandomUrl": "https://starwars.fandom.com/wiki/Qi'ra"
@@ -400,7 +400,7 @@
     "movieAppearances": ["Rogue One"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/f/f9/BazeMalbus-Heroes2023.png",
     "fandomUrl": "https://starwars.fandom.com/wiki/Baze_Malbus"
@@ -424,7 +424,7 @@
     "movieAppearances": ["Rogue One"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/4/48/ChirrutPromoPhoto.png"
   },
@@ -447,7 +447,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Acolyte"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/4/46/TheStranger-TeachCorrupt.png",
     "fandomUrl": "https://starwars.fandom.com/wiki/The_Stranger"
@@ -475,7 +475,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["Rebels", "The Mandalorian", "Ahsoka"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/d/dc/Garazeb_Orrelios.jpg"
   },
@@ -498,7 +498,7 @@
     "movieAppearances": ["Attack of the Clones"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/1/1c/DexterHS-SWE.png"
   },
@@ -521,7 +521,7 @@
     "movieAppearances": ["A New Hope", "Revenge of the Sith"],
     "tvAppearances": ["Obi-Wan Kenobi"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/c/cc/BeruCardTrader.png"
   },
@@ -544,7 +544,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["None"],
     "gameAppearances": ["The Old Republic"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/c/c8/SateleShanAlderaan-Hope.png",
     "fandomUrl": "https://starwars.fandom.com/wiki/Satele_Shan"
@@ -568,7 +568,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["None"],
     "gameAppearances": ["The Old Republic"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/6/6f/Malgus-Disorder.jpg",
     "fandomUrl": "https://starwars.fandom.com/wiki/Darth_Malgus"
@@ -592,7 +592,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["None"],
     "gameAppearances": ["Knights of the Old Republic"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "http://static.wikia.nocookie.net/starwars/images/3/31/Carth.png",
     "fandomUrl": "https://starwars.fandom.com/wiki/Carth_Onasi"
@@ -616,7 +616,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["None"],
     "gameAppearances": ["Knights of the Old Republic"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/8/89/Malakart-crop.jpg"
   },
@@ -660,7 +660,7 @@
       "Commander",
       "Squadrons"
     ],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "leia-organa",
@@ -706,7 +706,7 @@
       "Commander",
       "Squadrons"
     ],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "darth-vader",
@@ -748,7 +748,7 @@
       "Jedi: Survivor",
       "Squadrons"
     ],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "han-solo",
@@ -781,7 +781,7 @@
     ],
     "tvAppearances": ["Ahsoka", "Forces of Destiny"],
     "gameAppearances": ["Battlefront", "Battlefront II", "Commander"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "yoda",
@@ -821,7 +821,7 @@
       "Young Jedi Adventures"
     ],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "obi-wan-kenobi",
@@ -855,7 +855,7 @@
       "The Clone Wars"
     ],
     "gameAppearances": ["Battlefront II", "Jedi: Fallen Order"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "chewbacca",
@@ -894,7 +894,7 @@
     ],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "r2-d2",
@@ -945,7 +945,7 @@
       "The Mandalorian"
     ],
     "gameAppearances": ["Battlefront", "Battlefront II", "Commander"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "c-3po",
@@ -994,7 +994,7 @@
       "The Clone Wars"
     ],
     "gameAppearances": ["Battlefront", "Commander"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "padme-amidala",
@@ -1023,7 +1023,7 @@
     ],
     "tvAppearances": ["Forces of Destiny", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "anakin-skywalker",
@@ -1074,7 +1074,7 @@
       "Jedi: Survivor",
       "Squadrons"
     ],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "mace-windu",
@@ -1100,7 +1100,7 @@
     ],
     "tvAppearances": ["Tales of the Jedi", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "qui-gon-jinn",
@@ -1122,7 +1122,7 @@
     "movieAppearances": ["The Phantom Menace"],
     "tvAppearances": ["Obi-Wan Kenobi", "Tales of the Jedi", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "darth-maul",
@@ -1144,7 +1144,7 @@
     "movieAppearances": ["The Phantom Menace"],
     "tvAppearances": ["The Clone Wars", "Rebels"],
     "gameAppearances": ["Battlefront", "Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "count-dooku",
@@ -1166,7 +1166,7 @@
     "movieAppearances": ["Attack of the Clones", "Revenge of the Sith"],
     "tvAppearances": ["Tales of the Jedi", "The Clone Wars"],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "general-grievous",
@@ -1188,7 +1188,7 @@
     "movieAppearances": ["Revenge of the Sith"],
     "tvAppearances": ["Tales of the Empire", "The Clone Wars"],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "jango-fett",
@@ -1210,7 +1210,7 @@
     "movieAppearances": ["Attack of the Clones"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "boba-fett",
@@ -1245,7 +1245,7 @@
       "The Mandalorian"
     ],
     "gameAppearances": ["Battlefront", "Battlefront II", "Jedi: Survivor"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "lando-calrissian",
@@ -1276,7 +1276,7 @@
     ],
     "tvAppearances": ["Forces of Destiny", "Rebels"],
     "gameAppearances": ["Battlefront", "Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "emperor-palpatine",
@@ -1314,7 +1314,7 @@
     ],
     "tvAppearances": ["Ahsoka", "Obi-Wan Kenobi"],
     "gameAppearances": ["Battlefront II", "Battlefront"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "ahsoka-tano",
@@ -1352,7 +1352,7 @@
       "The Mandalorian"
     ],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "poe-dameron",
@@ -1378,7 +1378,7 @@
     ],
     "tvAppearances": ["Resistance"],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "finn",
@@ -1407,7 +1407,7 @@
     ],
     "tvAppearances": ["Forces of Destiny", "Resistance"],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "captain-phasma",
@@ -1429,7 +1429,7 @@
     "movieAppearances": ["The Force Awakens", "The Last Jedi"],
     "tvAppearances": ["Resistance"],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "bb-8",
@@ -1455,7 +1455,7 @@
     ],
     "tvAppearances": ["Forces of Destiny", "Resistance"],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "mon-mothma",
@@ -1497,7 +1497,7 @@
       "The Clone Wars"
     ],
     "gameAppearances": ["Commander"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "wedge-antilles",
@@ -1528,7 +1528,7 @@
     ],
     "tvAppearances": ["Rebels", "Resistance"],
     "gameAppearances": ["Battlefront", "Squadrons"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "jar-jar-binks",
@@ -1554,7 +1554,7 @@
     ],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "4-lom",
@@ -1576,7 +1576,7 @@
     "movieAppearances": ["The Empire Strikes Back"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "gial-ackbar",
@@ -1610,7 +1610,7 @@
     ],
     "tvAppearances": ["Ahsoka", "Resistance", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "stass-allie",
@@ -1632,7 +1632,7 @@
     "movieAppearances": ["Attack of the Clones", "Revenge of the Sith"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "cassian-jeron-andor",
@@ -1654,7 +1654,7 @@
     "movieAppearances": ["Rogue One"],
     "tvAppearances": ["Andor"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "ponda-baba",
@@ -1676,7 +1676,7 @@
     "movieAppearances": ["A New Hope", "Rogue One", "Solo"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "babu-frik",
@@ -1698,7 +1698,7 @@
     "movieAppearances": ["The Rise of Skywalker"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "bail-prestor-organa",
@@ -1735,7 +1735,7 @@
       "The Clone Wars"
     ],
     "gameAppearances": ["Squadrons"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "cad-bane",
@@ -1766,7 +1766,7 @@
       "The Clone Wars"
     ],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "darth-bane",
@@ -1788,7 +1788,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "ben-solo",
@@ -1814,7 +1814,7 @@
     ],
     "tvAppearances": ["Ahsoka", "Resistance"],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "bossk",
@@ -1836,7 +1836,7 @@
     "movieAppearances": ["Return of the Jedi", "The Empire Strikes Back"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["Battlefront", "Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "ezra-bridger",
@@ -1858,7 +1858,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["Ahsoka", "Forces of Destiny", "Rebels"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "cc-1004",
@@ -1880,7 +1880,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "cc-1010",
@@ -1902,7 +1902,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "cc-1119",
@@ -1924,7 +1924,7 @@
     "movieAppearances": ["Revenge of the Sith"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "cc-1138",
@@ -1946,7 +1946,7 @@
     "movieAppearances": ["Revenge of the Sith"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "cc-2224",
@@ -1968,7 +1968,7 @@
     "movieAppearances": ["Revenge of the Sith"],
     "tvAppearances": ["The Bad Batch", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "cc-3636",
@@ -1993,7 +1993,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["Rebels", "The Bad Batch", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "cc-7567",
@@ -2023,7 +2023,7 @@
       "The Clone Wars"
     ],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "riyo-chuchi",
@@ -2048,7 +2048,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Bad Batch", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "rush-clovis",
@@ -2073,7 +2073,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "salacious-b-crumb",
@@ -2095,7 +2095,7 @@
     "movieAppearances": ["Return of the Jedi"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "ct-1409",
@@ -2117,7 +2117,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Bad Batch", "The Clone Wars"],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "ct-411",
@@ -2139,7 +2139,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "ct-5385",
@@ -2161,7 +2161,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "ct-5555",
@@ -2183,7 +2183,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "ct-5597",
@@ -2205,7 +2205,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["Tales of the Jedi", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "ct-6116",
@@ -2227,7 +2227,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "ct-6922",
@@ -2249,7 +2249,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "ct-782",
@@ -2271,7 +2271,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "ct-9904",
@@ -2296,7 +2296,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Bad Batch", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "biggs-darklighter",
@@ -2318,7 +2318,7 @@
     "movieAppearances": ["A New Hope"],
     "tvAppearances": ["None"],
     "gameAppearances": ["Battlefront"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "dengar",
@@ -2340,7 +2340,7 @@
     "movieAppearances": ["Return of the Jedi", "The Empire Strikes Back"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["Battlefront"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "din-djarin",
@@ -2362,7 +2362,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Book of Boba Fett", "The Mandalorian"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "din-grogu",
@@ -2384,7 +2384,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Book of Boba Fett", "The Mandalorian"],
     "gameAppearances": ["Squadrons"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "jan-dodonna",
@@ -2406,7 +2406,7 @@
     "movieAppearances": ["A New Hope", "Rogue One"],
     "tvAppearances": ["Rebels"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "embo",
@@ -2428,7 +2428,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["Rebels", "The Bad Batch", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "galen-walton-erso",
@@ -2450,7 +2450,7 @@
     "movieAppearances": ["Rogue One"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "jyn-erso",
@@ -2472,7 +2472,7 @@
     "movieAppearances": ["Rogue One", "Solo"],
     "tvAppearances": ["Forces of Destiny"],
     "gameAppearances": ["Battlefront"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "fennec-shand",
@@ -2498,7 +2498,7 @@
       "The Mandalorian"
     ],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "kit-fisto",
@@ -2520,7 +2520,7 @@
     "movieAppearances": ["Revenge of the Sith", "The Rise of Skywalker"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "bib-fortuna",
@@ -2550,7 +2550,7 @@
       "The Mandalorian"
     ],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "adi-gallia",
@@ -2572,7 +2572,7 @@
     "movieAppearances": ["Attack of the Clones", "The Phantom Menace"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "saw-gerrera",
@@ -2594,7 +2594,7 @@
     "movieAppearances": ["Rogue One", "Solo"],
     "tvAppearances": ["Andor", "Rebels", "The Bad Batch", "The Clone Wars"],
     "gameAppearances": ["Jedi: Fallen Order"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "greedo",
@@ -2616,7 +2616,7 @@
     "movieAppearances": ["A New Hope", "Solo", "The Phantom Menace"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["Battlefront"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "gregar-typho",
@@ -2638,7 +2638,7 @@
     "movieAppearances": ["Revenge of the Sith", "Attack of the Clones"],
     "tvAppearances": ["Forces of Destiny", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "nute-gunray",
@@ -2664,7 +2664,7 @@
     ],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "amilyn-holdo",
@@ -2686,7 +2686,7 @@
     "movieAppearances": ["The Last Jedi"],
     "tvAppearances": ["Resistance"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "armitage-hux",
@@ -2712,7 +2712,7 @@
     ],
     "tvAppearances": ["Resistance"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "ig-88b",
@@ -2734,7 +2734,7 @@
     "movieAppearances": ["The Empire Strikes Back"],
     "tvAppearances": ["Forces of Destiny"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "kanan-jarrus",
@@ -2756,7 +2756,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["Rebels", "Tales of the Jedi", "The Bad Batch"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "jek-tono-porkins",
@@ -2778,7 +2778,7 @@
     "movieAppearances": ["A New Hope", "Rogue One"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "k-2so",
@@ -2800,7 +2800,7 @@
     "movieAppearances": ["Rogue One"],
     "tvAppearances": ["Andor"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "maz-kanata",
@@ -2836,7 +2836,7 @@
       "Young Jedi Adventures"
     ],
     "gameAppearances": ["Battlefront II", "Commander"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "cal-kestis",
@@ -2858,7 +2858,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["None"],
     "gameAppearances": ["Jedi: Fallen Order", "Jedi: Survivor"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "ki-adi-mundi",
@@ -2884,7 +2884,7 @@
     ],
     "tvAppearances": ["Tales of the Jedi", "The Acolyte", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "plo-koon",
@@ -2910,7 +2910,7 @@
     ],
     "tvAppearances": ["Tales of the Jedi", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "eeth-koth",
@@ -2932,7 +2932,7 @@
     "movieAppearances": ["Attack of the Clones", "The Phantom Menace"],
     "tvAppearances": ["Tales of the Jedi", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "pong-krell",
@@ -2954,7 +2954,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "orson-callan-krennic",
@@ -2976,7 +2976,7 @@
     "movieAppearances": ["Rogue One"],
     "tvAppearances": ["Andor", "The Bad Batch"],
     "gameAppearances": ["Battlefront"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "bo-katan-kryze",
@@ -3002,7 +3002,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["Ahsoka", "Rebels", "The Clone Wars", "The Mandalorian"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "satine-kryze",
@@ -3024,7 +3024,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "cliegg-lars",
@@ -3046,7 +3046,7 @@
     "movieAppearances": ["Attack of the Clones"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "shmi-skywalker-lars",
@@ -3068,7 +3068,7 @@
     "movieAppearances": ["Attack of the Clones", "The Phantom Menace"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "lobot",
@@ -3094,7 +3094,7 @@
     "movieAppearances": ["The Empire Strikes Back"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "mitth-raw-nuruodo",
@@ -3116,7 +3116,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["Ahsoka", "Rebels", "Tales of the Empire"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "jocasta-nu",
@@ -3138,7 +3138,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["Tales of the Jedi", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "nien-nunb",
@@ -3169,7 +3169,7 @@
     ],
     "tvAppearances": ["Resistance"],
     "gameAppearances": ["Battlefront"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "barriss-offee",
@@ -3199,7 +3199,7 @@
       "The Clone Wars"
     ],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "hondo-ohnaka",
@@ -3221,7 +3221,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["Forces of Destiny", "Rebels", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "omega",
@@ -3243,7 +3243,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Bad Batch"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "savage-opress",
@@ -3265,7 +3265,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "owen-lars",
@@ -3291,7 +3291,7 @@
     ],
     "tvAppearances": ["Obi-Wan Kenobi"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "darth-plagueis",
@@ -3313,7 +3313,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "unkar-plutt",
@@ -3335,7 +3335,7 @@
     "movieAppearances": ["The Force Awakens"],
     "tvAppearances": ["Forces of Destiny"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "poggle-the-lesser",
@@ -3357,7 +3357,7 @@
     "movieAppearances": ["Revenge of the Sith", "Rogue One"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "yarael-poof",
@@ -3379,7 +3379,7 @@
     "movieAppearances": ["The Phantom Menace"],
     "tvAppearances": ["The Acolyte"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "rc-1138",
@@ -3404,7 +3404,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["Republic Commando"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "additionalNames": []
   },
   {
@@ -3430,7 +3430,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["Republic Commando"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "rc-1207",
@@ -3452,7 +3452,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["Republic Commando"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "rc-1262",
@@ -3477,7 +3477,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Bad Batch", "The Clone Wars"],
     "gameAppearances": ["Republic Commando"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "max-rebo",
@@ -3503,7 +3503,7 @@
     "movieAppearances": ["Return of the Jedi"],
     "tvAppearances": ["Rebels", "The Book of Boba Fett", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "revan",
@@ -3525,7 +3525,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["Knights of the Old Republic", "The Old Republic"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "rey-skywalker",
@@ -3551,7 +3551,7 @@
     ],
     "tvAppearances": ["Forces of Destiny", "Resistance"],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "roos-tarpals",
@@ -3573,7 +3573,7 @@
     "movieAppearances": ["The Phantom Menace"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "sab",
@@ -3595,7 +3595,7 @@
     "movieAppearances": ["The Phantom Menace", "Attack of the Clones"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "sebulba",
@@ -3617,7 +3617,7 @@
     "movieAppearances": ["The Phantom Menace"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "aayla-secura",
@@ -3639,7 +3639,7 @@
     "movieAppearances": ["Revenge of the Sith", "Attack of the Clones"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "bastila-shan",
@@ -3661,7 +3661,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["None"],
     "gameAppearances": ["Knights of the Old Republic"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "aurra-sing",
@@ -3687,7 +3687,7 @@
     "movieAppearances": ["The Phantom Menace"],
     "tvAppearances": ["The Bad Batch", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "snoke",
@@ -3709,7 +3709,7 @@
     "movieAppearances": ["The Last Jedi"],
     "tvAppearances": ["Resistance"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "lama-su",
@@ -3731,7 +3731,7 @@
     "movieAppearances": ["Attack of the Clones"],
     "tvAppearances": ["The Bad Batch", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "hera-syndulla",
@@ -3753,7 +3753,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["Ahsoka", "Forces of Destiny", "Rebels", "The Bad Batch"],
     "gameAppearances": ["Squadrons"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "wat-tambor",
@@ -3775,7 +3775,7 @@
     "movieAppearances": ["Revenge of the Sith"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "tarfful",
@@ -3797,7 +3797,7 @@
     "movieAppearances": ["Revenge of the Sith"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["Jedi: Fallen Order"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "wilhuff-tarkin",
@@ -3827,7 +3827,7 @@
     ],
     "tvAppearances": ["Rebels", "The Bad Batch", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "tc-14",
@@ -3849,7 +3849,7 @@
     "movieAppearances": ["The Phantom Menace"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "shaak-ti",
@@ -3871,7 +3871,7 @@
     "movieAppearances": ["Attack of the Clones"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "rose-tico",
@@ -3893,7 +3893,7 @@
     "movieAppearances": ["The Last Jedi", "The Rise of Skywalker"],
     "tvAppearances": ["Forces of Destiny", "Resistance"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "trace-martez",
@@ -3915,7 +3915,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Bad Batch", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "finis-valorum",
@@ -3937,7 +3937,7 @@
     "movieAppearances": ["The Phantom Menace"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "asajj-ventress",
@@ -3959,7 +3959,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Bad Batch", "The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "pre-vizsla",
@@ -3981,7 +3981,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "quinlan-vos",
@@ -4008,7 +4008,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "wicket-wystri-warrick",
@@ -4030,7 +4030,7 @@
     "movieAppearances": ["Return of the Jedi", "The Rise of Skywalker"],
     "tvAppearances": ["Forces of Destiny"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "watto",
@@ -4052,7 +4052,7 @@
     "movieAppearances": ["Attack of the Clones", "The Phantom Menace"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "taun-we",
@@ -4074,7 +4074,7 @@
     "movieAppearances": ["Attack of the Clones"],
     "tvAppearances": ["The Bad Batch"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "zam-wesell",
@@ -4096,7 +4096,7 @@
     "movieAppearances": ["Attack of the Clones"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "sabine-wren",
@@ -4124,7 +4124,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["Ahsoka", "Forces of Destiny", "Rebels"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "yaddle",
@@ -4146,7 +4146,7 @@
     "movieAppearances": ["The Phantom Menace"],
     "tvAppearances": ["Tales of the Jedi", "The Acolyte"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   },
   {
     "id": "zuckuss",
@@ -4168,6 +4168,6 @@
     "movieAppearances": ["The Empire Strikes Back"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"]
   }
 ]

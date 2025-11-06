@@ -99,14 +99,14 @@ export const mediaToEraMapping: MediaEraMap = {
  * @param movieAppearances Array of movies the character appears in
  * @param tvAppearances Array of TV shows the character appears in
  * @param gameAppearances Array of games the character appears in
- * @param bookComicAppearances Array of books/comics the character appears in
+ * @param bookAppearances Array of books/comics the character appears in
  * @returns Deduplicated array of eras
  */
 export function getErasFromMedia(
   movieAppearances: string[] = [],
   tvAppearances: string[] = [],
   gameAppearances: string[] = [],
-  bookComicAppearances: string[] = []
+  bookAppearances: string[] = []
 ): string[] {
   const eras = new Set<string>();
 
@@ -138,7 +138,7 @@ export function getErasFromMedia(
   });
 
   // Process books/comics
-  bookComicAppearances.forEach((book) => {
+  bookAppearances.forEach((book) => {
     if (book === 'None') return;
     const bookEras = mediaToEraMapping.booksComics[book];
     if (bookEras) {
@@ -169,7 +169,7 @@ export function validateMediaEraMapping(attributeOptions: {
   movieAppearances: string[];
   tvAppearances: string[];
   gameAppearances: string[];
-  bookComicAppearances: string[];
+  bookAppearances: string[];
 }): {
   missingMovies: string[];
   missingTv: string[];
@@ -185,7 +185,7 @@ export function validateMediaEraMapping(attributeOptions: {
   const missingGames = attributeOptions.gameAppearances.filter(
     (game) => !mediaToEraMapping.games[game]
   );
-  const missingBooks = attributeOptions.bookComicAppearances.filter(
+  const missingBooks = attributeOptions.bookAppearances.filter(
     (book) => !mediaToEraMapping.booksComics[book]
   );
 

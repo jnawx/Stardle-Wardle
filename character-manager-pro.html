@@ -521,7 +521,7 @@
             <option value="movieAppearances">Movie Appearances</option>
             <option value="tvAppearances">TV Appearances</option>
             <option value="gameAppearances">Game Appearances</option>
-            <option value="bookComicAppearances">Book/Comic Appearances</option>
+            <option value="bookAppearances">Book Appearances</option>
           </select>
         </div>
         
@@ -631,7 +631,7 @@
              hasNoValue(char.movieAppearances) ||
              hasNoValue(char.tvAppearances) ||
              hasNoValue(char.gameAppearances) ||
-             hasNoValue(char.bookComicAppearances);
+             hasNoValue(char.bookAppearances);
     }
 
     function updateStats() {
@@ -916,9 +916,9 @@
               
               <div class="attribute-field">
                 <div class="attribute-label">Book/Comic Appearances</div>
-                <div class="multi-select" onclick="${char.markedForDelete ? '' : `openMultiSelect(${charIndex}, 'bookComicAppearances')`}" style="${char.markedForDelete ? 'opacity: 0.5; cursor: not-allowed;' : 'cursor: pointer;'}">
-                  ${(char.bookComicAppearances || []).map(b => 
-                    `<span class="multi-select-tag">${b} ${char.markedForDelete ? '' : `<span class="remove" onclick="event.stopPropagation(); removeFromArray(${charIndex}, 'bookComicAppearances', '${b.replace(/'/g, "\\'")}')">×</span>`}</span>`
+                <div class="multi-select" onclick="${char.markedForDelete ? '' : `openMultiSelect(${charIndex}, 'bookAppearances')`}" style="${char.markedForDelete ? 'opacity: 0.5; cursor: not-allowed;' : 'cursor: pointer;'}">
+                  ${(char.bookAppearances || []).map(b => 
+                    `<span class="multi-select-tag">${b} ${char.markedForDelete ? '' : `<span class="remove" onclick="event.stopPropagation(); removeFromArray(${charIndex}, 'bookAppearances', '${b.replace(/'/g, "\\'")}')">×</span>`}</span>`
                   ).join('')}
                   ${char.markedForDelete ? '' : '<button class="multi-select-add">+ Add</button>'}
                 </div>
@@ -1087,7 +1087,7 @@
         movieAppearances: [],
         tvAppearances: [],
         gameAppearances: [],
-        bookComicAppearances: [],
+        bookAppearances: [],
         enabled: enabledCheckbox.checked,
         imageUrl: null,
         markedForDelete: false

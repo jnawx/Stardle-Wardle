@@ -17,7 +17,7 @@ export interface Character {
   movieAppearances?: string[];
   tvAppearances?: string[];
   gameAppearances?: string[];
-  bookComicAppearances?: string[];
+  bookAppearances?: string[];
   // Metadata
   enabled: boolean;
   // Hints
@@ -45,7 +45,7 @@ export type AttributeKey =
   | 'movieAppearances'
   | 'tvAppearances'
   | 'gameAppearances'
-  | 'bookComicAppearances';
+  | 'bookAppearances';
 
 export type MatchResult = 'exact' | 'partial' | 'none';
 
@@ -72,7 +72,7 @@ export interface Guess {
     movieAppearances: TagKnowledgeState;
     tvAppearances: TagKnowledgeState;
     gameAppearances: TagKnowledgeState;
-    bookComicAppearances: TagKnowledgeState;
+    bookAppearances: TagKnowledgeState;
   };
 }
 
@@ -100,7 +100,7 @@ export interface AccumulatedKnowledge {
   movieAppearances: TagKnowledgeState;
   tvAppearances: TagKnowledgeState;
   gameAppearances: TagKnowledgeState;
-  bookComicAppearances: TagKnowledgeState;
+  bookAppearances: TagKnowledgeState;
   // Track if exact match has been found for each attribute
   affiliationsExact: boolean;
   erasExact: boolean;
@@ -108,7 +108,7 @@ export interface AccumulatedKnowledge {
   movieAppearancesExact: boolean;
   tvAppearancesExact: boolean;
   gameAppearancesExact: boolean;
-  bookComicAppearancesExact: boolean;
+  bookAppearancesExact: boolean;
 }
 
 export type GameMode = 'daily' | 'practice';

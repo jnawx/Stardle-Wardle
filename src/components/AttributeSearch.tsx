@@ -22,7 +22,7 @@ const ATTRIBUTE_LABELS: Record<FilterableAttribute, string> = {
   movieAppearances: 'Movies',
   tvAppearances: 'TV Shows',
   gameAppearances: 'Games',
-  bookComicAppearances: 'Books/Comics',
+  bookAppearances: 'Books/Comics',
 };
 
 export default function AttributeSearch({
@@ -55,7 +55,7 @@ export default function AttributeSearch({
       movieAppearances: new Set(),
       tvAppearances: new Set(),
       gameAppearances: new Set(),
-      bookComicAppearances: new Set(),
+      bookAppearances: new Set(),
     };
 
     unguessedCharacters.forEach(char => {
@@ -73,7 +73,7 @@ export default function AttributeSearch({
       char.movieAppearances?.forEach(movie => values.movieAppearances.add(movie));
       char.tvAppearances?.forEach(tv => values.tvAppearances.add(tv));
       char.gameAppearances?.forEach(game => values.gameAppearances.add(game));
-      char.bookComicAppearances?.forEach(book => values.bookComicAppearances.add(book));
+      char.bookAppearances?.forEach(book => values.bookAppearances.add(book));
     });
 
     // Convert Sets to sorted arrays

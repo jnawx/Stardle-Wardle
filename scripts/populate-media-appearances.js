@@ -13,6 +13,20 @@ const movieTitles = new Set(attributeOptions.movieAppearances);
 const tvTitles = new Set(attributeOptions.tvAppearances);
 const gameTitles = new Set(attributeOptions.gameAppearances);
 
+// Create index maps for chronological sorting
+const movieOrder = new Map(attributeOptions.movieAppearances.map((title, index) => [title, index]));
+const tvOrder = new Map(attributeOptions.tvAppearances.map((title, index) => [title, index]));
+const gameOrder = new Map(attributeOptions.gameAppearances.map((title, index) => [title, index]));
+
+// Sort function that uses canonical order from attribute-options.json
+function sortByCanonicalOrder(arr, orderMap) {
+  return arr.sort((a, b) => {
+    const indexA = orderMap.get(a) ?? 999;
+    const indexB = orderMap.get(b) ?? 999;
+    return indexA - indexB;
+  });
+}
+
 // Helper to clean media titles from HTML text
 function cleanMediaTitle(text) {
   let cleaned = text
@@ -34,6 +48,14 @@ function cleanMediaTitle(text) {
 
 // Check if a cleaned title matches any of our known titles
 function matchToKnownTitle(cleanedText, titleSet) {
+  // Special handling for Tales anthology shows
+  // Map individual anthology names to the consolidated "Star Wars: Tales" entry
+  // Note: cleanMediaTitle removes "Star Wars:" prefix, so we match "Tales of the..."
+  const talesPattern = /^Tales of the (?:Jedi|Empire|Underworld)/i;
+  if (talesPattern.test(cleanedText) && titleSet.has("Star Wars: Tales")) {
+    return "Star Wars: Tales";
+  }
+  
   // Direct match (case-sensitive)
   if (titleSet.has(cleanedText)) {
     return cleanedText;
@@ -187,33 +209,38 @@ characters.forEach((char, index) => {
     let hasChanges = false;
     const changes = [];
     
-    // Update movie appearances (always compare, even if empty)
-    const oldMovies = JSON.stringify((char.movieAppearances || []).sort());
-    const newMovies = JSON.stringify(appearances.movies.sort());
+    // Sort all arrays by canonical chronological order
+    const sortedMovies = sortByCanonicalOrder([...appearances.movies], movieOrder);
+    const sortedTV = sortByCanonicalOrder([...appearances.tv], tvOrder);
+    const sortedGames = sortByCanonicalOrder([...appearances.games], gameOrder);
+    
+    // Update movie appearances (always update to ensure correct chronological order)
+    const oldMovies = JSON.stringify(char.movieAppearances || []);
+    const newMovies = JSON.stringify(sortedMovies);
     if (oldMovies !== newMovies) {
-      char.movieAppearances = appearances.movies.length > 0 ? appearances.movies : [];
+      char.movieAppearances = sortedMovies.length > 0 ? sortedMovies : [];
       hasChanges = true;
-      const moviesDisplay = appearances.movies.length > 0 ? appearances.movies.join(', ') : 'NONE (cleared incorrect data)';
+      const moviesDisplay = sortedMovies.length > 0 ? sortedMovies.join(', ') : 'NONE (cleared incorrect data)';
       changes.push(`📽️  Movies: ${moviesDisplay}`);
     }
     
-    // Update TV appearances (always compare, even if empty)
-    const oldTV = JSON.stringify((char.tvAppearances || []).sort());
-    const newTV = JSON.stringify(appearances.tv.sort());
+    // Update TV appearances (always update to ensure correct chronological order)
+    const oldTV = JSON.stringify(char.tvAppearances || []);
+    const newTV = JSON.stringify(sortedTV);
     if (oldTV !== newTV) {
-      char.tvAppearances = appearances.tv.length > 0 ? appearances.tv : [];
+      char.tvAppearances = sortedTV.length > 0 ? sortedTV : [];
       hasChanges = true;
-      const tvDisplay = appearances.tv.length > 0 ? appearances.tv.join(', ') : 'NONE (cleared incorrect data)';
+      const tvDisplay = sortedTV.length > 0 ? sortedTV.join(', ') : 'NONE (cleared incorrect data)';
       changes.push(`📺 TV: ${tvDisplay}`);
     }
     
-    // Update game appearances (always compare, even if empty)
-    const oldGames = JSON.stringify((char.gameAppearances || []).sort());
-    const newGames = JSON.stringify(appearances.games.sort());
+    // Update game appearances (always update to ensure correct chronological order)
+    const oldGames = JSON.stringify(char.gameAppearances || []);
+    const newGames = JSON.stringify(sortedGames);
     if (oldGames !== newGames) {
-      char.gameAppearances = appearances.games.length > 0 ? appearances.games : [];
+      char.gameAppearances = sortedGames.length > 0 ? sortedGames : [];
       hasChanges = true;
-      const gamesDisplay = appearances.games.length > 0 ? appearances.games.join(', ') : 'NONE (cleared incorrect data)';
+      const gamesDisplay = sortedGames.length > 0 ? sortedGames.join(', ') : 'NONE (cleared incorrect data)';
       changes.push(`🎮 Games: ${gamesDisplay}`);
     }
     

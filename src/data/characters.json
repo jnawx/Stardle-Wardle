@@ -1166,7 +1166,7 @@
   },
   {
     "id": "count-dooku",
-    "name": "Count Dooku",
+    "name": "Count Dooku (Darth Tyranus)",
     "species": "Human",
     "sex": "Male",
     "hairColor": "White",
@@ -1307,7 +1307,7 @@
   },
   {
     "id": "emperor-palpatine",
-    "name": "Sheev Palpatine",
+    "name": "Sheev Palpatine (Darth Sidious)",
     "species": "Human",
     "sex": "Male",
     "hairColor": "White",

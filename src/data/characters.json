@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "id": "moff-gideon",
     "name": "Moff Gideon",
@@ -18,9 +18,10 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Mandalorian"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
-    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/1/16/Gideon_Armored.png"
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/1/16/Gideon_Armored.png",
+    "fandomUrl": "https://starwars.fandom.com/wiki/Gideon"
   },
   {
     "id": "iden-versio",
@@ -45,7 +46,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["None"],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/1/15/Iden_Versio_BF2.png",
     "fandomUrl": "https://starwars.fandom.com/wiki/Iden_Versio"
@@ -72,11 +73,12 @@
     "movieAppearances": [
       "The Phantom Menace",
       "Attack of the Clones",
-      "Revenge of the Sith"
+      "Revenge of the Sith",
+      "Rogue One"
     ],
     "tvAppearances": ["The Clone Wars", "The Bad Batch"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/3/37/Mas_Amedda_SWCT.png",
     "fandomUrl": "https://starwars.fandom.com/wiki/Mas_Amedda"
@@ -97,10 +99,10 @@
     "speaksBasic": true,
     "quoteHint": "We suffer a great many losses in these battles. Too many.",
     "masterHint": "Jedi Master who was executed by the Empire. Her remains were used to lure surviving Jedi to their deaths.",
-    "movieAppearances": ["Attack of the Clones", "Revenge of the Sith"],
+    "movieAppearances": ["Revenge of the Sith", "The Rise of Skywalker"],
     "tvAppearances": ["The Clone Wars", "Rebels"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/9/91/LuminaraUnduli-Encyclopedia.png",
     "fandomUrl": "https://starwars.fandom.com/wiki/Luminara_Unduli"
@@ -122,11 +124,12 @@
     "quoteHint": "Mesa lika this. Maybe wesa being friends.",
     "masterHint": "Leader of the Gungans who established relations between the Gungan people and the humans on Naboo's surface.",
     "movieAppearances": ["The Phantom Menace", "Revenge of the Sith"],
-    "tvAppearances": ["The Clone Wars"],
+    "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
-    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/6/63/BossNass-SWCT.png"
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/6/63/BossNass-SWCT.png",
+    "fandomUrl": "https://starwars.fandom.com/wiki/Rugor_Nass"
   },
   {
     "id": "admiral-trench",
@@ -147,7 +150,7 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/0/0e/AdmiralTrenchHS-SWCT.png",
     "fandomUrl": "https://starwars.fandom.com/wiki/Admiral_Trench"
@@ -166,12 +169,12 @@
     "weapons": ["Ranged (Blaster)"],
     "forceUser": false,
     "speaksBasic": true,
-    "quoteHint": "Would I risk everything for a lie? We don’t have time for this!",
+    "quoteHint": "Would I risk everything for a lie? We donâ€™t have time for this!",
     "masterHint": "Former Imperial pilot who defected to join the Rebel Alliance. He helped with stealing the Death Star plans on Scarif.",
     "movieAppearances": ["Rogue One"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/d/d0/Bodhi_Rook_Fathead.png",
     "fandomUrl": "https://starwars.fandom.com/wiki/Bodhi_Rook"
@@ -200,12 +203,13 @@
     "speaksBasic": false,
     "quoteHint": "*Beep beep beeeep*",
     "masterHint": "Trusted astromech companion to Hera Syndulla.",
-    "movieAppearances": ["None"],
-    "tvAppearances": ["The Bad Batch", "Rebels", "Ahsoka", "Forces of Destiny"],
+    "movieAppearances": ["Rogue One"],
+    "tvAppearances": ["The Bad Batch", "Rebels", "Forces of Destiny"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
-    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/b/bb/Chopper_Live_Action.png"
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/b/bb/Chopper_Live_Action.png",
+    "fandomUrl": "https://starwars.fandom.com/wiki/C1-10P"
   },
   {
     "id": "tech",
@@ -226,9 +230,10 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars", "The Bad Batch"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
-    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/e/ed/Tech-2024VIP.png"
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/e/ed/Tech-2024VIP.png",
+    "fandomUrl": "https://starwars.fandom.com/wiki/CT-9902"
   },
   {
     "id": "wrecker",
@@ -247,9 +252,9 @@
     "quoteHint": "Why don't you pick on someone not your size?",
     "masterHint": "Well-meaning, incredibly strong, but not very intelligent clone. He served in Clone Force 99. His left eye is blind.",
     "movieAppearances": ["None"],
-    "tvAppearances": ["The Bad Batch", "The Clone Wars"],
+    "tvAppearances": ["The Clone Wars", "The Bad Batch"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/0/07/Wrecker-UB.png",
     "fandomUrl": "https://starwars.fandom.com/wiki/Wrecker"
@@ -271,11 +276,12 @@
     "quoteHint": "Blind allegiance makes you a pawn. A real leader protects his squad.",
     "masterHint": "Leader of a clone special forces squad that largely defected after the formation of the Empire.",
     "movieAppearances": ["None"],
-    "tvAppearances": ["The Bad Batch", "The Clone Wars"],
+    "tvAppearances": ["The Clone Wars", "The Bad Batch"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
-    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/1/1d/Hunter-DisneyPlus.png"
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/1/1d/Hunter-DisneyPlus.png",
+    "fandomUrl": "https://starwars.fandom.com/wiki/CT-9901"
   },
   {
     "id": "cara-dune",
@@ -299,9 +305,10 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Mandalorian"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
-    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/3/32/CaraDuneS2-EW.png"
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/3/32/CaraDuneS2-EW.png",
+    "fandomUrl": "https://starwars.fandom.com/wiki/Carasynthia_Dune"
   },
   {
     "id": "ninety-nine--99-",
@@ -322,9 +329,10 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
-    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/9/9c/99-ARCT.png"
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/9/9c/99-ARCT.png",
+    "fandomUrl": "https://starwars.fandom.com/wiki/99"
   },
   {
     "id": "jabba-the-hutt",
@@ -348,14 +356,17 @@
     "masterHint": "Notorious crime lord in the outer rim. Has a palace on Tatooine.",
     "movieAppearances": [
       "The Phantom Menace",
+      "Solo",
       "A New Hope",
-      "Return of the Jedi"
+      "Return of the Jedi",
+      "The Force Awakens"
     ],
-    "tvAppearances": ["Rebels", "The Clone Wars"],
+    "tvAppearances": ["The Clone Wars", "Galaxy of Adventures"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
-    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/f/fe/Jabba_MMSWCA.png"
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/f/fe/Jabba_MMSWCA.png",
+    "fandomUrl": "https://starwars.fandom.com/wiki/Jabba_Desilijic_Tiure"
   },
   {
     "id": "qi-ra",
@@ -374,9 +385,9 @@
     "quoteHint": "It's not that kind of game, Han. The object isn't to win. It's just to stay in it as long as you can.",
     "masterHint": "Skilled criminal and lover and partner of Han Solo. Worked for Maul in Crimson Dawn.",
     "movieAppearances": ["Solo"],
-    "tvAppearances": ["Forces of Destiny"],
+    "tvAppearances": ["Forces of Destiny", "Galaxy of Adventures"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/0/05/QiraDress-SWI185.png",
     "fandomUrl": "https://starwars.fandom.com/wiki/Qi'ra"
@@ -400,7 +411,7 @@
     "movieAppearances": ["Rogue One"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/f/f9/BazeMalbus-Heroes2023.png",
     "fandomUrl": "https://starwars.fandom.com/wiki/Baze_Malbus"
@@ -424,9 +435,10 @@
     "movieAppearances": ["Rogue One"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
-    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/4/48/ChirrutPromoPhoto.png"
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/4/48/ChirrutPromoPhoto.png",
+    "fandomUrl": "https://starwars.fandom.com/wiki/Chirrut_%C3%8Emwe"
   },
   {
     "id": "the-stranger",
@@ -442,12 +454,12 @@
     "weapons": ["Melee (Lightsaber)"],
     "forceUser": true,
     "speaksBasic": true,
-    "quoteHint": "I have no name. But the Jedi like you might call me… Sith.",
+    "quoteHint": "I have no name. But the Jedi like you might call meâ€¦ Sith.",
     "masterHint": "A Sith Lord who was trained by Darth Plagueis during the High Republic era. He eventually tried to take on his own apprentice.",
     "movieAppearances": ["None"],
     "tvAppearances": ["The Acolyte"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/4/46/TheStranger-TeachCorrupt.png",
     "fandomUrl": "https://starwars.fandom.com/wiki/The_Stranger"
@@ -473,11 +485,12 @@
     "quoteHint": "There's just something about the feeling of their helmets on my fists.",
     "masterHint": "Very large member of the The Ghost. Friend to Ezra Bridger and the rest of the crew.",
     "movieAppearances": ["None"],
-    "tvAppearances": ["Rebels", "The Mandalorian", "Ahsoka"],
+    "tvAppearances": ["Rebels", "The Mandalorian"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
-    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/d/dc/Garazeb_Orrelios.jpg"
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/d/dc/Garazeb_Orrelios.jpg",
+    "fandomUrl": "https://starwars.fandom.com/wiki/Garazeb_Orrelios"
   },
   {
     "id": "dexter-jettster",
@@ -498,9 +511,10 @@
     "movieAppearances": ["Attack of the Clones"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
-    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/1/1c/DexterHS-SWE.png"
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/1/1c/DexterHS-SWE.png",
+    "fandomUrl": "https://starwars.fandom.com/wiki/Dexter_Jettster"
   },
   {
     "id": "beru-lars",
@@ -518,12 +532,17 @@
     "speaksBasic": true,
     "quoteHint": "Luke's just not a farmer, Owen. He has too much of his father in him.",
     "masterHint": "Adoptive caretaker of Luke Skywalker. She died during an Imperial raid on her home.",
-    "movieAppearances": ["A New Hope", "Revenge of the Sith"],
-    "tvAppearances": ["Obi-Wan Kenobi"],
+    "movieAppearances": [
+      "Attack of the Clones",
+      "Revenge of the Sith",
+      "A New Hope"
+    ],
+    "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
-    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/c/cc/BeruCardTrader.png"
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/c/cc/BeruCardTrader.png",
+    "fandomUrl": "https://starwars.fandom.com/wiki/Beru_Whitesun_Lars"
   },
   {
     "id": "satele-shan",
@@ -543,8 +562,8 @@
     "masterHint": "Grand Master of the Jedi Order on Coruscant during the Old Republic era. She is the direct descendent of another famous Jedi of that time.",
     "movieAppearances": ["None"],
     "tvAppearances": ["None"],
-    "gameAppearances": ["The Old Republic"],
-    "bookComicAppearances": ["None"],
+    "gameAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/c/c8/SateleShanAlderaan-Hope.png",
     "fandomUrl": "https://starwars.fandom.com/wiki/Satele_Shan"
@@ -563,12 +582,12 @@
     "weapons": ["Melee (Lightsaber)"],
     "forceUser": false,
     "speaksBasic": true,
-    "quoteHint": "I have done what so many Sith pretend to do, but never really achieve… I have broken my chains.",
+    "quoteHint": "I have done what so many Sith pretend to do, but never really achieveâ€¦ I have broken my chains.",
     "masterHint": "Sith Lord and ruler of the Sith Empire during the reign of the Old Republic. Sacked the Jedi Temple on Corsucant.",
     "movieAppearances": ["None"],
     "tvAppearances": ["None"],
-    "gameAppearances": ["The Old Republic"],
-    "bookComicAppearances": ["None"],
+    "gameAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/6/6f/Malgus-Disorder.jpg",
     "fandomUrl": "https://starwars.fandom.com/wiki/Darth_Malgus"
@@ -587,12 +606,15 @@
     "weapons": ["Ranged (Blaster)"],
     "forceUser": false,
     "speaksBasic": true,
-    "quoteHint": "Warriors attack and conquer, they prey on the weak. Soldiers defend and protect the innocent—mostly from warriors.",
+    "quoteHint": "Warriors attack and conquer, they prey on the weak. Soldiers defend and protect the innocentâ€”mostly from warriors.",
     "masterHint": "Jaded pilot for the Republic who lost his family during the destruction of Telos by the Sith Empire.",
     "movieAppearances": ["None"],
     "tvAppearances": ["None"],
-    "gameAppearances": ["Knights of the Old Republic"],
-    "bookComicAppearances": ["None"],
+    "gameAppearances": [
+      "Knights of the Old Republic",
+      "Knights of the Old Republic II: The Sith Lords"
+    ],
+    "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "http://static.wikia.nocookie.net/starwars/images/3/31/Carth.png",
     "fandomUrl": "https://starwars.fandom.com/wiki/Carth_Onasi"
@@ -616,9 +638,10 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["None"],
     "gameAppearances": ["Knights of the Old Republic"],
-    "bookComicAppearances": ["None"],
+    "bookAppearances": ["None"],
     "enabled": true,
-    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/8/89/Malakart-crop.jpg"
+    "imageUrl": "https://static.wikia.nocookie.net/starwars/images/8/89/Malakart-crop.jpg",
+    "fandomUrl": "https://starwars.fandom.com/wiki/Darth_Malak"
   },
   {
     "id": "luke-skywalker",
@@ -638,29 +661,24 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/6/6c/LukeSkywalker-RotJAVA.png",
     "enabled": true,
     "movieAppearances": [
-      "A New Hope",
-      "Return of the Jedi",
       "Revenge of the Sith",
       "Solo",
+      "A New Hope",
       "The Empire Strikes Back",
+      "Return of the Jedi",
       "The Force Awakens",
-      "The Last Jedi"
+      "The Last Jedi",
+      "The Rise of Skywalker"
     ],
     "tvAppearances": [
-      "Ahsoka",
-      "Forces of Destiny",
-      "Obi-Wan Kenobi",
       "Rebels",
-      "The Book of Boba Fett",
-      "The Mandalorian"
+      "The Mandalorian",
+      "Forces of Destiny",
+      "Galaxy of Adventures"
     ],
-    "gameAppearances": [
-      "Battlefront",
-      "Battlefront II",
-      "Commander",
-      "Squadrons"
-    ],
-    "bookComicAppearances": ["None"]
+    "gameAppearances": ["Commander", "Squadrons", "Battlefront II"],
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Luke_Skywalker"
   },
   {
     "id": "leia-organa",
@@ -684,29 +702,25 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/9/9b/Princessleiaheadwithgun.jpg",
     "enabled": true,
     "movieAppearances": [
-      "A New Hope",
-      "Return of the Jedi",
       "Revenge of the Sith",
+      "Solo",
       "Rogue One",
+      "A New Hope",
       "The Empire Strikes Back",
+      "Return of the Jedi",
       "The Force Awakens",
       "The Last Jedi",
       "The Rise of Skywalker"
     ],
     "tvAppearances": [
-      "Ahsoka",
-      "Forces of Destiny",
-      "Obi-Wan Kenobi",
       "Rebels",
-      "Resistance"
+      "Resistance",
+      "Forces of Destiny",
+      "Galaxy of Adventures"
     ],
-    "gameAppearances": [
-      "Battlefront",
-      "Battlefront II",
-      "Commander",
-      "Squadrons"
-    ],
-    "bookComicAppearances": ["None"]
+    "gameAppearances": ["Commander", "Squadrons", "Battlefront II"],
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Leia_Organa"
   },
   {
     "id": "darth-vader",
@@ -726,29 +740,31 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/9/94/Vaderrotj.jpg",
     "enabled": true,
     "movieAppearances": [
-      "A New Hope",
-      "Return of the Jedi",
+      "The Phantom Menace",
+      "Attack of the Clones",
       "Revenge of the Sith",
       "Rogue One",
-      "The Empire Strikes Back"
+      "A New Hope",
+      "The Empire Strikes Back",
+      "Return of the Jedi"
     ],
     "tvAppearances": [
-      "Forces of Destiny",
-      "Obi-Wan Kenobi",
+      "The Clone Wars",
+      "Star Wars: Tales",
       "Rebels",
-      "Tales of the Empire",
-      "Tales of the Jedi",
-      "The Clone Wars"
+      "Forces of Destiny",
+      "Galaxy of Adventures"
     ],
     "gameAppearances": [
-      "Battlefront",
-      "Battlefront II",
-      "Commander",
       "Jedi: Fallen Order",
       "Jedi: Survivor",
-      "Squadrons"
+      "Commander",
+      "Squadrons",
+      "Battlefront II",
+      "Uprising"
     ],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Darth_Vader"
   },
   {
     "id": "han-solo",
@@ -772,16 +788,17 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/d/d9/HanSolo0BBY-TSWB.png",
     "enabled": true,
     "movieAppearances": [
-      "A New Hope",
-      "Return of the Jedi",
       "Solo",
+      "A New Hope",
       "The Empire Strikes Back",
+      "Return of the Jedi",
       "The Force Awakens",
       "The Last Jedi"
     ],
-    "tvAppearances": ["Ahsoka", "Forces of Destiny"],
-    "gameAppearances": ["Battlefront", "Battlefront II", "Commander"],
-    "bookComicAppearances": ["None"]
+    "tvAppearances": ["Forces of Destiny", "Galaxy of Adventures"],
+    "gameAppearances": ["Commander", "Battlefront II"],
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Han_Solo"
   },
   {
     "id": "yoda",
@@ -805,23 +822,25 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/d/d6/Yoda_SWSB.png",
     "enabled": true,
     "movieAppearances": [
+      "The Phantom Menace",
       "Attack of the Clones",
-      "Return of the Jedi",
       "Revenge of the Sith",
       "The Empire Strikes Back",
+      "Return of the Jedi",
       "The Last Jedi",
-      "The Phantom Menace"
+      "The Rise of Skywalker"
     ],
     "tvAppearances": [
-      "Forces of Destiny",
-      "Obi-Wan Kenobi",
-      "Tales of the Jedi",
+      "Young Jedi Adventures",
       "The Acolyte",
       "The Clone Wars",
-      "Young Jedi Adventures"
+      "Star Wars: Tales",
+      "Forces of Destiny",
+      "Galaxy of Adventures"
     ],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Yoda"
   },
   {
     "id": "obi-wan-kenobi",
@@ -841,21 +860,22 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/c/c5/ObiSWC.png",
     "enabled": true,
     "movieAppearances": [
-      "A New Hope",
+      "The Phantom Menace",
       "Attack of the Clones",
-      "Return of the Jedi",
       "Revenge of the Sith",
+      "A New Hope",
       "The Empire Strikes Back",
-      "The Phantom Menace"
+      "Return of the Jedi"
     ],
     "tvAppearances": [
-      "Obi-Wan Kenobi",
+      "The Clone Wars",
+      "Star Wars: Tales",
       "Rebels",
-      "Tales of the Jedi",
-      "The Clone Wars"
+      "Galaxy of Adventures"
     ],
-    "gameAppearances": ["Battlefront II", "Jedi: Fallen Order"],
-    "bookComicAppearances": ["None"]
+    "gameAppearances": ["Jedi: Fallen Order", "Battlefront II"],
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Obi_Wan_Kenobi"
   },
   {
     "id": "chewbacca",
@@ -882,19 +902,11 @@
     "masterHint": "Loyal Wookiee co-pilot of the Millennium Falcon.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/4/48/Chewbacca_TLJ.png",
     "enabled": true,
-    "movieAppearances": [
-      "Revenge of the Sith",
-      "A New Hope",
-      "The Empire Strikes Back",
-      "Return of the Jedi",
-      "The Force Awakens",
-      "The Last Jedi",
-      "The Rise of Skywalker",
-      "Solo"
-    ],
-    "tvAppearances": ["The Clone Wars"],
+    "movieAppearances": ["None"],
+    "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Chewbacca"
   },
   {
     "id": "r2-d2",
@@ -918,34 +930,33 @@
     "forceUser": false,
     "speaksBasic": false,
     "quoteHint": "*Beep boop beep*",
-    "masterHint": "Brave astromech droid who served Padmé Amidala, Anakin Skywalker, and later Luke Skywalker through multiple conflicts.",
+    "masterHint": "Brave astromech droid who served PadmÃ© Amidala, Anakin Skywalker, and later Luke Skywalker through multiple conflicts.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/e/eb/ArtooTFA2-Fathead.png",
     "enabled": true,
     "movieAppearances": [
-      "A New Hope",
+      "The Phantom Menace",
       "Attack of the Clones",
-      "Return of the Jedi",
       "Revenge of the Sith",
       "Rogue One",
+      "A New Hope",
       "The Empire Strikes Back",
+      "Return of the Jedi",
       "The Force Awakens",
       "The Last Jedi",
-      "The Phantom Menace",
       "The Rise of Skywalker"
     ],
     "tvAppearances": [
-      "Ahsoka",
-      "Forces of Destiny",
-      "Obi-Wan Kenobi",
-      "Rebels",
-      "Resistance",
-      "The Bad Batch",
-      "The Book of Boba Fett",
       "The Clone Wars",
-      "The Mandalorian"
+      "The Bad Batch",
+      "Rebels",
+      "The Mandalorian",
+      "Resistance",
+      "Forces of Destiny",
+      "Galaxy of Adventures"
     ],
-    "gameAppearances": ["Battlefront", "Battlefront II", "Commander"],
-    "bookComicAppearances": ["None"]
+    "gameAppearances": ["Commander", "Battlefront II"],
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/R2_D2"
   },
   {
     "id": "c-3po",
@@ -973,28 +984,28 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/6/63/C-3PO-SWLRulesRef.png",
     "enabled": true,
     "movieAppearances": [
-      "A New Hope",
+      "The Phantom Menace",
       "Attack of the Clones",
-      "Return of the Jedi",
       "Revenge of the Sith",
-      "Rogue One",
       "Solo",
+      "Rogue One",
+      "A New Hope",
       "The Empire Strikes Back",
+      "Return of the Jedi",
       "The Force Awakens",
       "The Last Jedi",
-      "The Phantom Menace",
       "The Rise of Skywalker"
     ],
     "tvAppearances": [
-      "Ahsoka",
-      "Forces of Destiny",
-      "Obi-Wan Kenobi",
+      "The Clone Wars",
       "Rebels",
       "Resistance",
-      "The Clone Wars"
+      "Forces of Destiny",
+      "Galaxy of Adventures"
     ],
-    "gameAppearances": ["Battlefront", "Commander"],
-    "bookComicAppearances": ["None"]
+    "gameAppearances": ["Commander"],
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/C_3Po"
   },
   {
     "id": "padme-amidala",
@@ -1017,13 +1028,14 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/b/b2/Padmegreenscrshot.jpg",
     "enabled": true,
     "movieAppearances": [
+      "The Phantom Menace",
       "Attack of the Clones",
-      "Revenge of the Sith",
-      "The Phantom Menace"
+      "Revenge of the Sith"
     ],
-    "tvAppearances": ["Forces of Destiny", "The Clone Wars"],
+    "tvAppearances": ["The Clone Wars", "Forces of Destiny"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Padme_Amidala"
   },
   {
     "id": "anakin-skywalker",
@@ -1048,33 +1060,31 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/6/6f/Anakin_Skywalker_RotS.png",
     "enabled": true,
     "movieAppearances": [
-      "A New Hope",
+      "The Phantom Menace",
       "Attack of the Clones",
-      "Return of the Jedi",
       "Revenge of the Sith",
       "Rogue One",
+      "A New Hope",
       "The Empire Strikes Back",
-      "The Phantom Menace"
+      "Return of the Jedi"
     ],
     "tvAppearances": [
-      "Ahsoka",
-      "Forces of Destiny",
-      "Obi-Wan Kenobi",
-      "Rebels",
-      "Tales of the Empire",
-      "Tales of the Jedi",
       "The Clone Wars",
-      "Visions"
+      "Star Wars: Tales",
+      "Rebels",
+      "Forces of Destiny",
+      "Galaxy of Adventures"
     ],
     "gameAppearances": [
-      "Battlefront",
-      "Battlefront II",
-      "Commander",
       "Jedi: Fallen Order",
       "Jedi: Survivor",
-      "Squadrons"
+      "Commander",
+      "Squadrons",
+      "Battlefront II",
+      "Uprising"
     ],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Anakin_Skywalker"
   },
   {
     "id": "mace-windu",
@@ -1094,13 +1104,15 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/2/27/MaceWindu_-WoSW.png",
     "enabled": true,
     "movieAppearances": [
+      "The Phantom Menace",
       "Attack of the Clones",
       "Revenge of the Sith",
-      "The Phantom Menace"
+      "The Rise of Skywalker"
     ],
-    "tvAppearances": ["Tales of the Jedi", "The Clone Wars"],
+    "tvAppearances": ["The Clone Wars", "The Bad Batch", "Star Wars: Tales"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Mace_Windu"
   },
   {
     "id": "qui-gon-jinn",
@@ -1119,10 +1131,15 @@
     "masterHint": "Jedi Master who discovered Anakin Skywalker on Tatooine and won his freedom from Watto.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/f/f6/Qui-Gon_Jinn_Headshot_TPM.jpg",
     "enabled": true,
-    "movieAppearances": ["The Phantom Menace"],
-    "tvAppearances": ["Obi-Wan Kenobi", "Tales of the Jedi", "The Clone Wars"],
+    "movieAppearances": ["The Phantom Menace", "The Rise of Skywalker"],
+    "tvAppearances": [
+      "The Clone Wars",
+      "Star Wars: Tales",
+      "Galaxy of Adventures"
+    ],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Qui_Gon_Jinn"
   },
   {
     "id": "darth-maul",
@@ -1141,10 +1158,11 @@
     "masterHint": "Zabrak Sith Lord with double-bladed red lightsaber who killed Qui-Gon Jinn.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/5/50/Darth_Maul_profile.png",
     "enabled": true,
-    "movieAppearances": ["The Phantom Menace"],
-    "tvAppearances": ["The Clone Wars", "Rebels"],
-    "gameAppearances": ["Battlefront", "Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "movieAppearances": ["None"],
+    "tvAppearances": ["None"],
+    "gameAppearances": ["None"],
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Darth_Maul"
   },
   {
     "id": "count-dooku",
@@ -1164,9 +1182,14 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/b/b8/Dooku_Headshot.jpg",
     "enabled": true,
     "movieAppearances": ["Attack of the Clones", "Revenge of the Sith"],
-    "tvAppearances": ["Tales of the Jedi", "The Clone Wars"],
+    "tvAppearances": [
+      "The Clone Wars",
+      "Star Wars: Tales",
+      "Galaxy of Adventures"
+    ],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Count_Dooku"
   },
   {
     "id": "general-grievous",
@@ -1186,9 +1209,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/4/45/GrievousStand-SWHC821.png",
     "enabled": true,
     "movieAppearances": ["Revenge of the Sith"],
-    "tvAppearances": ["Tales of the Empire", "The Clone Wars"],
+    "tvAppearances": ["The Clone Wars", "Star Wars: Tales"],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/General_Grievous"
   },
   {
     "id": "jango-fett",
@@ -1210,7 +1234,8 @@
     "movieAppearances": ["Attack of the Clones"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Jango_Fett"
   },
   {
     "id": "boba-fett",
@@ -1234,18 +1259,19 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/6/6c/BobaFett-ep6.png",
     "enabled": true,
     "movieAppearances": [
-      "A New Hope",
       "Attack of the Clones",
-      "Return of the Jedi",
-      "The Empire Strikes Back"
+      "A New Hope",
+      "The Empire Strikes Back",
+      "Return of the Jedi"
     ],
     "tvAppearances": [
-      "The Book of Boba Fett",
       "The Clone Wars",
-      "The Mandalorian"
+      "The Mandalorian",
+      "Galaxy of Adventures"
     ],
-    "gameAppearances": ["Battlefront", "Battlefront II", "Jedi: Survivor"],
-    "bookComicAppearances": ["None"]
+    "gameAppearances": ["Jedi: Survivor", "Battlefront II"],
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Boba_Fett"
   },
   {
     "id": "lando-calrissian",
@@ -1269,14 +1295,15 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/8/8f/Lando_ROTJ.png",
     "enabled": true,
     "movieAppearances": [
-      "Return of the Jedi",
       "Solo",
       "The Empire Strikes Back",
+      "Return of the Jedi",
       "The Rise of Skywalker"
     ],
-    "tvAppearances": ["Forces of Destiny", "Rebels"],
-    "gameAppearances": ["Battlefront", "Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "tvAppearances": ["Rebels", "Forces of Destiny", "Galaxy of Adventures"],
+    "gameAppearances": ["Battlefront II", "Uprising"],
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Lando_Calrissian"
   },
   {
     "id": "emperor-palpatine",
@@ -1304,17 +1331,11 @@
     "masterHint": "Dark Lord of the Sith who manipulated the Clone Wars to gain ultimate power.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/d/d8/Emperor_Sidious.png",
     "enabled": true,
-    "movieAppearances": [
-      "The Phantom Menace",
-      "Attack of the Clones",
-      "Revenge of the Sith",
-      "The Empire Strikes Back",
-      "Return of the Jedi",
-      "The Rise of Skywalker"
-    ],
-    "tvAppearances": ["Ahsoka", "Obi-Wan Kenobi"],
-    "gameAppearances": ["Battlefront II", "Battlefront"],
-    "bookComicAppearances": ["None"]
+    "movieAppearances": ["None"],
+    "tvAppearances": ["None"],
+    "gameAppearances": ["None"],
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Emperor_Palpatine"
   },
   {
     "id": "ahsoka-tano",
@@ -1341,18 +1362,17 @@
     "masterHint": "Togruta Padawan of Anakin Skywalker who left the Jedi Order, survived Order 66, and became a key figure in the Rebellion.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/2/27/Ahsoka-Tano-AG-2023.png",
     "enabled": true,
-    "movieAppearances": ["None"],
+    "movieAppearances": ["The Rise of Skywalker"],
     "tvAppearances": [
-      "Ahsoka",
-      "Forces of Destiny",
-      "Rebels",
-      "Tales of the Jedi",
-      "The Book of Boba Fett",
       "The Clone Wars",
-      "The Mandalorian"
+      "Star Wars: Tales",
+      "Rebels",
+      "The Mandalorian",
+      "Forces of Destiny"
     ],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Ahsoka_Tano"
   },
   {
     "id": "poe-dameron",
@@ -1376,9 +1396,10 @@
       "The Last Jedi",
       "The Rise of Skywalker"
     ],
-    "tvAppearances": ["Resistance"],
+    "tvAppearances": ["Resistance", "Galaxy of Adventures"],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Poe_Dameron"
   },
   {
     "id": "finn",
@@ -1405,9 +1426,14 @@
       "The Last Jedi",
       "The Rise of Skywalker"
     ],
-    "tvAppearances": ["Forces of Destiny", "Resistance"],
+    "tvAppearances": [
+      "Resistance",
+      "Forces of Destiny",
+      "Galaxy of Adventures"
+    ],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Finn"
   },
   {
     "id": "captain-phasma",
@@ -1429,7 +1455,8 @@
     "movieAppearances": ["The Force Awakens", "The Last Jedi"],
     "tvAppearances": ["Resistance"],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Captain_Phasma"
   },
   {
     "id": "bb-8",
@@ -1453,9 +1480,14 @@
       "The Last Jedi",
       "The Rise of Skywalker"
     ],
-    "tvAppearances": ["Forces of Destiny", "Resistance"],
+    "tvAppearances": [
+      "Resistance",
+      "Forces of Destiny",
+      "Galaxy of Adventures"
+    ],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Bb_8"
   },
   {
     "id": "mon-mothma",
@@ -1484,20 +1516,15 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/2/22/Mon_Mothma_Ahsoka_poster.png",
     "enabled": true,
     "movieAppearances": [
-      "Return of the Jedi",
       "Revenge of the Sith",
       "Rogue One",
+      "Return of the Jedi",
       "The Last Jedi"
     ],
-    "tvAppearances": [
-      "Ahsoka",
-      "Andor",
-      "Rebels",
-      "Tales of the Jedi",
-      "The Clone Wars"
-    ],
+    "tvAppearances": ["The Clone Wars", "Star Wars: Tales", "Rebels", "Andor"],
     "gameAppearances": ["Commander"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Mon_Mothma"
   },
   {
     "id": "wedge-antilles",
@@ -1521,14 +1548,15 @@
     "enabled": true,
     "movieAppearances": [
       "A New Hope",
-      "Return of the Jedi",
       "The Empire Strikes Back",
+      "Return of the Jedi",
       "The Last Jedi",
       "The Rise of Skywalker"
     ],
     "tvAppearances": ["Rebels", "Resistance"],
-    "gameAppearances": ["Battlefront", "Squadrons"],
-    "bookComicAppearances": ["None"]
+    "gameAppearances": ["Squadrons"],
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Wedge_Antilles"
   },
   {
     "id": "jar-jar-binks",
@@ -1541,20 +1569,21 @@
     "affiliations": ["Galactic Republic (Non-Military)"],
     "eras": ["The Galactic Republic"],
     "weapons": ["None"],
-    "forceUser": false,
+    "forceUser": true,
     "speaksBasic": true,
     "quoteHint": "Oh, mooie-mooie! I love you!",
     "masterHint": "Clumsy Gungan outcast who befriended the Jedi and later became a senator, accidentally helped Palpatine gain emergency powers.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/d/d2/Jar_Jar_aotc.jpg",
     "enabled": true,
     "movieAppearances": [
+      "The Phantom Menace",
       "Attack of the Clones",
-      "Revenge of the Sith",
-      "The Phantom Menace"
+      "Revenge of the Sith"
     ],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Jar_Jar_Binks"
   },
   {
     "id": "4-lom",
@@ -1574,9 +1603,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/2/25/4-LOM.jpg",
     "enabled": true,
     "movieAppearances": ["The Empire Strikes Back"],
-    "tvAppearances": ["None"],
+    "tvAppearances": ["Galaxy of Adventures"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/4_Lom"
   },
   {
     "id": "gial-ackbar",
@@ -1608,9 +1638,10 @@
       "The Force Awakens",
       "The Last Jedi"
     ],
-    "tvAppearances": ["Ahsoka", "Resistance", "The Clone Wars"],
+    "tvAppearances": ["The Clone Wars", "Resistance"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Gial_Ackbar"
   },
   {
     "id": "stass-allie",
@@ -1632,7 +1663,8 @@
     "movieAppearances": ["Attack of the Clones", "Revenge of the Sith"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Stass_Allie"
   },
   {
     "id": "cassian-jeron-andor",
@@ -1654,7 +1686,8 @@
     "movieAppearances": ["Rogue One"],
     "tvAppearances": ["Andor"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Cassian_Jeron_Andor"
   },
   {
     "id": "ponda-baba",
@@ -1673,10 +1706,11 @@
     "masterHint": "Aqualish thug and smuggler who confronted Luke in the Mos Eisley Cantina, lost his arm to Obi-Wan's lightsaber.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/b/bc/PondaBaba-BaseSeries4.png",
     "enabled": true,
-    "movieAppearances": ["A New Hope", "Rogue One", "Solo"],
+    "movieAppearances": ["Solo", "Rogue One", "A New Hope"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Ponda_Baba"
   },
   {
     "id": "babu-frik",
@@ -1698,7 +1732,8 @@
     "movieAppearances": ["The Rise of Skywalker"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Babu_Frik"
   },
   {
     "id": "bail-prestor-organa",
@@ -1713,10 +1748,7 @@
       "Galactic Empire (Non-Military)",
       "Rebel Alliance (Military)"
     ],
-    "eras": [
-      "The Galactic Republic",
-      "The Galactic Empire"
-    ],
+    "eras": ["The Galactic Republic", "The Galactic Empire"],
     "weapons": ["None"],
     "forceUser": false,
     "speaksBasic": true,
@@ -1726,16 +1758,15 @@
     "enabled": true,
     "movieAppearances": ["Revenge of the Sith", "Rogue One"],
     "tvAppearances": [
-      "Ahsoka",
-      "Andor",
-      "Obi-Wan Kenobi",
-      "Rebels",
-      "Tales of the Jedi",
+      "The Clone Wars",
       "The Bad Batch",
-      "The Clone Wars"
+      "Star Wars: Tales",
+      "Rebels",
+      "Andor"
     ],
     "gameAppearances": ["Squadrons"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Bail_Prestor_Organa"
   },
   {
     "id": "cad-bane",
@@ -1760,13 +1791,14 @@
     "enabled": true,
     "movieAppearances": ["None"],
     "tvAppearances": [
-      "Rebels",
+      "The Clone Wars",
       "The Bad Batch",
-      "The Book of Boba Fett",
-      "The Clone Wars"
+      "Star Wars: Tales",
+      "Rebels"
     ],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Cad_Bane"
   },
   {
     "id": "darth-bane",
@@ -1788,7 +1820,8 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Darth_Bane"
   },
   {
     "id": "ben-solo",
@@ -1812,9 +1845,10 @@
       "The Last Jedi",
       "The Rise of Skywalker"
     ],
-    "tvAppearances": ["Ahsoka", "Resistance"],
+    "tvAppearances": ["Resistance", "Galaxy of Adventures"],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Ben_Solo"
   },
   {
     "id": "bossk",
@@ -1833,10 +1867,11 @@
     "masterHint": "Trandoshan bounty hunter who hunted Wookiees.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/1/1d/Bossk.png",
     "enabled": true,
-    "movieAppearances": ["Return of the Jedi", "The Empire Strikes Back"],
-    "tvAppearances": ["The Clone Wars"],
-    "gameAppearances": ["Battlefront", "Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "movieAppearances": ["The Empire Strikes Back", "Return of the Jedi"],
+    "tvAppearances": ["The Clone Wars", "Galaxy of Adventures"],
+    "gameAppearances": ["Battlefront II"],
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Bossk"
   },
   {
     "id": "ezra-bridger",
@@ -1856,9 +1891,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/a/ad/Ezra_Bridger_character_poster.png",
     "enabled": true,
     "movieAppearances": ["None"],
-    "tvAppearances": ["Ahsoka", "Forces of Destiny", "Rebels"],
+    "tvAppearances": ["Rebels", "Forces of Destiny"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Ezra_Bridger"
   },
   {
     "id": "cc-1004",
@@ -1880,7 +1916,8 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Cc_1004"
   },
   {
     "id": "cc-1010",
@@ -1902,7 +1939,8 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Cc_1010"
   },
   {
     "id": "cc-1119",
@@ -1921,10 +1959,11 @@
     "masterHint": "Clone Commander who was part of the sacking of the Jedi Temple during Order 66.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/4/44/AppoHead-COK.png",
     "enabled": true,
-    "movieAppearances": ["Revenge of the Sith"],
+    "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Cc_1119"
   },
   {
     "id": "cc-1138",
@@ -1943,10 +1982,11 @@
     "masterHint": "Clone Commander of the Galactic Marines known for his distinctive helmet, served under Ki-Adi-Mundi and executed Order 66.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/e/e7/BacaraHeadshot-SWE.png",
     "enabled": true,
-    "movieAppearances": ["Revenge of the Sith"],
+    "movieAppearances": ["None"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Cc_1138"
   },
   {
     "id": "cc-2224",
@@ -1966,9 +2006,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/2/26/Cody_brief.png",
     "enabled": true,
     "movieAppearances": ["Revenge of the Sith"],
-    "tvAppearances": ["The Bad Batch", "The Clone Wars"],
+    "tvAppearances": ["The Clone Wars", "The Bad Batch"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Cc_2224"
   },
   {
     "id": "cc-3636",
@@ -1991,9 +2032,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/c/c6/Commander_Wolffe_Rebels.png",
     "enabled": true,
     "movieAppearances": ["None"],
-    "tvAppearances": ["Rebels", "The Bad Batch", "The Clone Wars"],
+    "tvAppearances": ["The Clone Wars", "The Bad Batch", "Rebels"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Cc_3636"
   },
   {
     "id": "cc-7567",
@@ -2017,13 +2059,15 @@
     "enabled": true,
     "movieAppearances": ["None"],
     "tvAppearances": [
-      "Rebels",
-      "Tales of the Jedi",
+      "The Clone Wars",
       "The Bad Batch",
-      "The Clone Wars"
+      "Star Wars: Tales",
+      "Rebels",
+      "Galaxy of Adventures"
     ],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Cc_7567"
   },
   {
     "id": "riyo-chuchi",
@@ -2046,9 +2090,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/8/8b/RiyoChuchi-CGSWG.png",
     "enabled": true,
     "movieAppearances": ["None"],
-    "tvAppearances": ["The Bad Batch", "The Clone Wars"],
+    "tvAppearances": ["The Clone Wars", "The Bad Batch"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Riyo_Chuchi"
   },
   {
     "id": "rush-clovis",
@@ -2067,13 +2112,14 @@
     "forceUser": false,
     "speaksBasic": true,
     "quoteHint": "Why don't you try fighting like a man without your Jedi tricks?",
-    "masterHint": "Separatist senator from Scipio who had a complicated history with Padmé Amidala and died defending the Banking Clan.",
+    "masterHint": "Separatist senator from Scipio who had a complicated history with PadmÃ© Amidala and died defending the Banking Clan.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/9/95/RushClovis.png",
     "enabled": true,
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Rush_Clovis"
   },
   {
     "id": "salacious-b-crumb",
@@ -2093,9 +2139,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/d/d1/SalaciousBCrumb-Db.png",
     "enabled": true,
     "movieAppearances": ["Return of the Jedi"],
-    "tvAppearances": ["None"],
+    "tvAppearances": ["Galaxy of Adventures"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Salacious_B_Crumb"
   },
   {
     "id": "ct-1409",
@@ -2115,9 +2162,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/f/f2/EchoTBB.png",
     "enabled": true,
     "movieAppearances": ["None"],
-    "tvAppearances": ["The Bad Batch", "The Clone Wars"],
+    "tvAppearances": ["The Clone Wars", "The Bad Batch"],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_1409"
   },
   {
     "id": "ct-411",
@@ -2139,7 +2187,8 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_411"
   },
   {
     "id": "ct-5385",
@@ -2161,7 +2210,8 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_5385"
   },
   {
     "id": "ct-5555",
@@ -2176,14 +2226,15 @@
     "weapons": ["Ranged (Blaster)"],
     "forceUser": false,
     "speaksBasic": true,
-    "quoteHint": "The mission…the nightmares…they're…finally…over…",
+    "quoteHint": "The missionâ€¦the nightmaresâ€¦they'reâ€¦finallyâ€¦overâ€¦",
     "masterHint": "Clone trooper who discovered the inhibitor chips, tried to warn about Order 66 but was killed before revealing the truth.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/6/62/FivesHS-Conspiracy.png",
     "enabled": true,
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_5555"
   },
   {
     "id": "ct-5597",
@@ -2203,9 +2254,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/5/51/Jesse_ARC_trooper.png",
     "enabled": true,
     "movieAppearances": ["None"],
-    "tvAppearances": ["Tales of the Jedi", "The Clone Wars"],
+    "tvAppearances": ["The Clone Wars", "Star Wars: Tales"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_5597"
   },
   {
     "id": "ct-6116",
@@ -2227,7 +2279,8 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_6116"
   },
   {
     "id": "ct-6922",
@@ -2249,7 +2302,8 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_6922"
   },
   {
     "id": "ct-782",
@@ -2271,7 +2325,8 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_782"
   },
   {
     "id": "ct-9904",
@@ -2294,9 +2349,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/7/7f/Crosshair-TBBs2.png",
     "enabled": true,
     "movieAppearances": ["None"],
-    "tvAppearances": ["The Bad Batch", "The Clone Wars"],
+    "tvAppearances": ["The Clone Wars", "The Bad Batch"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_9904"
   },
   {
     "id": "biggs-darklighter",
@@ -2316,9 +2372,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/0/00/BiggsHS-ANH.png",
     "enabled": true,
     "movieAppearances": ["A New Hope"],
-    "tvAppearances": ["None"],
-    "gameAppearances": ["Battlefront"],
-    "bookComicAppearances": ["None"]
+    "tvAppearances": ["Galaxy of Adventures"],
+    "gameAppearances": ["None"],
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Biggs_Darklighter"
   },
   {
     "id": "dengar",
@@ -2333,14 +2390,15 @@
     "weapons": ["Ranged (Blaster)"],
     "forceUser": false,
     "speaksBasic": true,
-    "quoteHint": "Laugh it up, Khamdek. I've been disrespected my whole life—but being underestimated has its values.",
+    "quoteHint": "Laugh it up, Khamdek. I've been disrespected my whole lifeâ€”but being underestimated has its values.",
     "masterHint": "Corellian bounty hunter hired by Vader to find Han Solo, wore distinctive armor and head wrappings to hide scars.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/9/98/Dengar-SWT.png",
     "enabled": true,
-    "movieAppearances": ["Return of the Jedi", "The Empire Strikes Back"],
-    "tvAppearances": ["The Clone Wars"],
-    "gameAppearances": ["Battlefront"],
-    "bookComicAppearances": ["None"]
+    "movieAppearances": ["The Empire Strikes Back", "Return of the Jedi"],
+    "tvAppearances": ["The Clone Wars", "Galaxy of Adventures"],
+    "gameAppearances": ["None"],
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Dengar"
   },
   {
     "id": "din-djarin",
@@ -2360,9 +2418,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/4/46/DinDjarinArmor-CGSWG.png",
     "enabled": true,
     "movieAppearances": ["None"],
-    "tvAppearances": ["The Book of Boba Fett", "The Mandalorian"],
+    "tvAppearances": ["The Mandalorian"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Din_Djarin"
   },
   {
     "id": "din-grogu",
@@ -2382,9 +2441,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/4/43/TheChild-Fathead.png",
     "enabled": true,
     "movieAppearances": ["None"],
-    "tvAppearances": ["The Book of Boba Fett", "The Mandalorian"],
+    "tvAppearances": ["The Mandalorian"],
     "gameAppearances": ["Squadrons"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Din_Grogu"
   },
   {
     "id": "jan-dodonna",
@@ -2403,10 +2463,11 @@
     "masterHint": "General and lead strategist behind the Rebel Alliance attack on the first Death Star.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/1/1e/Jan_Dodonna-SW_Card_Trader.png",
     "enabled": true,
-    "movieAppearances": ["A New Hope", "Rogue One"],
-    "tvAppearances": ["Rebels"],
+    "movieAppearances": ["Rogue One", "A New Hope"],
+    "tvAppearances": ["Rebels", "Galaxy of Adventures"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Jan_Dodonna"
   },
   {
     "id": "embo",
@@ -2426,9 +2487,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/4/44/EmboHS-TB.png",
     "enabled": true,
     "movieAppearances": ["None"],
-    "tvAppearances": ["Rebels", "The Bad Batch", "The Clone Wars"],
+    "tvAppearances": ["The Clone Wars", "The Bad Batch", "Rebels"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Embo"
   },
   {
     "id": "galen-walton-erso",
@@ -2450,7 +2512,8 @@
     "movieAppearances": ["Rogue One"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Galen_Walton_Erso"
   },
   {
     "id": "jyn-erso",
@@ -2469,10 +2532,11 @@
     "masterHint": "Led the mission to steal the Death Star plans on Scarif.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/b/b3/JynErsoPromo.png",
     "enabled": true,
-    "movieAppearances": ["Rogue One"],
+    "movieAppearances": ["Solo", "Rogue One"],
     "tvAppearances": ["Forces of Destiny"],
-    "gameAppearances": ["Battlefront"],
-    "bookComicAppearances": ["None"]
+    "gameAppearances": ["None"],
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Jyn_Erso"
   },
   {
     "id": "fennec-shand",
@@ -2492,13 +2556,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/0/03/FennecShandHeadshot-BOBFCE.png",
     "enabled": true,
     "movieAppearances": ["None"],
-    "tvAppearances": [
-      "The Bad Batch",
-      "The Book of Boba Fett",
-      "The Mandalorian"
-    ],
+    "tvAppearances": ["The Bad Batch", "The Mandalorian"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Fennec_Shand"
   },
   {
     "id": "kit-fisto",
@@ -2520,7 +2581,8 @@
     "movieAppearances": ["Revenge of the Sith", "The Rise of Skywalker"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Kit_Fisto"
   },
   {
     "id": "bib-fortuna",
@@ -2543,14 +2605,15 @@
     "masterHint": "Twi'lek majordomo who served Jabba the Hutt.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/1/12/BibFortuna-CEUEEd.png",
     "enabled": true,
-    "movieAppearances": ["Return of the Jedi", "Solo", "The Phantom Menace"],
+    "movieAppearances": ["The Phantom Menace", "Solo", "Return of the Jedi"],
     "tvAppearances": [
       "The Bad Batch",
-      "The Book of Boba Fett",
-      "The Mandalorian"
+      "The Mandalorian",
+      "Galaxy of Adventures"
     ],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Bib_Fortuna"
   },
   {
     "id": "adi-gallia",
@@ -2569,10 +2632,11 @@
     "masterHint": "Tholothian Jedi Master and Council member known for her flying skills, killed by Savage Opress during the Clone Wars.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/f/f2/AdiGallia2-SWE.png",
     "enabled": true,
-    "movieAppearances": ["Attack of the Clones", "The Phantom Menace"],
+    "movieAppearances": ["The Phantom Menace", "Attack of the Clones"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Adi_Gallia"
   },
   {
     "id": "saw-gerrera",
@@ -2591,10 +2655,11 @@
     "masterHint": "Partisan leader and extremist who fought against the Separatists and Empire, raised Jyn Erso after her father was taken.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/f/fe/Saw_Gerrera_Rogue_One.png",
     "enabled": true,
-    "movieAppearances": ["Rogue One", "Solo"],
-    "tvAppearances": ["Andor", "Rebels", "The Bad Batch", "The Clone Wars"],
+    "movieAppearances": ["Solo", "Rogue One"],
+    "tvAppearances": ["The Clone Wars", "The Bad Batch", "Rebels", "Andor"],
     "gameAppearances": ["Jedi: Fallen Order"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Saw_Gerrera"
   },
   {
     "id": "greedo",
@@ -2613,10 +2678,11 @@
     "masterHint": "Rodian bounty hunter who hunted Han Solo and may or may not have shot first.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/f/f9/Greedo-SWBC32.png",
     "enabled": true,
-    "movieAppearances": ["A New Hope", "Solo", "The Phantom Menace"],
+    "movieAppearances": ["The Phantom Menace", "Solo", "A New Hope"],
     "tvAppearances": ["The Clone Wars"],
-    "gameAppearances": ["Battlefront"],
-    "bookComicAppearances": ["None"]
+    "gameAppearances": ["None"],
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Greedo"
   },
   {
     "id": "gregar-typho",
@@ -2632,13 +2698,14 @@
     "forceUser": false,
     "speaksBasic": true,
     "quoteHint": "We made it. I guess I was wrong. There was no danger at all. *explosion*",
-    "masterHint": "Captain of Naboo's Royal Security Forces who protected Padmé Amidala, lost his left eye in service.",
+    "masterHint": "Captain of Naboo's Royal Security Forces who protected PadmÃ© Amidala, lost his left eye in service.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/2/26/CaptainTypho-2024ToppsSWHyperspace.png",
     "enabled": true,
-    "movieAppearances": ["Revenge of the Sith", "Attack of the Clones"],
-    "tvAppearances": ["Forces of Destiny", "The Clone Wars"],
+    "movieAppearances": ["Revenge of the Sith"],
+    "tvAppearances": ["The Clone Wars", "Forces of Destiny"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Gregar_Typho"
   },
   {
     "id": "nute-gunray",
@@ -2658,13 +2725,14 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/e/ed/NuteGunray-ALTA.png",
     "enabled": true,
     "movieAppearances": [
+      "The Phantom Menace",
       "Attack of the Clones",
-      "Revenge of the Sith",
-      "The Phantom Menace"
+      "Revenge of the Sith"
     ],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Nute_Gunray"
   },
   {
     "id": "amilyn-holdo",
@@ -2686,7 +2754,8 @@
     "movieAppearances": ["The Last Jedi"],
     "tvAppearances": ["Resistance"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Amilyn_Holdo"
   },
   {
     "id": "armitage-hux",
@@ -2710,9 +2779,10 @@
       "The Last Jedi",
       "The Rise of Skywalker"
     ],
-    "tvAppearances": ["Resistance"],
+    "tvAppearances": ["Resistance", "Galaxy of Adventures"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Armitage_Hux"
   },
   {
     "id": "ig-88b",
@@ -2727,14 +2797,15 @@
     "weapons": ["Ranged (Blaster)"],
     "forceUser": false,
     "speaksBasic": true,
-    "quoteHint": "I was created to succeed. I have all the capabilities and programming to engineer success. Yet…it eludes me.",
+    "quoteHint": "I was created to succeed. I have all the capabilities and programming to engineer success. Yetâ€¦it eludes me.",
     "masterHint": "Assassin droid bounty hunter with a tall, skeletal frame, hired to find Han Solo.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/f/fe/IG-88B-TESB40.png",
     "enabled": true,
     "movieAppearances": ["The Empire Strikes Back"],
-    "tvAppearances": ["Forces of Destiny"],
+    "tvAppearances": ["Forces of Destiny", "Galaxy of Adventures"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Ig_88B"
   },
   {
     "id": "kanan-jarrus",
@@ -2753,10 +2824,11 @@
     "masterHint": "Jedi survivor of Order 66 who hid as a smuggler before training Ezra Bridger, sacrificed himself to save his crew.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/f/f6/Kanan-JediNight.png",
     "enabled": true,
-    "movieAppearances": ["None"],
-    "tvAppearances": ["Rebels", "Tales of the Jedi", "The Bad Batch"],
+    "movieAppearances": ["The Rise of Skywalker"],
+    "tvAppearances": ["The Bad Batch", "Star Wars: Tales", "Rebels"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Kanan_Jarrus"
   },
   {
     "id": "jek-tono-porkins",
@@ -2775,10 +2847,11 @@
     "masterHint": "Rebel pilot callsign Red Six who flew in the Battle of Yavin, tragically shot down before reaching the Death Star trench.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/e/eb/JekPorkins-DB.png",
     "enabled": true,
-    "movieAppearances": ["A New Hope", "Rogue One"],
-    "tvAppearances": ["None"],
+    "movieAppearances": ["Rogue One", "A New Hope"],
+    "tvAppearances": ["Galaxy of Adventures"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Jek_Tono_Porkins"
   },
   {
     "id": "k-2so",
@@ -2800,7 +2873,8 @@
     "movieAppearances": ["Rogue One"],
     "tvAppearances": ["Andor"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/K_2So"
   },
   {
     "id": "maz-kanata",
@@ -2825,18 +2899,20 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/5/53/MazKanata-TROSGG.png",
     "enabled": true,
     "movieAppearances": [
+      "The Phantom Menace",
       "Solo",
       "The Force Awakens",
       "The Last Jedi",
       "The Rise of Skywalker"
     ],
     "tvAppearances": [
-      "Forces of Destiny",
+      "Young Jedi Adventures",
       "Resistance",
-      "Young Jedi Adventures"
+      "Forces of Destiny"
     ],
-    "gameAppearances": ["Battlefront II", "Commander"],
-    "bookComicAppearances": ["None"]
+    "gameAppearances": ["Commander", "Battlefront II"],
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Maz_Kanata"
   },
   {
     "id": "cal-kestis",
@@ -2858,7 +2934,8 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["None"],
     "gameAppearances": ["Jedi: Fallen Order", "Jedi: Survivor"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Cal_Kestis"
   },
   {
     "id": "ki-adi-mundi",
@@ -2878,13 +2955,15 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/6/6d/KiAdiMundi-SWCT.png",
     "enabled": true,
     "movieAppearances": [
+      "The Phantom Menace",
       "Attack of the Clones",
       "Revenge of the Sith",
-      "The Phantom Menace"
+      "The Rise of Skywalker"
     ],
-    "tvAppearances": ["Tales of the Jedi", "The Acolyte", "The Clone Wars"],
+    "tvAppearances": ["The Acolyte", "The Clone Wars", "Star Wars: Tales"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Ki_Adi_Mundi"
   },
   {
     "id": "plo-koon",
@@ -2904,13 +2983,15 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/b/bf/PloKoonCardTrader.png",
     "enabled": true,
     "movieAppearances": [
+      "The Phantom Menace",
       "Attack of the Clones",
       "Revenge of the Sith",
-      "The Phantom Menace"
+      "The Rise of Skywalker"
     ],
-    "tvAppearances": ["Tales of the Jedi", "The Clone Wars"],
+    "tvAppearances": ["The Clone Wars", "Star Wars: Tales"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Plo_Koon"
   },
   {
     "id": "eeth-koth",
@@ -2925,14 +3006,15 @@
     "weapons": ["Melee (Lightsaber)"],
     "forceUser": true,
     "speaksBasic": true,
-    "quoteHint": "I am no Jedi. Not anymore. I am a husband. As of today, a father. And, to protect the ones I love…your doom.",
+    "quoteHint": "I am no Jedi. Not anymore. I am a husband. As of today, a father. And, to protect the ones I loveâ€¦your doom.",
     "masterHint": "Zabrak Jedi Master on the Council known for high pain tolerance, captured by Grievous but rescued by Obi-Wan.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/4/4e/EethKothCardTrader.png",
     "enabled": true,
-    "movieAppearances": ["Attack of the Clones", "The Phantom Menace"],
-    "tvAppearances": ["Tales of the Jedi", "The Clone Wars"],
+    "movieAppearances": ["The Phantom Menace", "Attack of the Clones"],
+    "tvAppearances": ["The Clone Wars", "Star Wars: Tales"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Eeth_Koth"
   },
   {
     "id": "pong-krell",
@@ -2954,7 +3036,8 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Pong_Krell"
   },
   {
     "id": "orson-callan-krennic",
@@ -2974,9 +3057,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/0/05/OrsonKrennic-SWI171.png",
     "enabled": true,
     "movieAppearances": ["Rogue One"],
-    "tvAppearances": ["Andor", "The Bad Batch"],
-    "gameAppearances": ["Battlefront"],
-    "bookComicAppearances": ["None"]
+    "tvAppearances": ["The Bad Batch", "Andor"],
+    "gameAppearances": ["None"],
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Orson_Callan_Krennic"
   },
   {
     "id": "bo-katan-kryze",
@@ -3000,9 +3084,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/e/ec/BoKatanKryze-TTG2024.png",
     "enabled": true,
     "movieAppearances": ["None"],
-    "tvAppearances": ["Ahsoka", "Rebels", "The Clone Wars", "The Mandalorian"],
+    "tvAppearances": ["The Clone Wars", "Rebels", "The Mandalorian"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Bo_Katan_Kryze"
   },
   {
     "id": "satine-kryze",
@@ -3024,7 +3109,8 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Satine_Kryze"
   },
   {
     "id": "cliegg-lars",
@@ -3046,7 +3132,8 @@
     "movieAppearances": ["Attack of the Clones"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Cliegg_Lars"
   },
   {
     "id": "shmi-skywalker-lars",
@@ -3065,10 +3152,11 @@
     "masterHint": "Anakin's mother.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/6/6c/ShmiSkywalkerLars-Databank.jpg",
     "enabled": true,
-    "movieAppearances": ["Attack of the Clones", "The Phantom Menace"],
+    "movieAppearances": ["The Phantom Menace", "Attack of the Clones"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Shmi_Skywalker_Lars"
   },
   {
     "id": "lobot",
@@ -3092,9 +3180,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/7/72/Lobot-SWE.png",
     "enabled": true,
     "movieAppearances": ["The Empire Strikes Back"],
-    "tvAppearances": ["None"],
+    "tvAppearances": ["Galaxy of Adventures"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Lobot"
   },
   {
     "id": "mitth-raw-nuruodo",
@@ -3114,9 +3203,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/f/fe/Thrawn_Character_poster.png",
     "enabled": true,
     "movieAppearances": ["None"],
-    "tvAppearances": ["Ahsoka", "Rebels", "Tales of the Empire"],
+    "tvAppearances": ["Star Wars: Tales", "Rebels"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Mitth_Raw_Nuruodo"
   },
   {
     "id": "jocasta-nu",
@@ -3136,9 +3226,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/1/17/JocastaNu-Db.png",
     "enabled": true,
     "movieAppearances": ["None"],
-    "tvAppearances": ["Tales of the Jedi", "The Clone Wars"],
+    "tvAppearances": ["The Clone Wars", "Star Wars: Tales"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Jocasta_Nu"
   },
   {
     "id": "nien-nunb",
@@ -3168,8 +3259,9 @@
       "The Rise of Skywalker"
     ],
     "tvAppearances": ["Resistance"],
-    "gameAppearances": ["Battlefront"],
-    "bookComicAppearances": ["None"]
+    "gameAppearances": ["None"],
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Nien_Nunb"
   },
   {
     "id": "barriss-offee",
@@ -3194,12 +3286,13 @@
     "enabled": true,
     "movieAppearances": ["Attack of the Clones", "Revenge of the Sith"],
     "tvAppearances": [
-      "Forces of Destiny",
-      "Tales of the Empire",
-      "The Clone Wars"
+      "The Clone Wars",
+      "Star Wars: Tales",
+      "Forces of Destiny"
     ],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Barriss_Offee"
   },
   {
     "id": "hondo-ohnaka",
@@ -3214,14 +3307,20 @@
     "weapons": ["Ranged (Blaster)"],
     "forceUser": false,
     "speaksBasic": true,
-    "quoteHint": "Insolence! We are pirates! We don’t even know what that means!",
+    "quoteHint": "Insolence! We are pirates! We donâ€™t even know what that means!",
     "masterHint": "Weequay pirate leader who often helped whichever side paid more during the Clone Wars.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/b/b8/HondoOhnaka-TGTB.png",
     "enabled": true,
     "movieAppearances": ["None"],
-    "tvAppearances": ["Forces of Destiny", "Rebels", "The Clone Wars"],
+    "tvAppearances": [
+      "The Clone Wars",
+      "Rebels",
+      "Forces of Destiny",
+      "Galaxy of Adventures"
+    ],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Hondo_Ohnaka"
   },
   {
     "id": "omega",
@@ -3243,7 +3342,8 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Bad Batch"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Omega"
   },
   {
     "id": "savage-opress",
@@ -3265,7 +3365,8 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Savage_Opress"
   },
   {
     "id": "owen-lars",
@@ -3285,13 +3386,14 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/e/eb/OwenCardTrader.png",
     "enabled": true,
     "movieAppearances": [
-      "A New Hope",
       "Attack of the Clones",
-      "Revenge of the Sith"
+      "Revenge of the Sith",
+      "A New Hope"
     ],
-    "tvAppearances": ["Obi-Wan Kenobi"],
+    "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Owen_Lars"
   },
   {
     "id": "darth-plagueis",
@@ -3313,7 +3415,8 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Darth_Plagueis"
   },
   {
     "id": "unkar-plutt",
@@ -3332,10 +3435,11 @@
     "masterHint": "Crolute junk dealer on Jakku who gave Rey meager food portions for scrap.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/b/b7/Unkar_Plutt-RO_U_Visual_Guide.png",
     "enabled": true,
-    "movieAppearances": ["The Force Awakens"],
+    "movieAppearances": ["The Force Awakens", "The Last Jedi"],
     "tvAppearances": ["Forces of Destiny"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Unkar_Plutt"
   },
   {
     "id": "poggle-the-lesser",
@@ -3357,7 +3461,8 @@
     "movieAppearances": ["Revenge of the Sith", "Rogue One"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Poggle_The_Lesser"
   },
   {
     "id": "yarael-poof",
@@ -3379,7 +3484,8 @@
     "movieAppearances": ["The Phantom Menace"],
     "tvAppearances": ["The Acolyte"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Yarael_Poof"
   },
   {
     "id": "rc-1138",
@@ -3402,10 +3508,11 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/a/a9/DS_Boss.png",
     "enabled": true,
     "movieAppearances": ["None"],
-    "tvAppearances": ["The Clone Wars"],
-    "gameAppearances": ["Republic Commando"],
-    "bookComicAppearances": ["None"],
-    "additionalNames": []
+    "tvAppearances": ["None"],
+    "gameAppearances": ["None"],
+    "bookAppearances": ["None"],
+    "additionalNames": [],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Rc_1138"
   },
   {
     "id": "rc-1140",
@@ -3428,9 +3535,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/9/97/Fixer-SWCT.png",
     "enabled": true,
     "movieAppearances": ["None"],
-    "tvAppearances": ["The Clone Wars"],
-    "gameAppearances": ["Republic Commando"],
-    "bookComicAppearances": ["None"]
+    "tvAppearances": ["None"],
+    "gameAppearances": ["None"],
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Rc_1140"
   },
   {
     "id": "rc-1207",
@@ -3450,9 +3558,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/d/d3/DS_Sev.png",
     "enabled": true,
     "movieAppearances": ["None"],
-    "tvAppearances": ["The Clone Wars"],
-    "gameAppearances": ["Republic Commando"],
-    "bookComicAppearances": ["None"]
+    "tvAppearances": ["None"],
+    "gameAppearances": ["None"],
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Rc_1207"
   },
   {
     "id": "rc-1262",
@@ -3475,9 +3584,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/d/d4/RC-1262.jpg",
     "enabled": true,
     "movieAppearances": ["None"],
-    "tvAppearances": ["The Bad Batch", "The Clone Wars"],
-    "gameAppearances": ["Republic Commando"],
-    "bookComicAppearances": ["None"]
+    "tvAppearances": ["The Bad Batch"],
+    "gameAppearances": ["None"],
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Rc_1262"
   },
   {
     "id": "max-rebo",
@@ -3501,9 +3611,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/2/25/MaxRebo-Db.png",
     "enabled": true,
     "movieAppearances": ["Return of the Jedi"],
-    "tvAppearances": ["Rebels", "The Book of Boba Fett", "The Clone Wars"],
+    "tvAppearances": ["The Clone Wars", "Rebels"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Max_Rebo"
   },
   {
     "id": "revan",
@@ -3524,8 +3635,9 @@
     "enabled": true,
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
-    "gameAppearances": ["Knights of the Old Republic", "The Old Republic"],
-    "bookComicAppearances": ["None"]
+    "gameAppearances": ["None"],
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Revan"
   },
   {
     "id": "rey-skywalker",
@@ -3549,9 +3661,14 @@
       "The Last Jedi",
       "The Rise of Skywalker"
     ],
-    "tvAppearances": ["Forces of Destiny", "Resistance"],
+    "tvAppearances": [
+      "Resistance",
+      "Forces of Destiny",
+      "Galaxy of Adventures"
+    ],
     "gameAppearances": ["Battlefront II"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Rey_Skywalker"
   },
   {
     "id": "roos-tarpals",
@@ -3573,11 +3690,12 @@
     "movieAppearances": ["The Phantom Menace"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Roos_Tarpals"
   },
   {
     "id": "sab",
-    "name": "Sabé",
+    "name": "SabÃ©",
     "species": "Human",
     "sex": "Female",
     "hairColor": "Brown",
@@ -3589,13 +3707,14 @@
     "forceUser": false,
     "speaksBasic": true,
     "quoteHint": "I am Queen Amidala.",
-    "masterHint": "Handmaiden and body double for Queen Amidala of Naboo, looked identical to Padmé and frequently served as her decoy.",
+    "masterHint": "Handmaiden and body double for Queen Amidala of Naboo, looked identical to PadmÃ© and frequently served as her decoy.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/5/56/Sabe-SWE.png",
     "enabled": true,
-    "movieAppearances": ["The Phantom Menace", "Attack of the Clones"],
+    "movieAppearances": ["The Phantom Menace"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Sab"
   },
   {
     "id": "sebulba",
@@ -3617,7 +3736,8 @@
     "movieAppearances": ["The Phantom Menace"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Sebulba"
   },
   {
     "id": "aayla-secura",
@@ -3636,10 +3756,11 @@
     "masterHint": "Twi'lek Jedi Knight known for her athletic fighting style and blue lightsaber, killed during Order 66 on Felucia.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/5/59/AaylaSecura-SWYBYNE.png",
     "enabled": true,
-    "movieAppearances": ["Revenge of the Sith", "Attack of the Clones"],
+    "movieAppearances": ["Revenge of the Sith", "The Rise of Skywalker"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Aayla_Secura"
   },
   {
     "id": "bastila-shan",
@@ -3660,8 +3781,9 @@
     "enabled": true,
     "movieAppearances": ["None"],
     "tvAppearances": ["None"],
-    "gameAppearances": ["Knights of the Old Republic"],
-    "bookComicAppearances": ["None"]
+    "gameAppearances": ["Knights of the Old Republic II: The Sith Lords"],
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Bastila_Shan"
   },
   {
     "id": "aurra-sing",
@@ -3684,10 +3806,11 @@
     "masterHint": "Ex-Jedi and bounty hunter with pale skin and an antenna implant, mentored Boba Fett after his father died.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/4/40/AurraSing-CGSWG.png",
     "enabled": true,
-    "movieAppearances": ["The Phantom Menace"],
-    "tvAppearances": ["The Bad Batch", "The Clone Wars"],
+    "movieAppearances": ["None"],
+    "tvAppearances": ["The Clone Wars", "The Bad Batch"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Aurra_Sing"
   },
   {
     "id": "snoke",
@@ -3709,7 +3832,8 @@
     "movieAppearances": ["The Last Jedi"],
     "tvAppearances": ["Resistance"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Snoke"
   },
   {
     "id": "lama-su",
@@ -3729,9 +3853,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/7/73/Lama_Su.jpg",
     "enabled": true,
     "movieAppearances": ["Attack of the Clones"],
-    "tvAppearances": ["The Bad Batch", "The Clone Wars"],
+    "tvAppearances": ["The Clone Wars", "The Bad Batch"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Lama_Su"
   },
   {
     "id": "hera-syndulla",
@@ -3751,9 +3876,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/4/46/Hera_Syndulla-AG.png",
     "enabled": true,
     "movieAppearances": ["None"],
-    "tvAppearances": ["Ahsoka", "Forces of Destiny", "Rebels", "The Bad Batch"],
+    "tvAppearances": ["The Bad Batch", "Rebels", "Forces of Destiny"],
     "gameAppearances": ["Squadrons"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Hera_Syndulla"
   },
   {
     "id": "wat-tambor",
@@ -3775,7 +3901,8 @@
     "movieAppearances": ["Revenge of the Sith"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Wat_Tambor"
   },
   {
     "id": "tarfful",
@@ -3794,10 +3921,11 @@
     "masterHint": "Wookiee chieftain of Kachirho who fought alongside Yoda during the Battle of Kashyyyk against the Separatists.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/8/81/Tarfful-WiaW2015.png",
     "enabled": true,
-    "movieAppearances": ["Revenge of the Sith"],
+    "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["Jedi: Fallen Order"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Tarfful"
   },
   {
     "id": "wilhuff-tarkin",
@@ -3820,14 +3948,16 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/c/c1/Tarkininfobox.jpg",
     "enabled": true,
     "movieAppearances": [
-      "A New Hope",
       "Revenge of the Sith",
+      "Solo",
       "Rogue One",
-      "Solo"
+      "A New Hope",
+      "The Last Jedi"
     ],
-    "tvAppearances": ["Rebels", "The Bad Batch", "The Clone Wars"],
+    "tvAppearances": ["The Clone Wars", "The Bad Batch", "Rebels"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Wilhuff_Tarkin"
   },
   {
     "id": "tc-14",
@@ -3849,7 +3979,8 @@
     "movieAppearances": ["The Phantom Menace"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Tc_14"
   },
   {
     "id": "shaak-ti",
@@ -3868,10 +3999,11 @@
     "masterHint": "Togruta Jedi Master on the Council who oversaw clone training on Kamino, died on multiple occasions depending on canon.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/2/20/Shaak_Ti_closeup-SWE.png",
     "enabled": true,
-    "movieAppearances": ["Attack of the Clones"],
+    "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Shaak_Ti"
   },
   {
     "id": "rose-tico",
@@ -3891,9 +4023,14 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/c/c9/Rose_Tico_TROSOCE.png",
     "enabled": true,
     "movieAppearances": ["The Last Jedi", "The Rise of Skywalker"],
-    "tvAppearances": ["Forces of Destiny", "Resistance"],
+    "tvAppearances": [
+      "Resistance",
+      "Forces of Destiny",
+      "Galaxy of Adventures"
+    ],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Rose_Tico"
   },
   {
     "id": "trace-martez",
@@ -3913,9 +4050,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/4/42/Trace-SWCT.png",
     "enabled": true,
     "movieAppearances": ["None"],
-    "tvAppearances": ["The Bad Batch", "The Clone Wars"],
+    "tvAppearances": ["The Clone Wars", "The Bad Batch"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Trace_Martez"
   },
   {
     "id": "finis-valorum",
@@ -3937,7 +4075,8 @@
     "movieAppearances": ["The Phantom Menace"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Finis_Valorum"
   },
   {
     "id": "asajj-ventress",
@@ -3957,9 +4096,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/f/fb/AsajjVentress-2024Base.png",
     "enabled": true,
     "movieAppearances": ["None"],
-    "tvAppearances": ["The Bad Batch", "The Clone Wars"],
+    "tvAppearances": ["The Clone Wars", "The Bad Batch", "Star Wars: Tales"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Asajj_Ventress"
   },
   {
     "id": "pre-vizsla",
@@ -3981,7 +4121,8 @@
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Pre_Vizsla"
   },
   {
     "id": "quinlan-vos",
@@ -4006,9 +4147,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/e/e3/Quinlan_Vos.png",
     "enabled": true,
     "movieAppearances": ["None"],
-    "tvAppearances": ["The Clone Wars"],
+    "tvAppearances": ["The Clone Wars", "Star Wars: Tales"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Quinlan_Vos"
   },
   {
     "id": "wicket-wystri-warrick",
@@ -4028,9 +4170,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/a/aa/Wicket-2024Base.png",
     "enabled": true,
     "movieAppearances": ["Return of the Jedi", "The Rise of Skywalker"],
-    "tvAppearances": ["Forces of Destiny"],
+    "tvAppearances": ["Forces of Destiny", "Galaxy of Adventures"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Wicket_Wystri_Warrick"
   },
   {
     "id": "watto",
@@ -4049,10 +4192,11 @@
     "masterHint": "Toydarian junk dealer and slave owner on Tatooine who owned Anakin and Shmi before losing them.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/e/eb/WattoHS.jpg",
     "enabled": true,
-    "movieAppearances": ["Attack of the Clones", "The Phantom Menace"],
+    "movieAppearances": ["The Phantom Menace", "Attack of the Clones"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Watto"
   },
   {
     "id": "taun-we",
@@ -4074,7 +4218,8 @@
     "movieAppearances": ["Attack of the Clones"],
     "tvAppearances": ["The Bad Batch"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Taun_We"
   },
   {
     "id": "zam-wesell",
@@ -4089,14 +4234,15 @@
     "weapons": ["Ranged (Blaster)"],
     "forceUser": false,
     "speaksBasic": true,
-    "quoteHint": "It was a bounty hunter called—",
-    "masterHint": "Clawdite shape-shifting assassin hired to kill Padmé, killed by Jango Fett before revealing her employer.",
+    "quoteHint": "It was a bounty hunter calledâ€”",
+    "masterHint": "Clawdite shape-shifting assassin hired to kill PadmÃ©, killed by Jango Fett before revealing her employer.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/9/9a/ZamWesell-FF.png",
     "enabled": true,
     "movieAppearances": ["Attack of the Clones"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Zam_Wesell"
   },
   {
     "id": "sabine-wren",
@@ -4122,9 +4268,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/c/cc/Sabine_Wren-AG.png",
     "enabled": true,
     "movieAppearances": ["None"],
-    "tvAppearances": ["Ahsoka", "Forces of Destiny", "Rebels"],
+    "tvAppearances": ["Rebels", "Forces of Destiny"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Sabine_Wren"
   },
   {
     "id": "yaddle",
@@ -4144,9 +4291,10 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/7/7f/Yaddle-SWCT.png",
     "enabled": true,
     "movieAppearances": ["The Phantom Menace"],
-    "tvAppearances": ["Tales of the Jedi", "The Acolyte"],
+    "tvAppearances": ["The Acolyte", "Star Wars: Tales"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Yaddle"
   },
   {
     "id": "zuckuss",
@@ -4161,13 +4309,14 @@
     "weapons": ["Ranged (Blaster)"],
     "forceUser": false,
     "speaksBasic": true,
-    "quoteHint": "We had worked other jobs together of course… that was when we knew when we team up, we become unstoppable!",
+    "quoteHint": "We had worked other jobs together of courseâ€¦ that was when we knew when we team up, we become unstoppable!",
     "masterHint": "Gand findsman bounty hunter who relied on mystical visions, partnered with 4-LOM to hunt Han Solo.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/2/23/Zuckuss.png",
     "enabled": true,
     "movieAppearances": ["The Empire Strikes Back"],
-    "tvAppearances": ["None"],
+    "tvAppearances": ["Galaxy of Adventures"],
     "gameAppearances": ["None"],
-    "bookComicAppearances": ["None"]
+    "bookAppearances": ["None"],
+    "fandomUrl": "https://starwars.fandom.com/wiki/Zuckuss"
   }
 ]

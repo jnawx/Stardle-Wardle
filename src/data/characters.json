@@ -99,7 +99,7 @@
     "speaksBasic": true,
     "quoteHint": "We suffer a great many losses in these battles. Too many.",
     "masterHint": "Jedi Master who was executed by the Empire. Her remains were used to lure surviving Jedi to their deaths.",
-    "movieAppearances": ["Revenge of the Sith", "The Rise of Skywalker"],
+    "movieAppearances": ["Revenge of the Sith"],
     "tvAppearances": ["The Clone Wars", "Rebels"],
     "gameAppearances": ["None"],
     "bookAppearances": ["None"],
@@ -827,8 +827,7 @@
       "Revenge of the Sith",
       "The Empire Strikes Back",
       "Return of the Jedi",
-      "The Last Jedi",
-      "The Rise of Skywalker"
+      "The Last Jedi"    
     ],
     "tvAppearances": [
       "Young Jedi Adventures",
@@ -1106,8 +1105,7 @@
     "movieAppearances": [
       "The Phantom Menace",
       "Attack of the Clones",
-      "Revenge of the Sith",
-      "The Rise of Skywalker"
+      "Revenge of the Sith"
     ],
     "tvAppearances": ["The Clone Wars", "The Bad Batch", "Star Wars: Tales"],
     "gameAppearances": ["None"],
@@ -1131,7 +1129,7 @@
     "masterHint": "Jedi Master who discovered Anakin Skywalker on Tatooine and won his freedom from Watto.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/f/f6/Qui-Gon_Jinn_Headshot_TPM.jpg",
     "enabled": true,
-    "movieAppearances": ["The Phantom Menace", "The Rise of Skywalker"],
+    "movieAppearances": ["The Phantom Menace"],
     "tvAppearances": [
       "The Clone Wars",
       "Star Wars: Tales",
@@ -1202,7 +1200,7 @@
     "affiliations": ["Other (Military)", "Separatists (Military)"],
     "eras": ["The Galactic Republic"],
     "weapons": ["Melee (Lightsaber)", "Ranged (Blaster)"],
-    "forceUser": true,
+    "forceUser": false,
     "speaksBasic": true,
     "quoteHint": "Your lightsabers will make a fine addition to my collection.",
     "masterHint": "Cyborg general of the Separatist Droid Army who collected lightsabers from Jedi he killed.",
@@ -1362,7 +1360,7 @@
     "masterHint": "Togruta Padawan of Anakin Skywalker who left the Jedi Order, survived Order 66, and became a key figure in the Rebellion.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/2/27/Ahsoka-Tano-AG-2023.png",
     "enabled": true,
-    "movieAppearances": ["The Rise of Skywalker"],
+    "movieAppearances": ["None"],
     "tvAppearances": [
       "The Clone Wars",
       "Star Wars: Tales",
@@ -1569,7 +1567,7 @@
     "affiliations": ["Galactic Republic (Non-Military)"],
     "eras": ["The Galactic Republic"],
     "weapons": ["None"],
-    "forceUser": true,
+    "forceUser": false,
     "speaksBasic": true,
     "quoteHint": "Oh, mooie-mooie! I love you!",
     "masterHint": "Clumsy Gungan outcast who befriended the Jedi and later became a senator, accidentally helped Palpatine gain emergency powers.",
@@ -1706,7 +1704,7 @@
     "masterHint": "Aqualish thug and smuggler who confronted Luke in the Mos Eisley Cantina, lost his arm to Obi-Wan's lightsaber.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/b/bc/PondaBaba-BaseSeries4.png",
     "enabled": true,
-    "movieAppearances": ["Solo", "Rogue One", "A New Hope"],
+    "movieAppearances": ["Rogue One", "A New Hope"],
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
     "bookAppearances": ["None"],
@@ -1861,7 +1859,7 @@
     "affiliations": ["Criminal Underworld"],
     "eras": ["The Galactic Republic", "The Galactic Empire"],
     "weapons": ["Ranged (Blaster)"],
-    "forceUser": true,
+    "forceUser": false,
     "speaksBasic": true,
     "quoteHint": "You can't pay enough for a bounty hunter of my expertise.",
     "masterHint": "Trandoshan bounty hunter who hunted Wookiees.",
@@ -2532,7 +2530,7 @@
     "masterHint": "Led the mission to steal the Death Star plans on Scarif.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/b/b3/JynErsoPromo.png",
     "enabled": true,
-    "movieAppearances": ["Solo", "Rogue One"],
+    "movieAppearances": ["Rogue One"],
     "tvAppearances": ["Forces of Destiny"],
     "gameAppearances": ["None"],
     "bookAppearances": ["None"],
@@ -2578,8 +2576,7 @@
     "masterHint": "Nautolan Jedi Master known for his perpetual smile and aquatic combat skills, killed by Palpatine in his office.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/2/25/KitFisto-USWNE.png",
     "enabled": true,
-    "movieAppearances": ["Revenge of the Sith", "The Rise of Skywalker"],
-    "tvAppearances": ["The Clone Wars"],
+    "movieAppearances": ["Revenge of the Sith"],
     "gameAppearances": ["None"],
     "bookAppearances": ["None"],
     "fandomUrl": "https://starwars.fandom.com/wiki/Kit_Fisto"
@@ -2824,7 +2821,7 @@
     "masterHint": "Jedi survivor of Order 66 who hid as a smuggler before training Ezra Bridger, sacrificed himself to save his crew.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/f/f6/Kanan-JediNight.png",
     "enabled": true,
-    "movieAppearances": ["The Rise of Skywalker"],
+    "movieAppearances": ["None"],
     "tvAppearances": ["The Bad Batch", "Star Wars: Tales", "Rebels"],
     "gameAppearances": ["None"],
     "bookAppearances": ["None"],
@@ -2899,7 +2896,6 @@
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/5/53/MazKanata-TROSGG.png",
     "enabled": true,
     "movieAppearances": [
-      "The Phantom Menace",
       "Solo",
       "The Force Awakens",
       "The Last Jedi",
@@ -2957,8 +2953,7 @@
     "movieAppearances": [
       "The Phantom Menace",
       "Attack of the Clones",
-      "Revenge of the Sith",
-      "The Rise of Skywalker"
+      "Revenge of the Sith"
     ],
     "tvAppearances": ["The Acolyte", "The Clone Wars", "Star Wars: Tales"],
     "gameAppearances": ["None"],
@@ -2985,8 +2980,7 @@
     "movieAppearances": [
       "The Phantom Menace",
       "Attack of the Clones",
-      "Revenge of the Sith",
-      "The Rise of Skywalker"
+      "Revenge of the Sith"    
     ],
     "tvAppearances": ["The Clone Wars", "Star Wars: Tales"],
     "gameAppearances": ["None"],
@@ -3196,7 +3190,7 @@
     "affiliations": ["Galactic Empire (Military)", "Other (Military)"],
     "eras": ["The Galactic Empire", "The New Republic"],
     "weapons": ["None"],
-    "forceUser": true,
+    "forceUser": false,
     "speaksBasic": true,
     "quoteHint": "No one is immune from failure. All have tasted the bitterness of defeat and disappointment. A warrior must not dwell on that failure, but must learn from it and continue on.",
     "masterHint": "Brilliant Chiss Imperial Admiral who preserved the remnants of the Empire after the Emperor's death.",
@@ -3756,7 +3750,7 @@
     "masterHint": "Twi'lek Jedi Knight known for her athletic fighting style and blue lightsaber, killed during Order 66 on Felucia.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/5/59/AaylaSecura-SWYBYNE.png",
     "enabled": true,
-    "movieAppearances": ["Revenge of the Sith", "The Rise of Skywalker"],
+    "movieAppearances": ["Revenge of the Sith"],
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
     "bookAppearances": ["None"],

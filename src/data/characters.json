@@ -209,7 +209,8 @@
     "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/b/bb/Chopper_Live_Action.png",
-    "fandomUrl": "https://starwars.fandom.com/wiki/C1-10P"
+    "fandomUrl": "https://starwars.fandom.com/wiki/C1-10P",
+    "bookComicAppearances": ["None"]
   },
   {
     "id": "tech",
@@ -233,7 +234,8 @@
     "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/e/ed/Tech-2024VIP.png",
-    "fandomUrl": "https://starwars.fandom.com/wiki/CT-9902"
+    "fandomUrl": "https://starwars.fandom.com/wiki/CT-9902",
+    "bookComicAppearances": ["None"]
   },
   {
     "id": "wrecker",
@@ -257,7 +259,8 @@
     "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/0/07/Wrecker-UB.png",
-    "fandomUrl": "https://starwars.fandom.com/wiki/Wrecker"
+    "fandomUrl": "https://starwars.fandom.com/wiki/Wrecker",
+    "bookComicAppearances": ["None"]
   },
   {
     "id": "sergeant-hunter",
@@ -281,7 +284,8 @@
     "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/1/1d/Hunter-DisneyPlus.png",
-    "fandomUrl": "https://starwars.fandom.com/wiki/CT-9901"
+    "fandomUrl": "https://starwars.fandom.com/wiki/CT-9901",
+    "bookComicAppearances": ["None"]
   },
   {
     "id": "cara-dune",
@@ -332,7 +336,8 @@
     "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/9/9c/99-ARCT.png",
-    "fandomUrl": "https://starwars.fandom.com/wiki/99"
+    "fandomUrl": "https://starwars.fandom.com/wiki/99",
+    "bookComicAppearances": ["None"]
   },
   {
     "id": "jabba-the-hutt",
@@ -580,7 +585,7 @@
     "affiliations": ["Sith"],
     "eras": ["The Old Republic"],
     "weapons": ["Melee (Lightsaber)"],
-    "forceUser": false,
+    "forceUser": true,
     "speaksBasic": true,
     "quoteHint": "I have done what so many Sith pretend to do, but never really achieveâ€¦ I have broken my chains.",
     "masterHint": "Sith Lord and ruler of the Sith Empire during the reign of the Old Republic. Sacked the Jedi Temple on Corsucant.",
@@ -641,7 +646,8 @@
     "bookAppearances": ["None"],
     "enabled": true,
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/8/89/Malakart-crop.jpg",
-    "fandomUrl": "https://starwars.fandom.com/wiki/Darth_Malak"
+    "fandomUrl": "https://starwars.fandom.com/wiki/Darth_Malak",
+    "bookComicAppearances": ["None"]
   },
   {
     "id": "luke-skywalker",
@@ -796,7 +802,7 @@
       "The Last Jedi"
     ],
     "tvAppearances": ["Forces of Destiny", "Galaxy of Adventures"],
-    "gameAppearances": ["Commander", "Battlefront II"],
+    "gameAppearances": ["Commander"],
     "bookAppearances": ["None"],
     "fandomUrl": "https://starwars.fandom.com/wiki/Han_Solo"
   },
@@ -827,7 +833,7 @@
       "Revenge of the Sith",
       "The Empire Strikes Back",
       "Return of the Jedi",
-      "The Last Jedi"    
+      "The Last Jedi"
     ],
     "tvAppearances": [
       "Young Jedi Adventures",
@@ -837,7 +843,7 @@
       "Forces of Destiny",
       "Galaxy of Adventures"
     ],
-    "gameAppearances": ["Battlefront II"],
+    "gameAppearances": ["None"],
     "bookAppearances": ["None"],
     "fandomUrl": "https://starwars.fandom.com/wiki/Yoda"
   },
@@ -872,7 +878,7 @@
       "Rebels",
       "Galaxy of Adventures"
     ],
-    "gameAppearances": ["Jedi: Fallen Order", "Battlefront II"],
+    "gameAppearances": ["Jedi: Fallen Order"],
     "bookAppearances": ["None"],
     "fandomUrl": "https://starwars.fandom.com/wiki/Obi_Wan_Kenobi"
   },
@@ -901,9 +907,18 @@
     "masterHint": "Loyal Wookiee co-pilot of the Millennium Falcon.",
     "imageUrl": "https://static.wikia.nocookie.net/starwars/images/4/48/Chewbacca_TLJ.png",
     "enabled": true,
-    "movieAppearances": ["None"],
-    "tvAppearances": ["None"],
-    "gameAppearances": ["None"],
+    "movieAppearances": [
+      "Revenge of the Sith",
+      "A New Hope",
+      "The Empire Strikes Back",
+      "Return of the Jedi",
+      "The Force Awakens",
+      "The Last Jedi",
+      "The Rise of Skywalker",
+      "Solo"
+    ],
+    "tvAppearances": ["The Clone Wars"],
+    "gameAppearances": ["Battlefront II"],
     "bookAppearances": ["None"],
     "fandomUrl": "https://starwars.fandom.com/wiki/Chewbacca"
   },
@@ -953,7 +968,7 @@
       "Forces of Destiny",
       "Galaxy of Adventures"
     ],
-    "gameAppearances": ["Commander", "Battlefront II"],
+    "gameAppearances": ["Commander"],
     "bookAppearances": ["None"],
     "fandomUrl": "https://starwars.fandom.com/wiki/R2_D2"
   },
@@ -1185,7 +1200,7 @@
       "Star Wars: Tales",
       "Galaxy of Adventures"
     ],
-    "gameAppearances": ["Battlefront II"],
+    "gameAppearances": ["None"],
     "bookAppearances": ["None"],
     "fandomUrl": "https://starwars.fandom.com/wiki/Count_Dooku"
   },
@@ -1208,7 +1223,7 @@
     "enabled": true,
     "movieAppearances": ["Revenge of the Sith"],
     "tvAppearances": ["The Clone Wars", "Star Wars: Tales"],
-    "gameAppearances": ["Battlefront II"],
+    "gameAppearances": ["None"],
     "bookAppearances": ["None"],
     "fandomUrl": "https://starwars.fandom.com/wiki/General_Grievous"
   },
@@ -1267,7 +1282,7 @@
       "The Mandalorian",
       "Galaxy of Adventures"
     ],
-    "gameAppearances": ["Jedi: Survivor", "Battlefront II"],
+    "gameAppearances": ["Jedi: Survivor"],
     "bookAppearances": ["None"],
     "fandomUrl": "https://starwars.fandom.com/wiki/Boba_Fett"
   },
@@ -1395,7 +1410,7 @@
       "The Rise of Skywalker"
     ],
     "tvAppearances": ["Resistance", "Galaxy of Adventures"],
-    "gameAppearances": ["Battlefront II"],
+    "gameAppearances": ["None"],
     "bookAppearances": ["None"],
     "fandomUrl": "https://starwars.fandom.com/wiki/Poe_Dameron"
   },
@@ -1429,7 +1444,7 @@
       "Forces of Destiny",
       "Galaxy of Adventures"
     ],
-    "gameAppearances": ["Battlefront II"],
+    "gameAppearances": ["None"],
     "bookAppearances": ["None"],
     "fandomUrl": "https://starwars.fandom.com/wiki/Finn"
   },
@@ -1452,7 +1467,7 @@
     "enabled": true,
     "movieAppearances": ["The Force Awakens", "The Last Jedi"],
     "tvAppearances": ["Resistance"],
-    "gameAppearances": ["Battlefront II"],
+    "gameAppearances": ["None"],
     "bookAppearances": ["None"],
     "fandomUrl": "https://starwars.fandom.com/wiki/Captain_Phasma"
   },
@@ -1483,7 +1498,7 @@
       "Forces of Destiny",
       "Galaxy of Adventures"
     ],
-    "gameAppearances": ["Battlefront II"],
+    "gameAppearances": ["None"],
     "bookAppearances": ["None"],
     "fandomUrl": "https://starwars.fandom.com/wiki/Bb_8"
   },
@@ -1844,7 +1859,7 @@
       "The Rise of Skywalker"
     ],
     "tvAppearances": ["Resistance", "Galaxy of Adventures"],
-    "gameAppearances": ["Battlefront II"],
+    "gameAppearances": ["None"],
     "bookAppearances": ["None"],
     "fandomUrl": "https://starwars.fandom.com/wiki/Ben_Solo"
   },
@@ -1867,7 +1882,7 @@
     "enabled": true,
     "movieAppearances": ["The Empire Strikes Back", "Return of the Jedi"],
     "tvAppearances": ["The Clone Wars", "Galaxy of Adventures"],
-    "gameAppearances": ["Battlefront II"],
+    "gameAppearances": ["None"],
     "bookAppearances": ["None"],
     "fandomUrl": "https://starwars.fandom.com/wiki/Bossk"
   },
@@ -1915,7 +1930,8 @@
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
     "bookAppearances": ["None"],
-    "fandomUrl": "https://starwars.fandom.com/wiki/Cc_1004"
+    "fandomUrl": "https://starwars.fandom.com/wiki/Cc_1004",
+    "bookComicAppearances": ["None"]
   },
   {
     "id": "cc-1010",
@@ -1938,7 +1954,8 @@
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
     "bookAppearances": ["None"],
-    "fandomUrl": "https://starwars.fandom.com/wiki/Cc_1010"
+    "fandomUrl": "https://starwars.fandom.com/wiki/Cc_1010",
+    "bookComicAppearances": ["None"]
   },
   {
     "id": "cc-1119",
@@ -1961,7 +1978,8 @@
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
     "bookAppearances": ["None"],
-    "fandomUrl": "https://starwars.fandom.com/wiki/Cc_1119"
+    "fandomUrl": "https://starwars.fandom.com/wiki/Cc_1119",
+    "bookComicAppearances": ["None"]
   },
   {
     "id": "cc-1138",
@@ -1984,7 +2002,8 @@
     "tvAppearances": ["None"],
     "gameAppearances": ["None"],
     "bookAppearances": ["None"],
-    "fandomUrl": "https://starwars.fandom.com/wiki/Cc_1138"
+    "fandomUrl": "https://starwars.fandom.com/wiki/Cc_1138",
+    "bookComicAppearances": ["None"]
   },
   {
     "id": "cc-2224",
@@ -2007,7 +2026,8 @@
     "tvAppearances": ["The Clone Wars", "The Bad Batch"],
     "gameAppearances": ["None"],
     "bookAppearances": ["None"],
-    "fandomUrl": "https://starwars.fandom.com/wiki/Cc_2224"
+    "fandomUrl": "https://starwars.fandom.com/wiki/Cc_2224",
+    "bookComicAppearances": ["None"]
   },
   {
     "id": "cc-3636",
@@ -2033,7 +2053,8 @@
     "tvAppearances": ["The Clone Wars", "The Bad Batch", "Rebels"],
     "gameAppearances": ["None"],
     "bookAppearances": ["None"],
-    "fandomUrl": "https://starwars.fandom.com/wiki/Cc_3636"
+    "fandomUrl": "https://starwars.fandom.com/wiki/Cc_3636",
+    "bookComicAppearances": ["None"]
   },
   {
     "id": "cc-7567",
@@ -2065,7 +2086,8 @@
     ],
     "gameAppearances": ["None"],
     "bookAppearances": ["None"],
-    "fandomUrl": "https://starwars.fandom.com/wiki/Cc_7567"
+    "fandomUrl": "https://starwars.fandom.com/wiki/Cc_7567",
+    "bookComicAppearances": ["None"]
   },
   {
     "id": "riyo-chuchi",
@@ -2161,9 +2183,10 @@
     "enabled": true,
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars", "The Bad Batch"],
-    "gameAppearances": ["Battlefront II"],
+    "gameAppearances": ["None"],
     "bookAppearances": ["None"],
-    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_1409"
+    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_1409",
+    "bookComicAppearances": ["None"]
   },
   {
     "id": "ct-411",
@@ -2186,7 +2209,8 @@
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
     "bookAppearances": ["None"],
-    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_411"
+    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_411",
+    "bookComicAppearances": ["None"]
   },
   {
     "id": "ct-5385",
@@ -2230,9 +2254,10 @@
     "enabled": true,
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
-    "gameAppearances": ["Battlefront II"],
+    "gameAppearances": ["None"],
     "bookAppearances": ["None"],
-    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_5555"
+    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_5555",
+    "bookComicAppearances": ["None"]
   },
   {
     "id": "ct-5597",
@@ -2255,7 +2280,8 @@
     "tvAppearances": ["The Clone Wars", "Star Wars: Tales"],
     "gameAppearances": ["None"],
     "bookAppearances": ["None"],
-    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_5597"
+    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_5597",
+    "bookComicAppearances": ["None"]
   },
   {
     "id": "ct-6116",
@@ -2278,7 +2304,8 @@
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
     "bookAppearances": ["None"],
-    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_6116"
+    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_6116",
+    "bookComicAppearances": ["None"]
   },
   {
     "id": "ct-6922",
@@ -2301,7 +2328,8 @@
     "tvAppearances": ["The Clone Wars"],
     "gameAppearances": ["None"],
     "bookAppearances": ["None"],
-    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_6922"
+    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_6922",
+    "bookComicAppearances": ["None"]
   },
   {
     "id": "ct-782",
@@ -2322,9 +2350,10 @@
     "enabled": true,
     "movieAppearances": ["None"],
     "tvAppearances": ["The Clone Wars"],
-    "gameAppearances": ["Battlefront II"],
+    "gameAppearances": ["None"],
     "bookAppearances": ["None"],
-    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_782"
+    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_782",
+    "bookComicAppearances": ["None"]
   },
   {
     "id": "ct-9904",
@@ -2350,7 +2379,8 @@
     "tvAppearances": ["The Clone Wars", "The Bad Batch"],
     "gameAppearances": ["None"],
     "bookAppearances": ["None"],
-    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_9904"
+    "fandomUrl": "https://starwars.fandom.com/wiki/Ct_9904",
+    "bookComicAppearances": ["None"]
   },
   {
     "id": "biggs-darklighter",
@@ -2906,7 +2936,7 @@
       "Resistance",
       "Forces of Destiny"
     ],
-    "gameAppearances": ["Commander", "Battlefront II"],
+    "gameAppearances": ["Commander"],
     "bookAppearances": ["None"],
     "fandomUrl": "https://starwars.fandom.com/wiki/Maz_Kanata"
   },
@@ -2980,7 +3010,7 @@
     "movieAppearances": [
       "The Phantom Menace",
       "Attack of the Clones",
-      "Revenge of the Sith"    
+      "Revenge of the Sith"
     ],
     "tvAppearances": ["The Clone Wars", "Star Wars: Tales"],
     "gameAppearances": ["None"],
@@ -3660,7 +3690,7 @@
       "Forces of Destiny",
       "Galaxy of Adventures"
     ],
-    "gameAppearances": ["Battlefront II"],
+    "gameAppearances": ["None"],
     "bookAppearances": ["None"],
     "fandomUrl": "https://starwars.fandom.com/wiki/Rey_Skywalker"
   },

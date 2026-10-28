@@ -1,6 +1,8 @@
-# ⭐ StarWarsdle
+# ⭐ Stardle-Wardle
 
 A Wordle-style guessing game where players try to identify a mystery Star Wars character based on their attributes. Each guess reveals how close the guessed character's attributes are to the target character.
+
+Play Now at https://stardle-wardle.nawx.app/
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript)

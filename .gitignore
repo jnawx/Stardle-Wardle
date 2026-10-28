@@ -26,3 +26,17 @@ dist-ssr
 
 # Cache directories
 fandom-cache
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Generated output and temporary files
+coverage/
+*.tsbuildinfo
+*.backup.json
+/console.txt
+/sources.txt
+Thumbs.db

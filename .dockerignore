@@ -1,0 +1,16 @@
+# Only production build inputs belong in the Docker context.
+**
+!package.json
+!package-lock.json
+!index.html
+!icon.ico
+!tsconfig.json
+!tsconfig.node.json
+!vite.config.ts
+!postcss.config.js
+!tailwind.config.js
+!src/
+!src/**
+!public/
+!public/**
+**/*.backup.json

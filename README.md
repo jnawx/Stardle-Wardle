@@ -46,7 +46,7 @@ A Wordle-style guessing game where players try to identify a mystery Star Wars c
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [Node.js](https://nodejs.org/) (22.12 or higher)
 - npm or yarn
 
 ### Installation
@@ -57,7 +57,7 @@ git clone https://github.com/jnawx/Stardle-Wardle.git
 cd Stardle-Wardle
 
 # Install dependencies
-npm install
+npm ci
 
 # Start the development server
 npm run dev
@@ -71,6 +71,29 @@ The game will be available at `http://localhost:5173`
 npm run build
 npm run preview
 ```
+
+### Run with Docker
+
+```bash
+docker build -t starwarsdle .
+docker run --rm -p 8080:80 starwarsdle
+```
+
+Open `http://localhost:8080`. The image builds the app with Node.js 22 and
+serves the production files with Nginx. Character management and data-import
+tools run separately on your development machine.
+
+### Documentation
+
+- [Quick start](docs/QUICK-START.md)
+- [Character management](docs/CHARACTER-MANAGEMENT.md)
+- [Game configuration](docs/GAME_CONFIG_GUIDE.md)
+- [Character images](docs/IMAGES.md)
+- [Historical plans and feature notes](docs/plans/)
+
+Generated builds, dependencies, Fandom caches, local environment files, and
+character backups are ignored by Git. Run `node scripts/extract-sources.js`
+to regenerate the ignored `sources.txt` report.
 
 ## 🛠️ Tech Stack
 
